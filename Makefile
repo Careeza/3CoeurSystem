@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 CC = g++
-CFLAGS = -Wall -Wextra -Iinclude
-LDFLAGS =
+CFLAGS = -Wall -Wextra -Iinclude 
+LDFLAGS = `sdl2-config --libs --cflags` -lSDL2_image -lSDL2_ttf -lm
 
 BUILD_DIR = build
 OBJS_DIR = $(BUILD_DIR)/objs
