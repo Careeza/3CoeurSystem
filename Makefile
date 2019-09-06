@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dde-jesu <dde-jesu@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/15 10:32:31 by dde-jesu          #+#    #+#              #
-#    Updated: 2019/06/05 10:03:14 by dde-jesu         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 CC = g++
 CFLAGS = -Wall -Wextra -Iinclude
 LDFLAGS = `sdl2-config --libs --cflags` -lSDL2_image -lSDL2_ttf -lm
@@ -52,7 +40,7 @@ clean:
 
 fclean: clean
 	rm -rf training switch
-	rm -rf common
+	rm -rf game
 
 re:
 	$(MAKE) fclean
