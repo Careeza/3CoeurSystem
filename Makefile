@@ -40,7 +40,7 @@ clean:
 
 fclean: clean
 	rm -rf training switch
-	rm -rf common
+	rm -rf game
 
 re:
 	$(MAKE) fclean
