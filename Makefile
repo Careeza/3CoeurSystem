@@ -22,24 +22,24 @@ include src.mk
 OBJS = $(patsubst src/%.cpp, $(OBJS_DIR)/%.o, $(SRCS))
 
 OBJS_COMMON = $(filter $(OBJS_DIR)/common/%, $(OBJS))
+OBJS_GAME = $(filter $(OBJS_DIR)/game/%, $(OBJS))
 
-all: common
+all: game
 
 $(OBJS_DIR)/%.o $(OBJS_DIR)/%.o.wasm: src/%.cpp Makefile
 	@$(PRECOMPILE)
 	$(CC) $(CFLAGS) -c -o $@ $<
 	@$(POSTCOMPILE)
 
-common: $(OBJS_COMMON)
+game: $(OBJS_GAME) $(OBJS_COMMON)
 
-common:
+game:
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 clean:
 	rm -rf build
 
 fclean: clean
-	rm -rf training switch
 	rm -rf game
 
 re:
