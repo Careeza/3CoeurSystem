@@ -12,7 +12,7 @@ class		Canvas
 	public:
 	Canvas();
 	void	init(int flags);
-	void	create_window(int flags, int x = 0, int y = 0, int w = 0, int h = 0);
+	void	create_window(int flags, const string& name = "canvas", int x = 0, int y = 0, int w = 0, int h = 0);
 	bool	window_closed();
 	void	close_window();
 
