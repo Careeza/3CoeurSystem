@@ -1,4 +1,4 @@
-#include "../../../include/canvas.h"
+#include "canvas.h"
 
 Canvas::Canvas()
 {

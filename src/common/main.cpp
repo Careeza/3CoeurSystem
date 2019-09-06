@@ -1,6 +1,6 @@
-#include "../../include/canvas.h"
-#include "../../include/common.h"
-#include "../../include/event.h"
+#include "canvas.h"
+#include "common.h"
+#include "event.h"
 
 using namespace std;
 
