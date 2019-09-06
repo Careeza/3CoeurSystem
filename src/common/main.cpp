@@ -1,5 +1,5 @@
-#include "../../include/common.h"
 #include "../../include/canvas.h"
+#include "../../include/common.h"
 #include "../../include/event.h"
 
 using namespace std;

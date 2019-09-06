@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC = g++
-CFLAGS = -Wall -Wextra -Iinclude 
+CFLAGS = -Wall -Wextra -Iinclude
 LDFLAGS = `sdl2-config --libs --cflags` -lSDL2_image -lSDL2_ttf -lm
 
 BUILD_DIR = build
@@ -45,7 +45,7 @@ $(OBJS_DIR)/%.o $(OBJS_DIR)/%.o.wasm: src/%.cpp Makefile
 common: $(OBJS_COMMON)
 
 common:
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 clean:
 	rm -rf build
