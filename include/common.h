@@ -2,14 +2,9 @@
 
 # define COMMON_H
 
-# include <iostream>
-# include <string>
-# include <vector>
-# include <fstream>
-
-# include <SDL2/SDL.h>
-# include <SDL2/SDL_timer.h>
-# include <SDL2/SDL_image.h>
-# include <SDL2/SDL_ttf.h>
+# include "canvas.h"
+# include "texture.h"
+# include "event.h"
+# include "animation.h"
 
 #endif

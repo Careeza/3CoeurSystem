@@ -2,8 +2,8 @@
 
 # define EVENT_H
 
-# include "common.h"
-
+# include "pixel.h"
+  
 # define UP 0
 # define DOWN 1
 # define RIGHT 2

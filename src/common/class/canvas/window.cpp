@@ -10,9 +10,9 @@ void	Canvas::close_window()
 	close_requested = true;
 }
 
-void	Canvas::create_window(int flags, int x, int y, int w, int h, const string& name)
+void	Canvas::create_window(int flags, const std::string& name, int x, int y, int w, int h)
 {
-	win = SDL_CreateWindow(name, x, y, w, h, flags);
+	win = SDL_CreateWindow(name.c_str(), x, y, w, h, flags);
 	if (!win)
 	{
 		printf("error creating window: %s\n", SDL_GetError());
