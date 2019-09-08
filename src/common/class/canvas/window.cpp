@@ -12,6 +12,9 @@ void	Canvas::close_window()
 
 void	Canvas::create_window(int flags, const std::string& name, int x, int y, int w, int h)
 {
+	int width;
+	int height;
+
 	win = SDL_CreateWindow(name.c_str(), x, y, w, h, flags);
 	if (!win)
 	{
@@ -19,5 +22,6 @@ void	Canvas::create_window(int flags, const std::string& name, int x, int y, int
 		SDL_Quit();
 		exit (0);
 	}
+	SDL_GetWindowSize(win, &width, &height);
 }
 

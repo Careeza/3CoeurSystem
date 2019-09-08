@@ -3,8 +3,8 @@
 # define COMMON_H
 
 # include "canvas.h"
+# include "render.h"
 # include "texture.h"
 # include "event.h"
-# include "animation.h"
 
 #endif

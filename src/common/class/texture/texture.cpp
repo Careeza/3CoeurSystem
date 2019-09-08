@@ -1,13 +1,8 @@
 #include "texture.h"
 
-Texture::Texture(Canvas canvas)
+Texture::Texture()
 {
-	rect = new SDL_Rect;
-	frame = new SDL_Rect;
-	
-	
-	rect = NULL;
-	frame = NULL;
+	z_index = 0;
 }
 
 bool		Texture::load_surface(std::string route)
@@ -21,34 +16,58 @@ bool		Texture::load_surface(std::string route)
 	return (true);
 }
 
-bool		Texture::load_texture(std::string route, Canvas canvas)
+bool		Texture::load_texture(std::string route, SDL_Renderer *render, Canvas canvas)
 {
+	rect = new SDL_Rect;
+	frame = new SDL_Rect;
+
 	surface = IMG_Load(route.c_str());
 	if (!surface)
 	{
 		printf("error creating surface : %s\n", SDL_GetError());
 		return (false);
 	}
-	tex = SDL_CreateTextureFromSurface(canvas.Query_Renderer(), surface);
+	tex = SDL_CreateTextureFromSurface(render, surface);
 	SDL_FreeSurface(surface);
 	if (!tex)
 	{
 		printf("error creating texture: %s\n", SDL_GetError());
 		return (false);
 	}
+	rect->x = 0;
+	rect->y = 0;
+	canvas.Query_Window_Size(&rect->w, &rect->h);
+	frame->x = 0;
+	frame->y = 0;
+	Query_Texture_Size(&frame->w, &frame->h);
 	return (true);
 }
 
 
-void		Texture::resize_texture(int w, int h, int x, int y)
+void		Texture::resize_texture(Canvas canvas, float w, float h, float x, float y)
 {
-	rect->w = w;
-	rect->h = h;
-	rect->x = x;
-	rect->y = y;
+	int	windos_w;
+	int windos_h;
+
+	canvas.Query_Window_Size(&windos_w, &windos_h);
+	/*if (debug == true)
+	{
+		if (w > 100 || w < 0 
+			|| h > 100 || h < 0
+			|| x > 100 || x < 0
+			|| y > 100 || y < 0)
+		{
+			std::cout << "Programe exit : wrong size for texture" << std::endl;
+			exit (0);
+		}
+	}*/
+	rect->w = windos_w * (w / 100.0);
+	rect->h = windos_h * (h / 100.0);
+	rect->x = windos_w * (x / 100.0);
+	rect->y = windos_h * (y / 100.0);
 }
 
-void		Texture::aff(Canvas canvas)
+void		Texture::set_z_index(int couche)
 {
-	SDL_RenderCopy(canvas.Query_Renderer(), tex, frame, rect);
+	z_index = couche;
 }
