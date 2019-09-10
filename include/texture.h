@@ -32,7 +32,7 @@ class		Texture
 class		Animation : public Texture
 {
 	public:
-	Animation(int nb_column, int nb_line);
+	Animation();
 	void	load_animation(std::string route, SDL_Renderer *render, Canvas canvas);
 	void	launch_animation();
 	

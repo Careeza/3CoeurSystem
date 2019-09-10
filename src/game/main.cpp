@@ -8,7 +8,7 @@ int main()
 	Canvas		canvas;
 	Event		event;
 	Texture		background;
-	Animation	cursor(10, 1);
+	Animation	cursor;
 	Render		render;
 
 	canvas.init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
@@ -16,13 +16,14 @@ int main()
 	canvas.create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
 	render.init_renderer(canvas);
 	
-	background.LoadTexture("test.tex", render.Query_Renderer(), canvas);
+	background.LoadTexture("resources/Texture/Texture/BackGround.tex", render.Query_Renderer(), canvas);
+	cursor.load_animation("resources/Animation/animation/Curseur.animation", render.Query_Renderer(), canvas);
 //	background.load_texture("resources/BackGround.png", render.Query_Renderer(), canvas);
 //	cursor.load_animation("resources/Curseur.png", render.Query_Renderer(), canvas);
 //	cursor.resize_texture(canvas, 10, 10, 45, 45);
 //	cursor.set_z_index(2);
 	
-//	render.add_texture_in_render(cursor);
+	render.add_texture_in_render(cursor);
 	render.add_texture_in_render(background);
 	render.debug();
 	while (!canvas.window_closed())
@@ -30,7 +31,7 @@ int main()
 		event.QueryEvent();
 		if (event.GestEvent() == CLOSE)
 			canvas.close_window();
-//		cursor.launch_animation();
+		cursor.launch_animation();
 		render.aff_all();
 		//cursor.debug();
 //		background.aff(canvas);
