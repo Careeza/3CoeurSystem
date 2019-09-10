@@ -16,11 +16,8 @@ bool		Texture::load_surface(std::string route)
 	return (true);
 }
 
-bool		Texture::load_texture(std::string route, SDL_Renderer *render, Canvas canvas)
+bool		Texture::load_texture(std::string route, SDL_Renderer *render)
 {
-	rect = new SDL_Rect;
-	frame = new SDL_Rect;
-
 	surface = IMG_Load(route.c_str());
 	if (!surface)
 	{
@@ -34,12 +31,6 @@ bool		Texture::load_texture(std::string route, SDL_Renderer *render, Canvas canv
 		printf("error creating texture: %s\n", SDL_GetError());
 		return (false);
 	}
-	rect->x = 0;
-	rect->y = 0;
-	canvas.Query_Window_Size(&rect->w, &rect->h);
-	frame->x = 0;
-	frame->y = 0;
-	Query_Texture_Size(&frame->w, &frame->h);
 	return (true);
 }
 

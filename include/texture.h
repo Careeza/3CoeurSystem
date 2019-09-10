@@ -10,10 +10,11 @@ class		Texture
 	public:
 	Texture();
     bool    	load_surface(std::string route);
-    bool    	load_texture(std::string route, SDL_Renderer *render, Canvas canvas);
+    bool    	load_texture(std::string route, SDL_Renderer *render);
 	void		Query_Texture_Size(int *w, int *h);
 	void		resize_texture(Canvas canvas, float w = 100, float h = 100, float x = 0, float y = 0);
 	void		set_z_index(int couche);
+	void		LoadTexture(std::string str, SDL_Renderer *rend, Canvas canvas);
 	SDL_Rect	*Query_Rect();
 	SDL_Rect	*Query_Frame();
 	SDL_Texture	*Query_Texture();

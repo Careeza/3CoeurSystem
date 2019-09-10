@@ -5,6 +5,7 @@ SRCS += src/common/class/canvas/window.cpp
 SRCS += src/common/class/event/event.cpp
 SRCS += src/common/class/render/query.cpp
 SRCS += src/common/class/render/render.cpp
+SRCS += src/common/class/texture/LoadTexture.cpp
 SRCS += src/common/class/texture/Query.cpp
 SRCS += src/common/class/texture/texture.cpp
 SRCS += src/game/main.cpp
