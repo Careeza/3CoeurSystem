@@ -28,7 +28,6 @@ void    Render::add_texture_in_render(Texture texture)
 
     while (i < size && texture.Query_z_Index() >= texture_list[i].Query_z_Index())
         i++;
-    std::cout << "-- " << i << std::endl;
     if (i == size)
         texture_list.push_back(texture);
     else

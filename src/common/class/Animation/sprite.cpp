@@ -19,7 +19,6 @@ void	Animation::load_animation(std::string route, SDL_Renderer *render, Canvas c
     file_text >> column;
     file_text >> line;
     file_text >> nb_frames;
- //   load_texture(route, render, canvas);
 	Query_Texture_Size(&w, &h);
     frame->w = w / column;
     frame->h = h / line;
@@ -28,7 +27,6 @@ void	Animation::load_animation(std::string route, SDL_Renderer *render, Canvas c
         frame_x.push_back(frame->w * (i % column));
         frame_y.push_back(frame->h * (i / column));
     }
-//    std::cout << nb_frames << std::endl;
 }
 
 void	Animation::launch_animation()
@@ -42,8 +40,6 @@ void	Animation::launch_animation()
     {
         frame->x = frame_x[current_frame];
         frame->y = frame_y[current_frame];
-//        std::cout << "frame ->" << frame->x << " -- " << frame->y << " -- " << frame->w << " -- " << frame->h << std::endl;
-//        std::cout << frame_x[current_frame] << " -- " << frame_y[current_frame] << " -- " << current_frame << std::endl;
         current_frame++;
     }
 }
