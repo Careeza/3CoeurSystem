@@ -45,6 +45,8 @@ class		Animation : public Texture
 	int 				line;
 	int					nb_frames;
 	int					current_frame;
+	float				time;
+	int					pas;
 	bool				end;
 };
 

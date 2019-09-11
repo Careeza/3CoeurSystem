@@ -8,4 +8,5 @@ SRCS += src/common/class/render/render.cpp
 SRCS += src/common/class/texture/LoadTexture.cpp
 SRCS += src/common/class/texture/Query.cpp
 SRCS += src/common/class/texture/texture.cpp
+SRCS += src/common/class/timer/timer.cpp
 SRCS += src/game/main.cpp

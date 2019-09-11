@@ -2,6 +2,8 @@
 
 # define PIXEL_H
 
+# define FRAMES_PER_SECOND 144
+
 # include <iostream>
 # include <string>
 # include <vector>

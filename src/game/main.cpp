@@ -1,8 +1,9 @@
 #include "common.h"
 #include <time.h>
+#include <math.h>
 
 using namespace std;
- 
+
 int main()
 {
 	Canvas		canvas;
@@ -13,6 +14,7 @@ int main()
 
 	Timer 	fps; 
 	Timer 	update;
+	Timer	wait;
 	int		frame; 
 
 	canvas.init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
@@ -32,11 +34,7 @@ int main()
 
 	while (!canvas.window_closed())
 	{
-		if( update.get_ticks() > 1000)
-		{
-			cout << "fps = " << (float)frame / (fps.get_ticks / 1000.0) << endl;
-			update.start();
-		}
+		wait.start();
 		event.QueryEvent();
 		if (event.GestEvent() == CLOSE)
 			canvas.close_window();
@@ -44,7 +42,17 @@ int main()
 		render.aff_all();
 		SDL_RenderPresent(render.Query_Renderer());
 		frame++;
-		SDL_Delay(1000/FRAME_PER_SECOND);
+//		while (wait.get_ticks() < 1000 / FRAMES_PER_SECOND);
+//		while (wait.get_ticks() < 1000 / FRAMES_PER_SECOND);
+//		cout << "wait = " << fmax(0, 1000/FRAMES_PER_SECOND - wait.get_ticks()) << endl;
+//		cout << "1000 / 60 = " << 1000/FRAMES_PER_SECOND << endl;
+//		cout << "wait = " << 1000/FRAMES_PER_SECOND - wait.get_ticks() << endl;
+		SDL_Delay(fmax(0, 1000/FRAMES_PER_SECOND - wait.get_ticks()));
+		if( update.get_ticks() > 1000)
+		{
+			cout << "fps = " << (float)frame / (fps.get_ticks() / 1000.0) << endl;
+			update.start();
+		}
 	}
 	return 0;
 } 
