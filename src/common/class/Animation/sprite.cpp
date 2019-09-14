@@ -1,5 +1,5 @@
 #include "texture.h"
-#include "pixel.h"
+
 using namespace std; 
 
 Animation::Animation()
@@ -21,8 +21,9 @@ void	Animation::load_animation(std::string route, SDL_Renderer *render, Canvas c
     file_text >> line;
     file_text >> nb_frames;
     file_text >> time;
+    cout << FRAMES_PER_SECOND << endl;
     pas = (FRAMES_PER_SECOND / (float)nb_frames) * time;
-    cout << "test" << pas << endl;
+//    cout << "test" << pas << endl;
     if (pas == 0)
         pas = 1;
 	Query_Texture_Size(&w, &h);

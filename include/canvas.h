@@ -2,7 +2,7 @@
 
 # define CANVAS_H
 
-# include "pixel.h"
+# include "game.h"
 
 class		Canvas
 {

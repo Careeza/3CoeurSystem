@@ -35,7 +35,7 @@ int Timer::get_ticks()
 
 void Timer::pause()
 {
-    if( ( started == true ) && ( paused == false ) )
+    if (started == true && paused == false)
     {
         paused = true;
         pausedTicks = SDL_GetTicks() - startTicks;

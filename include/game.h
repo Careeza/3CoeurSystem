@@ -1,8 +1,8 @@
-#ifndef PIXEL_H
+#ifndef GAME_H
 
-# define PIXEL_H
+# define GAME_H
 
-# define FRAMES_PER_SECOND 144
+# define FRAMES_PER_SECOND 60
 
 # include <iostream>
 # include <string>

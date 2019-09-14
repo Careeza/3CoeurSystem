@@ -2,7 +2,7 @@
 
 # define TIMER_H
 
-# include "pixel.h"
+# include "game.h"
 
 class Timer
 {

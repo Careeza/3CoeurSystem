@@ -2,7 +2,7 @@
 
 # define EVENT_H
 
-# include "pixel.h"
+# include "game.h"
   
 # define UP 0
 # define DOWN 1

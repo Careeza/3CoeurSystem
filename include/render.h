@@ -2,7 +2,6 @@
 
 # define RENDER_H
 
-# include "pixel.h"
 # include "texture.h"
 
 class		Render

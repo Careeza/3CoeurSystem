@@ -2,7 +2,6 @@
 
 # define TEXTURE_H
 
-# include "pixel.h"
 # include "canvas.h"
 
 class		Texture
