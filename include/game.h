@@ -16,9 +16,12 @@
 # define    CS_MOUSE_DOWN 2
 # define    CS_MOUSE_UP 3
 
+class   CS_Scene;
+
 void	        init(int flags);
 SDL_Window      *create_window(int flags, const std::string name = "canvas", int x = 0, int y = 0, int w = 0, int h = 0);
 SDL_Renderer    *init_renderer(SDL_Window    *window);
+CS_Scene        *init_scene(SDL_Renderer *render);
 
 void    Function1(void);
 void    Function2(void);

@@ -1,23 +1,6 @@
 #include "class.h"
 #include "game.h"
 
-CS_Scene    *init_scene(SDL_Renderer *render)
-{
-    CS_Scene        *scene;
-
-    scene = new(CS_Scene);
-    scene->CS_loadRenderer(render);
-    scene->CS_initBrillance();
-    scene->CS_setSceneColor(0, 0, 255, 255);
-    scene->CS_createButtonToScene(20, 40 * gameSettings.resolution, 0, 0, 4, &Function2);
-    scene->CS_setSceneColor(0xA9, 0xA9, 0xA9, 255);
-    scene->CS_createButtonToScene(20, 40 * gameSettings.resolution, 20, 0, 3, &Function2);
-    scene->CS_setSceneColor(255, 0, 0, 255);
-    scene->CS_createButtonToScene(20, 40 * gameSettings.resolution, 40, 0, 2, &Function1);
-
-    return (scene);
-}
-
 void    infiniteLoop(CS_Renderer render, CS_Menu menu)
 {
     while (!gameSettings.closeRequested)

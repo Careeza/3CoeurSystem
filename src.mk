@@ -12,3 +12,4 @@ SRCS += src/Class/color/color.cpp
 SRCS += src/Game/buttonFonction.cpp
 SRCS += src/Game/load.cpp
 SRCS += src/Game/main.cpp
+SRCS += src/Game/menu.cpp
