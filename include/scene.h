@@ -227,6 +227,7 @@ class   CS_Scene
         void                                        CS_deleteElementFromeScene(int index);
         
         void                                        CS_setSceneColor(int r, int g, int b, int a);
+        void                                        CS_setTextColor(int r, int g, int b, int a);
         void                                        CS_setBorderColor(int r, int g, int b, int a);
 
         std::vector<std::shared_ptr<CS_Element>>    CS_querySceneElements();

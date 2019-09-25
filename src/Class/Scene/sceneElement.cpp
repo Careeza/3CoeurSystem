@@ -8,7 +8,7 @@ void                        CS_Scene::CS_writeTexte(int index, std::string comme
         i = lastElement;
     else
         i = index;
-    CS_sceneContain[i]->setPoliceSettings(colorSource);
+    CS_sceneContain[i]->setPoliceSettings(colorText);
     CS_sceneContain[i]->CS_addTextToElement(comment, render);
 }
 
