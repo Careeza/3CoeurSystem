@@ -4,6 +4,7 @@ CS_Element::CS_Element()
 {
     elementIsButton = false;
     elementIsDisp = true;
+    haveText = false;
     elementZIndex = 0;
 }
 
@@ -14,6 +15,8 @@ CS_Element::~CS_Element()
         delete elementButton;
     else
         delete elementNoButton;
+    if (haveText)
+        delete text;
 }
 
 bool            CS_Element::CS_isElementButton()

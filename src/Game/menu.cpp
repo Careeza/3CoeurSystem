@@ -16,8 +16,13 @@ CS_Scene    *init_scene(SDL_Renderer *render)
     scene->CS_createButtonToScene(30, 12, 7.5, 8, 5, &Function1);
 //    scene->CS_setSceneColor(0xFF, 0xFF, 0xFF, 0xFF);
     scene->CS_createButtonToScene(30, 12, 7.5, 26, 5, &Function1);
-//    scene->CS_setSceneColor(0xFF, 0xFF, 0xFF, 0xFF);
+    scene->CS_setSceneColor(0, 0, 0, 255);
+    scene->CS_writeTexte(-1, "Settings");
+    scene->CS_setSceneColor(0xA9, 0xA9, 0xA9, 0xFF);
     scene->CS_createButtonToScene(30, 12, 7.5, 44, 5, &Function1);
+    scene->CS_setSceneColor(0, 0, 0, 255);
+    scene->CS_writeTexte(-1, "Resume");
+    scene->CS_setSceneColor(0xA9, 0xA9, 0xA9, 0xFF);
 //    scene->CS_setSceneColor(0xFF, 0xFF, 0xFF, 0xFF);
     scene->CS_createButtonToScene(30, 12, 7.5, 62, 5, &Function1);
 //   scene->CS_setSceneColor(0xFF, 0xFF, 0xFF, 0xFF);

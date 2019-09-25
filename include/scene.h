@@ -58,21 +58,31 @@ class   CS_Police
 {
     public:
         CS_Police();
-        void    CS_initPolice(std::string police);
-        void    CS_policeSetting(CS_Color color, int flags = ALIGN_CENTER, int CS_marginX = 5, int CS_marginY = 5);
-        void    CS_writeTexte(std::string texte, SDL_Rect size);
+        ~CS_Police();
+        void        CS_initPolice(std::string police);
+        void        CS_policeSetting(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
+        void        CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer *render);
+        SDL_Texture *CS_queryTexte();
+        SDL_Rect    *querySize();
+        void        affInfoForLouis();
+
 
     private:
-        int         CS_flags;
-        int         CS_marginX;
-        int         CS_marginY;
-        int         w;
-        int         h;
-        TTF_Font    *CS_police;
-        CS_Color    CS_color;
-        SDL_Rect    CS_size;
-        SDL_Surface *surface;
-        SDL_Texture *texture;
+        static TTF_Font     *CS_font;
+
+        int                 CS_flags;
+        int                 CS_marginX;
+        int                 CS_marginY;
+
+        int                 div_w;
+        int                 div_h;
+        int                 div_x;
+        int                 div_y;
+
+        SDL_Color           CS_color;
+        SDL_Rect            *CS_size;
+        SDL_Surface         *surface;
+        SDL_Texture         *texture;
 };
 
 class   CS_NoButton
@@ -122,6 +132,12 @@ class   CS_Element
         SDL_Texture     *CS_queryElementTexture();
         SDL_Rect        *CS_queryElementSize();
 
+        void            setPoliceSettings(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
+        void            CS_addTextToElement(std::string comment, SDL_Renderer *render);
+        SDL_Texture     *CS_queryTextTexture();
+        SDL_Rect        *CS_queryTextSize();
+        bool            CS_haveText();
+
         void            CS_setDisp(bool disp);
         void            CS_setZIndex(int z);
         void            CS_CreateNoButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y);
@@ -133,6 +149,8 @@ class   CS_Element
     private:
         CS_NoButton *elementNoButton;
         CS_Button   *elementButton;
+        CS_Police   *text;
+        bool        haveText;
         bool        elementIsButton;
         bool        elementIsDisp;
         int         elementZIndex;
@@ -156,6 +174,8 @@ class   CS_Scene
         std::shared_ptr<CS_Element>                 CS_querySingleElement(int index);
         int                                         CS_querySceneLen();
 
+        void                                        CS_writeTexte(int index, std::string comment);
+
         CS_Element                                  *CS_queryBrillance();
         void                                        CS_initBrillance();
         void                                        resizeBrillance(int w, int h, int x, int y);
@@ -164,6 +184,7 @@ class   CS_Scene
 
     private:
         std::vector<std::shared_ptr<CS_Element>>    CS_sceneContain;
+        int                                         lastElement;
         CS_Element                                  *brillance;
         int                                         CS_sceneLen;
         CS_Color                                    colorSource;

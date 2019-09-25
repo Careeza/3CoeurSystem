@@ -67,7 +67,7 @@ void    CS_NoButton::CS_addNoButtonFromHand(CS_Color colorSource, SDL_Renderer *
     }
     color = setNoButtonColor(colorSource, noButtonSurface);
     SDL_FillRect(noButtonSurface, NULL, color);
-    if (!noButtonSurface)
+    if (!noButtonTexture)
     {
         std::cout << "error filling surface" << std::endl;
         exit (0);

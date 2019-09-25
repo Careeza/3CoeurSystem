@@ -1,5 +1,17 @@
 #include "scene.h"
 
+void                        CS_Scene::CS_writeTexte(int index, std::string comment)
+{
+    int i;
+
+    if (index == -1)
+        i = lastElement;
+    else
+        i = index;
+    CS_sceneContain[i]->setPoliceSettings(colorSource);
+    CS_sceneContain[i]->CS_addTextToElement(comment, render);
+}
+
 void                        CS_Scene::CS_addElementToScene(std::shared_ptr<CS_Element> element)
 {
     int i;
@@ -8,6 +20,7 @@ void                        CS_Scene::CS_addElementToScene(std::shared_ptr<CS_El
     while (i < CS_sceneLen && element->CS_queryElementZIndex() >= CS_sceneContain[i]->CS_queryElementZIndex())
         i++;
     CS_sceneContain.emplace(CS_sceneContain.begin() + i, element);
+    lastElement = i;
     CS_sceneLen++;
 }
 

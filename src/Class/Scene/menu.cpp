@@ -54,7 +54,6 @@ void            CS_Menu::CS_addBrillance()
     }
     else if (save != size)
     {
-        std::cout << "debug" << std::endl;
         scene->resizeBrillance(size->w, size->h, size->x, size->y);
         scene->CS_setDispBrillance(true);
         save = size;

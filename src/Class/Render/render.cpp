@@ -29,6 +29,12 @@ void    CS_Renderer::CS_dispScene()
             texture = element->CS_queryElementTexture();
             size = element->CS_queryElementSize();
             SDL_RenderCopy(CS_render, texture, NULL, size);
+            if (element->CS_haveText())
+            {
+                texture = element->CS_queryTextTexture();
+                size = element->CS_queryTextSize();
+                SDL_RenderCopy(CS_render, texture, NULL, size);
+            }
         }
         i++;
     }

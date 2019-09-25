@@ -29,6 +29,8 @@ CS_settings gameSettings = {
     .debug = true
 };
 
+TTF_Font    *CS_Police::CS_font = NULL;
+
 int     main(void)
 {
     SDL_Window      *window;
@@ -38,23 +40,33 @@ int     main(void)
     CS_KeyControl   *event;
     CS_Menu         menu;
 
+    CS_Police       initFont;
+
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
+
+    TTF_Init();
+    initFont.CS_initPolice("resources/alterebro-pixel-font.ttf");
+
     //window = create_window(0, "Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 2000, 800);
     SDL_GetWindowSize(window, &gameSettings.window_width, &gameSettings.window_height);
     gameSettings.resolution = gameSettings.window_width / (float)gameSettings.window_height;
-    std::cout << gameSettings.resolution << std::endl;
+    
     render = init_renderer(window);
+    scene = init_scene(render);
 
     rend.CS_loadRenderer(render);
-    scene = init_scene(render);
     rend.CS_loadScene(scene);
+
 
     event = new(CS_KeyControl);
     menu.CS_loadKeyControl(event);
     menu.CS_loadScene(scene);
 
     infiniteLoop(rend, menu);
+
     delete scene;
+    TTF_Quit();
+    SDL_Quit();
     return(0);
 }
