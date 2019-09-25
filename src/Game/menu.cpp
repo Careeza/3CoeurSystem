@@ -55,8 +55,57 @@ CS_Scene    *init_scene1(SDL_Renderer *render)
 
     scene->CS_setSceneColor(0x00, 0x00, 0x00, 0xFF);
     scene->CS_createElementToScene(100, 100, 0, 0, 0);
-    scene->CS_setSceneColor(0xA9, 0xA9, 0xA9, 0xFF);
+
+    scene->CS_setSceneColor(0xA9, 0xA9, 0xA9, 0);
+    scene->CS_setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
+
+    scene->CS_createButtonToScene(30, 12, 35, 10, 5, &Function1);
+    scene->CS_writeTexte(-1, "RESUME");
+
+    scene->CS_createButtonToScene(30, 12, 35, 27, 5, &Function1);
+    scene->CS_writeTexte(-1, "HOTKEYS");
+
     scene->CS_createButtonToScene(30, 12, 35, 44, 5, &Function1);
+    scene->CS_writeTexte(-1, "VIDEO");
+
+    scene->CS_createButtonToScene(30, 12, 35, 61, 5, &Function1);
+    scene->CS_writeTexte(-1, "SOUND");
+
+    scene->CS_createButtonToScene(30, 12, 35, 78, 5, &Function1);
+    scene->CS_writeTexte(-1, "EXIT GAME");
+
     
+    return (scene);
+}
+
+CS_Scene    *init_scene2(SDL_Renderer *render)
+{
+    CS_Scene        *scene;
+
+    scene = new(CS_Scene);
+    scene->CS_loadRenderer(render);
+    scene->CS_initBrillance();
+
+    scene->CS_setSceneColor(0x00, 0x00, 0x00, 0xFF);
+    scene->CS_createElementToScene(100, 100, 0, 0, 0);
+
+    scene->CS_setSceneColor(0xA9, 0xA9, 0xA9, 0);
+    scene->CS_setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
+
+    scene->CS_createButtonToScene(30, 12, 35, 10, 5, &Function1);
+    scene->CS_writeTexte(-1, "UP = Z");
+
+    scene->CS_createButtonToScene(30, 12, 35, 27, 5, &Function1);
+    scene->CS_writeTexte(-1, "DOWN = S");
+
+    scene->CS_createButtonToScene(30, 12, 35, 44, 5, &Function1);
+    scene->CS_writeTexte(-1, "RIGHT = D");
+
+    scene->CS_createButtonToScene(30, 12, 35, 61, 5, &Function1);
+    scene->CS_writeTexte(-1, "LEFT = Q");
+    
+    scene->CS_createButtonToScene(50, 12, 25, 78, 5, &Function1);
+    scene->CS_writeTexte(-1, "JUMP = SPACE");
+
     return (scene);
 }

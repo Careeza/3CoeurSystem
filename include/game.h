@@ -23,6 +23,8 @@ SDL_Window      *create_window(int flags, const std::string name = "canvas", int
 SDL_Renderer    *init_renderer(SDL_Window    *window);
 CS_Scene        *init_scene(SDL_Renderer *render);
 CS_Scene        *init_scene1(SDL_Renderer *render);
+CS_Scene        *init_scene2(SDL_Renderer *render);
+
 
 
 void    Function1(void);

@@ -55,7 +55,7 @@ int     main(void)
     gameSettings.resolution = gameSettings.window_width / (float)gameSettings.window_height;
     
     render = init_renderer(window);
-    scene = init_scene1(render);
+    scene = init_scene2(render);
 
     initBrightness.CS_initBright(render);
 
