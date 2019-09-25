@@ -10,6 +10,7 @@ void    Function1(void)
 
 void    Function2(void)
 {
+    gameSettings.current = gameSettings.control;
     cout << "2" << endl;
 }
 

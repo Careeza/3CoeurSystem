@@ -36,7 +36,6 @@ int     main(void)
 {
     SDL_Window      *window;
     SDL_Renderer    *render;
-    CS_Scene        *scene;
     CS_Renderer     rend;
     CS_KeyControl   *event;
     CS_Menu         menu;
@@ -55,21 +54,22 @@ int     main(void)
     gameSettings.resolution = gameSettings.window_width / (float)gameSettings.window_height;
     
     render = init_renderer(window);
-    scene = init_scene2(render);
+    gameSettings.menu = init_scene1(render);
+    gameSettings.control = init_scene2(render);
+    gameSettings.current = gameSettings.menu;
 
     initBrightness.CS_initBright(render);
 
     rend.CS_loadRenderer(render);
-    rend.CS_loadScene(scene);
+    rend.CS_loadScene(gameSettings.menu);
 
 
     event = new(CS_KeyControl);
     menu.CS_loadKeyControl(event);
-    menu.CS_loadScene(scene);
+    menu.CS_loadScene(gameSettings.menu);
 
     infiniteLoop(rend, menu);
 
-    delete scene;
     TTF_Quit();
     SDL_Quit();
     return(0);

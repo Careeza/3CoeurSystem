@@ -33,15 +33,20 @@ void    Function3(void);
 void    Function4(void);
 void    Function5(void);
 
+class   CS_Scene;
+
 typedef struct      s_settings
 {
-    int     window_width;
-    int     window_height;
-    float   resolution;
-    bool    closeRequested;
-    bool    pauseRequested;
-    int     fps;
-    bool    debug;
+    int         window_width;
+    int         window_height;
+    float       resolution;
+    bool        closeRequested;
+    bool        pauseRequested;
+    int         fps;
+    bool        debug;
+    CS_Scene    *menu;
+    CS_Scene    *control;
+    CS_Scene    *current;
 }                   CS_settings;
 
 extern CS_settings  gameSettings;

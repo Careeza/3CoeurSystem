@@ -53,10 +53,10 @@ void    CS_Renderer::CS_dispScene()
     std::shared_ptr<CS_Element>                 element;
 
     i = 0;
-    len = CS_renderScene->CS_querySceneLen();
+    len = gameSettings.current->CS_querySceneLen();
     while (i < len)
     {
-        element = CS_renderScene->CS_querySingleElement(i);
+        element = gameSettings.current->CS_querySingleElement(i);
         if (element->CS_isElementDisp())
         {
             disp_element(element, CS_render);

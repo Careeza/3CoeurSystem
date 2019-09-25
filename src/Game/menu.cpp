@@ -60,7 +60,7 @@ CS_Scene    *init_scene1(SDL_Renderer *render)
     scene->CS_createButtonToScene(30, 12, 35, 10, 5, &Function1);
     scene->CS_writeTexte(-1, "RESUME");
 
-    scene->CS_createButtonToScene(30, 12, 35, 27, 5, &Function1);
+    scene->CS_createButtonToScene(30, 12, 35, 27, 5, &Function2);
     scene->CS_writeTexte(-1, "HOTKEYS");
 
     scene->CS_createButtonToScene(30, 12, 35, 44, 5, &Function1);
