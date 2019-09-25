@@ -51,7 +51,9 @@ CS_Scene    *init_scene1(SDL_Renderer *render)
     scene = new(CS_Scene);
     scene->CS_loadRenderer(render);
 
-    scene->CS_setSceneColor(0x00, 0x00, 0x00, 0xFF);
+    scene->CS_createElementToSceneFromPng("resources/source/Deer.png", 100, 100, 0, 0, 0);
+
+    scene->CS_setSceneColor(0x00, 0x00, 0x00, 175);
     scene->CS_createElementToScene(100, 100, 0, 0, 0);
 
     scene->CS_setSceneColor(0xA9, 0xA9, 0xA9, 0);
@@ -83,7 +85,9 @@ CS_Scene    *init_scene2(SDL_Renderer *render)
     scene = new(CS_Scene);
     scene->CS_loadRenderer(render);
 
-    scene->CS_setSceneColor(0x00, 0x00, 0x00, 0xFF);
+    scene->CS_createElementToSceneFromPng("resources/source/EcranAccueil.jpg", 100, 100, 0, 0, 0);
+
+    scene->CS_setSceneColor(0x00, 0x00, 0x00, 175);
     scene->CS_createElementToScene(100, 100, 0, 0, 0);
 
     scene->CS_setSceneColor(0xA9, 0xA9, 0xA9, 0);

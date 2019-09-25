@@ -16,6 +16,22 @@ void            CS_Element::CS_CreateButtonFromHand(CS_Color color, SDL_Renderer
     loadBrightness();
 }
 
+void            CS_Element::CS_CreateNoButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y)
+{
+    elementNoButton = new(CS_NoButton);
+    elementIsButton = false;
+    elementNoButton->CS_addNoButtonFromPng(route, render, w, h, x, y);
+    loadBrightness();
+}
+
+void            CS_Element::CS_CreateButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void))
+{
+    elementButton = new(CS_Button);
+    elementIsButton = true;
+    elementButton->CS_addButtonFromPng(route, render, w, h, x, y, f);
+    loadBrightness();
+}
+
 void        CS_Element::loadBorder(CS_Color colorSource, SDL_Renderer *render)
 {
     border = new (CS_Border);

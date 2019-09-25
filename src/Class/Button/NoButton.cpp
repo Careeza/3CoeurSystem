@@ -76,6 +76,19 @@ void    CS_NoButton::CS_addNoButtonFromHand(CS_Color colorSource, SDL_Renderer *
 	SDL_FreeSurface(noButtonSurface);
 }
 
+void    CS_NoButton::CS_addNoButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y)
+{
+    setNoButtonSize(w, h, x, y, buttonSize);
+    noButtonSurface = IMG_Load(route.c_str());
+    if (!noButtonSurface)
+    {
+        std::cout << "error creating surface" << std::endl;
+        exit (0);
+    }
+    noButtonTexture = SDL_CreateTextureFromSurface(render, noButtonSurface);
+	SDL_FreeSurface(noButtonSurface);
+}
+
 
 SDL_Texture *CS_NoButton::CS_queryNoButtonTexture()
 {

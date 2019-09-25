@@ -52,6 +52,22 @@ void                        CS_Scene::CS_createButtonToScene(float w, float h, f
     CS_addElementToScene(element);
 }
 
+void                        CS_Scene::CS_createElementToSceneFromPng(std::string route, float w, float h, float x, float y, int z)
+{
+    std::shared_ptr<CS_Element> element (new CS_Element);
+    element->CS_CreateNoButtonFromPng(route, render, w, h, x, y);
+    element->CS_setZIndex(z);
+    CS_addElementToScene(element);
+}
+
+void                        CS_Scene::CS_createButtonToSceneFromPng(std::string route, float w, float h, float x, float y, int z, void (*f)(void))
+{
+    std::shared_ptr<CS_Element> element (new CS_Element);
+    element->CS_CreateButtonFromPng(route, render, w, h, x, y, f);
+    element->CS_setZIndex(z);
+    CS_addElementToScene(element);
+}
+
 void                        CS_Scene::CS_deleteElementFromeScene(int index)
 {
     if (index >= CS_sceneLen)
