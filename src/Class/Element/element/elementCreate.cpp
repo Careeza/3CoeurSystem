@@ -22,6 +22,10 @@ void        CS_Element::loadBorder(CS_Color colorSource, SDL_Renderer *render)
     border->CS_createBorder(CS_queryElementSize());
 }
 
+void            loadBrightness()
+{}
+
+
 void            CS_Element::CS_addTextToElement(std::string comment, SDL_Renderer *render)
 {
     text->CS_writeTexte(comment, CS_queryElementSize(), render);

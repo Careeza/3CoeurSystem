@@ -34,6 +34,11 @@ CS_Border       *CS_Element::CS_queryBorder()
     return (border);
 }
 
+CS_Police       *CS_Element::CS_queryText()
+{
+    return (text);
+}
+
 SDL_Texture     *CS_Element::CS_queryTextTexture()
 {
     return (text->CS_queryTexte());

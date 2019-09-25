@@ -188,6 +188,7 @@ class   CS_Element
         void            CS_addTextToElement(std::string comment, SDL_Renderer *render);
 
         void            loadBorder(CS_Color colorSource, SDL_Renderer *render);
+        void            loadBrightness();
 
         void            CS_useFonction();
 
