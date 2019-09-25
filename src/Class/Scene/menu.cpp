@@ -8,7 +8,7 @@ void    CS_Menu::CS_loadKeyControl(CS_KeyControl *control)
 void    CS_Menu::CS_loadScene(CS_Scene *sceneSrc)
 {
     scene = sceneSrc;
-    sceneLen = sceneSrc->CS_querySceneLen();
+    sceneLen = gameSettings.current->CS_querySceneLen();
 }
 
 void    CS_Menu::CS_getMouseInfo()
@@ -27,10 +27,10 @@ void    CS_Menu::getButton()
 {
     int         i;
 
-    i = sceneLen - 1;
+    i = gameSettings.current->CS_querySceneLen() - 1;
     while (i >= 0)
     {
-        button = gameSettings.current->CS_querySingleElement(i);
+        button = gameSettings.current ->CS_querySingleElement(i);
         if (button->CS_isElementButton())
         {
             size = button->CS_queryElementSize();
