@@ -45,18 +45,22 @@ void    CS_Menu::getButton()
 
 void            CS_Menu::CS_addBrillance()
 {
-    static SDL_Rect *save = NULL;
+    static std::shared_ptr<CS_Element> save = NULL;
 
-    if (button == NULL)
+    if (save != button)
     {
-        scene->CS_setDispBrillance(false);
-        save = NULL;
-    }
-    else if (save != size)
-    {
-        scene->resizeBrillance(size->w, size->h, size->x, size->y);
-        scene->CS_setDispBrillance(true);
-        save = size;
+        if (button != NULL)
+        {
+            if (save != NULL)
+                save->CS_setBrightness(false);
+            button->CS_setBrightness(true);
+            save = button;
+        }
+        else
+        {
+            save->CS_setBrightness(false);
+            save = NULL;
+        }
     }
 }
 

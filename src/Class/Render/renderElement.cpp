@@ -36,14 +36,21 @@ void    disp_border(CS_Border *border, SDL_Renderer *render)
     SDL_RenderCopy(render, texture, NULL, size);
 }
 
+void    disp_brightness(CS_Brightness *brightness, SDL_Renderer *render)
+{
+    SDL_Texture     *texture;
+    SDL_Rect        *size;
+
+    texture = brightness->CS_queryTexture();
+    size = brightness->CS_querySize(); 
+    SDL_RenderCopy(render, texture, NULL, size);
+}
+
 void    CS_Renderer::CS_dispScene()
 {
     int                                         i;
     int                                         len;
     std::shared_ptr<CS_Element>                 element;
-    CS_Element                                  *brillance;
-    SDL_Texture                                 *texture;
-    SDL_Rect                                    *size;
 
     i = 0;
     len = CS_renderScene->CS_querySceneLen();
@@ -53,19 +60,14 @@ void    CS_Renderer::CS_dispScene()
         if (element->CS_isElementDisp())
         {
             disp_element(element, CS_render);
+            if (element->CS_haveBrightness())
+                disp_brightness(element->CS_queryBrightness(), CS_render);
             if (element->CS_haveText())
                 disp_text(element->CS_queryText(), CS_render);
             if (element->CS_haveBorder()) 
                 disp_border(element->CS_queryBorder(), CS_render);
         }
         i++;
-    }
-    if (CS_renderScene->CS_DispBrillance())
-    {
-        brillance = CS_renderScene->CS_queryBrillance();
-        texture = brillance->CS_queryElementTexture();
-        size = brillance->CS_queryElementSize();
-        SDL_RenderCopy(CS_render, texture, NULL, size);
     }
     SDL_RenderPresent(CS_render);
 }

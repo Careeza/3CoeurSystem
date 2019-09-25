@@ -19,3 +19,8 @@ bool            CS_Element::CS_haveText()
 {
     return (haveText);
 }
+
+bool            CS_Element::CS_haveBrightness()
+{
+    return (dispBrightness);
+}

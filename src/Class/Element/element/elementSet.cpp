@@ -16,3 +16,8 @@ void            CS_Element::setPoliceSettings(CS_Color color, int flags, int mar
     haveText = true;
     text->CS_policeSetting(color, flags, marginX, marginY);
 }
+
+void            CS_Element::CS_setBrightness(bool disp)
+{
+    dispBrightness = disp;
+}

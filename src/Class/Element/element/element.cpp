@@ -5,7 +5,7 @@ CS_Element::CS_Element()
     elementIsButton = false;
     elementIsDisp = true;
     haveText = false;
-    dispBrillance = false;
+    dispBrightness = false;
     dispBorder = false;
     elementZIndex = 0;
 }
@@ -21,6 +21,7 @@ CS_Element::~CS_Element()
         delete text;
     if (dispBorder)
         delete border;
+    delete brightness;
 }
 
 void            CS_Element::CS_useFonction()

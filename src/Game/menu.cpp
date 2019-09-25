@@ -7,7 +7,6 @@ CS_Scene    *init_scene(SDL_Renderer *render)
 
     scene = new(CS_Scene);
     scene->CS_loadRenderer(render);
-    scene->CS_initBrillance();
     
     scene->CS_setSceneColor(0, 0, 0, 255);
     scene->CS_setBorderColor(0, 0x64, 0x00, 0xFF);
@@ -51,7 +50,6 @@ CS_Scene    *init_scene1(SDL_Renderer *render)
 
     scene = new(CS_Scene);
     scene->CS_loadRenderer(render);
-    scene->CS_initBrillance();
 
     scene->CS_setSceneColor(0x00, 0x00, 0x00, 0xFF);
     scene->CS_createElementToScene(100, 100, 0, 0, 0);
@@ -84,7 +82,6 @@ CS_Scene    *init_scene2(SDL_Renderer *render)
 
     scene = new(CS_Scene);
     scene->CS_loadRenderer(render);
-    scene->CS_initBrillance();
 
     scene->CS_setSceneColor(0x00, 0x00, 0x00, 0xFF);
     scene->CS_createElementToScene(100, 100, 0, 0, 0);

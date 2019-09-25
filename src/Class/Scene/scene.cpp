@@ -4,7 +4,6 @@ CS_Scene::CS_Scene()
 {
     std::cout << " --- create scene --- "<< std::endl;
     CS_sceneLen = 0;
-    brillance = new (CS_Element);
 }
 
 CS_Scene::~CS_Scene()
@@ -17,7 +16,6 @@ CS_Scene::~CS_Scene()
         CS_sceneContain.pop_back();
         i++;
     }
-    delete brillance;
     CS_sceneLen = 0;
 }
 

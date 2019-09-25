@@ -48,3 +48,8 @@ SDL_Rect        *CS_Element::CS_queryTextSize()
 {
     return (text->querySize());
 }
+
+CS_Brightness   *CS_Element::CS_queryBrightness()
+{
+    return (brightness);
+}

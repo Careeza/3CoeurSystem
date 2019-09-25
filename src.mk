@@ -19,7 +19,6 @@ SRCS += src/Class/Element/font/fontWrite.cpp
 SRCS += src/Class/KeyControl/KeyControl.cpp
 SRCS += src/Class/Render/render.cpp
 SRCS += src/Class/Render/renderElement.cpp
-SRCS += src/Class/Scene/brillance.cpp
 SRCS += src/Class/Scene/menu.cpp
 SRCS += src/Class/Scene/scene.cpp
 SRCS += src/Class/Scene/sceneElement.cpp

@@ -173,9 +173,11 @@ class   CS_Element
         bool            CS_isElementDisp();
         bool            CS_haveText();
         bool            CS_haveBorder();
+        bool            CS_haveBrightness();
 
         void            CS_setDisp(bool disp);
         void            CS_setZIndex(int z);
+        void            CS_setBrightness(bool disp);
 
         int             CS_queryElementZIndex();
         CS_Police       *CS_queryText();
@@ -184,6 +186,7 @@ class   CS_Element
         SDL_Rect        *CS_queryElementSize();
         SDL_Rect        *CS_queryTextSize();
         CS_Border       *CS_queryBorder();
+        CS_Brightness   *CS_queryBrightness();
 
         void            setPoliceSettings(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
         void            CS_addTextToElement(std::string comment, SDL_Renderer *render);
@@ -210,7 +213,7 @@ class   CS_Element
         bool        haveText;
         bool        elementIsButton;
         bool        elementIsDisp;
-        bool        dispBrillance;
+        bool        dispBrightness;
         bool        dispBorder;
         int         elementZIndex;
 };
@@ -239,16 +242,9 @@ class   CS_Scene
         void                                        CS_writeTexte(int index, std::string comment);
         void                                        CS_addBorder(int index);
 
-        CS_Element                                  *CS_queryBrillance();
-        void                                        CS_initBrillance();
-        void                                        resizeBrillance(int w, int h, int x, int y);
-        void                                        CS_setDispBrillance(bool disp);
-        bool                                        CS_DispBrillance();
-
     private:
         std::vector<std::shared_ptr<CS_Element>>    CS_sceneContain;
         int                                         lastElement;
-        CS_Element                                  *brillance;
         int                                         CS_sceneLen;
 
         CS_Color                                    colorSource;
