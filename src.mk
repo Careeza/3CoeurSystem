@@ -1,5 +1,6 @@
 SRCS += src/Class/Button/Button.cpp
 SRCS += src/Class/Button/NoButton.cpp
+SRCS += src/Class/Element/border.cpp
 SRCS += src/Class/Element/element.cpp
 SRCS += src/Class/Element/text.cpp
 SRCS += src/Class/KeyControl/KeyControl.cpp
