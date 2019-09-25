@@ -178,6 +178,7 @@ class   CS_Element
         void            CS_setZIndex(int z);
 
         int             CS_queryElementZIndex();
+        CS_Police       *CS_queryText();
         SDL_Texture     *CS_queryTextTexture();
         SDL_Texture     *CS_queryElementTexture();
         SDL_Rect        *CS_queryElementSize();

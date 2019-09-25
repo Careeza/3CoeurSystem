@@ -44,3 +44,19 @@ CS_Scene    *init_scene(SDL_Renderer *render)
 
     return (scene);
 }
+
+CS_Scene    *init_scene1(SDL_Renderer *render)
+{
+    CS_Scene        *scene;
+
+    scene = new(CS_Scene);
+    scene->CS_loadRenderer(render);
+    scene->CS_initBrillance();
+
+    scene->CS_setSceneColor(0x00, 0x00, 0x00, 0xFF);
+    scene->CS_createElementToScene(100, 100, 0, 0, 0);
+    scene->CS_setSceneColor(0xA9, 0xA9, 0xA9, 0xFF);
+    scene->CS_createButtonToScene(30, 12, 35, 44, 5, &Function1);
+    
+    return (scene);
+}
