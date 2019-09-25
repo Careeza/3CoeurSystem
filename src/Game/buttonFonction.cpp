@@ -16,6 +16,7 @@ void    Function2(void)
 
 void    Function3(void)
 {
+    gameSettings.current = gameSettings.menu;
     cout << "3" << endl;
 }
 

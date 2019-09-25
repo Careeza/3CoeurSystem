@@ -122,5 +122,8 @@ CS_Scene    *init_scene2(SDL_Renderer *render)
     scene->CS_createButtonToScene(20, 6, 40, 86, 5, &Function1);
     scene->CS_writeTexte(-1, "SPELL 2 = E");
 
+    scene->CS_createButtonToScene(20, 10, 77, 85, 5, &Function3);
+    scene->CS_writeTexte(-1, "EXIT");
+
     return (scene);
 }
