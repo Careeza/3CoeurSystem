@@ -30,3 +30,8 @@ void                        CS_Scene::CS_setSceneColor(int r, int g, int b, int 
 {
     colorSource.CS_setColor(r, g, b, a);
 }
+
+void                        CS_Scene::CS_setBorderColor(int r, int g, int b, int a)
+{
+    colorBordure.CS_setColor(r, g, b, a);
+}

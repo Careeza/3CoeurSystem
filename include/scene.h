@@ -91,8 +91,6 @@ class   CS_Police
         void        CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer *render);
         SDL_Texture *CS_queryTexte();
         SDL_Rect    *querySize();
-        void        affInfoForLouis();
-
 
     private:
         static TTF_Font     *CS_font;
@@ -146,6 +144,25 @@ class   CS_Button : public CS_NoButton
             void    (*CS_buttonFunction)(void);
 };
 
+class   CS_Brightness
+{
+    public:
+        CS_Brightness();
+        ~CS_Brightness();
+        void            CS_initBright(SDL_Renderer *render);
+        void            addBrillance(SDL_Rect *size);
+        void            CS_destroyTexture();
+
+        SDL_Texture     *CS_queryTexture();
+        SDL_Rect        *CS_querySize();
+
+
+    private:
+        SDL_Surface         *surface;
+        static SDL_Texture  *texture;
+        SDL_Rect            *rect;
+};
+
 class   CS_Element
 {
     public:
@@ -154,32 +171,45 @@ class   CS_Element
 
         bool            CS_isElementButton();
         bool            CS_isElementDisp();
-        void            CS_useFonction();
-        int             CS_queryElementZIndex();
-        SDL_Texture     *CS_queryElementTexture();
-        SDL_Rect        *CS_queryElementSize();
-
-        void            setPoliceSettings(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
-        void            CS_addTextToElement(std::string comment, SDL_Renderer *render);
-        SDL_Texture     *CS_queryTextTexture();
-        SDL_Rect        *CS_queryTextSize();
         bool            CS_haveText();
+        bool            CS_haveBorder();
 
         void            CS_setDisp(bool disp);
         void            CS_setZIndex(int z);
+
+        int             CS_queryElementZIndex();
+        SDL_Texture     *CS_queryTextTexture();
+        SDL_Texture     *CS_queryElementTexture();
+        SDL_Rect        *CS_queryElementSize();
+        SDL_Rect        *CS_queryTextSize();
+        CS_Border       *CS_queryBorder();
+
+        void            setPoliceSettings(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
+        void            CS_addTextToElement(std::string comment, SDL_Renderer *render);
+
+        void            loadBorder(CS_Color colorSource, SDL_Renderer *render);
+
+        void            CS_useFonction();
+
         void            CS_CreateNoButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y);
         void            CS_CreateButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void));
+
         void            CS_resizeElement(float w, float h, float x, float y);
         void            CS_resizeElementPixel(int w, int h, int x, int y);
 
 
     private:
-        CS_NoButton *elementNoButton;
-        CS_Button   *elementButton;
-        CS_Police   *text;
+        CS_NoButton     *elementNoButton;
+        CS_Button       *elementButton;
+        CS_Police       *text;
+        CS_Border       *border;
+        CS_Brightness   *brightness;
+
         bool        haveText;
         bool        elementIsButton;
         bool        elementIsDisp;
+        bool        dispBrillance;
+        bool        dispBorder;
         int         elementZIndex;
 };
 
@@ -195,13 +225,16 @@ class   CS_Scene
         void                                        CS_createElementToScene(float w, float h, float x, float y, int z);
         void                                        CS_createButtonToScene(float w, float h, float x, float y, int z, void (*f)(void));
         void                                        CS_deleteElementFromeScene(int index);
+        
         void                                        CS_setSceneColor(int r, int g, int b, int a);
+        void                                        CS_setBorderColor(int r, int g, int b, int a);
 
         std::vector<std::shared_ptr<CS_Element>>    CS_querySceneElements();
         std::shared_ptr<CS_Element>                 CS_querySingleElement(int index);
         int                                         CS_querySceneLen();
 
         void                                        CS_writeTexte(int index, std::string comment);
+        void                                        CS_addBorder(int index);
 
         CS_Element                                  *CS_queryBrillance();
         void                                        CS_initBrillance();
@@ -214,7 +247,11 @@ class   CS_Scene
         int                                         lastElement;
         CS_Element                                  *brillance;
         int                                         CS_sceneLen;
+
         CS_Color                                    colorSource;
+        CS_Color                                    colorText;
+        CS_Color                                    colorBordure;
+
         SDL_Renderer                                *render;
 };
 

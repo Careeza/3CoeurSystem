@@ -12,6 +12,18 @@ void                        CS_Scene::CS_writeTexte(int index, std::string comme
     CS_sceneContain[i]->CS_addTextToElement(comment, render);
 }
 
+void                        CS_Scene::CS_addBorder(int index)
+{
+    int i;
+
+    if (index == -1)
+        i = lastElement;
+    else
+        i = index;
+    CS_sceneContain[i]->loadBorder(colorBordure, render);
+}
+
+
 void                        CS_Scene::CS_addElementToScene(std::shared_ptr<CS_Element> element)
 {
     int i;

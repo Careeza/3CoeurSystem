@@ -18,6 +18,7 @@ void    CS_Renderer::CS_dispScene()
     CS_Element                                  *brillance;
     SDL_Texture                                 *texture;
     SDL_Rect                                    *size;
+    CS_Border                                   *border;
 
     i = 0;
     len = CS_renderScene->CS_querySceneLen();
@@ -33,6 +34,19 @@ void    CS_Renderer::CS_dispScene()
             {
                 texture = element->CS_queryTextTexture();
                 size = element->CS_queryTextSize();
+                SDL_RenderCopy(CS_render, texture, NULL, size);
+            }
+            if (element->CS_haveBorder())
+            {
+                border = element->CS_queryBorder();
+                texture = border->CS_queryTexture();
+                size = border->CS_queryRectUp();
+                SDL_RenderCopy(CS_render, texture, NULL, size);
+                size = border->CS_queryRectDown();
+                SDL_RenderCopy(CS_render, texture, NULL, size);
+                size = border->CS_queryRectRight();
+                SDL_RenderCopy(CS_render, texture, NULL, size);
+                size = border->CS_queryRectLeft();
                 SDL_RenderCopy(CS_render, texture, NULL, size);
             }
         }

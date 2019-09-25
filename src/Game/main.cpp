@@ -30,6 +30,7 @@ CS_settings gameSettings = {
 };
 
 TTF_Font    *CS_Police::CS_font = NULL;
+SDL_Texture *CS_Brightness::texture = NULL;
 
 int     main(void)
 {
@@ -41,19 +42,22 @@ int     main(void)
     CS_Menu         menu;
 
     CS_Police       initFont;
+    CS_Brightness   initBrightness;
 
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
-    window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
+    //window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
+    window = create_window(0, "Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800);
 
     TTF_Init();
     initFont.CS_initPolice("resources/alterebro-pixel-font.ttf");
 
-    //window = create_window(0, "Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 2000, 800);
     SDL_GetWindowSize(window, &gameSettings.window_width, &gameSettings.window_height);
     gameSettings.resolution = gameSettings.window_width / (float)gameSettings.window_height;
     
     render = init_renderer(window);
     scene = init_scene(render);
+
+    initBrightness.CS_initBright(render);
 
     rend.CS_loadRenderer(render);
     rend.CS_loadScene(scene);

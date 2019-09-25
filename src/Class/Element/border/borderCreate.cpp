@@ -1,25 +1,5 @@
 #include "scene.h"
 
-CS_Border::CS_Border()
-{
-    rectUp = new (SDL_Rect);
-    rectDown = new (SDL_Rect);
-    rectRight = new (SDL_Rect);
-    rectLeft = new (SDL_Rect);
-
-    borderSize_w = 2;
-    borderSize_h = 2;
-}
-
-CS_Border::~CS_Border()
-{
-    delete rectUp;
-    delete rectDown;
-    delete rectRight;
-    delete rectLeft;
-    SDL_DestroyTexture(texture);
-}
-
 void        CS_Border::CS_createRect(SDL_Rect *rect, int w, int h, int x, int y)
 {
     rect->w = w;
@@ -71,10 +51,4 @@ void        CS_Border::CS_createBorder(SDL_Rect *elementSize)
     CS_createRect(rectDown, elementSize->w + 2 * borderSize_w, borderSize_h, elementSize->x - borderSize_w, elementSize->y + elementSize->h);
     CS_createRect(rectRight, borderSize_w, elementSize->h + borderSize_h * 2, elementSize->x + elementSize->w, elementSize->y - borderSize_h);
     CS_createRect(rectLeft, borderSize_w, elementSize->h + borderSize_h * 2, elementSize->x - borderSize_w, elementSize->y - borderSize_h);
-}
-
-void        CS_Border::CS_ChangeSettings(int w, int h)
-{
-    borderSize_w = w;
-    borderSize_h = h;
 }
