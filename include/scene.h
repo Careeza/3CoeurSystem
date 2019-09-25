@@ -54,6 +54,33 @@ class   CS_Color
         int CS_alpha;
 };
 
+class CS_Border
+{
+    public:
+        CS_Border();
+        ~CS_Border();
+        void        CS_createRect(SDL_Rect *rect, int w, int h, int x, int y);
+        void        CS_createTexture(CS_Color colorSource, SDL_Renderer *render);
+        void        CS_createBorder(SDL_Rect *elementSize);
+        void        CS_ChangeSettings(int w, int h);
+
+        SDL_Rect    *CS_queryRectUp();
+        SDL_Rect    *CS_queryRectDown();
+        SDL_Rect    *CS_queryRectRight();
+        SDL_Rect    *CS_queryRectLeft();
+        SDL_Texture *CS_queryTexture();
+
+    private:
+        SDL_Surface *surface;
+        SDL_Texture *texture;
+        SDL_Rect    *rectUp;
+        SDL_Rect    *rectDown;
+        SDL_Rect    *rectRight;
+        SDL_Rect    *rectLeft;
+        int         borderSize_w;
+        int         borderSize_h;
+};
+
 class   CS_Police
 {
     public:
