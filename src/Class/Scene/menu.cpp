@@ -41,17 +41,20 @@ void            CS_Menu::CS_addBrillance()
             if (save != NULL)
             {
                 if (Lockbutton == NULL)
-                    save->CS_setZoom(-ZOOM);
+                    if (save->CS_haveText())
+                        save->CS_setZoom(-ZOOM);
                 save->CS_setBrightness(false);
             }
-            button->CS_setZoom(ZOOM);
+            if (button->CS_haveText())
+                button->CS_setZoom(ZOOM);
             button->CS_setBrightness(true);
             save = button;
         }
         else
         {
             if (Lockbutton == NULL)
-                save->CS_setZoom(-ZOOM);
+                if (save->CS_haveText())
+                    save->CS_setZoom(-ZOOM);
             save->CS_setBrightness(false);
             save = NULL;
         }
@@ -65,20 +68,23 @@ void    CS_Menu::CS_useButton()
         if (button != NULL)
         {
             Lockbutton = button;
-            button->CS_setZoom(-ZOOM * 2);
+            if (button->CS_haveText())
+                button->CS_setZoom(-ZOOM * 2);
         }
     if (buttons == CS_MOUSE_UP)
         if (Lockbutton != NULL)
         {
             if (Lockbutton == button)
             {
-                Lockbutton->CS_setZoom(2 * ZOOM);
+                if (Lockbutton->CS_haveText())
+                    Lockbutton->CS_setZoom(2 * ZOOM);
                 Lockbutton->CS_useFonction();
                 Lockbutton = NULL;
             }
             else
             {
-                Lockbutton->CS_setZoom(ZOOM);
+                if (Lockbutton->CS_haveText())
+                    Lockbutton->CS_setZoom(ZOOM);
                 Lockbutton = NULL;
             }
         }

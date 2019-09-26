@@ -217,5 +217,6 @@ CS_Scene    *init_scene5(SDL_Renderer *render)
     scene->CS_addBorder(-1);
 
 
+    scene->CS_createButtonToSceneFromPng("resources/source/flecheBack.png", 20, 10, 77, 85, 5, &Function4);
     return (scene);
 }
