@@ -168,7 +168,7 @@ CS_Scene    *init_scene3(SDL_Renderer *render)
     scene->CS_writeTexte(-1, "SPELL 2 = E");
 
     scene->CS_createButtonToScene(20, 10, 77, 85, 5, &Function4);
-    scene->CS_writeTexte(-1, "EXIT");
+    scene->CS_writeTexte(-1, "Back");
 
     return (scene);
 }
@@ -216,7 +216,10 @@ CS_Scene    *init_scene5(SDL_Renderer *render)
     scene->CS_writeTexteScaleW(-1, "Load Game");
     scene->CS_addBorder(-1);
 
+    scene->CS_setSceneColor(0x00, 0x00, 0x00, 0x00);
+    scene->CS_setBrightnessColor(0xFF, 0xFF, 0xFF, 80);
+    scene->CS_createButtonToScene(20, 10, 77, 85, 5, &Function4);
+    scene->CS_writeTexte(-1, "Back");
 
-    scene->CS_createButtonToSceneFromPng("resources/source/flecheBack.png", 20, 10, 77, 85, 5, &Function4);
     return (scene);
 }
