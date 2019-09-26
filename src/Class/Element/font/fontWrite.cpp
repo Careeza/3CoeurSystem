@@ -15,7 +15,7 @@ void    CS_Police::CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer
     div_w = size->w - (2 * CS_marginX);
     div_h = size->h - (2 * CS_marginY);
     div_x = size->x + CS_marginX;
-    div_y = size->y - CS_marginX;
+    div_y = size->y + CS_marginY - ((float)div_h / 12);
     std::cout << "div = " << div_h << " -- " << div_y << " whithout margin " << size->h << " -- "<< size->y << std::endl;
     CS_size->h = div_h;
     CS_size->w = CS_size->h * ratio;
