@@ -22,6 +22,7 @@ void    Function3(void)
 
 void    Function4(void)
 {
+    gameSettings.current = gameSettings.home;
     cout << "4" << endl;
 }
 
