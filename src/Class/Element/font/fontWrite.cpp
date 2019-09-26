@@ -45,3 +45,14 @@ void    CS_Police::CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer
         exit (0);
     }
 }
+
+void            CS_Police::CS_zoomText(int pixel)
+{
+    CS_size->w += pixel;
+    CS_size->h += pixel;
+    CS_size->y -= pixel / 2;
+    if (CS_flags == ALIGN_CENTER)
+        CS_size->x -= pixel / 2;
+    else if (CS_flags == ALIGN_RIGHT)
+        CS_size->x -= pixel;
+}

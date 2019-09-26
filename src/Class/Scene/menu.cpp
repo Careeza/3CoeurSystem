@@ -52,12 +52,17 @@ void            CS_Menu::CS_addBrillance()
         if (button != NULL)
         {
             if (save != NULL)
+            {
+                save->CS_setZoom(-ZOOM);
                 save->CS_setBrightness(false);
+            }
+            button->CS_setZoom(ZOOM);
             button->CS_setBrightness(true);
             save = button;
         }
         else
         {
+            save->CS_setZoom(-ZOOM);
             save->CS_setBrightness(false);
             save = NULL;
         }

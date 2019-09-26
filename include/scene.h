@@ -29,6 +29,7 @@
 # define ALIGN_LEFT 1
 # define ALIGN_RIGHT 2
 # define ALIGN_CENTER 3
+# define ZOOM 8
 
 class   CS_Color
 {
@@ -89,6 +90,7 @@ class   CS_Police
         void        CS_initPolice(std::string police);
         void        CS_policeSetting(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
         void        CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer *render);
+        void        CS_zoomText(int pixel);
         SDL_Texture *CS_queryTexte();
         SDL_Rect    *querySize();
 
@@ -178,6 +180,7 @@ class   CS_Element
         void            CS_setDisp(bool disp);
         void            CS_setZIndex(int z);
         void            CS_setBrightness(bool disp);
+        void            CS_setZoom(int zoom);
 
         int             CS_queryElementZIndex();
         CS_Police       *CS_queryText();

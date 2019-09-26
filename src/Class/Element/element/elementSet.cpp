@@ -21,3 +21,9 @@ void            CS_Element::CS_setBrightness(bool disp)
 {
     dispBrightness = disp;
 }
+
+void            CS_Element::CS_setZoom(int zoom)
+{
+    text->CS_zoomText(zoom);
+}
+
