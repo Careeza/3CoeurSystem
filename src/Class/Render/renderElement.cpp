@@ -46,28 +46,35 @@ void    disp_brightness(CS_Brightness *brightness, SDL_Renderer *render)
     SDL_RenderCopy(render, texture, NULL, size);
 }
 
-void    CS_Renderer::CS_dispScene()
+void    dispScene(CS_Scene *current, SDL_Renderer *render)
 {
     int                                         i;
     int                                         len;
     std::shared_ptr<CS_Element>                 element;
 
     i = 0;
-    len = gameSettings.current->CS_querySceneLen();
+    len = current->CS_querySceneLen();
     while (i < len)
     {
-        element = gameSettings.current->CS_querySingleElement(i);
+        element = current->CS_querySingleElement(i);
         if (element->CS_isElementDisp())
         {
-            disp_element(element, CS_render);
+            disp_element(element, render);
             if (element->CS_haveBrightness())
-                disp_brightness(element->CS_queryBrightness(), CS_render);
+                disp_brightness(element->CS_queryBrightness(), render);
             if (element->CS_haveText())
-                disp_text(element->CS_queryText(), CS_render);
+                disp_text(element->CS_queryText(), render);
             if (element->CS_haveBorder()) 
-                disp_border(element->CS_queryBorder(), CS_render);
+                disp_border(element->CS_queryBorder(), render);
         }
         i++;
     }
+}
+
+void    CS_Renderer::CS_dispScene()
+{
+    dispScene(gameSettings.current, CS_render);
+    if (gameSettings.currentGame != NULL)
+        dispScene(gameSettings.currentGame, CS_render);
     SDL_RenderPresent(CS_render);
 }

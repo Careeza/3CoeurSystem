@@ -20,7 +20,6 @@ class   CS_Renderer
         SDL_Renderer    *CS_render;
     
     public:
-        void    CS_loadScene(CS_Scene *scene);
         void    CS_loadRenderer(SDL_Renderer *render);
         void    CS_dispScene();
 };

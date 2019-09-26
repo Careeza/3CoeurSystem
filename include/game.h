@@ -46,11 +46,14 @@ typedef struct      s_settings
     bool        pauseRequested;
     int         fps;
     bool        debug;
+
+    CS_Scene    *scene1Game;
     CS_Scene    *home;
     CS_Scene    *menu;
     CS_Scene    *controlGame;
     CS_Scene    *controlHome;
     CS_Scene    *current;
+    CS_Scene    *currentGame;
 }                   CS_settings;
 
 extern CS_settings  gameSettings;

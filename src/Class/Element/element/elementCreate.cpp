@@ -51,3 +51,8 @@ void            CS_Element::CS_addTextToElement(std::string comment, SDL_Rendere
 {
     text->CS_writeTexte(comment, CS_queryElementSize(), render);
 }
+
+void            CS_Element::CS_addTextToElementScaleW(std::string comment, SDL_Renderer *render)
+{
+    text->CS_writeTexteScaleW(comment, CS_queryElementSize(), render);
+}

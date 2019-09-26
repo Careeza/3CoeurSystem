@@ -59,16 +59,13 @@ int     main(void)
     gameSettings.controlGame = init_scene2(render);
     gameSettings.controlHome = init_scene3(render);
     gameSettings.current = gameSettings.home;
+    gameSettings.currentGame = NULL;
 
     initBrightness.CS_initBright(render);
 
     rend.CS_loadRenderer(render);
-    rend.CS_loadScene(gameSettings.menu);
-
-
     event = new(CS_KeyControl);
     menu.CS_loadKeyControl(event);
-    menu.CS_loadScene(gameSettings.menu);
 
     infiniteLoop(rend, menu);
 

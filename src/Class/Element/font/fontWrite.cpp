@@ -46,6 +46,50 @@ void    CS_Police::CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer
     }
 }
 
+void    CS_Police::CS_writeTexteScaleW(std::string texte, SDL_Rect *size, SDL_Renderer *render)
+{
+    int     w;
+    int     h;
+    float   ratio;
+
+    surface = TTF_RenderText_Blended(CS_font, texte.c_str(), CS_color);
+    texture = SDL_CreateTextureFromSurface(render, surface);
+    SDL_QueryTexture(texture, NULL, NULL, &w, &h);
+    SDL_FreeSurface(surface);
+    ratio = h / (float)w;
+    div_w = size->w - (2 * CS_marginX);
+    div_h = size->h - (2 * CS_marginY);
+    div_x = size->x + CS_marginX;
+    div_y = size->y + CS_marginY - ((float)div_h / 12);
+    CS_size->w = div_w;
+    CS_size->h = CS_size->w * ratio;
+    CS_size->y = div_y;
+    if (CS_size->h > div_h)
+    {
+        std::cout << "texte trop long" << std::endl;
+        exit (0);
+    }
+    if (CS_flags == ALIGN_CENTER)
+    {
+        std::cout << "center" << std::endl;
+        CS_size->x = (div_x + (div_w) / 2) - (CS_size->w / 2);
+        std::cout << CS_size->x << " -- " << div_x + div_h << std::endl;
+    }
+    else if (CS_flags == ALIGN_LEFT)
+    {
+        CS_size->x = div_x;
+    }
+    else if (CS_flags == ALIGN_RIGHT)
+    {
+        CS_size->x = (div_x + div_h) - CS_size->w;
+    }
+    else
+    {
+        std::cout << "wrong flag" << std::endl;
+        exit (0);
+    }
+}
+
 void            CS_Police::CS_zoomText(int pixel)
 {
     CS_size->w += pixel;

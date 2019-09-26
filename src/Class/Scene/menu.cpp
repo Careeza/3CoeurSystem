@@ -5,22 +5,9 @@ void    CS_Menu::CS_loadKeyControl(CS_KeyControl *control)
     event = control;
 }
 
-void    CS_Menu::CS_loadScene(CS_Scene *sceneSrc)
-{
-    scene = sceneSrc;
-    sceneLen = gameSettings.current->CS_querySceneLen();
-}
-
 void    CS_Menu::CS_getMouseInfo()
 {
     buttons = event->getMouseActions(x_mouse, y_mouse);
-}
-
-bool    CS_Menu::CS_buttonClicked()
-{
-    if (buttons == CS_MOUSE_DOWN)
-        return (false);
-    return (false);
 }
 
 void    CS_Menu::getButton()
@@ -53,7 +40,8 @@ void            CS_Menu::CS_addBrillance()
         {
             if (save != NULL)
             {
-                save->CS_setZoom(-ZOOM);
+                if (Lockbutton == NULL)
+                    save->CS_setZoom(-ZOOM);
                 save->CS_setBrightness(false);
             }
             button->CS_setZoom(ZOOM);
@@ -62,7 +50,8 @@ void            CS_Menu::CS_addBrillance()
         }
         else
         {
-            save->CS_setZoom(-ZOOM);
+            if (Lockbutton == NULL)
+                save->CS_setZoom(-ZOOM);
             save->CS_setBrightness(false);
             save = NULL;
         }
@@ -74,5 +63,23 @@ void    CS_Menu::CS_useButton()
 {
     if (buttons == CS_MOUSE_DOWN)
         if (button != NULL)
-            button->CS_useFonction();
+        {
+            Lockbutton = button;
+            button->CS_setZoom(-ZOOM * 2);
+        }
+    if (buttons == CS_MOUSE_UP)
+        if (Lockbutton != NULL)
+        {
+            if (Lockbutton == button)
+            {
+                Lockbutton->CS_setZoom(2 * ZOOM);
+                Lockbutton->CS_useFonction();
+                Lockbutton = NULL;
+            }
+            else
+            {
+                Lockbutton->CS_setZoom(ZOOM);
+                Lockbutton = NULL;
+            }
+        }
 }

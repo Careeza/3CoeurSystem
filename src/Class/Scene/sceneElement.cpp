@@ -12,6 +12,19 @@ void                        CS_Scene::CS_writeTexte(int index, std::string comme
     CS_sceneContain[i]->CS_addTextToElement(comment, render);
 }
 
+void                        CS_Scene::CS_writeTexteScaleW(int index, std::string comment)
+{
+    int i;
+
+    if (index == -1)
+        i = lastElement;
+    else
+        i = index;
+    CS_sceneContain[i]->setPoliceSettings(colorText);
+    CS_sceneContain[i]->CS_addTextToElementScaleW(comment, render);
+}
+
+
 void                        CS_Scene::CS_addBorder(int index)
 {
     int i;

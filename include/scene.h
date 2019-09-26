@@ -90,6 +90,7 @@ class   CS_Police
         void        CS_initPolice(std::string police);
         void        CS_policeSetting(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
         void        CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer *render);
+        void        CS_writeTexteScaleW(std::string texte, SDL_Rect *size, SDL_Renderer *render);
         void        CS_zoomText(int pixel);
         SDL_Texture *CS_queryTexte();
         SDL_Rect    *querySize();
@@ -193,6 +194,7 @@ class   CS_Element
 
         void            setPoliceSettings(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
         void            CS_addTextToElement(std::string comment, SDL_Renderer *render);
+        void            CS_addTextToElementScaleW(std::string comment, SDL_Renderer *render);
 
         void            loadBorder(CS_Color colorSource, SDL_Renderer *render);
         void            loadBrightness();
@@ -247,6 +249,7 @@ class   CS_Scene
         int                                         CS_querySceneLen();
 
         void                                        CS_writeTexte(int index, std::string comment);
+        void                                        CS_writeTexteScaleW(int index, std::string comment);
         void                                        CS_addBorder(int index);
 
     private:
@@ -266,17 +269,14 @@ class   CS_Menu
     public:
         void            CS_addBrillance();
         void            CS_loadKeyControl(CS_KeyControl *control);
-        void            CS_loadScene(CS_Scene *sceneSrc);
         void            CS_getMouseInfo();
-        bool            CS_buttonClicked();
         void            CS_useButton();
         void            getButton();
         CS_KeyControl   *event;
 
     private:
-        CS_Scene                        *scene;
-        int                             sceneLen;
         std::shared_ptr<CS_Element>     button;
+        std::shared_ptr<CS_Element>     Lockbutton;
         SDL_Rect                        *size;
         int                             x_mouse;
         int                             y_mouse;
