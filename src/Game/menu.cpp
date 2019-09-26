@@ -194,16 +194,27 @@ CS_Scene    *init_scene5(SDL_Renderer *render)
     
     scene->CS_createElementToSceneFromPng("resources/source/EcranAccueil.jpg", 100, 100, 0, 0, 0);
 
+    scene->CS_setBorderColor(0x00, 0x00, 0x00, 180);
     scene->CS_setTextColor(0xFF, 0xFF, 0xFF, 180);
+    scene->CS_setSceneColor(0x00, 0x00, 0x00, 127);
+
+    scene->CS_createElementToScene(100, 100, 0, 0, 0);
+
 
     scene->CS_createButtonToSceneFromPng("resources/source/Deer.png", 25, 30, 37.5, 35, 5, &Function1);
     scene->CS_writeTexteScaleW(-1, "Continue");
+    scene->CS_addBorder(-1);
 
-    scene->CS_createButtonToSceneFromPng("resources/source/Deer.png", 25, 30, 7.5, 35, 5, &Function3);
+
+    scene->CS_createButtonToSceneFromPng("resources/source/NewGame.png", 25, 30, 7.5, 35, 5, &Function3);
     scene->CS_writeTexteScaleW(-1, "New Game");
+    scene->CS_addBorder(-1);
+
 
     scene->CS_createButtonToSceneFromPng("resources/source/Deer.png", 25, 30, 67.5, 35, 5, &Function3);
     scene->CS_writeTexteScaleW(-1, "Load Game");
+    scene->CS_addBorder(-1);
+
 
     return (scene);
 }
