@@ -25,9 +25,8 @@ CS_Scene        *init_scene(SDL_Renderer *render);
 CS_Scene        *init_scene1(SDL_Renderer *render);
 CS_Scene        *init_scene2(SDL_Renderer *render);
 CS_Scene        *init_scene3(SDL_Renderer *render);
-
-
-
+CS_Scene        *init_scene4(SDL_Renderer *render);
+CS_Scene        *init_scene5(SDL_Renderer *render);
 
 void    Function1(void);
 void    Function2(void);
