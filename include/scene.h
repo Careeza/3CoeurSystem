@@ -152,7 +152,7 @@ class   CS_Brightness
     public:
         CS_Brightness();
         ~CS_Brightness();
-        void            CS_initBright(SDL_Renderer *render);
+        void            CS_initBright(SDL_Renderer *render, CS_Color color);
         void            addBrillance(SDL_Rect *size);
         void            CS_destroyTexture();
 
@@ -162,7 +162,7 @@ class   CS_Brightness
 
     private:
         SDL_Surface         *surface;
-        static SDL_Texture  *texture;
+        SDL_Texture         *texture;
         SDL_Rect            *rect;
 };
 
@@ -197,14 +197,14 @@ class   CS_Element
         void            CS_addTextToElementScaleW(std::string comment, SDL_Renderer *render);
 
         void            loadBorder(CS_Color colorSource, SDL_Renderer *render);
-        void            loadBrightness();
+        void            loadBrightness(SDL_Renderer *render, CS_Color colorSource);
 
         void            CS_useFonction();
 
-        void            CS_CreateNoButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y);
-        void            CS_CreateButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void));
-        void            CS_CreateNoButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y);
-        void            CS_CreateButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void));
+        void            CS_CreateNoButtonFromHand(CS_Color color, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y);
+        void            CS_CreateButtonFromHand(CS_Color color, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void));
+        void            CS_CreateNoButtonFromPng(std::string route, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y);
+        void            CS_CreateButtonFromPng(std::string route, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void));
 
         void            CS_resizeElement(float w, float h, float x, float y);
         void            CS_resizeElementPixel(int w, int h, int x, int y);
@@ -243,6 +243,7 @@ class   CS_Scene
         void                                        CS_setSceneColor(int r, int g, int b, int a);
         void                                        CS_setTextColor(int r, int g, int b, int a);
         void                                        CS_setBorderColor(int r, int g, int b, int a);
+        void                                        CS_setBrightnessColor(int r, int g, int b, int a);
 
         std::vector<std::shared_ptr<CS_Element>>    CS_querySceneElements();
         std::shared_ptr<CS_Element>                 CS_querySingleElement(int index);
@@ -260,6 +261,7 @@ class   CS_Scene
         CS_Color                                    colorSource;
         CS_Color                                    colorText;
         CS_Color                                    colorBordure;
+        CS_Color                                    colorBrightness;
 
         SDL_Renderer                                *render;
 };

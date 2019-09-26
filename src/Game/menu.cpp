@@ -197,6 +197,7 @@ CS_Scene    *init_scene5(SDL_Renderer *render)
     scene->CS_setBorderColor(0x00, 0x00, 0x00, 180);
     scene->CS_setTextColor(0xFF, 0xFF, 0xFF, 180);
     scene->CS_setSceneColor(0x00, 0x00, 0x00, 127);
+    scene->CS_setBrightnessColor(0x00, 0x127, 0x00, 80);
 
     scene->CS_createElementToScene(100, 100, 0, 0, 0);
 

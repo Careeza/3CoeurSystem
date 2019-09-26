@@ -30,7 +30,6 @@ CS_settings gameSettings = {
 };
 
 TTF_Font    *CS_Police::CS_font = NULL;
-SDL_Texture *CS_Brightness::texture = NULL;
 
 int     main(void)
 {
@@ -39,9 +38,7 @@ int     main(void)
     CS_Renderer     rend;
     CS_KeyControl   *event;
     CS_Menu         menu;
-
     CS_Police       initFont;
-    CS_Brightness   initBrightness;
 
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
@@ -60,8 +57,6 @@ int     main(void)
     gameSettings.controlHome = init_scene3(render);
     gameSettings.current = gameSettings.home;
     gameSettings.currentGame = NULL;
-
-    initBrightness.CS_initBright(render);
 
     rend.CS_loadRenderer(render);
     event = new(CS_KeyControl);

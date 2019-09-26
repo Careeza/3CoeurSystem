@@ -4,6 +4,8 @@ CS_Scene::CS_Scene()
 {
     std::cout << " --- create scene --- "<< std::endl;
     CS_sceneLen = 0;
+
+    colorBrightness.CS_setColor(0xFF, 0xFF, 0xFF, 80);
 }
 
 CS_Scene::~CS_Scene()
@@ -37,4 +39,9 @@ void                        CS_Scene::CS_setBorderColor(int r, int g, int b, int
 void                        CS_Scene::CS_setTextColor(int r, int g, int b, int a)
 {
     colorText.CS_setColor(r, g, b, a);
+}
+
+void                        CS_Scene::CS_setBrightnessColor(int r, int g, int b, int a)
+{
+    colorBrightness.CS_setColor(r, g, b, a);
 }
