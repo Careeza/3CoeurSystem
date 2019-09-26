@@ -24,6 +24,8 @@ SDL_Renderer    *init_renderer(SDL_Window    *window);
 CS_Scene        *init_scene(SDL_Renderer *render);
 CS_Scene        *init_scene1(SDL_Renderer *render);
 CS_Scene        *init_scene2(SDL_Renderer *render);
+CS_Scene        *init_scene3(SDL_Renderer *render);
+
 
 
 
@@ -46,7 +48,8 @@ typedef struct      s_settings
     bool        debug;
     CS_Scene    *home;
     CS_Scene    *menu;
-    CS_Scene    *control;
+    CS_Scene    *controlGame;
+    CS_Scene    *controlHome;
     CS_Scene    *current;
 }                   CS_settings;
 

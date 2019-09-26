@@ -10,7 +10,7 @@ void    Function1(void)
 
 void    Function2(void)
 {
-    gameSettings.current = gameSettings.control;
+    gameSettings.current = gameSettings.controlGame;
     cout << "2" << endl;
 }
 
@@ -28,5 +28,6 @@ void    Function4(void)
 
 void    Function5(void)
 {
+    gameSettings.current = gameSettings.controlHome;
     cout << "5" << endl;
 }
