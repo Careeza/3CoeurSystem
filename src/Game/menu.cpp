@@ -13,7 +13,7 @@ CS_Scene    *init_scene(SDL_Renderer *render)
     scene->CS_setSceneColor(0x00, 0x00, 0xA9, 0);
     scene->CS_setTextColor(0x00, 0x00, 0x00, 0xFF);
 
-    scene->CS_createButtonToScene(30, 12, 35, 10, 5, &Function3);
+    scene->CS_createButtonToScene(30, 12, 35, 10, 5, &Function6);
     scene->CS_writeTexte(-1, "Play");
 
     scene->CS_createButtonToScene(30, 12, 35, 27, 5, &Function5);
@@ -202,7 +202,7 @@ CS_Scene    *init_scene5(SDL_Renderer *render)
     scene->CS_createElementToScene(100, 100, 0, 0, 0);
 
 
-    scene->CS_createButtonToSceneFromPng("resources/source/Deer.png", 25, 30, 37.5, 35, 5, &Function1);
+    scene->CS_createButtonToSceneFromPng("resources/source/Deer.png", 25, 30, 37.5, 35, 5, &Function3);
     scene->CS_writeTexteScaleW(-1, "Continue");
     scene->CS_addBorder(-1);
 

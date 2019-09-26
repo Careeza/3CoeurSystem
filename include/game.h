@@ -33,6 +33,7 @@ void    Function2(void);
 void    Function3(void);
 void    Function4(void);
 void    Function5(void);
+void    Function6(void);
 
 class   CS_Scene;
 
@@ -48,6 +49,7 @@ typedef struct      s_settings
 
     CS_Scene    *scene1Game;
     CS_Scene    *home;
+    CS_Scene    *saveMenu;
     CS_Scene    *menu;
     CS_Scene    *controlGame;
     CS_Scene    *controlHome;

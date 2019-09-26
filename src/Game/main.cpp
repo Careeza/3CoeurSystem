@@ -51,10 +51,11 @@ int     main(void)
     gameSettings.resolution = gameSettings.window_width / (float)gameSettings.window_height;
     
     render = init_renderer(window);
-    gameSettings.home = init_scene5(render);
+    gameSettings.home = init_scene(render);
     gameSettings.menu = init_scene1(render);
     gameSettings.controlGame = init_scene2(render);
     gameSettings.controlHome = init_scene3(render);
+    gameSettings.saveMenu = init_scene5(render);
     gameSettings.current = gameSettings.home;
     gameSettings.currentGame = NULL;
 

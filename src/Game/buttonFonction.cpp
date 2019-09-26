@@ -31,3 +31,8 @@ void    Function5(void)
     gameSettings.current = gameSettings.controlHome;
     cout << "5" << endl;
 }
+
+void    Function6(void)
+{
+    gameSettings.current = gameSettings.saveMenu;
+}
