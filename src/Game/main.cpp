@@ -56,6 +56,10 @@ int     main(void)
     gameSettings.controlGame = init_scene2(render);
     gameSettings.controlHome = init_scene3(render);
     gameSettings.saveMenu = init_scene5(render);
+    gameSettings.menuVideo = init_scene6(render);
+    gameSettings.ingameVideo = init_scene7(render);
+    gameSettings.menuSound = init_scene8(render);
+    gameSettings.ingameSound = init_scene9(render);
     gameSettings.current = gameSettings.home;
     gameSettings.currentGame = NULL;
 

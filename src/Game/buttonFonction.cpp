@@ -36,3 +36,23 @@ void    Function6(void)
 {
     gameSettings.current = gameSettings.saveMenu;
 }
+
+void    Function7(void)
+{
+    gameSettings.current = gameSettings.menuVideo;
+}
+
+void    Function8(void)
+{
+    gameSettings.current = gameSettings.ingameVideo;
+}
+
+void    Function9(void)
+{
+    gameSettings.current = gameSettings.menuSound;
+}
+
+void    Function10(void)
+{
+    gameSettings.current = gameSettings.ingameSound;
+}

@@ -27,6 +27,10 @@ CS_Scene        *init_scene2(SDL_Renderer *render);
 CS_Scene        *init_scene3(SDL_Renderer *render);
 CS_Scene        *init_scene4(SDL_Renderer *render);
 CS_Scene        *init_scene5(SDL_Renderer *render);
+CS_Scene        *init_scene6(SDL_Renderer *render);
+CS_Scene        *init_scene7(SDL_Renderer *render);
+CS_Scene        *init_scene8(SDL_Renderer *render);
+CS_Scene        *init_scene9(SDL_Renderer *render);
 
 void    Function1(void);
 void    Function2(void);
@@ -34,6 +38,10 @@ void    Function3(void);
 void    Function4(void);
 void    Function5(void);
 void    Function6(void);
+void    Function7(void);
+void    Function8(void);
+void    Function9(void);
+void    Function10(void);
 
 class   CS_Scene;
 
@@ -55,6 +63,10 @@ typedef struct      s_settings
     CS_Scene    *controlHome;
     CS_Scene    *current;
     CS_Scene    *currentGame;
+    CS_Scene    *menuVideo;
+    CS_Scene    *ingameVideo;
+    CS_Scene    *menuSound;
+    CS_Scene    *ingameSound;
 }                   CS_settings;
 
 extern CS_settings  gameSettings;
