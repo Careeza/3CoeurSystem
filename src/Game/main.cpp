@@ -1,6 +1,33 @@
 #include "class.h"
 #include "game.h"
 
+void    keyGlobal(int key)
+{
+    if (key == 1)
+    {
+	    if (gameSettings.pos == homeHome)
+            ;
+	    if (gameSettings.pos == homeHotkeys)
+            ;
+	    if (gameSettings.pos == homeVideo)
+            ;
+	    if (gameSettings.pos == homeSound)
+            ;
+	    if (gameSettings.pos == menuMenu)
+            ;
+	    if (gameSettings.pos == menuHotkeys)
+            ;
+	    if (gameSettings.pos == menuVideo)
+            ;
+	    if (gameSettings.pos == menuSound)
+            ;
+	    if (gameSettings.pos == game)
+            ;
+	    if (gameSettings.pos == levelSelect)
+            ;
+    }
+}   
+
 void    infiniteLoop(CS_Renderer render, CS_Menu menu)
 {
     while (!gameSettings.closeRequested)
@@ -26,7 +53,8 @@ CS_settings gameSettings = {
     .closeRequested = false,
     .pauseRequested = false,
     .fps = 60,
-    .debug = true
+    .debug = true,
+    .pos = homeHome
 };
 
 TTF_Font    *CS_Police::CS_font = NULL;
@@ -56,10 +84,10 @@ int     main(void)
     gameSettings.controlGame = init_scene2(render);
     gameSettings.controlHome = init_scene3(render);
     gameSettings.saveMenu = init_scene5(render);
-    gameSettings.menuVideo = init_scene6(render);
-    gameSettings.ingameVideo = init_scene7(render);
-    gameSettings.menuSound = init_scene8(render);
-    gameSettings.ingameSound = init_scene9(render);
+    gameSettings.homeVideo = init_scene6(render);
+    gameSettings.menuVideo = init_scene7(render);
+    gameSettings.homeSound = init_scene8(render);
+    gameSettings.menuSound = init_scene9(render);
     gameSettings.current = gameSettings.home;
     gameSettings.currentGame = NULL;
 

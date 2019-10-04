@@ -2,57 +2,52 @@
 
 using namespace std;
 
-void    Function1(void)
+void    closeGame(void)
 {
     gameSettings.closeRequested = true;
-    cout << "1" << endl;
 }
 
-void    Function2(void)
+void    menuToHotkeys(void)
 {
     gameSettings.current = gameSettings.controlGame;
-    cout << "2" << endl;
 }
 
-void    Function3(void)
+void    goToMenu(void)
 {
     gameSettings.current = gameSettings.menu;
-    cout << "3" << endl;
 }
 
-void    Function4(void)
+void    goToHome(void)
 {
     gameSettings.current = gameSettings.home;
-    cout << "4" << endl;
 }
 
-void    Function5(void)
+void    homeToHotkeys(void)
 {
     gameSettings.current = gameSettings.controlHome;
-    cout << "5" << endl;
 }
 
-void    Function6(void)
+void    homeToLevelSelect(void)
 {
     gameSettings.current = gameSettings.saveMenu;
 }
 
-void    Function7(void)
+void    homeToVideo(void)
+{
+    gameSettings.current = gameSettings.homeVideo;
+}
+
+void    menuTovideo(void)
 {
     gameSettings.current = gameSettings.menuVideo;
 }
 
-void    Function8(void)
+void    homeToSound(void)
 {
-    gameSettings.current = gameSettings.ingameVideo;
+    gameSettings.current = gameSettings.homeSound;
 }
 
-void    Function9(void)
+void    menuToSound(void)
 {
     gameSettings.current = gameSettings.menuSound;
-}
-
-void    Function10(void)
-{
-    gameSettings.current = gameSettings.ingameSound;
 }

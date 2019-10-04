@@ -16,6 +16,19 @@
 # define    CS_MOUSE_DOWN 2
 # define    CS_MOUSE_UP 3
 
+typedef enum	e_pos {
+	homeHome,
+	homeHotkeys,
+	homeVideo,
+	homeSound,
+	menuMenu,
+	menuHotkeys,
+    menuVideo,
+    menuSound,
+    game,
+    levelSelect
+}				t_pos;
+
 class   CS_Scene;
 
 void	        init(int flags);
@@ -32,16 +45,17 @@ CS_Scene        *init_scene7(SDL_Renderer *render);
 CS_Scene        *init_scene8(SDL_Renderer *render);
 CS_Scene        *init_scene9(SDL_Renderer *render);
 
-void    Function1(void);
-void    Function2(void);
-void    Function3(void);
-void    Function4(void);
-void    Function5(void);
-void    Function6(void);
-void    Function7(void);
-void    Function8(void);
-void    Function9(void);
-void    Function10(void);
+void    closeGame(void);
+void    menuToHotkeys(void);
+void    goToMenu(void);
+void    goToHome(void);
+void    homeToHotkeys(void);
+void    homeToLevelSelect(void);
+void    homeToVideo(void);
+void    menuTovideo(void);
+void    homeToSound(void);
+void    menuToSound(void);
+
 
 class   CS_Scene;
 
@@ -55,6 +69,8 @@ typedef struct      s_settings
     int         fps;
     bool        debug;
 
+    t_pos       pos;
+
     CS_Scene    *scene1Game;
     CS_Scene    *home;
     CS_Scene    *saveMenu;
@@ -63,10 +79,10 @@ typedef struct      s_settings
     CS_Scene    *controlHome;
     CS_Scene    *current;
     CS_Scene    *currentGame;
+    CS_Scene    *homeVideo;
     CS_Scene    *menuVideo;
-    CS_Scene    *ingameVideo;
+    CS_Scene    *homeSound;
     CS_Scene    *menuSound;
-    CS_Scene    *ingameSound;
 }                   CS_settings;
 
 extern CS_settings  gameSettings;

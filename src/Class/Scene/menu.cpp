@@ -17,7 +17,7 @@ void    CS_Menu::getButton()
     i = gameSettings.current->CS_querySceneLen() - 1;
     while (i >= 0)
     {
-        button = gameSettings.current ->CS_querySingleElement(i);
+        button = gameSettings.current->CS_querySingleElement(i);
         if (button->CS_isElementButton())
         {
             size = button->CS_queryElementSize();
