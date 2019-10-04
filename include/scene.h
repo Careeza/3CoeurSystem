@@ -197,6 +197,7 @@ class   CS_Element
         void            CS_addTextToElementScaleW(std::string comment, SDL_Renderer *render);
 
         void            loadBorder(CS_Color colorSource, SDL_Renderer *render);
+        void            changeBorder(int w, int h);
         void            loadBrightness(SDL_Renderer *render, CS_Color colorSource);
 
         void            CS_useFonction();

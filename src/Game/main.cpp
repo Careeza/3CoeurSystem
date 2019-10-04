@@ -79,15 +79,15 @@ int     main(void)
     gameSettings.resolution = gameSettings.window_width / (float)gameSettings.window_height;
     
     render = init_renderer(window);
-    gameSettings.home = init_scene(render);
-    gameSettings.menu = init_scene1(render);
-    gameSettings.controlGame = init_scene2(render);
-    gameSettings.controlHome = init_scene3(render);
-    gameSettings.saveMenu = init_scene5(render);
-    gameSettings.homeVideo = init_scene6(render);
-    gameSettings.menuVideo = init_scene7(render);
-    gameSettings.homeSound = init_scene8(render);
-    gameSettings.menuSound = init_scene9(render);
+    gameSettings.home = init_home(render);
+    gameSettings.menu = init_menu(render);
+    gameSettings.controlGame = init_menuHotkeys(render);
+    gameSettings.controlHome = init_homeHotkeys(render);
+    gameSettings.saveMenu = init_play(render);
+    gameSettings.homeVideo = init_homeVideo(render);
+    gameSettings.menuVideo = init_menuVideo(render);
+    gameSettings.homeSound = init_homeSound(render);
+    gameSettings.menuSound = init_menuSound(render);
     gameSettings.current = gameSettings.home;
     gameSettings.currentGame = NULL;
 
