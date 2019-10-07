@@ -94,6 +94,7 @@ class   CS_KeyControl
         int     loadEvenement();
         int     queryEventType();
         int     getMouseActions(int& x, int& y);
+        int     CS_getKeyboardActions();
 
     private:
         SDL_Event       event;
@@ -107,6 +108,69 @@ class   CS_KeyControl
 
         int             static_x;
         int             static_y;
+};
+
+typedef struct  s_key
+{
+    int     value;
+    std::string  name;
+}               t_key;
+
+
+class   authorizedKey
+{
+    public:
+        void    loadAuthorizedKey();
+        std::string  keyName(int key);
+
+    private:
+        t_key   keyA;
+        t_key   keyB;
+        t_key   keyC;
+        t_key   keyD;
+        t_key   keyE;
+        t_key   keyF;
+        t_key   keyG;
+        t_key   keyH;
+        t_key   keyI;
+        t_key   keyJ;
+        t_key   keyK;
+        t_key   keyL;
+        t_key   keyM;
+        t_key   keyN;
+        t_key   keyO;
+        t_key   keyP;
+        t_key   keyQ;
+        t_key   keyR;
+        t_key   keyS;
+        t_key   keyT;
+        t_key   keyU;
+        t_key   keyV;
+        t_key   keyW;
+        t_key   keyX;
+        t_key   keyY;
+        t_key   keyZ;
+
+        t_key   key0;
+        t_key   key1;
+        t_key   key2;
+        t_key   key3;
+        t_key   key4;
+        t_key   key5;
+        t_key   key6;
+        t_key   key7;
+        t_key   key8;
+        t_key   key9;
+
+        t_key   keyTab;
+        t_key   keyMaj;
+        t_key   keyCtrl;
+        t_key   keySpace;
+        t_key   keyEnter;
+        t_key   keyUp;
+        t_key   keyDown;
+        t_key   keyRight;
+        t_key   keyLeft;
 };
 
 #endif

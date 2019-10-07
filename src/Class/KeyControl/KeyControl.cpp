@@ -21,6 +21,19 @@ int     CS_KeyControl::queryEventType()
     return (event.type);
 }
 
+int     CS_KeyControl::CS_getKeyboardActions()
+{
+    if (type == SDL_KEYDOWN && !keyBoardPress)
+    {
+        std::cout << "key DOWN !" << std::endl;
+    }
+    if (type == SDL_KEYUP)
+    {
+        std::cout << "key UP !" << std::endl;
+    }
+    return (0);
+}
+
 int     CS_KeyControl::getMouseActions(int& x, int& y)
 {
     if (type == SDL_MOUSEMOTION)

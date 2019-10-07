@@ -42,6 +42,7 @@ void    infiniteLoop(CS_Renderer render, CS_Menu menu)
             menu.getButton();
             menu.CS_useButton();
             menu.CS_addBrillance();
+            menu.event->CS_getKeyboardActions();
         }
         render.CS_dispScene();
     }
