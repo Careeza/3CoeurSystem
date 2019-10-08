@@ -23,26 +23,21 @@ void    keyGlobal(int key)
             ;
 	    if (gameSettings.pos == game)
             ;
-	    if (gameSettings.pos == levelSelect)
+	    if (gameSettings.pos == homeLevelSelect)
             ;
     }
 }   
 
-void    infiniteLoop(CS_Renderer render, CS_Menu menu)
+void    infiniteLoop(CS_Renderer render)
 {
+    CS_KeyControl   event;
+
     while (!gameSettings.closeRequested)
     {
-        while (menu.event->loadEvenement())
+        while (event.loadEvenement())
         {
-            if (menu.event->queryEventType() == SDL_QUIT)
-            {
-                gameSettings.closeRequested = true;
-            }
-            menu.CS_getMouseInfo();
-            menu.getButton();
-            menu.CS_useButton();
-            menu.CS_addBrillance();
-            menu.event->CS_getKeyboardActions();
+            if (gameSettings.pos & (homeHome | menuMenu))
+                bouttonManagement(event);
         }
         render.CS_dispScene();
     }
@@ -55,7 +50,7 @@ CS_settings gameSettings = {
     .pauseRequested = false,
     .fps = 60,
     .debug = true,
-    .pos = homeHome
+    .pos = homeVideo
 };
 
 TTF_Font    *CS_Police::CS_font = NULL;
@@ -66,7 +61,6 @@ int     main(void)
     SDL_Renderer    *render;
     CS_Renderer     rend;
     CS_KeyControl   *event;
-    CS_Menu         menu;
     CS_Police       initFont;
 
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
@@ -94,9 +88,8 @@ int     main(void)
 
     rend.CS_loadRenderer(render);
     event = new(CS_KeyControl);
-    menu.CS_loadKeyControl(event);
 
-    infiniteLoop(rend, menu);
+    infiniteLoop(rend);
 
     TTF_Quit();
     SDL_Quit();

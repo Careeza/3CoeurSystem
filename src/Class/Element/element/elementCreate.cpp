@@ -51,9 +51,14 @@ void        CS_Element::loadBrightness(SDL_Renderer *render, CS_Color color)
 void            CS_Element::CS_addTextToElement(std::string comment, SDL_Renderer *render)
 {
     text->CS_writeTexte(comment, CS_queryElementSize(), render);
+    text->initZoomIn();
+    text->initZoomOut();
 }
 
 void            CS_Element::CS_addTextToElementScaleW(std::string comment, SDL_Renderer *render)
 {
     text->CS_writeTexteScaleW(comment, CS_queryElementSize(), render);
+    text->initZoomIn();
+    text->initZoomOut();
 }
+

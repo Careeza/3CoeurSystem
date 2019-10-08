@@ -17,19 +17,22 @@
 # define    CS_MOUSE_UP 3
 
 typedef enum	e_pos {
-	homeHome,
-	homeHotkeys,
-	homeVideo,
-	homeSound,
-	menuMenu,
-	menuHotkeys,
-    menuVideo,
-    menuSound,
-    game,
-    levelSelect
+	homeHome =          0b00000000100000000000000000000000,
+    homeVideo =         0b00000000100000010000000000000000,
+    homeSound =         0b00000000100000100000000000000000,
+    homeHotkeys =       0b00000000100001000000000000000000, 
+    homeLevelSelect =   0b00000000100010000000000000000000,
+
+    menuMenu =          0b00000000000000001000000000000000,
+    menuVideo =         0b00000000000000001000000100000000,
+    menuSound =         0b00000000000000001000001000000000,
+    menuHotkeys =       0b00000000000000001000010000000000,
+
+    game =              0b00000000000000000000000010000000,
 }				t_pos;
 
 class   CS_Scene;
+class   CS_Element;
 
 void	        init(int flags);
 SDL_Window      *create_window(int flags, const std::string name = "canvas", int x = 0, int y = 0, int w = 0, int h = 0);
@@ -86,29 +89,6 @@ typedef struct      s_settings
 }                   CS_settings;
 
 extern CS_settings  gameSettings;
-
-class   CS_KeyControl
-{
-    public:
-        CS_KeyControl();
-        int     loadEvenement();
-        int     queryEventType();
-        int     getMouseActions(int& x, int& y);
-        int     CS_getKeyboardActions();
-
-    private:
-        SDL_Event       event;
-        Uint32          type;
-
-        bool            keyPress;
-
-        int             buttons;
-        int             mouse_x;
-        int             mouse_y;
-
-        int             static_x;
-        int             static_y;
-};
 
 typedef struct  s_key
 {

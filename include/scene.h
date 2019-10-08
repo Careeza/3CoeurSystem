@@ -31,6 +31,10 @@
 # define ALIGN_CENTER 3
 # define ZOOM 8
 
+# define    NOZOOM 0
+# define    ZOOMIN 1
+# define    ZOOMOUT 2
+
 class   CS_Color
 {
     public:
@@ -91,7 +95,9 @@ class   CS_Police
         void        CS_policeSetting(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
         void        CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer *render);
         void        CS_writeTexteScaleW(std::string texte, SDL_Rect *size, SDL_Renderer *render);
-        void        CS_zoomText(int pixel);
+        void        initZoomIn();
+        void        initZoomOut();
+        void        CS_zoomText(int zoomInfo);
         SDL_Texture *CS_queryTexte();
         SDL_Rect    *querySize();
 
@@ -106,9 +112,12 @@ class   CS_Police
         int                 div_h;
         int                 div_x;
         int                 div_y;
+        int                 zoom;
 
         SDL_Color           CS_color;
         SDL_Rect            *CS_size;
+        SDL_Rect            *CS_zoomIn;
+        SDL_Rect            *CS_zoomOut;
         SDL_Surface         *surface;
         SDL_Texture         *texture;
 };
@@ -265,25 +274,6 @@ class   CS_Scene
         CS_Color                                    colorBrightness;
 
         SDL_Renderer                                *render;
-};
-
-class   CS_Menu
-{
-    public:
-        void            CS_addBrillance();
-        void            CS_loadKeyControl(CS_KeyControl *control);
-        void            CS_getMouseInfo();
-        void            CS_useButton();
-        void            getButton();
-        CS_KeyControl   *event;
-
-    private:
-        std::shared_ptr<CS_Element>     button;
-        std::shared_ptr<CS_Element>     Lockbutton;
-        SDL_Rect                        *size;
-        int                             x_mouse;
-        int                             y_mouse;
-        int                             buttons;
 };
 
 #endif
