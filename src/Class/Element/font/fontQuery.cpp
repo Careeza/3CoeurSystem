@@ -7,7 +7,7 @@ SDL_Texture     *CS_Police::CS_queryTexte()
 
 SDL_Rect        *CS_Police::querySize()
 {
-    std::cout << "the zoom is set as - " << zoom << std::endl;
+//    std::cout << "the zoom is set as - " << zoom << std::endl;
     if (zoom == NOZOOM)
     {
 //        std::cout << "ZOOM NO" << std::endl;

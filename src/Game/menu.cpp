@@ -16,23 +16,18 @@ CS_Scene    *init_home(SDL_Renderer *render)
 
     scene->CS_createButtonToScene(12, 6, 0, 52, 5, &homeToLevelSelect);
     scene->CS_writeTexte(-1, "Play");
-    scene->CS_addBorder(-1);
 
     scene->CS_createButtonToScene(12, 6, 0, 60, 5, &homeToHotkeys);
     scene->CS_writeTexte(-1, "Hotkeys");
-    scene->CS_addBorder(-1);
 
     scene->CS_createButtonToScene(12, 6, 0, 68, 5, &homeToVideo);
     scene->CS_writeTexte(-1, "Video");
-    scene->CS_addBorder(-1);
 
     scene->CS_createButtonToScene(12, 6, 0, 76, 5, &homeToSound);
     scene->CS_writeTexte(-1, "Sound");
-    scene->CS_addBorder(-1);
 
     scene->CS_createButtonToScene(12, 6, 0, 84, 5, &closeGame);
     scene->CS_writeTexte(-1, "Exit game");
-    scene->CS_addBorder(-1);
     
     return (scene);
 }

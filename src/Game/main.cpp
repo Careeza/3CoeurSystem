@@ -3,30 +3,44 @@
 
 void    keyGlobal(int key)
 {
-    if (key == 1)
+    if (key == SDL_SCANCODE_ESCAPE)
     {
 	    if (gameSettings.pos == homeHome)
+        {
+        }
+	    else if (gameSettings.pos == homeHotkeys)
+            goToHome();
+	    else if (gameSettings.pos == homeVideo)
+            goToHome();
+	    else if (gameSettings.pos == homeSound)
+            goToHome();
+	    else if (gameSettings.pos == homeLevelSelect)
+            goToHome();
+	    else if (gameSettings.pos == menuMenu)
+            goToMenu();
+	    else if (gameSettings.pos == menuHotkeys)
+            goToMenu();
+	    else if (gameSettings.pos == menuVideo)
+            goToMenu();
+	    else if (gameSettings.pos == menuSound)
+            goToMenu();
+	    else if (gameSettings.pos == game)
             ;
-	    if (gameSettings.pos == homeHotkeys)
-            ;
-	    if (gameSettings.pos == homeVideo)
-            ;
-	    if (gameSettings.pos == homeSound)
-            ;
-	    if (gameSettings.pos == menuMenu)
-            ;
-	    if (gameSettings.pos == menuHotkeys)
-            ;
-	    if (gameSettings.pos == menuVideo)
-            ;
-	    if (gameSettings.pos == menuSound)
-            ;
-	    if (gameSettings.pos == game)
-            ;
-	    if (gameSettings.pos == homeLevelSelect)
-            ;
+        else
+            std::cout << "lol you are kaki, Fred 2020" << std::endl;
     }
-}   
+    else
+        ;
+}
+
+void    escapeKeyManagement(CS_KeyControl event)
+{
+    int key;
+    
+    key = event.CS_getKeyboardActions();
+    keyGlobal(key);
+}
+
 
 void    infiniteLoop(CS_Renderer render)
 {
@@ -38,6 +52,7 @@ void    infiniteLoop(CS_Renderer render)
         {
             if (gameSettings.pos & (homeHome | menuMenu))
                 bouttonManagement(event);
+            escapeKeyManagement(event);
         }
         render.CS_dispScene();
     }
@@ -50,7 +65,7 @@ CS_settings gameSettings = {
     .pauseRequested = false,
     .fps = 60,
     .debug = true,
-    .pos = homeVideo
+    .pos = homeHome
 };
 
 TTF_Font    *CS_Police::CS_font = NULL;
