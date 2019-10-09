@@ -13,6 +13,12 @@ typedef struct      s_animation
     int                 nbLineFrame;
 }                   t_animation;
 
+typedef struct      s_bankAnimation
+{
+    t_animation     animation1;
+    t_animation     animation2;
+}                  t_bankAnimation
+
 class   CS_Character
 {
     public:
@@ -25,13 +31,13 @@ class   CS_Character
         void        loadFunction();
 
     private:
-        SDL_Texture texture;
-        SDL_Rect    size;
-        SDL_Rect    frame;
-        bool        right;
-        bool        endAnimation;
-        int         i;
-        bool        (*animationFunction)(SDL_Texture, SDL_Rect, SDL_Rect, int, bool);
+        SDL_Texture         texture;
+        SDL_Rect            size;
+        SDL_Rect            frame;
+        bool                right;
+        bool                endAnimation;
+        int                 i;
+        t_bankAnimation     bank;
 };
 
 #endif
