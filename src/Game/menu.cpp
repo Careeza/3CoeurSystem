@@ -12,7 +12,7 @@ CS_Scene    *init_home(SDL_Renderer *render)
 
     scene->CS_setSceneColor(0x00, 0x00, 0xA9, 0);
     scene->CS_setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
-    scene->CS_setBorderColor(0x00, 0x00, 0x00, 180);
+    scene->CS_setBorderColor(0xFF, 0xFF, 0xFF, 0xFF);
 
     scene->CS_createButtonToScene("Play", 12, 6, 0, 52, 5, &homeToLevelSelect);
     scene->CS_writeTexte(-1, "Play");
@@ -28,6 +28,24 @@ CS_Scene    *init_home(SDL_Renderer *render)
 
     scene->CS_createButtonToScene("Exit game", 12, 6, 0, 84, 5, &closeGame);
     scene->CS_writeTexte(-1, "Exit game");
+
+    scene->CS_setSceneColor(0x00, 0x00, 0x00, 175);
+    scene->CS_createElementToScene("filtre", 100, 100, 0, 0, 40);
+
+    scene->CS_createElementToScene("dialogue", 50, 50, 25, 25, 41);
+    scene->CS_addBorder(-1);
+    
+    scene->CS_setSceneColor(0x00, 0x00, 0x00, 0x00);
+    scene->CS_createElementToScene("Question", 50, 10, 25, 35, 42);
+    scene->CS_writeTexte(-1, "Are you sure ?");
+
+    scene->CS_createElementToScene("YES", 20, 10, 28.3, 55, 42);
+    scene->CS_addBorder(-1);
+    scene->CS_writeTexte(-1, "Yes");
+
+    scene->CS_createElementToScene("NO", 20, 10, 51.6, 55, 42);
+    scene->CS_addBorder(-1);
+    scene->CS_writeTexte(-1, "No");
     
     return (scene);
 }
