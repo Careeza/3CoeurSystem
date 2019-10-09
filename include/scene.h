@@ -200,11 +200,13 @@ class   CS_Element
         SDL_Rect        *CS_queryTextSize();
         CS_Border       *CS_queryBorder();
         CS_Brightness   *CS_queryBrightness();
+        std::string     CS_queryName();
 
         void            setPoliceSettings(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
         void            CS_addTextToElement(std::string comment, SDL_Renderer *render);
         void            CS_addTextToElementScaleW(std::string comment, SDL_Renderer *render);
 
+        void            loadName(std::string nameSrc);
         void            loadBorder(CS_Color colorSource, SDL_Renderer *render);
         void            changeBorder(int w, int h);
         void            loadBrightness(SDL_Renderer *render, CS_Color colorSource);
@@ -226,6 +228,7 @@ class   CS_Element
         CS_Police       *text;
         CS_Border       *border;
         CS_Brightness   *brightness;
+        std::string     name;
 
         bool        haveText;
         bool        elementIsButton;
@@ -244,20 +247,23 @@ class   CS_Scene
         void                                        CS_loadRenderer(SDL_Renderer *renderSource);
 
         void                                        CS_addElementToScene(std::shared_ptr<CS_Element> element);
-        void                                        CS_createElementToScene(float w, float h, float x, float y, int z);
-        void                                        CS_createButtonToScene(float w, float h, float x, float y, int z, void (*f)(void));
-        void                                        CS_createElementToSceneFromPng(std::string route, float w, float h, float x, float y, int z);
-        void                                        CS_createButtonToSceneFromPng(std::string route, float w, float h, float x, float y, int z, void (*f)(void));
+        void                                        CS_createElementToScene(std::string name, float w, float h, float x, float y, int z);
+        void                                        CS_createButtonToScene(std::string name, float w, float h, float x, float y, int z, void (*f)(void));
+        void                                        CS_createElementToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z);
+        void                                        CS_createButtonToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z, void (*f)(void));
         void                                        CS_deleteElementFromeScene(int index);
         
         void                                        CS_setSceneColor(int r, int g, int b, int a);
         void                                        CS_setTextColor(int r, int g, int b, int a);
         void                                        CS_setBorderColor(int r, int g, int b, int a);
         void                                        CS_setBrightnessColor(int r, int g, int b, int a);
+        void                                        CS_setDisp(bool disp, int index);
 
         std::vector<std::shared_ptr<CS_Element>>    CS_querySceneElements();
         std::shared_ptr<CS_Element>                 CS_querySingleElement(int index);
         int                                         CS_querySceneLen();
+        std::string                                 CS_queryName(int index);
+        int                                         CS_queryIndexByName(std::string name);
 
         void                                        CS_writeTexte(int index, std::string comment);
         void                                        CS_writeTexteScaleW(int index, std::string comment);

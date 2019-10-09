@@ -45,3 +45,10 @@ void                        CS_Scene::CS_setBrightnessColor(int r, int g, int b,
 {
     colorBrightness.CS_setColor(r, g, b, a);
 }
+
+void                        CS_Scene::CS_setDisp(bool disp, int index)
+{
+    if (index == -1)
+        index = lastElement;
+    CS_sceneContain[index]->CS_setDisp(disp);
+}

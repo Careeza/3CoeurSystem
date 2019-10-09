@@ -24,7 +24,6 @@ void                        CS_Scene::CS_writeTexteScaleW(int index, std::string
     CS_sceneContain[i]->CS_addTextToElementScaleW(comment, render);
 }
 
-
 void                        CS_Scene::CS_addBorder(int index)
 {
     int i;
@@ -49,35 +48,39 @@ void                        CS_Scene::CS_addElementToScene(std::shared_ptr<CS_El
     CS_sceneLen++;
 }
 
-void                        CS_Scene::CS_createElementToScene(float w, float h, float x, float y, int z)
+void                        CS_Scene::CS_createElementToScene(std::string name, float w, float h, float x, float y, int z)
 {
     std::shared_ptr<CS_Element> element (new CS_Element);
     element->CS_CreateNoButtonFromHand(colorSource, colorBrightness, render, w, h, x, y);
     element->CS_setZIndex(z);
+    element->loadName(name);
     CS_addElementToScene(element);
 }
 
-void                        CS_Scene::CS_createButtonToScene(float w, float h, float x, float y, int z, void (*f)(void))
+void                        CS_Scene::CS_createButtonToScene(std::string name, float w, float h, float x, float y, int z, void (*f)(void))
 {
     std::shared_ptr<CS_Element> element (new CS_Element);
     element->CS_CreateButtonFromHand(colorSource, colorBrightness, render, w, h, x, y, f);
     element->CS_setZIndex(z);
+    element->loadName(name);
     CS_addElementToScene(element);
 }
 
-void                        CS_Scene::CS_createElementToSceneFromPng(std::string route, float w, float h, float x, float y, int z)
+void                        CS_Scene::CS_createElementToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z)
 {
     std::shared_ptr<CS_Element> element (new CS_Element);
     element->CS_CreateNoButtonFromPng(route, colorBrightness, render, w, h, x, y);
     element->CS_setZIndex(z);
+    element->loadName(name);
     CS_addElementToScene(element);
 }
 
-void                        CS_Scene::CS_createButtonToSceneFromPng(std::string route, float w, float h, float x, float y, int z, void (*f)(void))
+void                        CS_Scene::CS_createButtonToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z, void (*f)(void))
 {
     std::shared_ptr<CS_Element> element (new CS_Element);
     element->CS_CreateButtonFromPng(route, colorBrightness, render, w, h, x, y, f);
     element->CS_setZIndex(z);
+    element->loadName(name);
     CS_addElementToScene(element);
 }
 

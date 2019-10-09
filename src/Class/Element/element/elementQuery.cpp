@@ -53,3 +53,8 @@ CS_Brightness   *CS_Element::CS_queryBrightness()
 {
     return (brightness);
 }
+
+std::string     CS_Element::CS_queryName()
+{
+    return (name);
+}

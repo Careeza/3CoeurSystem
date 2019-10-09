@@ -10,6 +10,11 @@ void            CS_Element::CS_setZIndex(int z)
     elementZIndex = z;
 }
 
+void            CS_Element::loadName(std::string nameSrc)
+{
+    name = nameSrc;
+}
+
 void            CS_Element::setPoliceSettings(CS_Color color, int flags, int marginX, int marginY)
 {
     text = new (CS_Police);
