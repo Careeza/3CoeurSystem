@@ -12,6 +12,62 @@ void    action(int key)
     }
 }
 
+void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info)
+{
+    if (info == CS_KEYDOWN)
+    {
+        if (value-> == key)
+            table-> = true;
+        else if (value-> == key)
+            table-> = true;
+        else if (value-> == key)
+            table-> = true;
+        else if (value-> == key)
+            table-> = true;
+        else if (value-> == key)
+            table-> = true;
+        else if (value-> == key)
+            table-> = true;
+        else if (value-> == key)
+            table-> = true;
+        else if (value-> == key)
+            table-> = true;
+        else if (value-> == key)
+            table-> = true;
+        else if (value-> == key)
+            table-> = true;
+        else if (value-> == key)
+            table-> = true;
+    }
+    else if (info == CS_KEYUP)
+    {
+        if (value-> == key)
+            table-> = false;
+        else if (value-> == key)
+            table-> = false;
+        else if (value-> == key)
+            table-> = false;
+        else if (value-> == key)
+            table-> = false;
+        else if (value-> == key)
+            table-> = false;
+        else if (value-> == key)
+            table-> = false;
+        else if (value-> == key)
+            table-> = false;
+        else if (value-> == key)
+            table-> = false;
+        else if (value-> == key)
+            table-> = false;
+        else if (value-> == key)
+            table-> = false;
+        else if (value-> == key)
+            table-> = false;
+    }
+    else
+    {}
+}
+
 void    actionKeyManagement(CS_KeyControl event)
 {
     int         key;
