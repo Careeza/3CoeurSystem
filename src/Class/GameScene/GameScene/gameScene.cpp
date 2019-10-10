@@ -10,3 +10,13 @@ CS_GameScene    *init_gameScene(SDL_Renderer *render)
     scene->CS_createElementToSceneFromPng("Background", "resources/source/gameBackground.jpg", 100, 100, 0, 0, 0);
     return (scene);
 }
+
+CS_GameScene::CS_GameScene()
+{
+    MC = new(CS_Character);
+}
+
+CS_GameScene::~CS_GameScene()
+{
+    delete MC;
+}
