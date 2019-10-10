@@ -27,7 +27,7 @@ typedef struct  s_actionValue
     int        use;
     int        spell_1;
     int        spell_2;
-}               t_actionValue
+}               t_actionValue;
 
 typedef struct  s_actionTable
 {
@@ -42,7 +42,7 @@ typedef struct  s_actionTable
     bool        use;
     bool        spell_1;
     bool        spell_2;
-}               t_actionTable
+}               t_actionTable;
 
 class   CS_KeyControl
 {
