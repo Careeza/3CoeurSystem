@@ -24,9 +24,11 @@ CS_Animation    *loadAnimation(std::string nameSrc, SDL_Renderer *render, std::s
 class CS_BankAnimation
 {
     public:
-    CS_BankAnimation();
-    ~CS_BankAnimation();
-    CS_Animation     *noMove;
+        CS_BankAnimation();
+        ~CS_BankAnimation();
+        CS_Animation    *CS_queryAnimationByname(std::string name);
+    private:
+        CS_Animation     *noMove;
 };
 
 class   CS_Character
@@ -38,7 +40,6 @@ class   CS_Character
         SDL_Rect    *querySize();
         SDL_Rect    *queryFrame();
         bool        useAnimation();
-        void        loadFunction();
         void        loadBank(SDL_Renderer *render);
 
     private:
