@@ -1,47 +1,6 @@
 #include "class.h"
 #include "game.h"
 
-void    keyGlobal(int key)
-{
-    if (key == SDL_SCANCODE_ESCAPE)
-    {
-	    if (gameSettings.pos == homeHome)
-        {
-        }
-	    else if (gameSettings.pos == homeHotkeys)
-            goToHome();
-	    else if (gameSettings.pos == homeVideo)
-            goToHome();
-	    else if (gameSettings.pos == homeSound)
-            goToHome();
-	    else if (gameSettings.pos == homeLevelSelect)
-            goToHome();
-	    else if (gameSettings.pos == menuMenu)
-            goToMenu();
-	    else if (gameSettings.pos == menuHotkeys)
-            goToMenu();
-	    else if (gameSettings.pos == menuVideo)
-            goToMenu();
-	    else if (gameSettings.pos == menuSound)
-            goToMenu();
-	    else if (gameSettings.pos == game)
-            goToMenu();
-        else
-            std::cout << "lol you are kaki, Fred 2020" << std::endl;
-    }
-    else
-        ;
-}
-
-void    escapeKeyManagement(CS_KeyControl event)
-{
-    int key;
-    
-    key = event.CS_getKeyboardActions();
-    keyGlobal(key);
-}
-
-
 void    infiniteLoop(CS_Renderer render)
 {
     CS_KeyControl   event;

@@ -2,8 +2,7 @@
 
 # define KEYCONTROL_H
 
-# include "game.h"
-# include "scene.h"
+# include "gameScene.h"
 
 # define    NO_ACTION -1
 # define    NO_BOUTON 0
@@ -11,13 +10,18 @@
 # define    BOUTTON_PRESS 2
 # define    BOUTON_RELEASE 3
 
+#define CS_KEYUP 0
+#define CS_KEYDOWN 1
+#define CS_NOKEY 2
+
+
 class   CS_KeyControl
 {
     public:
         CS_KeyControl();
         int                                     loadEvenement();
 //        int     getMouseActions(int& x, int& y);
-        int                                     CS_getKeyboardActions();
+        int                                     CS_getKeyboardActions(int& key);
         std::shared_ptr<CS_Element>             CS_getBoutton(int &boutonInfo);
 
     private:
@@ -29,6 +33,7 @@ class   CS_KeyControl
 
 };
 
+void            escapeKeyManagement(CS_KeyControl event);
 int             bouttonManagement(CS_KeyControl& control);
 
 #endif
