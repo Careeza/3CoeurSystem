@@ -13,7 +13,7 @@ void    escapeAction()
     else if (gameSettings.pos == homeLevelSelect)
         goToHome();
     else if (gameSettings.pos == menuMenu)
-        goToMenu();
+        levelSelectToGame();
     else if (gameSettings.pos == menuHotkeys)
         goToMenu();
     else if (gameSettings.pos == menuVideo)

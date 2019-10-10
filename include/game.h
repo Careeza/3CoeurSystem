@@ -42,7 +42,6 @@ CS_Scene        *init_home(SDL_Renderer *render);
 CS_Scene        *init_menu(SDL_Renderer *render);
 CS_Scene        *init_menuHotkeys(SDL_Renderer *render);
 CS_Scene        *init_homeHotkeys(SDL_Renderer *render);
-CS_Scene        *init_game(SDL_Renderer *render);
 CS_Scene        *init_play(SDL_Renderer *render);
 CS_Scene        *init_homeVideo(SDL_Renderer *render);
 CS_Scene        *init_menuVideo(SDL_Renderer *render);
@@ -79,14 +78,12 @@ typedef struct      s_settings
     t_pos       pos;
 
     CS_GameScene    *gameScene;
-    CS_Scene        *scene1Game;
     CS_Scene        *home;
     CS_Scene        *saveMenu;
     CS_Scene        *menu;
     CS_Scene        *controlGame;
     CS_Scene        *controlHome;
     CS_Scene        *current;
-    CS_Scene        *currentGame;
     CS_Scene        *homeVideo;
     CS_Scene        *menuVideo;
     CS_Scene        *homeSound;

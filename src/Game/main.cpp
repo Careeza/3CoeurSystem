@@ -4,7 +4,9 @@
 void    infiniteLoop(CS_Renderer render)
 {
     CS_KeyControl   event;
+    int             i;
 
+    i = 0;
     while (!gameSettings.closeRequested)
     {
         while (event.loadEvenement())
@@ -12,6 +14,8 @@ void    infiniteLoop(CS_Renderer render)
             if (gameSettings.pos & (homeHome | menuMenu))
                 bouttonManagement(event);
             escapeKeyManagement(event);
+            if (gameSettings.pos == game)
+                gameSettings.gameScene->CS_queryMC()->useAnimation(i);
         }
         render.CS_dispScene();
     }
@@ -59,8 +63,6 @@ int     main(void)
     gameSettings.homeSound = init_homeSound(render);
     gameSettings.menuSound = init_menuSound(render);
     gameSettings.current = gameSettings.home;
-    gameSettings.currentGame = NULL;
-
     rend.CS_loadRenderer(render);
     event = new(CS_KeyControl);
 

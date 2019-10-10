@@ -21,7 +21,7 @@ CS_Animation    *loadAnimation(std::string nameSrc, SDL_Renderer *render, std::s
     surface = IMG_Load(png_left.c_str());
     if (!surface)
     {
-        std::cout << "error creating surface" << std::endl;
+        std::cout << "error creating surface 1 -> " << png_left << "." << std::endl;
         exit (0);
     }
     animation->textureL = SDL_CreateTextureFromSurface(render, surface);
@@ -30,7 +30,7 @@ CS_Animation    *loadAnimation(std::string nameSrc, SDL_Renderer *render, std::s
     surface = IMG_Load(png_right.c_str());
     if (!surface)
     {
-        std::cout << "error creating surface" << std::endl;
+        std::cout << "error creating surface 2" << std::endl;
         exit (0);
     }
     animation->textureR = SDL_CreateTextureFromSurface(render, surface);
@@ -57,6 +57,7 @@ CS_Animation    *loadAnimation(std::string nameSrc, SDL_Renderer *render, std::s
         animation->frame[i].h = frameHeight;
         animation->frame[i].x = frameWidth * (i % nb_columnframe);
         animation->frame[i].y = frameHeight * (i / nb_lineframe);
+        i++;
     }
     return (animation);
 }

@@ -1,14 +1,14 @@
 #include "keyControl.h"
 
-void    action(int key, CS_Character *MC)
+void    action(int key)
 {
     if (key == SDL_SCANCODE_Q)
     {
-        MC->right = false;
+//        MC->right = false;
     }
     else if (key == SDL_SCANCODE_D)
     {
-        MC->right = true;
+//        MC->right = true;
     }
 }
 

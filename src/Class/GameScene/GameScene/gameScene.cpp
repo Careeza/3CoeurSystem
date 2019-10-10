@@ -8,6 +8,8 @@ CS_GameScene    *init_gameScene(SDL_Renderer *render)
     scene->CS_loadRenderer(render);
 
     scene->CS_createElementToSceneFromPng("Background", "resources/source/gameBackground.jpg", 100, 100, 0, 0, 0);
+    scene->loadMC();
+    scene->CS_queryMC()->loadAnimation("noMove");
     return (scene);
 }
 

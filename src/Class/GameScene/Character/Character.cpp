@@ -27,8 +27,3 @@ SDL_Rect    *CS_Character::queryFrame()
 {
     return (frame);
 }
-
-bool        CS_Character::useAnimation()
-{
-    return (true);
-}

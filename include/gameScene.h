@@ -12,7 +12,7 @@ class   CS_Animation
         SDL_Texture             *textureR;
         SDL_Texture             *textureL;
         SDL_Rect                *size;
-        std::vector<SDL_Rect>   frame;
+        std::vector<SDL_Rect>  frame;
         std::string             name;
         int                     nbFrame;
         int                     nbColumnFrame;
@@ -40,8 +40,8 @@ class   CS_Character
         SDL_Texture *queryTexture();
         SDL_Rect    *querySize();
         SDL_Rect    *queryFrame();
-        void        loadAnimation(CS_Animation *animationSrc);
-        bool        useAnimation();
+        void        loadAnimation(std::string name);
+        bool        useAnimation(int& i);
         void        loadBank(SDL_Renderer *render);
 
     private:

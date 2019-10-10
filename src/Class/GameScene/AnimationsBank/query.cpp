@@ -4,4 +4,9 @@ CS_Animation    *CS_BankAnimation::CS_queryAnimationByname(std::string name)
 {
     if (noMove->name.compare(name) == 0)
         return (noMove);
+    else
+    {
+        std::cout << "something went wrong in AnimationBank Query.cpp" << std::endl;
+        return (NULL);
+    }
 }

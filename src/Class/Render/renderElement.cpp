@@ -81,7 +81,18 @@ void    dispScene(CS_Scene *current, SDL_Renderer *render)
 
 void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
 {
+    CS_Character    *MC;
+    SDL_Texture     *texture;
+    SDL_Rect        *size;
+    SDL_Rect        *frame;
+
     dispScene(gameScene, render);
+    MC = gameScene->CS_queryMC();
+    texture = MC->queryTexture();
+    frame = MC->queryFrame();
+    size = MC->querySize();
+    std::cout << frame->w << "- " << frame->x << std::endl;
+    SDL_RenderCopy(render, texture, frame, size);
 }
 
 void    CS_Renderer::CS_dispScene()

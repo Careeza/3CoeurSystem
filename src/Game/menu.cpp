@@ -209,18 +209,6 @@ CS_Scene    *init_homeHotkeys(SDL_Renderer *render)
     return (scene);
 }
 
-CS_Scene    *init_game(SDL_Renderer *render)
-{
-    CS_Scene        *scene;
-
-    scene = new(CS_Scene);
-    scene->CS_loadRenderer(render);
-
-    scene->CS_createElementToSceneFromPng("Background", "resources/source/FondJeu2.png", 100, 100, 0, 0, 0);
-
-    return (scene);
-}
-
 CS_Scene    *init_play(SDL_Renderer *render)
 {
     CS_Scene        *scene;
