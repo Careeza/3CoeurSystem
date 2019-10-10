@@ -8,7 +8,7 @@ void    setAnimationSize(float w, float h, float x, float y, SDL_Rect *size)
     size->y = (y * gameSettings.window_height) / 100.0;
 }
 
-CS_Animation    *loadAnimation(SDL_Renderer *render, std::string png_left, std::string png_right, float w, float h, float x, float y, int nb_frame, int nb_columnframe, int nb_lineframe)
+CS_Animation    *loadAnimation(std::string nameSrc, SDL_Renderer *render, std::string png_left, std::string png_right, float w, float h, float x, float y, int nb_frame, int nb_columnframe, int nb_lineframe)
 {
     CS_Animation *animation;
     SDL_Surface *surface;
@@ -16,6 +16,7 @@ CS_Animation    *loadAnimation(SDL_Renderer *render, std::string png_left, std::
 
     i = 0;
     animation = new(CS_Animation);
+    animation->name = nameSrc;
     setAnimationSize(w, h, x, y, animation->size);
     surface = IMG_Load(png_left.c_str());
     if (!surface)
