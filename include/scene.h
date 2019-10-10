@@ -279,6 +279,7 @@ class   CS_Scene
         CS_Color                                    colorBordure;
         CS_Color                                    colorBrightness;
 
+    protected:
         SDL_Renderer                                *render;
 };
 
