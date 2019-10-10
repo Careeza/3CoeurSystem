@@ -79,18 +79,19 @@ void    dispScene(CS_Scene *current, SDL_Renderer *render)
     }
 }
 
-void    dispGameScene()
-{}
+void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
+{
+    dispScene(gameScene, render);
+}
 
 void    CS_Renderer::CS_dispScene()
 {
-    dispScene(gameSettings.current, CS_render);
-    if (gameSettings.currentGame != NULL)
+    if (gameSettings.current != NULL)
     {
         if (gameSettings.pos & (menuMenu | game))
-            dispGameScene();
+            dispGameScene(gameSettings.gameScene, CS_render);
         if (gameSettings.pos & (homeHome | menuMenu))
-            dispScene(gameSettings.currentGame, CS_render);
+            dispScene(gameSettings.current, CS_render);
     }
     SDL_RenderPresent(CS_render);
 }

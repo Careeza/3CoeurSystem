@@ -32,8 +32,3 @@ bool        CS_Character::useAnimation()
 {
     return (true);
 }
-
-void        CS_Character::loadFunction()
-{
-    
-}

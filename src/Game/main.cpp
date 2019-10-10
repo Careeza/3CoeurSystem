@@ -25,7 +25,7 @@ void    keyGlobal(int key)
 	    else if (gameSettings.pos == menuSound)
             goToMenu();
 	    else if (gameSettings.pos == game)
-            ;
+            goToMenu();
         else
             std::cout << "lol you are kaki, Fred 2020" << std::endl;
     }
@@ -89,6 +89,7 @@ int     main(void)
     gameSettings.resolution = gameSettings.window_width / (float)gameSettings.window_height;
     
     render = init_renderer(window);
+    gameSettings.gameScene = init_gameScene(render);
     gameSettings.home = init_home(render);
     gameSettings.menu = init_menu(render);
     gameSettings.controlGame = init_menuHotkeys(render);

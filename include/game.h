@@ -32,6 +32,7 @@ typedef enum	e_pos {
 }				t_pos;
 
 class   CS_Scene;
+class   CS_GameScene;
 class   CS_Element;
 
 void	        init(int flags);
@@ -47,6 +48,8 @@ CS_Scene        *init_homeVideo(SDL_Renderer *render);
 CS_Scene        *init_menuVideo(SDL_Renderer *render);
 CS_Scene        *init_homeSound(SDL_Renderer *render);
 CS_Scene        *init_menuSound(SDL_Renderer *render);
+CS_GameScene    *init_gameScene(SDL_Renderer *render);
+
 
 void    closeGame(void);
 void    menuToHotkeys(void);
@@ -58,6 +61,7 @@ void    homeToVideo(void);
 void    menuTovideo(void);
 void    homeToSound(void);
 void    menuToSound(void);
+void    levelSelectToGame(void);
 
 
 class   CS_Scene;
@@ -74,18 +78,19 @@ typedef struct      s_settings
 
     t_pos       pos;
 
-    CS_Scene    *scene1Game;
-    CS_Scene    *home;
-    CS_Scene    *saveMenu;
-    CS_Scene    *menu;
-    CS_Scene    *controlGame;
-    CS_Scene    *controlHome;
-    CS_Scene    *current;
-    CS_Scene    *currentGame;
-    CS_Scene    *homeVideo;
-    CS_Scene    *menuVideo;
-    CS_Scene    *homeSound;
-    CS_Scene    *menuSound;
+    CS_GameScene    *gameScene;
+    CS_Scene        *scene1Game;
+    CS_Scene        *home;
+    CS_Scene        *saveMenu;
+    CS_Scene        *menu;
+    CS_Scene        *controlGame;
+    CS_Scene        *controlHome;
+    CS_Scene        *current;
+    CS_Scene        *currentGame;
+    CS_Scene        *homeVideo;
+    CS_Scene        *menuVideo;
+    CS_Scene        *homeSound;
+    CS_Scene        *menuSound;
 }                   CS_settings;
 
 extern CS_settings  gameSettings;

@@ -57,7 +57,7 @@ CS_Scene    *init_menu(SDL_Renderer *render)
     scene = new(CS_Scene);
     scene->CS_loadRenderer(render);
 
-    scene->CS_createElementToSceneFromPng("Background", "resources/source/FondJeu2.png", 100, 100, 0, 0, 0);
+//    scene->CS_createElementToSceneFromPng("Background", "resources/source/FondJeu2.png", 100, 100, 0, 0, 0);
 
     scene->CS_setSceneColor(0x00, 0x00, 0x00, 175);
     scene->CS_createElementToScene("filtre", 100, 100, 0, 0, 0);
@@ -65,7 +65,7 @@ CS_Scene    *init_menu(SDL_Renderer *render)
     scene->CS_setSceneColor(0xA9, 0xA9, 0xA9, 0);
     scene->CS_setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
 
-    scene->CS_createButtonToScene("Continue", 30, 12, 35, 10, 5, &closeGame);
+    scene->CS_createButtonToScene("Continue", 30, 12, 35, 10, 5, &levelSelectToGame);
     scene->CS_writeTexte(-1, "Continue");
 
     scene->CS_createButtonToScene("Hotkeys", 30, 12, 35, 27, 5, &menuToHotkeys);
@@ -91,7 +91,7 @@ CS_Scene    *init_menuHotkeys(SDL_Renderer *render)
     scene = new(CS_Scene);
     scene->CS_loadRenderer(render);
 
-    scene->CS_createElementToSceneFromPng("Background", "resources/source/FondJeu2.png", 100, 100, 0, 0, 0);
+//    scene->CS_createElementToSceneFromPng("Background", "resources/source/FondJeu2.png", 100, 100, 0, 0, 0);
 
     scene->CS_setSceneColor(0x00, 0x00, 0x00, 175);
     scene->CS_createElementToScene("filtre", 100, 100, 0, 0, 0);
@@ -238,17 +238,17 @@ CS_Scene    *init_play(SDL_Renderer *render)
     scene->CS_createElementToScene("Filtre", 100, 100, 0, 0, 0);
 
 
-    scene->CS_createButtonToSceneFromPng("Continue", "resources/source/FondJeu2.png", 25, 30, 37.5, 35, 5, &goToMenu);
+    scene->CS_createButtonToSceneFromPng("Continue", "resources/source/FondJeu2.png", 25, 30, 37.5, 35, 5, &levelSelectToGame);
     scene->CS_writeTexteScaleW(-1, "Continue");
     scene->CS_addBorder(-1);
 
 
-    scene->CS_createButtonToSceneFromPng("New", "resources/source/NewGame.png", 25, 30, 7.5, 35, 5, &goToMenu);
+    scene->CS_createButtonToSceneFromPng("New", "resources/source/NewGame.png", 25, 30, 7.5, 35, 5, &levelSelectToGame);
     scene->CS_writeTexteScaleW(-1, "New Game");
     scene->CS_addBorder(-1);
 
 
-    scene->CS_createButtonToSceneFromPng("Load", "resources/source/FondJeu2.png", 25, 30, 67.5, 35, 5, &goToMenu);
+    scene->CS_createButtonToSceneFromPng("Load", "resources/source/FondJeu2.png", 25, 30, 67.5, 35, 5, &levelSelectToGame);
     scene->CS_writeTexteScaleW(-1, "Load Game");
     scene->CS_addBorder(-1);
 
@@ -320,7 +320,7 @@ CS_Scene    *init_menuVideo(SDL_Renderer *render)
     scene = new(CS_Scene);
     scene->CS_loadRenderer(render);
 
-    scene->CS_createElementToSceneFromPng("Background", "resources/source/FondJeu2.png", 100, 100, 0, 0, 0);
+//    scene->CS_createElementToSceneFromPng("Background", "resources/source/FondJeu2.png", 100, 100, 0, 0, 0);
 
     scene->CS_setSceneColor(0x00, 0x00, 0x00, 175);
     scene->CS_createElementToScene("Filtre", 100, 100, 0, 0, 0);
@@ -409,7 +409,7 @@ CS_Scene    *init_menuSound(SDL_Renderer *render)
     scene = new(CS_Scene);
     scene->CS_loadRenderer(render);
 
-    scene->CS_createElementToSceneFromPng("Background", "resources/source/FondJeu2.png", 100, 100, 0, 0, 0);
+//    scene->CS_createElementToSceneFromPng("Background", "resources/source/FondJeu2.png", 100, 100, 0, 0, 0);
 
     scene->CS_setSceneColor(0x00, 0x00, 0x00, 175);
     scene->CS_createElementToScene("Filtre", 100, 100, 0, 0, 0);
