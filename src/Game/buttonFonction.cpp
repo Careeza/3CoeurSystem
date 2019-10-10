@@ -60,3 +60,8 @@ void    menuToSound(void)
     gameSettings.current = gameSettings.menuSound;
     gameSettings.pos = menuSound;
 }
+
+void    levelSelectToGame(void)
+{
+    gameSettings.pos = game;
+}
