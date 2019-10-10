@@ -8,15 +8,14 @@ void    setAnimationSize(float w, float h, float x, float y, SDL_Rect *size)
     size->y = (y * gameSettings.window_height) / 100.0;
 }
 
-t_animation    *loadAnimation(SDL_Renderer render, string png_left, string png_right, float w, float h, float x, float y, int nb_frame, int nb_columnframe, int nb_lineframe)
+CS_Animation    *loadAnimation(SDL_Renderer *render, std::string png_left, std::string png_right, float w, float h, float x, float y, int nb_frame, int nb_columnframe, int nb_lineframe)
 {
-    t_animation *animation;
+    CS_Animation *animation;
     SDL_Surface *surface;
     int         i;
 
     i = 0;
-    animation = new(t_animation);
-    animation->size = new(SDL_Rect);
+    animation = new(CS_Animation);
     setAnimationSize(w, h, x, y, animation->size);
     surface = IMG_Load(png_left.c_str());
     if (!surface)
@@ -24,7 +23,7 @@ t_animation    *loadAnimation(SDL_Renderer render, string png_left, string png_r
         std::cout << "error creating surface" << std::endl;
         exit (0);
     }
-    animation->TextureL = SDL_CreateTextureFromSurface(render, surface);
+    animation->textureL = SDL_CreateTextureFromSurface(render, surface);
 	SDL_FreeSurface(surface);
 
     surface = IMG_Load(png_right.c_str());
@@ -33,7 +32,7 @@ t_animation    *loadAnimation(SDL_Renderer render, string png_left, string png_r
         std::cout << "error creating surface" << std::endl;
         exit (0);
     }
-    animation->TextureR = SDL_CreateTextureFromSurface(render, surface);
+    animation->textureR = SDL_CreateTextureFromSurface(render, surface);
 	SDL_FreeSurface(surface);
 
     animation->nbFrame = nb_frame;
@@ -45,15 +44,18 @@ t_animation    *loadAnimation(SDL_Renderer render, string png_left, string png_r
     int width;
     int height;
     int frameWidth;
-    int frameHeight
+    int frameHeight;
 
-    SDL_QueryTexture (animation->TextureL, NULL, NULL, &width, &height);
+    SDL_QueryTexture (animation->textureL, NULL, NULL, &width, &height);
     frameWidth = width / nb_columnframe;
     frameHeight = height / nb_lineframe;
 
     while (i < nb_frame)
     {
-        animation->frame[i].width = frameWidth;
-        animation->frame[i].height = frameHeight;
+        animation->frame[i].w = frameWidth;
+        animation->frame[i].h = frameHeight;
+        animation->frame[i].x = frameWidth * (i % nb_columnframe);
+        animation->frame[i].y = frameHeight * (i / nb_lineframe);
     }
+    return (animation);
 }

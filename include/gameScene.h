@@ -2,22 +2,29 @@
 
 # define GAMESCENE_H
 
-typedef struct      s_animation
+# include "scene.h"
+
+class   CS_Animation
 {
+    public:
+    CS_Animation();
+    ~CS_Animation();
     SDL_Texture         *textureR;
     SDL_Texture         *textureL;
     SDL_Rect            *size;
-    vector<SDL_Rect>    frame;
+    std::vector<SDL_Rect>    frame;
     int                 nbFrame;
     int                 nbColumnFrame;
     int                 nbLineFrame;
-}                   t_animation;
+};
 
-typedef struct      s_bankAnimation
+class CS_BankAnimation
 {
-    t_animation     animation1;
-    t_animation     animation2;
-}                  t_bankAnimation
+    public:
+    CS_BankAnimation();
+    ~CS_BankAnimation()
+    CS_Animation     *noMove;
+};
 
 class   CS_Character
 {
@@ -31,13 +38,13 @@ class   CS_Character
         void        loadFunction();
 
     private:
-        SDL_Texture         texture;
-        SDL_Rect            size;
-        SDL_Rect            frame;
+        SDL_Texture         *texture;
+        SDL_Rect            *size;
+        SDL_Rect            *frame;
         bool                right;
         bool                endAnimation;
         int                 i;
-        t_bankAnimation     bank;
+        CS_BankAnimation    bank;
 };
 
 #endif

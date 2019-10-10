@@ -12,17 +12,27 @@ CS_Character::~CS_Character()
 
 }
 
-SDL_Texture CS_Character::*queryTexture()
+SDL_Texture *CS_Character::queryTexture()
 {
     return (texture);
 }
 
-SDL_Texture CS_Character::*querySize()
+SDL_Rect    *CS_Character::querySize()
 {
     return (size);
 }
 
-SDL_Texture CS_Character::*queryFrame()
+SDL_Rect    *CS_Character::queryFrame()
 {
     return (frame);
+}
+
+bool        CS_Character::useAnimation()
+{
+    return (true);
+}
+
+void        CS_Character::loadFunction()
+{
+    
 }
