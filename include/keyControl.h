@@ -14,6 +14,35 @@
 #define CS_KEYDOWN 1
 #define CS_NOKEY 2
 
+typedef struct  s_actionValue
+{
+    int        up;
+    int        down;
+    int        right;
+    int        left;
+    int        jump;
+    int        dodge;
+    int        att;
+    int        att_sp;
+    int        use;
+    int        spell_1;
+    int        spell_2;
+}               t_actionValue
+
+typedef struct  s_actionTable
+{
+    bool        up;
+    bool        down;
+    bool        right;
+    bool        left;
+    bool        jump;
+    bool        dodge;
+    bool        att;
+    bool        att_sp;
+    bool        use;
+    bool        spell_1;
+    bool        spell_2;
+}               t_actionTable
 
 class   CS_KeyControl
 {
