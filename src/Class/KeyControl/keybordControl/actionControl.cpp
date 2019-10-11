@@ -2,11 +2,21 @@
 
 void    useAction(t_actionTable *table)
 {
+    CS_Character    *MC;
+
+    MC = gameSettings.gameScene->CS_queryMC();
     if (table->right == true)
-        gameSettings.gameScene->CS_queryMC()->setRight(true);
+    {
+        MC->loadAnimation("AllenWalker");
+        MC->setRight(true);
+    }
     else if (table->left == true)
-        gameSettings.gameScene->CS_queryMC()->setRight(false);
-//    else
+    {
+        MC->loadAnimation("AllenWalker");
+        MC->setRight(false);
+    }
+    else
+        MC->loadAnimation("noMove");
 //        std::cout << "no moove" << std::endl;
 }
 

@@ -1,12 +1,11 @@
 # include "gameScene.h"
 
-bool    CS_Character::useAnimation(int& i)
+bool    CS_Character::useAnimation()
 {
     if (right == true)
     {
         texture = animation->textureR;
         size->x += animation->movement[i];
-        std::cout << "move" << std::endl;
     }
     else
     {
@@ -18,8 +17,9 @@ bool    CS_Character::useAnimation(int& i)
     if (size->x > gameSettings.window_width - size->w)
         size->x = gameSettings.window_width - size->w;
     frame = &animation->frame[i];
+    std::cout << "move = " << i << " / "<< animation->nbFrame << std::endl;
     i++;
-    if (i == animation->nbFrame)
+    if (i >= animation->nbFrame)
     {
         i = 0;
         return (true);

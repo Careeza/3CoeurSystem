@@ -50,7 +50,7 @@ class   CS_Character
         SDL_Rect    *querySize();
         SDL_Rect    *queryFrame();
         void        loadAnimation(std::string name);
-        bool        useAnimation(int& i);
+        bool        useAnimation();
         void        setRight(bool rightSource);
         void        loadBank(SDL_Renderer *render);
 

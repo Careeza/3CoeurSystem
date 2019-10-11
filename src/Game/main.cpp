@@ -4,9 +4,7 @@
 void    infiniteLoop(CS_Renderer render, t_actionValue *value)
 {
     CS_KeyControl   event;
-    int             i;
 
-    i = 0;
     while (!gameSettings.closeRequested)
     {
         while (event.loadEvenement())
@@ -18,7 +16,7 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value)
             escapeKeyManagement(event);
         }
         if (gameSettings.pos == game)
-            gameSettings.gameScene->CS_queryMC()->useAnimation(i);
+            gameSettings.gameScene->CS_queryMC()->useAnimation();
         render.CS_dispScene();
         SDL_Delay(1000/30);
     }
