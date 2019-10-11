@@ -3,10 +3,15 @@
 bool    CS_Character::useAnimation(int& i)
 {
     if (right == true)
+    {
         texture = animation->textureR;
+        size->x += animation->movement[i];
+    }
     else
+    {
         texture = animation->textureL;
-    size = animation->size;
+        size->x -= animation->movement[i];
+    }
     frame = &animation->frame[i];
     i++;
     if (i == animation->nbFrame)

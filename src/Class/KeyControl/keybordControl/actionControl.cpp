@@ -3,9 +3,9 @@
 void    useAction(t_actionTable *table)
 {
     if (table->right == true)
-        std::cout << "turn right" << std::endl;
+        gameSettings.gameScene->CS_queryMC()->setRight(true);
     else if (table->left == true)
-        std::cout << "turn left" << std::endl;
+        gameSettings.gameScene->CS_queryMC()->setRight(false);
 //    else
 //        std::cout << "no moove" << std::endl;
 }

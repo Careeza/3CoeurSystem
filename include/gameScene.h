@@ -11,7 +11,6 @@ class   CS_Animation
         ~CS_Animation();
         SDL_Texture             *textureR;
         SDL_Texture             *textureL;
-        SDL_Rect                *size;
         std::vector<SDL_Rect>   frame;
         std::vector<int>        movement;
         std::string             name;

@@ -32,14 +32,6 @@ void    loadTexture(CS_Animation *animation, SDL_Renderer *render, std::string p
 	SDL_FreeSurface(surface);
 }
 
-void        setSize(CS_Animation *animation, float w, float h, float x, float y)
-{
-    animation->size->w = (w * gameSettings.window_width) / 100.0;
-    animation->size->h = (h * gameSettings.window_height) / 100.0;
-    animation->size->x = (x * gameSettings.window_width) / 100.0;
-    animation->size->y = (y * gameSettings.window_height) / 100.0;
-}
-
 void        cutFrame(CS_Animation *animation, int nb_frame, int nb_columnframe, int nb_lineframe)
 {
     int i;
@@ -72,7 +64,7 @@ void            setMovement(CS_Animation *animation, int nb_frame, ...)
     int     i;
 
     i = 0;
-    va_start(op, animation, nb_frame);
+    va_start(op, nb_frame);
     animation->movement.resize(nb_frame);
     while (i < nb_frame)
     {
