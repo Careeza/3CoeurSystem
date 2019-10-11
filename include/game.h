@@ -11,6 +11,7 @@
 # include <iostream>
 # include <string>
 # include <vector>
+# include <stdarg.h>
 
 # define    CS_MOTION 1
 # define    CS_MOUSE_DOWN 2

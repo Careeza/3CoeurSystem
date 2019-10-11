@@ -12,7 +12,8 @@ class   CS_Animation
         SDL_Texture             *textureR;
         SDL_Texture             *textureL;
         SDL_Rect                *size;
-        std::vector<SDL_Rect>  frame;
+        std::vector<SDL_Rect>   frame;
+        std::vector<int>        movement;
         std::string             name;
         int                     nbFrame;
         int                     nbColumnFrame;
@@ -24,6 +25,8 @@ CS_Animation    *initAnimation(std::string name);
 void            loadTexture(CS_Animation *animation, SDL_Renderer *render, std::string png_left, std::string png_right);
 void            setSize(CS_Animation *animation, float w, float h, float x, float y);
 void            cutFrame(CS_Animation *animation, int nb_frame, int nb_columnframe, int nb_lineframe);
+void            setMovement(CS_Animation *animation, int nb_frame, ...);
+
 
 class CS_BankAnimation
 {

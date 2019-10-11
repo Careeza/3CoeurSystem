@@ -65,3 +65,19 @@ void        cutFrame(CS_Animation *animation, int nb_frame, int nb_columnframe, 
         i++;
     }
 }
+
+void            setMovement(CS_Animation *animation, int nb_frame, ...)
+{
+    va_list op;
+    int     i;
+
+    i = 0;
+    va_start(op, animation, nb_frame);
+    animation->movement.resize(nb_frame);
+    while (i < nb_frame)
+    {
+        animation->movement[i] = va_arg(op, int);
+        i++;
+    }
+    va_end(op);
+}
