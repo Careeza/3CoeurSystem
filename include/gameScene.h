@@ -34,8 +34,11 @@ class CS_BankAnimation
         ~CS_BankAnimation();
         CS_Animation    *CS_queryAnimationByname(std::string name);
         void            loadNoMove(SDL_Renderer *render);
+        void            loadAllenWalker(SDL_Renderer *render);
     private:
         CS_Animation    *noMove;
+        CS_Animation    *AllenWalker;
+
 };
 
 class   CS_Character
