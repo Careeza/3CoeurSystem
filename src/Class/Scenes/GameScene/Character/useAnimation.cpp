@@ -17,6 +17,7 @@ bool    CS_Character::useAnimation()
     if (size->x > gameSettings.window_width - size->w)
         size->x = gameSettings.window_width - size->w;
     frame = &animation->frame[i];
+    std::cout << "move = " << i << " / "<< animation->nbFrame << std::endl;
     i++;
     if (i >= animation->nbFrame)
     {
