@@ -68,7 +68,7 @@ void            setMovement(CS_Animation *animation, int nb_frame, ...)
     animation->movement.resize(nb_frame);
     while (i < nb_frame)
     {
-        animation->movement[i] = va_arg(op, double) * gameSettings.window_width;
+        animation->movement[i] = va_arg(op, double) * gameSettings.window_width / 100;
         i++;
     }
     va_end(op);
