@@ -12,6 +12,7 @@
 # include <string>
 # include <vector>
 # include <stdarg.h>
+# include <math.h>
 
 # define    CS_MOTION 1
 # define    CS_MOUSE_DOWN 2
@@ -62,7 +63,8 @@ void    menuTovideo(void);
 void    homeToSound(void);
 void    menuToSound(void);
 void    levelSelectToGame(void);
-
+void    dispDialogueBox(void);
+void    hideDialogueBox(void);
 
 class   CS_Scene;
 

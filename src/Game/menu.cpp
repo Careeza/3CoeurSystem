@@ -26,10 +26,10 @@ CS_Scene    *init_home(SDL_Renderer *render)
     scene->CS_createButtonToScene("Sound", 12, 6, 0, 76, 5, &homeToSound);
     scene->CS_writeTexte(-1, "Sound");
 
-    scene->CS_createButtonToScene("Exit game", 12, 6, 0, 84, 5, &closeGame);
+    scene->CS_createButtonToScene("Exit game", 12, 6, 0, 84, 5, &dispDialogueBox);
     scene->CS_writeTexte(-1, "Exit game");
 
-    /*scene->CS_setSceneColor(0x00, 0x00, 0x00, 175);
+    scene->CS_setSceneColor(0x00, 0x00, 0x00, 175);
     scene->CS_createElementToScene("filtre", 100, 100, 0, 0, 40);
 
     scene->CS_createElementToScene("dialogue", 50, 50, 25, 25, 41);
@@ -39,13 +39,19 @@ CS_Scene    *init_home(SDL_Renderer *render)
     scene->CS_createElementToScene("Question", 50, 10, 25, 35, 42);
     scene->CS_writeTexte(-1, "Are you sure ?");
 
-    scene->CS_createElementToScene("YES", 20, 10, 28.3, 55, 42);
+    scene->CS_createButtonToScene("YES", 20, 10, 28.3, 55, 42, &closeGame);
     scene->CS_addBorder(-1);
     scene->CS_writeTexte(-1, "Yes");
 
-    scene->CS_createElementToScene("NO", 20, 10, 51.6, 55, 42);
+    scene->CS_createButtonToScene("NO", 20, 10, 51.6, 55, 42, &hideDialogueBox);
     scene->CS_addBorder(-1);
-    scene->CS_writeTexte(-1, "No");*/
+    scene->CS_writeTexte(-1, "No");
+
+    scene->CS_setDisp(false, scene->CS_queryIndexByName("filtre"));
+    scene->CS_setDisp(false, scene->CS_queryIndexByName("dialogue"));
+    scene->CS_setDisp(false, scene->CS_queryIndexByName("Question"));
+    scene->CS_setDisp(false, scene->CS_queryIndexByName("YES"));
+    scene->CS_setDisp(false, scene->CS_queryIndexByName("NO"));
     
     return (scene);
 }

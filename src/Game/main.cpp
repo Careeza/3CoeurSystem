@@ -4,9 +4,11 @@
 void    infiniteLoop(CS_Renderer render, t_actionValue *value)
 {
     CS_KeyControl   event;
+    CS_Timer        timer;
 
     while (!gameSettings.closeRequested)
     {
+        timer.start();
         while (event.loadEvenement())
         {
             if (gameSettings.pos & (homeHome | menuMenu))
@@ -18,7 +20,7 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value)
         if (gameSettings.pos == game)
             gameSettings.gameScene->CS_queryMC()->useAnimation();
         render.CS_dispScene();
-        SDL_Delay(1000/30);
+        SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));
     }
 }
 

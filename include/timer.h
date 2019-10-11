@@ -4,7 +4,7 @@
 
 # include "game.h"
 
-class Timer
+class CS_Timer
 {
     private:
     int startTicks;
@@ -14,7 +14,7 @@ class Timer
     bool started;
 
     public:
-    Timer();
+    CS_Timer();
 
     void start();
     void stop();

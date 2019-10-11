@@ -1,4 +1,4 @@
-#include "game.h"
+#include "gameScene.h"
 
 using namespace std;
 
@@ -65,4 +65,29 @@ void    levelSelectToGame(void)
 {
     gameSettings.current = gameSettings.menu;
     gameSettings.pos = game;
+}
+
+void    dispDialogueBox(void)
+{
+    CS_Scene    *scene;
+
+    scene = gameSettings.current;
+    scene->CS_setDisp(true, scene->CS_queryIndexByName("filtre"));
+    scene->CS_setDisp(true, scene->CS_queryIndexByName("dialogue"));
+    scene->CS_setDisp(true, scene->CS_queryIndexByName("Question"));
+    scene->CS_setDisp(true, scene->CS_queryIndexByName("YES"));
+    scene->CS_setDisp(true, scene->CS_queryIndexByName("NO"));
+}
+
+void    hideDialogueBox(void)
+{
+    CS_Scene    *scene;
+
+    scene = gameSettings.current;
+
+    scene->CS_setDisp(false, scene->CS_queryIndexByName("filtre"));
+    scene->CS_setDisp(false, scene->CS_queryIndexByName("dialogue"));
+    scene->CS_setDisp(false, scene->CS_queryIndexByName("Question"));
+    scene->CS_setDisp(false, scene->CS_queryIndexByName("YES"));
+    scene->CS_setDisp(false, scene->CS_queryIndexByName("NO"));
 }
