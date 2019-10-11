@@ -19,7 +19,11 @@ class   CS_Animation
         int                     nbLineFrame;
 };
 
-CS_Animation    *loadAnimation(std::string nameSrc, SDL_Renderer *render, std::string png_left, std::string png_right, float w, float h, float x, float y, int nb_frame, int nb_columnframe, int nb_lineframe);
+
+CS_Animation    *initAnimation(std::string name);
+void            loadTexture(CS_Animation *animation, SDL_Renderer *render, std::string png_left, std::string png_right);
+void            setSize(CS_Animation *animation, float w, float h, float x, float y);
+void            cutFrame(CS_Animation *animation, int nb_frame, int nb_columnframe, int nb_lineframe);
 
 class CS_BankAnimation
 {
@@ -42,6 +46,7 @@ class   CS_Character
         SDL_Rect    *queryFrame();
         void        loadAnimation(std::string name);
         bool        useAnimation(int& i);
+        void        setRight(bool rightSource);
         void        loadBank(SDL_Renderer *render);
 
     private:

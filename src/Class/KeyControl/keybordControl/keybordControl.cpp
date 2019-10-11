@@ -4,13 +4,13 @@ int     CS_KeyControl::CS_getKeyboardActions(int& key)
 {
     if (type == SDL_KEYDOWN)
     {
-        key = event.key.keysym.scancode;
+        key = event.key.keysym.sym;
         return (CS_KEYDOWN);
         std::cout << "key DOWN !" << std::endl;
     }
     else if (type == SDL_KEYUP)
     {
-        key = event.key.keysym.scancode;
+        key = event.key.keysym.sym;
         return (CS_KEYUP);
         std::cout << "key UP !" << std::endl;
     }

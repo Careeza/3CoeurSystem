@@ -15,7 +15,6 @@ int     bouttonManagement(CS_KeyControl& control)
             saveButton->CS_setBrightness(false);
         }
         saveButton = button;
-        std::cout << "here" << std::endl;
     }
     if (buttonInfo == NO_BOUTON)
     {

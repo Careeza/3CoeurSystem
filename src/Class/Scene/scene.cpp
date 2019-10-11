@@ -2,7 +2,7 @@
 
 CS_Scene::CS_Scene()
 {
-    std::cout << " --- create scene --- "<< std::endl;
+//    std::cout << " --- create scene --- "<< std::endl;
     CS_sceneLen = 0;
 
     colorBrightness.CS_setColor(0xFF, 0xFF, 0xFF, 80);

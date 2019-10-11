@@ -17,3 +17,8 @@ bool    CS_Character::useAnimation(int& i)
     else
         return (false);
 }
+
+void        CS_Character::setRight(bool rightSource)
+{
+    right = rightSource;
+}

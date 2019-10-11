@@ -34,7 +34,7 @@ void    escapeKeyManagement(CS_KeyControl event)
     static bool keyPress;
  
     info = event.CS_getKeyboardActions(key);
-    if (key == SDL_SCANCODE_ESCAPE)
+    if (key == SDLK_ESCAPE)
     {
         if (keyPress == false)
             escapeAction();

@@ -2,12 +2,12 @@
 
 void        CS_BankAnimation::loadNoMove(SDL_Renderer *render)
 {
-    int h;
-    int y;
-    
-    h = 10 * gameSettings.resolution;
-    y = 50 - h / 2;
-    noMove = loadAnimation("noMove", render, "resources/source/MCNoMoveL.png", "resources/source/MCNoMoveR.png", 10, h, 45, y, 1, 1, 1);
+    noMove = initAnimation("noMove");
+//    loadTexture(noMove, render, "resources/source/MCNoMoveL.png", "resources/source/MCNoMoveR.png");
+    loadTexture(noMove, render, "resources/source/AllenWalkerL.png", "resources/source/AllenWalkerR.png");
+    setSize(noMove, 10, 10 * gameSettings.resolution, 45, 50 - (5 * gameSettings.resolution));
+//    cutFrame(noMove, 1, 1, 1);
+    cutFrame(noMove, 5, 5, 1);
 }
 
 void        CS_Character::loadBank(SDL_Renderer *render)

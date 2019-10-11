@@ -1,7 +1,7 @@
 #include "class.h"
 #include "game.h"
 
-void    infiniteLoop(CS_Renderer render)
+void    infiniteLoop(CS_Renderer render, t_actionValue *value)
 {
     CS_KeyControl   event;
     int             i;
@@ -13,11 +13,14 @@ void    infiniteLoop(CS_Renderer render)
         {
             if (gameSettings.pos & (homeHome | menuMenu))
                 bouttonManagement(event);
-            escapeKeyManagement(event);
             if (gameSettings.pos == game)
-                gameSettings.gameScene->CS_queryMC()->useAnimation(i);
+                actionKeyManagement(event, value);
+            escapeKeyManagement(event);
         }
+        if (gameSettings.pos == game)
+            gameSettings.gameScene->CS_queryMC()->useAnimation(i);
         render.CS_dispScene();
+        SDL_Delay(1000/30);
     }
 }
 
@@ -40,6 +43,7 @@ int     main(void)
     CS_Renderer     rend;
     CS_KeyControl   *event;
     CS_Police       initFont;
+    t_actionValue   value;
 
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
@@ -66,7 +70,20 @@ int     main(void)
     rend.CS_loadRenderer(render);
     event = new(CS_KeyControl);
 
-    infiniteLoop(rend);
+    fillActionValue(&value);
+
+    infiniteLoop(rend, &value);
+
+    delete gameSettings.gameScene;
+    delete gameSettings.home;
+    delete gameSettings.menu;
+    delete gameSettings.controlGame;
+    delete gameSettings.controlHome;
+    delete gameSettings.saveMenu;
+    delete gameSettings.homeVideo;
+    delete gameSettings.menuVideo;
+    delete gameSettings.homeSound;
+    delete gameSettings.menuSound;
 
     TTF_Quit();
     SDL_Quit();

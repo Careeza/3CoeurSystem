@@ -62,7 +62,12 @@ class   CS_KeyControl
 
 };
 
-void            escapeKeyManagement(CS_KeyControl event);
-int             bouttonManagement(CS_KeyControl& control);
+void    escapeKeyManagement(CS_KeyControl event);
+int     bouttonManagement(CS_KeyControl& control);
+void    actionKeyManagement(CS_KeyControl event, t_actionValue *value);
+void    filtreActionTable(t_actionTable *table, t_actionTable *filtre);
+void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);
+void    resetActionTable(t_actionTable *table);
+void    fillActionValue(t_actionValue *value);
 
 #endif

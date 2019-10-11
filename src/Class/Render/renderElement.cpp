@@ -50,7 +50,7 @@ void    disp_brightness(std::shared_ptr<CS_Element> element, SDL_Renderer *rende
 
     brightness = element->CS_queryBrightness();
     texture = brightness->CS_queryTexture();
-    size = brightness->CS_querySize(); 
+    size = brightness->CS_querySize();
     SDL_RenderCopy(render, texture, NULL, size);
 }
 
@@ -91,7 +91,6 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
     texture = MC->queryTexture();
     frame = MC->queryFrame();
     size = MC->querySize();
-    std::cout << frame->w << "- " << frame->x << std::endl;
     SDL_RenderCopy(render, texture, frame, size);
 }
 

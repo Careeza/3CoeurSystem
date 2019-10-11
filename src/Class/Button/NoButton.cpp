@@ -2,7 +2,7 @@
 
 CS_NoButton::CS_NoButton()
 {
-    std::cout << "create button"<< std::endl;
+//    std::cout << "create button"<< std::endl;
     buttonSize = new (SDL_Rect);
     buttonSize->w = 0;
     buttonSize->h = 0;
@@ -12,7 +12,7 @@ CS_NoButton::CS_NoButton()
 
 CS_NoButton::~CS_NoButton()
 {
-    std::cout << "destruction du Nobutton" << std::endl;
+//    std::cout << "destruction du Nobutton" << std::endl;
     delete buttonSize;
 }
 
