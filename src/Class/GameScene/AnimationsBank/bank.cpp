@@ -8,6 +8,7 @@ void        CS_BankAnimation::loadNoMove(SDL_Renderer *render)
 //    setSize(noMove, 10, 10 * gameSettings.resolution, 45, 50 - (5 * gameSettings.resolution));
 //    cutFrame(noMove, 1, 1, 1);
     cutFrame(noMove, 5, 5, 1);
+    setMovement(noMove, 5, 1, 1, 1, 1, 1);
 }
 
 void        CS_Character::loadBank(SDL_Renderer *render)
