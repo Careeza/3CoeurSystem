@@ -32,3 +32,7 @@ void            CS_Element::CS_setZoom(int zoom)
     text->CS_zoomText(zoom);
 }
 
+void            CS_Element::CS_setButton(bool button)
+{
+    enabaleButton = button;
+}

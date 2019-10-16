@@ -1,7 +1,33 @@
 #include "class.h"
 #include "game.h"
 
+void    escapeKeyManagementChatBox(CS_KeyControl event)
+{
+    int         key;
+    int         info;
+ 
+    info = event.CS_getKeyboardActions(key);
+    if (key == SDLK_ESCAPE)
+        gameSettings.closeRequested = true;
+}
 
+CS_Scene    *init_chatBox(SDL_Renderer *render)
+{
+    CS_Scene        *scene;
+
+    scene = new(CS_Scene);
+    scene->CS_loadRenderer(render);
+    
+    scene->CS_setSceneColor(0xFF, 0xFF, 0xFF, 0xFF);
+    scene->CS_createElementToScene("filtre", 100, 100, 0, 0, 0);
+    
+    scene->CS_setBorderColor(0x00, 0x00, 0x00, 0xFF);
+    scene->CS_setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
+    scene->CS_createElementToScene("filtre", 80, 15, 10, 42.5, 0);
+    scene->CS_addBorder(-1);
+
+    return (scene);
+}
 
 void    infiniteLoop(CS_Renderer render, t_actionValue *value)
 {
@@ -13,14 +39,9 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value)
         timer.start();
         while (event.loadEvenement())
         {
-            if (gameSettings.pos & (homeHome | menuMenu))
-                bouttonManagement(event);
-            if (gameSettings.pos == game)
-                actionKeyManagement(event, value);
-            escapeKeyManagement(event);
+            bouttonManagement(event);
+            escapeKeyManagementChatBox(event);
         }
-        if (gameSettings.pos == game)
-            gameSettings.gameScene->CS_queryMC()->useAnimation();
         render.CS_dispScene();
         SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));
     }
@@ -38,6 +59,7 @@ CS_settings gameSettings = {
 
 TTF_Font    *CS_Police::CS_font = NULL;
 
+
 int     main(void)
 {
     SDL_Window      *window;
@@ -49,8 +71,7 @@ int     main(void)
 
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
-    //window = create_window(0, "Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 600);
-
+    
     TTF_Init();
     initFont.CS_initPolice("resources/alterebro-pixel-font.ttf");
 
@@ -58,36 +79,14 @@ int     main(void)
     gameSettings.resolution = gameSettings.window_width / (float)gameSettings.window_height;
     
     render = init_renderer(window);
-    gameSettings.gameScene = init_gameScene(render);
-    gameSettings.home = init_home(render);
-    gameSettings.menu = init_menu(render);
-    gameSettings.controlGame = init_menuHotkeys(render);
-    gameSettings.controlHome = init_homeHotkeys(render);
-    gameSettings.saveMenu = init_play(render);
-    gameSettings.homeVideo = init_homeVideo(render);
-    gameSettings.menuVideo = init_menuVideo(render);
-    gameSettings.homeSound = init_homeSound(render);
-    gameSettings.menuSound = init_menuSound(render);
+    gameSettings.home = init_chatBox(render);
     gameSettings.current = gameSettings.home;
+
     rend.CS_loadRenderer(render);
     event = new(CS_KeyControl);
 
     fillActionValue(&value);
 
     infiniteLoop(rend, &value);
-
-    delete gameSettings.gameScene;
-    delete gameSettings.home;
-    delete gameSettings.menu;
-    delete gameSettings.controlGame;
-    delete gameSettings.controlHome;
-    delete gameSettings.saveMenu;
-    delete gameSettings.homeVideo;
-    delete gameSettings.menuVideo;
-    delete gameSettings.homeSound;
-    delete gameSettings.menuSound;
-
-    TTF_Quit();
-    SDL_Quit();
-    return(0);
+    return (0);
 }

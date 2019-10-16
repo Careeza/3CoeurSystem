@@ -77,6 +77,13 @@ void    dispDialogueBox(void)
     scene->CS_setDisp(true, scene->CS_queryIndexByName("Question"));
     scene->CS_setDisp(true, scene->CS_queryIndexByName("YES"));
     scene->CS_setDisp(true, scene->CS_queryIndexByName("NO"));
+
+    scene->CS_setButton(false, scene->CS_queryIndexByName("Play"));
+    scene->CS_setButton(false, scene->CS_queryIndexByName("Hotkeys"));
+    scene->CS_setButton(false, scene->CS_queryIndexByName("Video"));
+    scene->CS_setButton(false, scene->CS_queryIndexByName("Sound"));
+    scene->CS_setButton(false, scene->CS_queryIndexByName("Exit game"));
+    gameSettings.pos = homeBox;
 }
 
 void    hideDialogueBox(void)
@@ -90,4 +97,11 @@ void    hideDialogueBox(void)
     scene->CS_setDisp(false, scene->CS_queryIndexByName("Question"));
     scene->CS_setDisp(false, scene->CS_queryIndexByName("YES"));
     scene->CS_setDisp(false, scene->CS_queryIndexByName("NO"));
+
+    scene->CS_setButton(true, scene->CS_queryIndexByName("Play"));
+    scene->CS_setButton(true, scene->CS_queryIndexByName("Hotkeys"));
+    scene->CS_setButton(true, scene->CS_queryIndexByName("Video"));
+    scene->CS_setButton(true, scene->CS_queryIndexByName("Sound"));
+    scene->CS_setButton(true, scene->CS_queryIndexByName("Exit game"));
+    gameSettings.pos = homeHome;
 }

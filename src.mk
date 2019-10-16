@@ -47,3 +47,5 @@ SRCS += src/Class/Scenes/Scene/SceneControl/sceneQuery.cpp
 SRCS += src/Class/Timer/timer.cpp
 SRCS += src/Game/load.cpp
 SRCS += src/Game/main.cpp
+SRCS += src/chatBox/chatBox.cpp
+SRCS += src/chatBox/load.cpp

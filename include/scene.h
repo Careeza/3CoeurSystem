@@ -183,10 +183,12 @@ class   CS_Element
 
         bool            CS_isElementButton();
         bool            CS_isElementDisp();
+        bool            CS_isButtonEnable();
         bool            CS_haveText();
         bool            CS_haveBorder();
         bool            CS_haveBrightness();
 
+        void            CS_setButton(bool button);
         void            CS_setDisp(bool disp);
         void            CS_setZIndex(int z);
         void            CS_setBrightness(bool disp);
@@ -231,6 +233,7 @@ class   CS_Element
         std::string     name;
 
         bool        haveText;
+        bool        enabaleButton;
         bool        elementIsButton;
         bool        elementIsDisp;
         bool        dispBrightness;
@@ -258,6 +261,7 @@ class   CS_Scene
         void                                        CS_setBorderColor(int r, int g, int b, int a);
         void                                        CS_setBrightnessColor(int r, int g, int b, int a);
         void                                        CS_setDisp(bool disp, int index);
+        void                                        CS_setButton(bool button, int index);
 
         std::vector<std::shared_ptr<CS_Element>>    CS_querySceneElements();
         std::shared_ptr<CS_Element>                 CS_querySingleElement(int index);

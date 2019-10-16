@@ -2,6 +2,7 @@
 
 CS_Element::CS_Element()
 {
+    enabaleButton = true;
     elementIsButton = false;
     elementIsDisp = true;
     haveText = false;

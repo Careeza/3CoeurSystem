@@ -52,3 +52,10 @@ void                        CS_Scene::CS_setDisp(bool disp, int index)
         index = lastElement;
     CS_sceneContain[index]->CS_setDisp(disp);
 }
+
+void                        CS_Scene::CS_setButton(bool button, int index)
+{
+    if (index == -1)
+        index = lastElement;
+    CS_sceneContain[index]->CS_setButton(button);   
+}

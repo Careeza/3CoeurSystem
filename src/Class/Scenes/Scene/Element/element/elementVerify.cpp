@@ -24,3 +24,8 @@ bool            CS_Element::CS_haveBrightness()
 {
     return (dispBrightness);
 }
+
+bool            CS_Element::CS_isButtonEnable()
+{
+    return (enabaleButton);
+}

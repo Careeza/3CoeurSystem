@@ -23,8 +23,9 @@ OBJS = $(patsubst src/%.cpp, $(OBJS_DIR)/%.o, $(SRCS))
 
 OBJS_CLASS = $(filter $(OBJS_DIR)/Class/%, $(OBJS))
 OBJS_GAME = $(filter $(OBJS_DIR)/Game/%, $(OBJS))
+OBJS_CHAT = $(filter $(OBJS_DIR)/chatBox/%, $(OBJS))
 
-all: game
+all: game chat
 
 $(OBJS_DIR)/%.o $(OBJS_DIR)/%.o.wasm: src/%.cpp Makefile
 	@$(PRECOMPILE)
@@ -33,7 +34,9 @@ $(OBJS_DIR)/%.o $(OBJS_DIR)/%.o.wasm: src/%.cpp Makefile
 
 game: $(OBJS_GAME) $(OBJS_CLASS)
 
-game:
+chat: $(OBJS_CHAT) $(OBJS_CLASS)
+
+game chat:
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 clean:

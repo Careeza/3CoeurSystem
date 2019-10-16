@@ -3,7 +3,7 @@
 void    escapeAction()
 {
     if (gameSettings.pos == homeHome)
-        ;
+        dispDialogueBox();
     else if (gameSettings.pos == homeHotkeys)
         goToHome();
     else if (gameSettings.pos == homeVideo)
@@ -12,6 +12,8 @@ void    escapeAction()
         goToHome();
     else if (gameSettings.pos == homeLevelSelect)
         goToHome();
+    else if (gameSettings.pos == homeBox)
+        hideDialogueBox();
     else if (gameSettings.pos == menuMenu)
         levelSelectToGame();
     else if (gameSettings.pos == menuHotkeys)
