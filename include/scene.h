@@ -95,6 +95,7 @@ class   CS_Police
         void        CS_policeSetting(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
         void        CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer *render);
         void        CS_writeTexteScaleW(std::string texte, SDL_Rect *size, SDL_Renderer *render);
+        void        changeText(std::string texte, SDL_Rect *size, SDL_Renderer *render);
         void        initZoomIn();
         void        initZoomOut();
         void        CS_zoomText(int zoomInfo);
@@ -173,6 +174,23 @@ class   CS_Brightness
         SDL_Surface         *surface;
         SDL_Texture         *texture;
         SDL_Rect            *rect;
+};
+
+class   CS_ChatBox
+{
+    public:
+        CS_ChatBox();
+        ~CS_ChatBox();
+        CS_Police   *CS_queryText();
+        void        addChar(char c);
+        void        deleteChar();
+        void        CS_addTextToElement(std::string comment, SDL_Renderer *render);
+        void        CS_addTextToElementScaleW(std::string comment, SDL_Renderer *render);
+  
+    private:
+        CS_Police   *text;
+        SDL_Rect    *rect;
+        std::string testSrc;
 };
 
 class   CS_Element
