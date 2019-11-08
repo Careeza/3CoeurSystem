@@ -12,6 +12,7 @@ SRCS += src/Class/Render/render.cpp
 SRCS += src/Class/Render/renderElement.cpp
 SRCS += src/Class/Scenes/GameScene/AnimationsBank/Animation.cpp
 SRCS += src/Class/Scenes/GameScene/AnimationsBank/bank.cpp
+SRCS += src/Class/Scenes/GameScene/AnimationsBank/bankPlayer.cpp
 SRCS += src/Class/Scenes/GameScene/AnimationsBank/loadAnimations.cpp
 SRCS += src/Class/Scenes/GameScene/AnimationsBank/query.cpp
 SRCS += src/Class/Scenes/GameScene/Character/Character.cpp

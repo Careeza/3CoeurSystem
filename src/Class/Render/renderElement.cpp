@@ -22,8 +22,6 @@ void    disp_text(std::shared_ptr<CS_Element> element, SDL_Renderer *render)
     SDL_RenderCopy(render, texture, NULL, size);
 }
 
-
-
 void    disp_border(std::shared_ptr<CS_Element> element, SDL_Renderer *render)
 {
     CS_Border       *border;
@@ -91,6 +89,21 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
     texture = MC->queryTexture();
     frame = MC->queryFrame();
     size = MC->querySize();
+    if (render == NULL)
+    {
+        std::cout << "la texture c'est une pute" << std::endl;
+        exit (0);
+    }
+    if (size == NULL)
+    {
+        std::cout << "la texture c'est une pute" << std::endl;
+        exit (0);
+    }
+    if (frame == NULL)
+    {
+        std::cout << "la texture c'est une pute" << std::endl;
+        exit (0);
+    }
     SDL_RenderCopy(render, texture, frame, size);
 }
 

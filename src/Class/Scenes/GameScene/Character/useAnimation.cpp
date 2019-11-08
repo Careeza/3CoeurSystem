@@ -1,6 +1,6 @@
 # include "gameScene.h"
 
-bool    CS_Character::useAnimation()
+bool    CS_UseAnimation(bool right, CS_Animation *animation, SDL_Rect *size, SDL_Rect* &frame, SDL_Texture* &texture, int &i)
 {
     if (right == true)
     {
@@ -17,7 +17,6 @@ bool    CS_Character::useAnimation()
     if (size->x > gameSettings.window_width - size->w)
         size->x = gameSettings.window_width - size->w;
     frame = &animation->frame[i];
-    std::cout << "move = " << i << " / "<< animation->nbFrame << std::endl;
     i++;
     if (i >= animation->nbFrame)
     {
@@ -26,6 +25,11 @@ bool    CS_Character::useAnimation()
     }
     else
         return (false);
+}
+
+bool    CS_Character::useAnimation()
+{
+    return (CS_UseAnimation(right, animation, size, frame, texture, i));
 }
 
 void        CS_Character::setRight(bool rightSource)
