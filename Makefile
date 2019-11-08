@@ -37,13 +37,13 @@ game: $(OBJS_GAME) $(OBJS_CLASS)
 chat: $(OBJS_CHAT) $(OBJS_CLASS)
 
 game chat:
-	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
+	$(CC) -o $@.exe $^ $(CFLAGS) $(LDFLAGS)
 
 clean:
 	rm -rf build
 
 fclean: clean
-	rm -rf game
+	rm -rf game chat
 
 re:
 	$(MAKE) fclean
