@@ -9,8 +9,6 @@ typedef enum	e_enemy {
     CuveVert  =          0b00000000000000000000000000000010,
 }				t_enemy;
 
-void        setSize(SDL_Rect *size, float w, float h, float x, float y);
-
 class   CS_Animation
 {
     public:
@@ -18,7 +16,7 @@ class   CS_Animation
         ~CS_Animation();
         SDL_Texture             *textureR;
         SDL_Texture             *textureL;
-        std::vector<SDL_Rect>   frame;
+        std::vector<SDL_Rect *>   frame;
         std::vector<int>        movement;
         std::string             name;
         int                     nbFrame;
@@ -29,7 +27,7 @@ class   CS_Animation
 
 CS_Animation    *initAnimation(std::string name);
 void            loadTexture(CS_Animation *animation, SDL_Renderer *render, std::string png_left, std::string png_right);
-void            setSize(CS_Animation *animation, float w, float h, float x, float y);
+//void            setSize(CS_Animation *animation, float w, float h, float x, float y);
 void            cutFrame(CS_Animation *animation, int nb_frame, int nb_columnframe, int nb_lineframe);
 void            setMovement(CS_Animation *animation, int nb_frame, ...);
 
@@ -77,9 +75,12 @@ class   CS_CommonEnemy
     public:
         CS_CommonEnemy();
         ~CS_CommonEnemy();
-        SDL_Texture *queryTexture();
-        SDL_Rect    *querySize();
-        SDL_Rect    *queryFrame();
+        void            loadAnimation(std::string name);
+        void            setRight(bool rightSource);
+        bool            useAnimation();
+        SDL_Texture     *queryTexture();
+        SDL_Rect        *querySize();
+        SDL_Rect        *queryFrame();
     
     protected:        
         SDL_Texture         *texture;
@@ -96,8 +97,16 @@ class   CS_CommonEnemy
 class   CS_Cube : public CS_CommonEnemy
 {
     public:
-        CS_Cube();
-        ~CS_Cube();
+        void        initRedCube();
+        void        loadBank(SDL_Renderer *render);
+
+    private:
+};
+
+class   CS_CubeGreen : public CS_CommonEnemy
+{
+    public:
+        void        initGreenCube();
         void        loadBank(SDL_Renderer *render);
 
     private:
@@ -112,7 +121,7 @@ class   CS_Enemy
         SDL_Rect    *querySize();
         SDL_Rect    *queryFrame();
         void        reloadParam();
-        void        addEnemy(t_enemy type);
+        void        addEnemy(t_enemy type, SDL_Renderer *render);
     
     private:
         t_enemy         EnemyType;
@@ -124,12 +133,12 @@ class   CS_Enemies
     public:
         CS_Enemies();
         ~CS_Enemies();
-        void        addEnemy(t_enemy type);
+        void        addEnemy(t_enemy type, SDL_Renderer *render);
         CS_Enemy    *QueryEnemy(int index);
         int         QueryNbEnemies();
 
     private:
-        std::vector<CS_Enemy*>  enemies;   
+        std::vector<CS_Enemy *> enemies;   
 };
 
 class   CS_GameScene : public CS_Scene
@@ -138,9 +147,15 @@ class   CS_GameScene : public CS_Scene
         CS_GameScene();
         ~CS_GameScene();
         void            loadMC();
+        void            loadEnemies();
+        CS_Enemies      *CS_queryEnemies();
         CS_Character    *CS_queryMC();
     private:
         CS_Character    *MC;
+        CS_Enemies      *enemies;
 };
+
+void        setSize(SDL_Rect *size, float w, float h, float x, float y);
+bool        CS_UseAnimation(bool right, CS_Animation *animation, SDL_Rect *size, SDL_Rect* &frame, SDL_Texture* &texture, int &i);
 
 #endif

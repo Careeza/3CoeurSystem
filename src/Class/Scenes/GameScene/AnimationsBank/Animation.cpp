@@ -15,5 +15,5 @@ CS_BankAnimation::CS_BankAnimation()
 
 CS_BankAnimation::~CS_BankAnimation()
 {
-    delete noMove;
+    //TODO
 }

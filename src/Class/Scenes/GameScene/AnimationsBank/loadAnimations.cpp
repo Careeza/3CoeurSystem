@@ -34,11 +34,12 @@ void    loadTexture(CS_Animation *animation, SDL_Renderer *render, std::string p
 
 void        cutFrame(CS_Animation *animation, int nb_frame, int nb_columnframe, int nb_lineframe)
 {
-    int i;
-    int width;
-    int height;
-    int frameWidth;
-    int frameHeight;
+    int         i;
+    int         width;
+    int         height;
+    int         frameWidth;
+    int         frameHeight;
+    SDL_Rect    *frame;
 
     i = 0;
     SDL_QueryTexture (animation->textureL, NULL, NULL, &width, &height);
@@ -50,10 +51,12 @@ void        cutFrame(CS_Animation *animation, int nb_frame, int nb_columnframe, 
     animation->frame.resize(nb_frame);
     while (i < nb_frame)
     {
-        animation->frame[i].w = frameWidth;
-        animation->frame[i].h = frameHeight;
-        animation->frame[i].x = frameWidth * (i % nb_columnframe);
-        animation->frame[i].y = frameHeight * (i / nb_columnframe);
+        frame = new (SDL_Rect);
+        animation->frame[i] = frame;
+        animation->frame[i]->w = frameWidth;
+        animation->frame[i]->h = frameHeight;
+        animation->frame[i]->x = frameWidth * (i % nb_columnframe);
+        animation->frame[i]->y = frameHeight * (i / nb_columnframe);
         i++;
     }
 }

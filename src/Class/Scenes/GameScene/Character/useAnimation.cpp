@@ -16,7 +16,7 @@ bool    CS_UseAnimation(bool right, CS_Animation *animation, SDL_Rect *size, SDL
         size->x = 0;
     if (size->x > gameSettings.window_width - size->w)
         size->x = gameSettings.window_width - size->w;
-    frame = &animation->frame[i];
+    frame = animation->frame[i];
     i++;
     if (i >= animation->nbFrame)
     {

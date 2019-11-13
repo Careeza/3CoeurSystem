@@ -80,31 +80,28 @@ void    dispScene(CS_Scene *current, SDL_Renderer *render)
 void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
 {
     CS_Character    *MC;
+    CS_Enemy        *enemy;
     SDL_Texture     *texture;
     SDL_Rect        *size;
     SDL_Rect        *frame;
+    int             i;
 
     dispScene(gameScene, render);
     MC = gameScene->CS_queryMC();
     texture = MC->queryTexture();
     frame = MC->queryFrame();
     size = MC->querySize();
-    if (render == NULL)
-    {
-        std::cout << "la texture c'est une pute" << std::endl;
-        exit (0);
-    }
-    if (size == NULL)
-    {
-        std::cout << "la texture c'est une pute" << std::endl;
-        exit (0);
-    }
-    if (frame == NULL)
-    {
-        std::cout << "la texture c'est une pute" << std::endl;
-        exit (0);
-    }
     SDL_RenderCopy(render, texture, frame, size);
+    i = 0;
+    while (i < gameScene->CS_queryEnemies()->QueryNbEnemies())
+    {
+        enemy = gameScene->CS_queryEnemies()->QueryEnemy(i);
+        texture = enemy->queryTexture();
+        frame = enemy->queryFrame();
+        size = enemy->querySize();
+        SDL_RenderCopy(render, texture, frame, size);
+        i++;
+    }
 }
 
 void    CS_Renderer::CS_dispScene()
