@@ -51,5 +51,6 @@ SRCS += src/Class/Scenes/Scene/SceneControl/scene.cpp
 SRCS += src/Class/Scenes/Scene/SceneControl/sceneElement.cpp
 SRCS += src/Class/Scenes/Scene/SceneControl/sceneQuery.cpp
 SRCS += src/Class/Timer/timer.cpp
+SRCS += src/EditMap/main.cpp
 SRCS += src/Game/load.cpp
 SRCS += src/Game/main.cpp

@@ -23,8 +23,9 @@ OBJS = $(patsubst src/%.cpp, $(OBJS_DIR)/%.o, $(SRCS))
 
 OBJS_CLASS = $(filter $(OBJS_DIR)/Class/%, $(OBJS))
 OBJS_GAME = $(filter $(OBJS_DIR)/Game/%, $(OBJS))
+OBJS_EDITMAP = $(filter $(OBJS_DIR)/EditMap/%, $(OBJS))
 
-all: game
+all: game editMap
 
 $(OBJS_DIR)/%.o $(OBJS_DIR)/%.o.wasm: src/%.cpp Makefile
 	@$(PRECOMPILE)
@@ -32,8 +33,9 @@ $(OBJS_DIR)/%.o $(OBJS_DIR)/%.o.wasm: src/%.cpp Makefile
 	@$(POSTCOMPILE)
 
 game: $(OBJS_GAME) $(OBJS_CLASS)
+editMap: $(OBJS_EDITMAP) $(OBJS_CLASS)
 
-game:
+game editMap:
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 clean:

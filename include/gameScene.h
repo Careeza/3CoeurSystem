@@ -158,4 +158,20 @@ class   CS_GameScene : public CS_Scene
 void        setSize(SDL_Rect *size, float w, float h, float x, float y);
 bool        CS_UseAnimation(bool right, CS_Animation *animation, SDL_Rect *size, SDL_Rect* &frame, SDL_Texture* &texture, int &i);
 
+class   CS_HitBox
+{
+    public:
+        CS_HitBox();
+        ~CS_HitBox();
+        void                addHitbox(SDL_Rect* hitbox, int type);
+        int                 testHitbox(SDL_Rect* hitbox);
+    private:
+        std::vector<SDL_Rect*>          asset;
+        std::vector<SDL_Rect*>          intelligentAsset;
+        std::vector<SDL_Rect*>          floor;
+        std::vector<SDL_Rect*>          ennemies;
+        SDL_Rect*                       MC;
+
+}
+
 #endif
