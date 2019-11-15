@@ -176,23 +176,6 @@ class   CS_Brightness
         SDL_Rect            *rect;
 };
 
-class   CS_ChatBox
-{
-    public:
-        CS_ChatBox();
-        ~CS_ChatBox();
-        CS_Police   *CS_queryText();
-        void        addChar(char c);
-        void        deleteChar();
-        void        CS_addTextToElement(std::string comment, SDL_Renderer *render);
-        void        CS_addTextToElementScaleW(std::string comment, SDL_Renderer *render);
-  
-    private:
-        CS_Police   *text;
-        SDL_Rect    *rect;
-        std::string testSrc;
-};
-
 class   CS_Element
 {
     public:

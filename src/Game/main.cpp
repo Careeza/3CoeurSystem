@@ -57,8 +57,8 @@ int     main(void)
     t_actionValue   value;
 
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
-    window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
-    //window = create_window(0, "Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 600);
+    //window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
+    window = create_window(0, "Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 600);
 
     TTF_Init();
     initFont.CS_initPolice("resources/alterebro-pixel-font.ttf");

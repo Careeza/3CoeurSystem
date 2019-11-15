@@ -7,7 +7,6 @@ void        loadNoMoveCubeRed(SDL_Renderer *render, CS_Animation* &noMove)
     cutFrame(noMove, 1, 1, 1);
     setMovement(noMove, 1, 0.0);
     std::cout << "i am here = " << std::endl; 
-
 }
 
 void        loadAllenWalkerRed(SDL_Renderer *render, CS_Animation* &AllenWalker)
