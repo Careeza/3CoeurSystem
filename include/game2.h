@@ -76,7 +76,27 @@ class   CS_Scene;
 class   CS_Settings
 {
     public:
+        CS_Settings();
+        ~CS_Settings();
+
         void    getWindowSize(int w, int h);
+
+        void    getCloseRequest(bool close);
+        void    getPauseRequest(bool pause);
+        void    getFps(int fpsSource);
+
+        void    getPosition(t_pos position);
+
+        int     QueryWindowsWidth();
+        int     QueryWindowsHeight();
+        float   QueryWindowsResolution();
+
+        bool    QueryCloseRequest();
+        bool    QueryPauseRequest();
+        int     QueryFps();
+
+        t_pos     QueryPosition();
+
 
 
 
@@ -88,7 +108,6 @@ class   CS_Settings
         bool            closeRequested;
         bool            pauseRequested;
         int             fps;
-        bool            debug;
 
         t_pos           pos;
 
