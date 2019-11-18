@@ -2,26 +2,18 @@
 
 CS_NoButton::CS_NoButton()
 {
-//    std::cout << "create button"<< std::endl;
     buttonSize = new (SDL_Rect);
-    buttonSize->w = 0;
-    buttonSize->h = 0;
-    buttonSize->x = 0;
-    buttonSize->y = 0;
+    Tools->setSize(buttonSize, 0, 0, 0, 0);
 }
 
 CS_NoButton::~CS_NoButton()
 {
-//    std::cout << "destruction du Nobutton" << std::endl;
     delete buttonSize;
 }
 
 void    setNoButtonSize(float w, float h, float x, float y, SDL_Rect *buttonSize)
 {
-    buttonSize->w = (w * gameSettings.window_width) / 100.0;
-    buttonSize->h = (h * gameSettings.window_height) / 100.0;
-    buttonSize->x = (x * gameSettings.window_width) / 100.0;
-    buttonSize->y = (y * gameSettings.window_height) / 100.0;
+    Tools->setSize(buttonSize, w, h, x, y);
 }
 
 void    CS_NoButton::CS_resizePixel(int w, int h, int x, int y)

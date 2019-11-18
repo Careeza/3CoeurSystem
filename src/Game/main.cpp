@@ -1,8 +1,6 @@
 #include "common.h"
 #include "game.h"
 
-
-
 void    infiniteLoop(CS_Renderer render, t_actionValue *value)
 {
     CS_KeyControl   event;
@@ -28,6 +26,11 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value)
         render.CS_dispScene();
         SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));
     }
+}
+
+void        initTools()
+{
+    Tools->getWindowSize(int w, int h);
 }
 
 CS_settings gameSettings = {

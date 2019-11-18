@@ -69,7 +69,7 @@ void        CS_Animation::setMovement(int nb_frame, ...)
     movement.resize(nb_frame);
     while (i < nb_frame)
     {
-        movement[i] = va_arg(op, double) * gameSettings.window_width / 100;
+        movement[i] = Tools->transformX((float)(op, double));
         i++;
     }
     va_end(op);

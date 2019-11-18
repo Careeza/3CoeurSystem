@@ -20,8 +20,8 @@ void        hitBoxGestion(SDL_Rect *size)
 {
     if (size->x < 0)
         size->x = 0;
-    if (size->x > gameSettings.window_width - size->w)
-        size->x = gameSettings.window_width - size->w;
+    if (size->x > Tools->QueryWindowWidth() - size->w)
+        size->x = Tools->QueryWindowWidth() - size->w;
 }
 
 bool        CS_Animation::CS_UseAnimation(bool right, SDL_Rect *size, SDL_Rect* &frameDest, SDL_Texture* &textureDest)
