@@ -1,36 +1,46 @@
 #include "game2.h"
 
-int     CS_Settings::QueryWindowsWidth()
+int             CS_Settings::QueryWindowsWidth()
 {
     return (windowWidth);
 }
 
-int     CS_Settings::QueryWindowsHeight()
+int             CS_Settings::QueryWindowsHeight()
 {
     return (windowHeight);
 }
 
-float   CS_Settings::QueryWindowsResolution()
+float             CS_Settings::QueryWindowsResolution()
 {
     return (resolution);
 }
 
-bool    CS_Settings::QueryCloseRequest()
+bool             CS_Settings::QueryCloseRequest()
 {
     return (closeRequested);
 }
 
-bool    CS_Settings::QueryPauseRequest()
+bool             CS_Settings::QueryPauseRequest()
 {
     return (pauseRequested);
 }
 
-int     CS_Settings::QueryFps()
+int             CS_Settings::QueryFps()
 {
     return (fps);
 }
 
-t_pos   CS_Settings::QueryPosition()
+CS_Scene        CS_Settings::*QueryScene()
+{
+    return (Scene);
+}
+
+CS_GameScene    CS_Settings::*QueryGameScene()
+{
+    return (gameScene);
+}
+
+t_pos           CS_Settings::QueryPosition()
 {
     return (pos)
 }
