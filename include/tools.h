@@ -12,15 +12,12 @@
 # include <string>
 # include <vector>
 
-void        setSize(SDL_Rect *size, float w, float h, float x, float y);
-
 typedef enum	e_debug {
     LEVEL0,
     LEVEL1,
     LEVEL2,
     LEVEL3
 }				t_debug;
-
 
 class   CS_Tools
 {
@@ -38,6 +35,12 @@ class   CS_Tools
         int     transformHeight(float h);
         int     transformHeight(SDL_Rect *container, float h);
 
+        int     transformX(float x);
+        int     transformX(SDL_Rect *container, float x);
+
+        int     transformY(float y);
+        int     transformY(SDL_Rect *container, float y);
+
         int     QueryWindowWidth();
         int     QueryWindowHeight();
         int     QueryWindowResolution();
@@ -53,5 +56,8 @@ class   CS_Tools
         int     resolution;
         t_debug debug;
 }
+
+extern CS_Tools *Tools;
+
 
 #endif

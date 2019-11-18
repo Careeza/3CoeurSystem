@@ -72,32 +72,49 @@ void    hideDialogueBox(void);
 
 class   CS_Scene;
 
-typedef struct      s_settings
+
+class   CS_Settings
 {
-    int         window_width;
-    int         window_height;
-    float       resolution;
-    bool        closeRequested;
-    bool        pauseRequested;
-    int         fps;
-    bool        debug;
+    public:
+        CS_Settings();
+        ~CS_Settings();
 
-    t_pos       pos;
+        void            getWindowSize(int w, int h);
 
-    CS_GameScene    *gameScene;
-    CS_Scene        *home;
-    CS_Scene        *saveMenu;
-    CS_Scene        *menu;
-    CS_Scene        *controlGame;
-    CS_Scene        *controlHome;
-    CS_Scene        *current;
-    CS_Scene        *homeVideo;
-    CS_Scene        *menuVideo;
-    CS_Scene        *homeSound;
-    CS_Scene        *menuSound;
-}                   CS_settings;
+        void            getCloseRequest(bool close);
+        void            getPauseRequest(bool pause);
+        void            getFps(int fpsSource);
 
-extern CS_settings  gameSettings;
+        void            getScene();
+        void            getGameScene();
+        void            getPosition(t_pos position);
+
+        int             QueryWindowsWidth();
+        int             QueryWindowsHeight();
+        float           QueryWindowsResolution();
+
+        bool            QueryCloseRequest();
+        bool            QueryPauseRequest();
+        int             QueryFps();
+
+        t_pos           QueryPosition();
+        CS_Scene        *QueryScene();
+        CS_GameScene    *QueryGameScene();
+
+    private:
+        int             windowWidth;
+        int             windowHeight;
+        float           resolution;
+
+        bool            closeRequested;
+        bool            pauseRequested;
+        int             fps;
+
+        t_pos           pos;
+
+        CS_GameScene    *gameScene;
+        CS_Scene        *Scene;
+}
 
 typedef struct  s_key
 {
