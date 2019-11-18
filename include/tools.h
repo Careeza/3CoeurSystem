@@ -14,13 +14,23 @@
 
 void        setSize(SDL_Rect *size, float w, float h, float x, float y);
 
-class   Tools
+typedef enum	e_debug {
+    LEVEL0,
+    LEVEL1,
+    LEVEL2,
+    LEVEL3
+}				t_debug;
+
+
+class   CS_Tools
 {
     public:
+        CS_Tools();
+        ~CS_Tools();
+
         void    setSize(SDL_Rect *size, float w, float h, float x, float y);
         void    setSize(SDL_Rect *size, SDL_Rect *container, float w, float h, float x, float y);
         void    setSize(SDL_Rect *size, int w, int h, int x, int y);
-        void    setSize(SDL_Rect *size, SDL_Rect *container, int w, int h, int x, int y);
 
         int     transformWidth(float w);
         int     transformWidth(SDL_Rect *container, float w);
@@ -30,16 +40,18 @@ class   Tools
 
         int     QueryWindowWidth();
         int     QueryWindowHeight();
+        int     QueryWindowResolution();
 
-        void    verbose();
+        void    verbose(t_debug debugSource, string element, ...);
 
         void    getWindowSize(int w, int h);
+        void    debugMode(t_debug debugSource);
 
     private:
-        int w;
-        int h;
-        int resolution;
-        bool debug;
+        int     windowWidth;
+        int     windowHeight;
+        int     resolution;
+        t_debug debug;
 }
 
 #endif

@@ -73,14 +73,16 @@ void    hideDialogueBox(void);
 class   CS_Scene;
 
 
-class   Settings
+class   CS_Settings
 {
     public:
-        void    initSettings();
+        void    getWindowSize(int w, int h);
+
+
 
     private:
-        int             window_width;
-        int             window_height;
+        int             windowWidth;
+        int             windowHeight;
         float           resolution;
 
         bool            closeRequested;
@@ -88,8 +90,10 @@ class   Settings
         int             fps;
         bool            debug;
 
+        t_pos           pos;
+
         CS_GameScene    *gameScene;
-        CS_GameScene    *menuScene;
+        CS_Scene        *menuScene;
 }
 
 typedef struct      s_settings
