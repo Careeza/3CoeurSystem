@@ -2,17 +2,8 @@
 
 # define SCENE_H
 
-# include <SDL2/SDL.h>
-# include <SDL2/SDL_timer.h>
-# include <SDL2/SDL_image.h>
-# include <SDL2/SDL_ttf.h>
-
-# include <fstream>
-# include <iostream>
-# include <string>
-# include <vector>
-
 # include "game.h"
+# include "tools.h"
 
 # if SDL_BYTEORDER == SDL_BIG_ENDIAN
     #define rmask 0xff000000

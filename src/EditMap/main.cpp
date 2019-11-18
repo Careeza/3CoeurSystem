@@ -1,4 +1,4 @@
-#include "class.h"
+#include "common.h"
 #include "game.h"
 
 CS_settings gameSettings = {

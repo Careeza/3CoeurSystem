@@ -13,6 +13,8 @@
 # include <string>
 # include <vector>
 
+# include "tools.h"
+
 class   CS_Renderer
 {
     private:

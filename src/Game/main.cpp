@@ -1,4 +1,4 @@
-#include "class.h"
+#include "common.h"
 #include "game.h"
 
 
@@ -24,11 +24,6 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value)
         {
             gameSettings.gameScene->CS_queryMC()->useAnimation();
                 i = 0;
-            while (i < gameSettings.gameScene->CS_queryEnemies()->QueryNbEnemies())
-            {
-                gameSettings.gameScene->CS_queryEnemies()->QueryEnemy(i)->reloadParam();
-                i++;
-            }
         }
         render.CS_dispScene();
         SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));

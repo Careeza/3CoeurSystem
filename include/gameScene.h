@@ -3,6 +3,7 @@
 # define GAMESCENE_H
 
 # include "scene.h"
+# include "tools.h"
 
 typedef enum	e_enemy {
 	CubeRouge =          0b00000000000000000000000000000001,
@@ -23,23 +24,25 @@ class   CS_Animation
         CS_Animation();
         ~CS_Animation();
 
-        void        newAnimation(t_animation nameSource, int stop);
-        void        loadTexture(SDL_Renderer *render, std::string png_left, std::string png_right);
-        void        cutFrame(int nb_frame, int nb_columnframe, int nb_lineframe);
-        void        setMovement(int nb_frame, ...);
+        void            newAnimation(t_animation nameSource, int stop);
+        void            loadTexture(SDL_Renderer *render, std::string png_left, std::string png_right);
+        void            cutFrame(int nb_frame, int nb_columnframe, int nb_lineframe);
+        void            setMovement(int nb_frame, ...);
 
-        bool        CS_UseAnimation(bool right, SDL_Rect *size, SDL_Rect* &frame, SDL_Texture* &texture)
+        void            restartAnimation();
+
+        bool            CS_UseAnimation(bool right, SDL_Rect *size, SDL_Rect* &frame, SDL_Texture* &texture);
 
 
-        t_animation QueryName();
-        SDL_Texture QueryTexture();
-        SDL_Rect    QueryFrame();
-        int         QueryMovement();
+        t_animation     QueryName();
+        SDL_Texture     *QueryTexture(bool right);
+        SDL_Rect        *QueryFrame();
+        int             QueryMovement();
 
     private:
 
         t_animation             name;
-        int                     interrupt
+        int                     interrupt;
 
         SDL_Texture             *textureR;
         SDL_Texture             *textureL;
@@ -63,7 +66,7 @@ class CS_BankAnimation
         void            addAnimation(SDL_Renderer *render, CS_Animation *(*f)(SDL_Renderer *render));
 
     private:
-        std::vector<CS_Animation*>   animations
+        std::vector<CS_Animation*>   animations;
 };
 
 class   CS_Character
@@ -72,7 +75,7 @@ class   CS_Character
         CS_Character();
         ~CS_Character();
 
-        void        loadBank(SDL_Renderer *render);
+        void        addAnimation(SDL_Renderer *render, CS_Animation*(*f)(SDL_Renderer *render));
         void        loadAnimation(t_animation name);
 
         bool        useAnimation();
@@ -95,6 +98,7 @@ class   CS_Character
         bool                right;
 };
 
+/*
 class   CS_CommonEnemy
 {
     public:
@@ -164,24 +168,21 @@ class   CS_Enemies
 
     private:
         std::vector<CS_Enemy *> enemies;   
-};
+};*/
 
 class   CS_GameScene : public CS_Scene
 {
     public:
         CS_GameScene();
         ~CS_GameScene();
-        void            loadMC();
+        void            loadMC(int nbAnimation, ...);
         void            loadEnemies();
-        CS_Enemies      *CS_queryEnemies();
+//        CS_Enemies      *CS_queryEnemies();
         CS_Character    *CS_queryMC();
     private:
         CS_Character    *MC;
-        CS_Enemies      *enemies;
+//        CS_Enemies      *enemies;
 };
-
-void        setSize(SDL_Rect *size, float w, float h, float x, float y);
-bool        CS_UseAnimation(bool right, CS_Animation *animation, SDL_Rect *size, SDL_Rect* &frame, SDL_Texture* &texture, int &i);
 
 class   CS_HitBox
 {
@@ -197,6 +198,6 @@ class   CS_HitBox
         std::vector<SDL_Rect*>          ennemies;
         SDL_Rect*                       MC;
 
-}
+};
 
 #endif

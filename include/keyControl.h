@@ -3,6 +3,7 @@
 # define KEYCONTROL_H
 
 # include "gameScene.h"
+# include "tools.h"
 
 # define    NO_ACTION -1
 # define    NO_BOUTON 0
