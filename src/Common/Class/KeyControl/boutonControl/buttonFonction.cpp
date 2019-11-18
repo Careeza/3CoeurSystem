@@ -2,72 +2,72 @@
 
 using namespace std;
 
-void    closeGame(void)
+void    closeGame(void* settings)
 {
     gameSettings.closeRequested = true;
 }
 
-void    menuToHotkeys(void)
+void    menuToHotkeys(void* settings)
 {
     gameSettings.current = gameSettings.controlGame;
     gameSettings.pos = menuHotkeys;
 }
 
-void    goToMenu(void)
+void    goToMenu(void* settings)
 {
     gameSettings.current = gameSettings.menu;
     gameSettings.pos = menuMenu;
 }
 
-void    goToHome(void)
+void    goToHome(void* settings)
 {
     gameSettings.current = gameSettings.home;
     gameSettings.pos = homeHome;
 }
 
-void    homeToHotkeys(void)
+void    homeToHotkeys(void* settings)
 {
     gameSettings.current = gameSettings.controlHome;
     gameSettings.pos = homeHotkeys;
 }
 
-void    homeToLevelSelect(void)
+void    homeToLevelSelect(void* settings)
 {
     gameSettings.current = gameSettings.saveMenu;
     gameSettings.pos = homeLevelSelect;
 }
 
-void    homeToVideo(void)
+void    homeToVideo(void* settings)
 {
     gameSettings.current = gameSettings.homeVideo;
     gameSettings.pos = homeVideo;
 }
 
-void    menuTovideo(void)
+void    menuTovideo(void* settings)
 {
     gameSettings.current = gameSettings.menuVideo;
     gameSettings.pos = menuVideo;
 }
 
-void    homeToSound(void)
+void    homeToSound(void* settings)
 {
     gameSettings.current = gameSettings.homeSound;
     gameSettings.pos = homeSound;
 }
 
-void    menuToSound(void)
+void    menuToSound(void* settings)
 {
     gameSettings.current = gameSettings.menuSound;
     gameSettings.pos = menuSound;
 }
 
-void    levelSelectToGame(void)
+void    levelSelectToGame(void* settings)
 {
     gameSettings.current = gameSettings.menu;
     gameSettings.pos = game;
 }
 
-void    dispDialogueBox(void)
+void    dispDialogueBox(void* settings)
 {
     CS_Scene    *scene;
 
@@ -86,7 +86,7 @@ void    dispDialogueBox(void)
     gameSettings.pos = homeBox;
 }
 
-void    hideDialogueBox(void)
+void    hideDialogueBox(void* settings)
 {
     CS_Scene    *scene;
 

@@ -145,7 +145,7 @@ class   CS_Button : public CS_NoButton
         SDL_Texture     *CS_queryButtonTexture();
 
     private:
-            void    (*CS_buttonFunction)(void);
+            void    (*CS_buttonFunction)(void*);
 };
 
 class   CS_Brightness
