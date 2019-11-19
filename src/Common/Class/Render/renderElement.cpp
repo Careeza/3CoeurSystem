@@ -104,14 +104,14 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
     }*/
 }
 
-void    CS_Renderer::CS_dispScene()
+void    CS_Renderer::CS_dispScene(CS_Scene *current, CS_GameScene *gameScene, t_pos pos)
 {
-    if (gameSettings.current != NULL)
+    if (current != NULL)
     {
-        if (gameSettings.pos & (menuMenu | game))
-            dispGameScene(gameSettings.gameScene, CS_render);
-        if (gameSettings.pos & (homeHome | menuMenu))
-            dispScene(gameSettings.current, CS_render);
+        if (pos & (menuMenu | game))
+            dispGameScene(gameScene, CS_render);
+        if (pos & (homeHome | menuMenu))
+            dispScene(current, CS_render);
     }
     SDL_RenderPresent(CS_render);
 }

@@ -1,77 +1,102 @@
-#include "gameScene.h"
+#include "game.h"
 
 using namespace std;
 
 void    closeGame(void* settings)
 {
-    gameSettings.closeRequested = true;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getCloseRequest(true);
 }
 
 void    menuToHotkeys(void* settings)
 {
-    gameSettings.current = gameSettings.controlGame;
-    gameSettings.pos = menuHotkeys;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getPosition(menuHotkeys);
 }
 
 void    goToMenu(void* settings)
 {
-    gameSettings.current = gameSettings.menu;
-    gameSettings.pos = menuMenu;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getPosition(menuMenu);
 }
 
 void    goToHome(void* settings)
 {
-    gameSettings.current = gameSettings.home;
-    gameSettings.pos = homeHome;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getPosition(homeHome);
 }
 
 void    homeToHotkeys(void* settings)
 {
-    gameSettings.current = gameSettings.controlHome;
-    gameSettings.pos = homeHotkeys;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getPosition(homeHotkeys);
 }
 
 void    homeToLevelSelect(void* settings)
 {
-    gameSettings.current = gameSettings.saveMenu;
-    gameSettings.pos = homeLevelSelect;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getPosition(homeLevelSelect);
 }
 
 void    homeToVideo(void* settings)
 {
-    gameSettings.current = gameSettings.homeVideo;
-    gameSettings.pos = homeVideo;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getPosition(homeVideo);
 }
 
 void    menuTovideo(void* settings)
 {
-    gameSettings.current = gameSettings.menuVideo;
-    gameSettings.pos = menuVideo;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getPosition(menuVideo);
 }
 
 void    homeToSound(void* settings)
 {
-    gameSettings.current = gameSettings.homeSound;
-    gameSettings.pos = homeSound;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getPosition(homeSound);
 }
 
 void    menuToSound(void* settings)
 {
-    gameSettings.current = gameSettings.menuSound;
-    gameSettings.pos = menuSound;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getPosition(menuSound);
 }
 
 void    levelSelectToGame(void* settings)
 {
-    gameSettings.current = gameSettings.menu;
-    gameSettings.pos = game;
+    CS_Settings *set;
+
+    set = (CS_Settings*)settings;
+    set->getPosition(game);
 }
 
 void    dispDialogueBox(void* settings)
 {
+    CS_Settings *set;
     CS_Scene    *scene;
 
-    scene = gameSettings.current;
+    set = (CS_Settings*)settings;
+    scene = set->QueryScene();
     scene->CS_setDisp(true, scene->CS_queryIndexByName("filtre"));
     scene->CS_setDisp(true, scene->CS_queryIndexByName("dialogue"));
     scene->CS_setDisp(true, scene->CS_queryIndexByName("Question"));
@@ -83,15 +108,16 @@ void    dispDialogueBox(void* settings)
     scene->CS_setButton(false, scene->CS_queryIndexByName("Video"));
     scene->CS_setButton(false, scene->CS_queryIndexByName("Sound"));
     scene->CS_setButton(false, scene->CS_queryIndexByName("Exit game"));
-    gameSettings.pos = homeBox;
+    set->getPosition(homeBox);
 }
 
 void    hideDialogueBox(void* settings)
 {
+    CS_Settings *set;
     CS_Scene    *scene;
 
-    scene = gameSettings.current;
-
+    set = (CS_Settings*)settings;
+    scene = set->QueryScene();
     scene->CS_setDisp(false, scene->CS_queryIndexByName("filtre"));
     scene->CS_setDisp(false, scene->CS_queryIndexByName("dialogue"));
     scene->CS_setDisp(false, scene->CS_queryIndexByName("Question"));
@@ -103,5 +129,5 @@ void    hideDialogueBox(void* settings)
     scene->CS_setButton(true, scene->CS_queryIndexByName("Video"));
     scene->CS_setButton(true, scene->CS_queryIndexByName("Sound"));
     scene->CS_setButton(true, scene->CS_queryIndexByName("Exit game"));
-    gameSettings.pos = homeHome;
+    set->getPosition(homeHome);
 }

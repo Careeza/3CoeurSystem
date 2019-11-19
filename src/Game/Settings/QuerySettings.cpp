@@ -1,4 +1,4 @@
-#include "game2.h"
+#include "game.h"
 
 int             CS_Settings::QueryWindowsWidth()
 {
@@ -30,17 +30,17 @@ int             CS_Settings::QueryFps()
     return (fps);
 }
 
-CS_Scene        CS_Settings::*QueryScene()
+CS_Scene        *CS_Settings::QueryScene()
 {
     return (Scene);
 }
 
-CS_GameScene    CS_Settings::*QueryGameScene()
+CS_GameScene    *CS_Settings::QueryGameScene()
 {
     return (gameScene);
 }
 
 t_pos           CS_Settings::QueryPosition()
 {
-    return (pos)
+    return (pos);
 }

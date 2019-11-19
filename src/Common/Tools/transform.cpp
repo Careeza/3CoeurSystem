@@ -28,28 +28,28 @@ int     CS_Tools::transformHeight(SDL_Rect *container, float h)
     return (res);
 }
 
-int     transformX(float x)
+int     CS_Tools::transformX(float x)
 {
     int res;
     res = (x * windowWidth) / 100.0;
     return (res);
 }
 
-int     transformX(SDL_Rect *container, float x)
+int     CS_Tools::transformX(SDL_Rect *container, float x)
 {
     int res;
     res = (x * container->w) / 100.0 + container->x;
     return (res);
 }
 
-int     transformY(float y)
+int     CS_Tools::transformY(float y)
 {
     int res;
-    res = (x * windowHeight) / 100.0;
+    res = (y * windowHeight) / 100.0;
     return (res);
 }
 
-int     transformY(SDL_Rect *container, float y)
+int     CS_Tools::transformY(SDL_Rect *container, float y)
 {
     int res;
     res = (y * container->h) / 100.0 + container->y;

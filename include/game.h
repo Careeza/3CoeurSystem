@@ -15,27 +15,11 @@
 # include <math.h>
 
 # include "tools.h"
+# include "common.h"
 
 # define    CS_MOTION 1
 # define    CS_MOUSE_DOWN 2
 # define    CS_MOUSE_UP 3
-
-typedef enum	e_pos {
-	homeHome =          0b00000000100000000000000000000000,
-    homeVideo =         0b00000000100000010000000000000000,
-    homeSound =         0b00000000100000100000000000000000,
-    homeHotkeys =       0b00000000100001000000000000000000, 
-    homeLevelSelect =   0b00000000100010000000000000000000,
-    homeBox =           0b00000000100100000000000000000000,
-
-
-    menuMenu =          0b00000000000000001000000000000000,
-    menuVideo =         0b00000000000000001000000100000000,
-    menuSound =         0b00000000000000001000001000000000,
-    menuHotkeys =       0b00000000000000001000010000000000,
-
-    game =              0b00000000000000000000000010000000,
-}				t_pos;
 
 class   CS_Scene;
 class   CS_GameScene;
@@ -70,9 +54,6 @@ void    levelSelectToGame(void);
 void    dispDialogueBox(void);
 void    hideDialogueBox(void);
 
-class   CS_Scene;
-
-
 class   CS_Settings
 {
     public:
@@ -85,8 +66,8 @@ class   CS_Settings
         void            getPauseRequest(bool pause);
         void            getFps(int fpsSource);
 
-        void            getScene();
-        void            getGameScene();
+        void            getScene(SDL_Renderer *render);
+        void            getGameScene(SDL_Renderer *render);
         void            getPosition(t_pos position);
 
         int             QueryWindowsWidth();
@@ -114,7 +95,7 @@ class   CS_Settings
 
         CS_GameScene    *gameScene;
         CS_Scene        *Scene;
-}
+};
 
 typedef struct  s_key
 {
@@ -178,5 +159,13 @@ class   authorizedKey
         t_key   keyRight;
         t_key   keyLeft;
 };
+
+void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings);
+int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings);
+void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, CS_Settings& settings);
+void    filtreActionTable(t_actionTable *table, t_actionTable *filtre);
+void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);
+void    resetActionTable(t_actionTable *table);
+void    fillActionValue(t_actionValue *value);
 
 #endif

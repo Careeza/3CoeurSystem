@@ -1,29 +1,25 @@
 #include "common.h"
 #include "game.h"
 
-void    infiniteLoop(CS_Renderer render, t_actionValue *value)
+void    infiniteLoop(CS_Renderer render, t_actionValue *value, CS_Settings& settings)
 {
     CS_KeyControl   event;
     CS_Timer        timer;
-    int             i;
 
-    while (!gameSettings.closeRequested)
+    while (!settings.QueryCloseRequest())
     {
         timer.start();
-        while (event.loadEvenement())
+        while (event.loadEvenement(settings.QueryScene()))
         {
-            if (gameSettings.pos & (homeHome | menuMenu))
-                bouttonManagement(event);
-            if (gameSettings.pos == game)
-                actionKeyManagement(event, value);
-            escapeKeyManagement(event);
+            if (settings.QueryPosition() & (homeHome | menuMenu))
+                bouttonManagement(event, settings);
+            if (settings.QueryPosition() == game)
+                actionKeyManagement(event, value, settings);
+            escapeKeyManagement(event, settings);
         }
-        if (gameSettings.pos == game)
-        {
-            gameSettings.gameScene->CS_queryMC()->useAnimation();
-                i = 0;
-        }
-        render.CS_dispScene();
+        if (settings.QueryPosition() == game)
+            settings.QueryGameScene()->CS_queryMC()->useAnimation();
+        render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
         SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));
     }
 }
@@ -41,12 +37,6 @@ void        initSettings(CS_Settings &settings, SDL_Window *window)
     settings.getPosition(homeHome);
 
 }
-
-void        initTools()
-{
-    Tools->getWindowSize(w, h);
-}
-
 TTF_Font    *CS_Police::CS_font = NULL;
 
 int     main(void)
@@ -70,36 +60,13 @@ int     main(void)
     
     render = init_renderer(window);
 
-    /*
-    gameSettings.gameScene = init_gameScene(render);
-    gameSettings.home = init_home(render);
-    gameSettings.menu = init_menu(render);
-    gameSettings.controlGame = init_menuHotkeys(render);
-    gameSettings.controlHome = init_homeHotkeys(render);
-    gameSettings.saveMenu = init_play(render);
-    gameSettings.homeVideo = init_homeVideo(render);
-    gameSettings.menuVideo = init_menuVideo(render);
-    gameSettings.homeSound = init_homeSound(render);
-    gameSettings.menuSound = init_menuSound(render);
-    gameSettings.current = gameSettings.home; */
 
     rend.CS_loadRenderer(render);
     event = new(CS_KeyControl);
 
     fillActionValue(&value);
 
-    infiniteLoop(rend, &value);
-
-    /*delete gameSettings.gameScene;
-    delete gameSettings.home;
-    delete gameSettings.menu;
-    delete gameSettings.controlGame;
-    delete gameSettings.controlHome;
-    delete gameSettings.saveMenu;
-    delete gameSettings.homeVideo;
-    delete gameSettings.menuVideo;
-    delete gameSettings.homeSound;
-    delete gameSettings.menuSound;*/
+    infiniteLoop(rend, &value, settings);
 
     TTF_Quit();
     SDL_Quit();

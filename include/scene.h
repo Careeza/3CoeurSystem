@@ -2,8 +2,24 @@
 
 # define SCENE_H
 
-# include "game.h"
 # include "tools.h"
+
+typedef enum	e_pos {
+	homeHome =          0b00000000100000000000000000000000,
+    homeVideo =         0b00000000100000010000000000000000,
+    homeSound =         0b00000000100000100000000000000000,
+    homeHotkeys =       0b00000000100001000000000000000000, 
+    homeLevelSelect =   0b00000000100010000000000000000000,
+    homeBox =           0b00000000100100000000000000000000,
+
+
+    menuMenu =          0b00000000000000001000000000000000,
+    menuVideo =         0b00000000000000001000000100000000,
+    menuSound =         0b00000000000000001000001000000000,
+    menuHotkeys =       0b00000000000000001000010000000000,
+
+    game =              0b00000000000000000000000010000000,
+}				t_pos;
 
 # if SDL_BYTEORDER == SDL_BIG_ENDIAN
     #define rmask 0xff000000
@@ -139,9 +155,9 @@ class   CS_Button : public CS_NoButton
     public:
         CS_Button();
         ~CS_Button();
-        void            CS_useFonction(void);
-        void            CS_addButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void));
-        void            CS_addButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void));
+        void            CS_useFonction(void *info);
+        void            CS_addButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *));
+        void            CS_addButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *));
         SDL_Texture     *CS_queryButtonTexture();
 
     private:
@@ -205,12 +221,12 @@ class   CS_Element
         void            changeBorder(int w, int h);
         void            loadBrightness(SDL_Renderer *render, CS_Color colorSource);
 
-        void            CS_useFonction();
+        void            CS_useFonction(void *info);
 
         void            CS_CreateNoButtonFromHand(CS_Color color, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y);
-        void            CS_CreateButtonFromHand(CS_Color color, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void));
+        void            CS_CreateButtonFromHand(CS_Color color, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *));
         void            CS_CreateNoButtonFromPng(std::string route, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y);
-        void            CS_CreateButtonFromPng(std::string route, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void));
+        void            CS_CreateButtonFromPng(std::string route, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *));
 
         void            CS_resizeElement(float w, float h, float x, float y);
         void            CS_resizeElementPixel(int w, int h, int x, int y);
@@ -243,9 +259,9 @@ class   CS_Scene
 
         void                                        CS_addElementToScene(std::shared_ptr<CS_Element> element);
         void                                        CS_createElementToScene(std::string name, float w, float h, float x, float y, int z);
-        void                                        CS_createButtonToScene(std::string name, float w, float h, float x, float y, int z, void (*f)(void));
+        void                                        CS_createButtonToScene(std::string name, float w, float h, float x, float y, int z, void (*f)(void *));
         void                                        CS_createElementToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z);
-        void                                        CS_createButtonToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z, void (*f)(void));
+        void                                        CS_createButtonToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z, void (*f)(void *));
         void                                        CS_deleteElementFromeScene(int index);
         
         void                                        CS_setSceneColor(int r, int g, int b, int a);

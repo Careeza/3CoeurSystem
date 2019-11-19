@@ -1,4 +1,4 @@
-#include "game2.h"
+#include "game.h"
 
 void    CS_Settings::getWindowSize(int w, int h)
 {

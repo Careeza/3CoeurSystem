@@ -1,13 +1,13 @@
 #include "tools.h"
 
-void    verbose(t_debug debugSource, std::string element, ...)
+void    CS_Tools::verbose(t_debug debugSource, std::string element, ...)
 {
 	unsigned long	i;
 	va_list			op;
 
 	i = 0;
 	va_start(op, element);
-    if (debug != 0)
+    if (debug != LEVEL0)
     {
         if (debugSource <= debug)
         {

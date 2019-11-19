@@ -1,6 +1,6 @@
 #include "gameScene.h"
 
-void            CS_Settings::getScene()
+void            CS_Settings::getScene(SDL_Renderer *render)
 {
     delete Scene;
     if (pos == homeHome)

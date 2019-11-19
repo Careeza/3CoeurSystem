@@ -1,10 +1,10 @@
-#include "keyControl.h"
+#include "game.h"
 
-void    useAction(t_actionTable *table)
+void    useAction(t_actionTable *table, CS_Settings& settings)
 {
     CS_Character    *MC;
 
-    MC = gameSettings.gameScene->CS_queryMC();
+    MC = settings.QueryGameScene()->CS_queryMC();
     if (table->right == true)
     {
         std::cout << "load animation STATIC !" << std::endl;
@@ -25,7 +25,7 @@ void    useAction(t_actionTable *table)
 //        std::cout << "no moove" << std::endl;
 }
 
-void    actionKeyManagement(CS_KeyControl event, t_actionValue *value)
+void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, CS_Settings& settings)
 {
     int                     key;
     int                     info;
@@ -42,5 +42,5 @@ void    actionKeyManagement(CS_KeyControl event, t_actionValue *value)
     info = event.CS_getKeyboardActions(key);
     fillActionTable(&table, value, key, info);
     filtreActionTable(&table, &filtre);
-    useAction(&filtre);
+    useAction(&filtre, settings);
 }

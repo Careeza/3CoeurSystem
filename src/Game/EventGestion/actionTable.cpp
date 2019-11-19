@@ -1,4 +1,4 @@
-#include "keyControl.h"
+#include "game.h"
 
 void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info)
 {

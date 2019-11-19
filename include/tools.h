@@ -45,7 +45,7 @@ class   CS_Tools
         int     QueryWindowHeight();
         int     QueryWindowResolution();
 
-        void    verbose(t_debug debugSource, string element, ...);
+        void    verbose(t_debug debugSource, std::string element, ...);
 
         void    getWindowSize(int w, int h);
         void    debugMode(t_debug debugSource);
@@ -55,7 +55,7 @@ class   CS_Tools
         int     windowHeight;
         int     resolution;
         t_debug debug;
-}
+};
 
 extern CS_Tools *Tools;
 

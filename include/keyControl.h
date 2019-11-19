@@ -49,10 +49,10 @@ class   CS_KeyControl
 {
     public:
         CS_KeyControl();
-        int                                     loadEvenement();
-//        int     getMouseActions(int& x, int& y);
+        int                                     loadEvenement(CS_Scene *scene);
         int                                     CS_getKeyboardActions(int& key);
         std::shared_ptr<CS_Element>             CS_getBoutton(int &boutonInfo);
+//      int                                     getMouseActions(int& x, int& y);
 
     private:
         SDL_Event       event;
@@ -60,15 +60,6 @@ class   CS_KeyControl
 
         int             len;
         CS_Scene        *scene;
-
 };
-
-void    escapeKeyManagement(CS_KeyControl event);
-int     bouttonManagement(CS_KeyControl& control);
-void    actionKeyManagement(CS_KeyControl event, t_actionValue *value);
-void    filtreActionTable(t_actionTable *table, t_actionTable *filtre);
-void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);
-void    resetActionTable(t_actionTable *table);
-void    fillActionValue(t_actionValue *value);
 
 #endif

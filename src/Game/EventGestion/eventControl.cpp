@@ -1,10 +1,10 @@
-#include "keyControl.h"
+#include "game.h"
 
-int     bouttonManagement(CS_KeyControl& control)
+int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings)
 {
-    static std::shared_ptr<CS_Element>  saveButton = NULL;
-    std::shared_ptr<CS_Element>         button;
-    int                         buttonInfo;
+    static std::shared_ptr<CS_Element>      saveButton = NULL;
+    std::shared_ptr<CS_Element>             button;
+    int                                     buttonInfo;
 
     button = control.CS_getBoutton(buttonInfo);
     if (button != saveButton && buttonInfo != NO_ACTION)
@@ -41,7 +41,7 @@ int     bouttonManagement(CS_KeyControl& control)
     {
         button->CS_setZoom(NOZOOM);
         button->CS_setBrightness(false);
-        button->CS_useFonction();
+        button->CS_useFonction(&settings);
         // use fonction
         return (0);
     }

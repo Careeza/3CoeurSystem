@@ -1,35 +1,35 @@
-#include "keyControl.h"
+#include "game.h"
 
-void    escapeAction()
+void    escapeAction(CS_Settings& settings)
 {
-    if (gameSettings.pos == homeHome)
+    if (settings.QueryPosition() == homeHome)
         dispDialogueBox();
-    else if (gameSettings.pos == homeHotkeys)
+    else if (settings.QueryPosition() == homeHotkeys)
         goToHome();
-    else if (gameSettings.pos == homeVideo)
+    else if (settings.QueryPosition() == homeVideo)
         goToHome();
-    else if (gameSettings.pos == homeSound)
+    else if (settings.QueryPosition() == homeSound)
         goToHome();
-    else if (gameSettings.pos == homeLevelSelect)
+    else if (settings.QueryPosition() == homeLevelSelect)
         goToHome();
-    else if (gameSettings.pos == homeBox)
+    else if (settings.QueryPosition() == homeBox)
         hideDialogueBox();
-    else if (gameSettings.pos == menuMenu)
+    else if (settings.QueryPosition() == menuMenu)
         levelSelectToGame();
-    else if (gameSettings.pos == menuHotkeys)
+    else if (settings.QueryPosition() == menuHotkeys)
         goToMenu();
-    else if (gameSettings.pos == menuVideo)
+    else if (settings.QueryPosition() == menuVideo)
         goToMenu();
-    else if (gameSettings.pos == menuSound)
+    else if (settings.QueryPosition() == menuSound)
         goToMenu();
-    else if (gameSettings.pos == game)
+    else if (settings.QueryPosition() == game)
         goToMenu();
     else
         std::cout << "lol you are kaki, Fred 2020" << std::endl;
 
 }
 
-void    escapeKeyManagement(CS_KeyControl event)
+void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings)
 {
     int         key;
     int         info;
@@ -39,7 +39,7 @@ void    escapeKeyManagement(CS_KeyControl event)
     if (key == SDLK_ESCAPE)
     {
         if (keyPress == false)
-            escapeAction();
+            escapeAction(settings);
         if (info == CS_KEYDOWN)
             keyPress = true;
         else

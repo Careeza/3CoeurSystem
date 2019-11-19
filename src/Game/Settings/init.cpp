@@ -1,4 +1,4 @@
-#include "game2.h"
+#include "game.h"
 
 CS_Settings::CS_Settings()
 {
