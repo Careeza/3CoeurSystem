@@ -2,7 +2,7 @@
 
 CS_Tools::CS_Tools()
 {
-    debug = LEVEL0;
+    debug = LEVEL3;
     windowWidth = 0;
     windowHeight = 0;
     resolution = 0;
@@ -17,6 +17,7 @@ void    CS_Tools::getWindowSize(int w, int h)
 {
     windowWidth = w;
     windowHeight = h;
+    std::cout << "size = " << windowWidth << " " << windowHeight << std::endl;
     resolution = windowWidth / (float)windowHeight;
 }
 

@@ -21,10 +21,6 @@
 # define    CS_MOUSE_DOWN 2
 # define    CS_MOUSE_UP 3
 
-class   CS_Scene;
-class   CS_GameScene;
-class   CS_Element;
-
 void	        init(int flags);
 SDL_Window      *create_window(int flags, const std::string name = "canvas", int x = 0, int y = 0, int w = 0, int h = 0);
 SDL_Renderer    *init_renderer(SDL_Window    *window);
@@ -40,19 +36,19 @@ CS_Scene        *init_menuSound(SDL_Renderer *render);
 CS_GameScene    *init_gameScene(SDL_Renderer *render);
 
 
-void    closeGame(void);
-void    menuToHotkeys(void);
-void    goToMenu(void);
-void    goToHome(void);
-void    homeToHotkeys(void);
-void    homeToLevelSelect(void);
-void    homeToVideo(void);
-void    menuTovideo(void);
-void    homeToSound(void);
-void    menuToSound(void);
-void    levelSelectToGame(void);
-void    dispDialogueBox(void);
-void    hideDialogueBox(void);
+void    closeGame(void *settings);
+void    menuToHotkeys(void *settings);
+void    goToMenu(void *settings);
+void    goToHome(void *settings);
+void    homeToHotkeys(void *settings);
+void    homeToLevelSelect(void *settings);
+void    homeToVideo(void *settings);
+void    menuTovideo(void *settings);
+void    homeToSound(void *settings);
+void    menuToSound(void *settings);
+void    levelSelectToGame(void *settings);
+void    dispDialogueBox(void *settings);
+void    hideDialogueBox(void *settings);
 
 class   CS_Settings
 {
@@ -65,6 +61,8 @@ class   CS_Settings
         void            getCloseRequest(bool close);
         void            getPauseRequest(bool pause);
         void            getFps(int fpsSource);
+
+        void            initScene(SDL_Renderer *render);
 
         void            getScene(SDL_Renderer *render);
         void            getGameScene(SDL_Renderer *render);

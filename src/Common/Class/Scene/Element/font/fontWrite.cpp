@@ -29,7 +29,7 @@ void    CS_Police::CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer
     CS_size->y = div_y;
     if (CS_size->w > div_w)
     {
-        std::cout << "texte trop long" << std::endl;
+        std::cout << "texte trop long " << size->w << std::endl;
         exit (0);
     }
     if (CS_flags == ALIGN_CENTER)

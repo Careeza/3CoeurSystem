@@ -11,3 +11,8 @@ CS_Settings::~CS_Settings()
 {
     
 }
+
+void    CS_Settings::initScene(SDL_Renderer *render)
+{
+    Scene = init_home(render);
+}

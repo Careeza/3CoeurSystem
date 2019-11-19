@@ -3,27 +3,27 @@
 void    escapeAction(CS_Settings& settings)
 {
     if (settings.QueryPosition() == homeHome)
-        dispDialogueBox();
+        dispDialogueBox(&settings);
     else if (settings.QueryPosition() == homeHotkeys)
-        goToHome();
+        goToHome(&settings);
     else if (settings.QueryPosition() == homeVideo)
-        goToHome();
+        goToHome(&settings);
     else if (settings.QueryPosition() == homeSound)
-        goToHome();
+        goToHome(&settings);
     else if (settings.QueryPosition() == homeLevelSelect)
-        goToHome();
+        goToHome(&settings);
     else if (settings.QueryPosition() == homeBox)
-        hideDialogueBox();
+        hideDialogueBox(&settings);
     else if (settings.QueryPosition() == menuMenu)
-        levelSelectToGame();
+        levelSelectToGame(&settings);
     else if (settings.QueryPosition() == menuHotkeys)
-        goToMenu();
+        goToMenu(&settings);
     else if (settings.QueryPosition() == menuVideo)
-        goToMenu();
+        goToMenu(&settings);
     else if (settings.QueryPosition() == menuSound)
-        goToMenu();
+        goToMenu(&settings);
     else if (settings.QueryPosition() == game)
-        goToMenu();
+        goToMenu(&settings);
     else
         std::cout << "lol you are kaki, Fred 2020" << std::endl;
 

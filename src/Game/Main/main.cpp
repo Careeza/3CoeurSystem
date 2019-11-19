@@ -24,7 +24,7 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value, CS_Settings& sett
     }
 }
 
-void        initSettings(CS_Settings &settings, SDL_Window *window)
+void        initSettings(CS_Settings &settings, SDL_Window *window, SDL_Renderer *render)
 {
     int w;
     int h;
@@ -35,8 +35,10 @@ void        initSettings(CS_Settings &settings, SDL_Window *window)
     settings.getPauseRequest(false);
     settings.getFps(30);
     settings.getPosition(homeHome);
-
+    Tools->getWindowSize(settings.QueryWindowsWidth(), settings.QueryWindowsHeight());
+    settings.initScene(render);
 }
+
 TTF_Font    *CS_Police::CS_font = NULL;
 
 int     main(void)
@@ -50,16 +52,15 @@ int     main(void)
     t_actionValue   value;
 
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
-    //window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
-    window = create_window(0, "Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 600);
-    initSettings(settings, window);
-    Tools->getWindowSize(settings.QueryWindowsWidth(), settings.QueryWindowsHeight());
+    window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
+//    window = create_window(0, "Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 600);
 
     TTF_Init();
     initFont.CS_initPolice("resources/alterebro-pixel-font.ttf");
     
     render = init_renderer(window);
 
+    initSettings(settings, window, render);
 
     rend.CS_loadRenderer(render);
     event = new(CS_KeyControl);

@@ -13,7 +13,11 @@ CS_NoButton::~CS_NoButton()
 
 void    setNoButtonSize(float w, float h, float x, float y, SDL_Rect *buttonSize)
 {
+    Tools->verbose(LEVEL3, "s", "--start DEBUG Size--");
+    Tools->verbose(LEVEL3, "sffff", "size receive =", w, h, x, y);
     Tools->setSize(buttonSize, w, h, x, y);
+    Tools->verbose(LEVEL3, "sdddd", "size of the button =", buttonSize->w, buttonSize->h, buttonSize->x, buttonSize->y);
+    Tools->verbose(LEVEL3, "s", "--end DEBUG Size--\n\n");
 }
 
 void    CS_NoButton::CS_resizePixel(int w, int h, int x, int y)
