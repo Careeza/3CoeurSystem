@@ -1,7 +1,7 @@
 #include "common.h"
 #include "game.h"
 
-void    infiniteLoop(CS_Renderer render, t_actionValue *value, CS_Settings& settings)
+void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *value, CS_Settings& settings)
 {
     CS_KeyControl   event;
     CS_Timer        timer;
@@ -12,10 +12,10 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value, CS_Settings& sett
         while (event.loadEvenement(settings.QueryScene()))
         {
             if (settings.QueryPosition() & (homeHome | menuMenu))
-                bouttonManagement(event, settings);
+                bouttonManagement(event, settings, rend);
             if (settings.QueryPosition() == game)
                 actionKeyManagement(event, value, settings);
-            escapeKeyManagement(event, settings);
+            escapeKeyManagement(event, settings, rend);
         }
         if (settings.QueryPosition() == game)
             settings.QueryGameScene()->CS_queryMC()->useAnimation();
@@ -67,7 +67,7 @@ int     main(void)
 
     fillActionValue(&value);
 
-    infiniteLoop(rend, &value, settings);
+    infiniteLoop(rend, render, &value, settings);
 
     TTF_Quit();
     SDL_Quit();

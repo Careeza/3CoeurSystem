@@ -36,19 +36,19 @@ CS_Scene        *init_menuSound(SDL_Renderer *render);
 CS_GameScene    *init_gameScene(SDL_Renderer *render);
 
 
-void    closeGame(void *settings);
-void    menuToHotkeys(void *settings);
-void    goToMenu(void *settings);
-void    goToHome(void *settings);
-void    homeToHotkeys(void *settings);
-void    homeToLevelSelect(void *settings);
-void    homeToVideo(void *settings);
-void    menuTovideo(void *settings);
-void    homeToSound(void *settings);
-void    menuToSound(void *settings);
-void    levelSelectToGame(void *settings);
-void    dispDialogueBox(void *settings);
-void    hideDialogueBox(void *settings);
+void    closeGame(void *settings, SDL_Renderer *render);
+void    menuToHotkeys(void *settings, SDL_Renderer *render);
+void    goToMenu(void *settings, SDL_Renderer *render);
+void    goToHome(void *settings, SDL_Renderer *render);
+void    homeToHotkeys(void *settings, SDL_Renderer *render);
+void    homeToLevelSelect(void *settings, SDL_Renderer *render);
+void    homeToVideo(void *settings, SDL_Renderer *render);
+void    menuTovideo(void *settings, SDL_Renderer *render);
+void    homeToSound(void *settings, SDL_Renderer *render);
+void    menuToSound(void *settings, SDL_Renderer *render);
+void    levelSelectToGame(void *settings, SDL_Renderer *render);
+void    dispDialogueBox(void *settings, SDL_Renderer *render);
+void    hideDialogueBox(void *settings, SDL_Renderer *render);
 
 class   CS_Settings
 {
@@ -158,8 +158,8 @@ class   authorizedKey
         t_key   keyLeft;
 };
 
-void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings);
-int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings);
+void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Renderer *render);
+int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings, SDL_Renderer *render);
 void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, CS_Settings& settings);
 void    filtreActionTable(t_actionTable *table, t_actionTable *filtre);
 void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);

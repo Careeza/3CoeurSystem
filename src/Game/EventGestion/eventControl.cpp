@@ -1,6 +1,6 @@
 #include "game.h"
 
-int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings)
+int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings, SDL_Renderer *render)
 {
     static std::shared_ptr<CS_Element>      saveButton = NULL;
     std::shared_ptr<CS_Element>             button;
@@ -41,7 +41,7 @@ int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings)
     {
         button->CS_setZoom(NOZOOM);
         button->CS_setBrightness(false);
-        button->CS_useFonction(&settings);
+        button->CS_useFonction(&settings, render);
         // use fonction
         return (0);
     }

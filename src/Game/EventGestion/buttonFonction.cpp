@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void    closeGame(void* settings)
+void    closeGame(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
@@ -10,87 +10,97 @@ void    closeGame(void* settings)
     set->getCloseRequest(true);
 }
 
-void    menuToHotkeys(void* settings)
+void    menuToHotkeys(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(menuHotkeys);
+    set->getScene(render);
 }
 
-void    goToMenu(void* settings)
+void    goToMenu(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(menuMenu);
+    set->getScene(render);
 }
 
-void    goToHome(void* settings)
+void    goToHome(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(homeHome);
+    set->getScene(render);
 }
 
-void    homeToHotkeys(void* settings)
+void    homeToHotkeys(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(homeHotkeys);
+    set->getScene(render);
 }
 
-void    homeToLevelSelect(void* settings)
+void    homeToLevelSelect(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(homeLevelSelect);
+    set->getScene(render);
 }
 
-void    homeToVideo(void* settings)
+void    homeToVideo(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(homeVideo);
+    set->getScene(render);
 }
 
-void    menuTovideo(void* settings)
+void    menuTovideo(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(menuVideo);
+    set->getScene(render);
 }
 
-void    homeToSound(void* settings)
+void    homeToSound(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(homeSound);
+    set->getScene(render);
 }
 
-void    menuToSound(void* settings)
+void    menuToSound(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(menuSound);
+    set->getScene(render);
 }
 
-void    levelSelectToGame(void* settings)
+void    levelSelectToGame(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(game);
+    set->getScene(render);
 }
 
-void    dispDialogueBox(void* settings)
+void    dispDialogueBox(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
     CS_Scene    *scene;
@@ -111,7 +121,7 @@ void    dispDialogueBox(void* settings)
     set->getPosition(homeBox);
 }
 
-void    hideDialogueBox(void* settings)
+void    hideDialogueBox(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
     CS_Scene    *scene;

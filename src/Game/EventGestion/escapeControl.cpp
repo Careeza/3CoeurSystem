@@ -1,35 +1,35 @@
 #include "game.h"
 
-void    escapeAction(CS_Settings& settings)
+void    escapeAction(CS_Settings& settings, SDL_Renderer *render)
 {
     if (settings.QueryPosition() == homeHome)
-        dispDialogueBox(&settings);
+        dispDialogueBox(&settings, render);
     else if (settings.QueryPosition() == homeHotkeys)
-        goToHome(&settings);
+        goToHome(&settings, render);
     else if (settings.QueryPosition() == homeVideo)
-        goToHome(&settings);
+        goToHome(&settings, render);
     else if (settings.QueryPosition() == homeSound)
-        goToHome(&settings);
+        goToHome(&settings, render);
     else if (settings.QueryPosition() == homeLevelSelect)
-        goToHome(&settings);
+        goToHome(&settings, render);
     else if (settings.QueryPosition() == homeBox)
-        hideDialogueBox(&settings);
+        hideDialogueBox(&settings, render);
     else if (settings.QueryPosition() == menuMenu)
-        levelSelectToGame(&settings);
+        levelSelectToGame(&settings, render);
     else if (settings.QueryPosition() == menuHotkeys)
-        goToMenu(&settings);
+        goToMenu(&settings, render);
     else if (settings.QueryPosition() == menuVideo)
-        goToMenu(&settings);
+        goToMenu(&settings, render);
     else if (settings.QueryPosition() == menuSound)
-        goToMenu(&settings);
+        goToMenu(&settings, render);
     else if (settings.QueryPosition() == game)
-        goToMenu(&settings);
+        goToMenu(&settings, render);
     else
         std::cout << "lol you are kaki, Fred 2020" << std::endl;
 
 }
 
-void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings)
+void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Renderer *render)
 {
     int         key;
     int         info;
@@ -39,7 +39,7 @@ void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings)
     if (key == SDLK_ESCAPE)
     {
         if (keyPress == false)
-            escapeAction(settings);
+            escapeAction(settings, render);
         if (info == CS_KEYDOWN)
             keyPress = true;
         else
