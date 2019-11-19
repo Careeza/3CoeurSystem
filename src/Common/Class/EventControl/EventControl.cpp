@@ -4,11 +4,11 @@ CS_KeyControl::CS_KeyControl()
 {
 }
 
-int    CS_KeyControl::loadEvenement()
+int    CS_KeyControl::loadEvenement(CS_Scene *scene)
 {
     int eventLoop;
 
-    scene = gameSettings.current;
+    scene = currentScene;
     len = scene->CS_querySceneLen() - 1;
     eventLoop = SDL_PollEvent(&event);
     type = event.type;
