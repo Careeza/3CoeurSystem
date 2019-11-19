@@ -2,7 +2,7 @@
 
 CS_Tools::CS_Tools()
 {
-    debug = LEVEL3;
+    debug = LEVEL0;
     windowWidth = 0;
     windowHeight = 0;
     resolution = 0;

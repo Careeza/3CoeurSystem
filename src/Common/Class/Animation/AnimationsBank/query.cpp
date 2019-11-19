@@ -10,6 +10,7 @@ CS_Animation    *CS_BankAnimation::CS_queryAnimationByname(t_animation nameSourc
     {
         if (animations[i]->QueryName() == nameSource)
             return (animations[i]);
+        i++;
     }
     std::cout << "error in query animation = " << nameSource << " looking for > " << STATIC << "or > " << WALK << std::endl;
     exit (0);

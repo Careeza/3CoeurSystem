@@ -10,6 +10,8 @@ void            initMC(SDL_Renderer *render, CS_GameScene *scene)
     scene->loadMC(2, staticMC, walkMC);
     MC = scene->CS_queryMC();
     MC->loadAnimation(STATIC);
+    std::cout << Tools->QueryWindowResolution() << " <- game res" << std::endl;
+    MC->setSize(10, 10 * Tools->QueryWindowResolution(), 45, 90 - (5 * Tools->QueryWindowResolution()));
 
 }
 
@@ -21,7 +23,7 @@ CS_GameScene    *init_gameScene(SDL_Renderer *render)
     scene->CS_loadRenderer(render);
 
     scene->CS_createElementToSceneFromPng("Background", "resources/source/gameBackground.jpg", 100, 100, 0, 0, 0);
-
+    initMC(render, scene);
     return (scene);
 }
 

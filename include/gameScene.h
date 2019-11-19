@@ -79,6 +79,7 @@ class   CS_Character
         void        loadAnimation(t_animation name);
 
         bool        useAnimation();
+        void        setSize(float w, float h, float x, float y);
 
         void        setRight(bool rightSource);
 

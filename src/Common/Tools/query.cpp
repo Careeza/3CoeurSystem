@@ -10,7 +10,7 @@ int     CS_Tools::QueryWindowHeight()
     return (windowHeight);
 }
 
-int     CS_Tools::QueryWindowResolution()
+float   CS_Tools::QueryWindowResolution()
 {
     return (resolution);
 }

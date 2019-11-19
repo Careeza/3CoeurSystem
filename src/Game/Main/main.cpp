@@ -37,6 +37,7 @@ void        initSettings(CS_Settings &settings, SDL_Window *window, SDL_Renderer
     settings.getPosition(homeHome);
     Tools->getWindowSize(settings.QueryWindowsWidth(), settings.QueryWindowsHeight());
     settings.initScene(render);
+    settings.initGameScene(render);
 }
 
 TTF_Font    *CS_Police::CS_font = NULL;

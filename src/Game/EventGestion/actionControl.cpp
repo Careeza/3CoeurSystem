@@ -7,14 +7,16 @@ void    useAction(t_actionTable *table, CS_Settings& settings)
     MC = settings.QueryGameScene()->CS_queryMC();
     if (table->right == true)
     {
-        std::cout << "load animation STATIC !" << std::endl;
-        MC->loadAnimation(STATIC);
+        std::cout << "load animation WALK !" << std::endl;
+        MC->loadAnimation(WALK);
+        std::cout << "load animation OK" << std::endl;
         MC->setRight(true);
     }
     else if (table->left == true)
     {
-        std::cout << "load animation STATIC !" << std::endl;
-        MC->loadAnimation(STATIC);
+        std::cout << "load animation WALK !" << std::endl;
+        MC->loadAnimation(WALK);
+        std::cout << "load animation OK" << std::endl;
         MC->setRight(false);
     }
     else

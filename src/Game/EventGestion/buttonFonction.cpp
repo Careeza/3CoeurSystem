@@ -97,7 +97,7 @@ void    levelSelectToGame(void* settings, SDL_Renderer *render)
 
     set = (CS_Settings*)settings;
     set->getPosition(game);
-    set->getScene(render);
+//    set->getScene(render);
 }
 
 void    dispDialogueBox(void* settings, SDL_Renderer *render)

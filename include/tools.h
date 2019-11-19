@@ -43,7 +43,7 @@ class   CS_Tools
 
         int     QueryWindowWidth();
         int     QueryWindowHeight();
-        int     QueryWindowResolution();
+        float   QueryWindowResolution();
 
         void    verbose(t_debug debugSource, std::string element, ...);
 
@@ -53,7 +53,7 @@ class   CS_Tools
     private:
         int     windowWidth;
         int     windowHeight;
-        int     resolution;
+        float   resolution;
         t_debug debug;
 };
 

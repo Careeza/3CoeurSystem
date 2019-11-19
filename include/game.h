@@ -63,6 +63,7 @@ class   CS_Settings
         void            getFps(int fpsSource);
 
         void            initScene(SDL_Renderer *render);
+        void            initGameScene(SDL_Renderer *render);
 
         void            getScene(SDL_Renderer *render);
         void            getGameScene(SDL_Renderer *render);

@@ -19,6 +19,8 @@ void            CS_Settings::getScene(SDL_Renderer *render)
         Scene = init_menuVideo(render);
     else if (pos == menuSound)
         Scene = init_menuSound(render);
+    else if (pos == game)
+        std::cout << "you are in game" << std::endl;
     else
         std::cout << "something went wrong wtf boooom" << std::endl;
 }

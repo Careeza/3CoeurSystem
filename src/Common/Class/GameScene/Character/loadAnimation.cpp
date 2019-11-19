@@ -11,3 +11,8 @@ void        CS_Character::loadAnimation(t_animation name)
         exit (0);
     }
 }
+
+void        CS_Character::setSize(float w, float h, float x, float y)
+{   
+    Tools->setSize(size, w, h, x, y);
+}
