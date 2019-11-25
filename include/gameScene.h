@@ -18,6 +18,35 @@ typedef enum	e_aniamtion {
 # define NOINTERRUPT 1
 # define INTERRUPT 2
 
+class   CS_Layer
+{
+    public:
+        CS_Layer();
+        ~CS_Layer();
+        void        createLayer(string source, float speedSource);
+
+        void        moveLayer();
+
+        SDL_Texture *queryTexture();
+        SDL_Rect    *queryScopeMain();
+        SDL_Rect    *querySizeMain();
+        SDL_Rect    *queryScopeSecond();
+        SDL_Rect    *querySizeSecond();
+
+    private:
+        SDL_Texture *layerTexture;
+        
+        int         scopeWidth;
+        int         scopeHeight;
+        SDL_Rect    *scopeMain;
+        SDL_Rect    *scopeSecond;
+
+        SDL_Rect    *sizeMain;
+        SDL_Rect    *sizeSecond;
+        
+        int         speed;
+}
+
 class   CS_Animation
 {
     public:
@@ -91,6 +120,7 @@ class   CS_Character
 
         CS_BankAnimation    *bank;
         CS_Animation        *animation;
+        CS_Animation        *saveAnimation;
         
         SDL_Texture         *texture;
         SDL_Rect            *size;
@@ -99,63 +129,22 @@ class   CS_Character
         bool                right;
 };
 
-/*
-class   CS_CommonEnemy
-{
-    public:
-        CS_CommonEnemy();
-        ~CS_CommonEnemy();
-        void            loadAnimation(std::string name);
-        void            setRight(bool rightSource);
-        bool            useAnimation();
-        SDL_Texture     *queryTexture();
-        SDL_Rect        *querySize();
-        SDL_Rect        *queryFrame();
-    
-    protected:        
-        SDL_Texture         *texture;
-        SDL_Rect            *size;
-        SDL_Rect            *frame;
-        SDL_Rect            *hitbox;
-        CS_Animation        *animation;
-        CS_BankAnimation    *bank;
-        bool                right;
-        bool                endAnimation;
-        int                 i;
-};
-
-class   CS_Cube : public CS_CommonEnemy
-{
-    public:
-        void        initRedCube();
-        void        loadBank(SDL_Renderer *render);
-
-    private:
-};
-
-class   CS_CubeGreen : public CS_CommonEnemy
-{
-    public:
-        void        initGreenCube();
-        void        loadBank(SDL_Renderer *render);
-
-    private:
-};
-
 class   CS_Enemy
 {
     public:
         CS_Enemy();
         ~CS_Enemy();
+
+        void    addEnemy(SDL_Renderer *render, CS_Character *(*create)(SDL_Renderer *render), void (*algoSource)(CS_Character *enemy, CS_Character *MC));
+        void    spawnEnemy(float w, float h);
+        void    reloadParam(CS_Character *MC);
+        
         SDL_Texture *queryTexture();
         SDL_Rect    *querySize();
         SDL_Rect    *queryFrame();
-        void        reloadParam();
-        void        addEnemy(t_enemy type, SDL_Renderer *render);
-    
     private:
-        t_enemy         EnemyType;
-        CS_CommonEnemy  *enemy;
+        CS_Character    *enemy;
+        void            (*algo)(CS_Character *enemy, CS_Character *MC);
 };
 
 class   CS_Enemies
@@ -163,26 +152,31 @@ class   CS_Enemies
     public:
         CS_Enemies();
         ~CS_Enemies();
-        void        addEnemy(t_enemy type, SDL_Renderer *render);
+
+        void        addEnemy(SDL_Renderer *render, CS_Character *(*create)(SDL_Renderer *render), void (*algo)(CS_Character *enemy, CS_Character *MC), float w, float h);
+        void        reloadParam(int index, CS_Character *MC);
+
         CS_Enemy    *QueryEnemy(int index);
         int         QueryNbEnemies();
 
     private:
         std::vector<CS_Enemy *> enemies;   
-};*/
+};
 
 class   CS_GameScene : public CS_Scene
 {
     public:
         CS_GameScene();
         ~CS_GameScene();
-        void            loadMC(int nbAnimation, ...);
-        void            loadEnemies();
-//        CS_Enemies      *CS_queryEnemies();
+
+        void            loadMC(CS_Character *MCSource);
+        void            loadEnemies(CS_Enemies *enemies);
+
+        CS_Enemies      *CS_queryEnemies();
         CS_Character    *CS_queryMC();
     private:
         CS_Character    *MC;
-//        CS_Enemies      *enemies;
+        CS_Enemies      *enemies;
 };
 
 class   CS_HitBox

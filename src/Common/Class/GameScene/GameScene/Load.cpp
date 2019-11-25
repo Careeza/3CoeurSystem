@@ -1,26 +1,11 @@
 #include "gameScene.h"
 
-void    CS_GameScene::loadEnemies()
+void    CS_GameScene::loadEnemies(CS_Enemies *enemiesSource)
 {
-/*    enemies->addEnemy(CubeRouge, render);
-    enemies->addEnemy(CuveVert, render);
-    enemies->addEnemy(CubeRouge, render);*/
+    enemies = enemiesSource;
 }
 
-void    CS_GameScene::loadMC(int nbAnimation, ...)
+void    CS_GameScene::loadMC(CS_Character *MCSource)
 {
-    va_list         op;
-    int             i;
-    CS_Animation    *(*funct)(SDL_Renderer *render);
-
-    i = 0;
-    va_start(op, nbAnimation);
-    while (i < nbAnimation)
-    {
-        funct = va_arg(op, CS_Animation*(*)(SDL_Renderer *render));
-        MC->addAnimation(render, funct);
-        std::cout << "here !" << std::endl;
-        i++;
-    }
-    va_end(op);
+    MC = MCSource;
 }

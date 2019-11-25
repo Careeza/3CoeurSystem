@@ -5,6 +5,9 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *valu
 {
     CS_KeyControl   event;
     CS_Timer        timer;
+    CS_Enemies      *enemies;
+    CS_Enemy        *enemy;
+    int             i;
 
     while (!settings.QueryCloseRequest())
     {
@@ -18,7 +21,17 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *valu
             escapeKeyManagement(event, settings, rend);
         }
         if (settings.QueryPosition() == game)
+        {
             settings.QueryGameScene()->CS_queryMC()->useAnimation();
+            enemies = settings.QueryGameScene()->CS_queryEnemies();
+            i = 0;
+            while (i < enemies->QueryNbEnemies())
+            {
+                enemy = enemies->QueryEnemy(i);
+                enemy->reloadParam(settings.QueryGameScene()->CS_queryMC());
+                i++;
+            }
+        }
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
         SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));
     }

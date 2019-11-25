@@ -3,6 +3,7 @@
 CS_Character::CS_Character()
 {
     std::cout << "create a character" << std::endl;
+    saveAnimation = NULL;
     bank = new (CS_BankAnimation);
     size = new (SDL_Rect);
     right = false;

@@ -80,7 +80,7 @@ void    dispScene(CS_Scene *current, SDL_Renderer *render)
 void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
 {
     CS_Character    *MC;
-//    CS_Enemy        *enemy;
+    CS_Enemy        *enemy;
     SDL_Texture     *texture;
     SDL_Rect        *size;
     SDL_Rect        *frame;
@@ -93,7 +93,7 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
     size = MC->querySize();
     SDL_RenderCopy(render, texture, frame, size);
     i = 0;
-/*    while (i < gameScene->CS_queryEnemies()->QueryNbEnemies())
+    while (i < gameScene->CS_queryEnemies()->QueryNbEnemies())
     {
         enemy = gameScene->CS_queryEnemies()->QueryEnemy(i);
         texture = enemy->queryTexture();
@@ -101,7 +101,7 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
         size = enemy->querySize();
         SDL_RenderCopy(render, texture, frame, size);
         i++;
-    }*/
+    }
 }
 
 void    CS_Renderer::CS_dispScene(CS_Scene *current, CS_GameScene *gameScene, t_pos pos)
