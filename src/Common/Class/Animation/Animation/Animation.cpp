@@ -2,12 +2,14 @@
 
 CS_Animation::CS_Animation()
 {
+    Tools->verbose(LEVEL2, "s", "create animation");
     interrupt = NOINTERRUPT;
     index = 0;
 }
 
 CS_Animation::~CS_Animation()
 {
+    Tools->verbose(LEVEL2, "s", "delete animation");
     SDL_DestroyTexture(textureR);
     SDL_DestroyTexture(textureL);
 }

@@ -14,7 +14,7 @@ void    CS_Animation::loadTexture(SDL_Renderer *render, std::string png_left, st
     surface = IMG_Load(png_left.c_str());
     if (!surface)
     {
-        std::cout << "error creating surface 1 -> " << png_left << "." << std::endl;
+        Tools->verbose(LEVEL1, "ss", "error creating surface (cs_animation) PNG =", png_left.c_str());
         exit (0);
     }
     textureL = SDL_CreateTextureFromSurface(render, surface);
@@ -23,7 +23,7 @@ void    CS_Animation::loadTexture(SDL_Renderer *render, std::string png_left, st
     surface = IMG_Load(png_right.c_str());
     if (!surface)
     {
-        std::cout << "error creating surface 2" << png_right << std::endl;
+        Tools->verbose(LEVEL1, "ss", "error creating surface 2 (cs_animation) PNG =", png_right.c_str());
         exit (0);
     }
     textureR = SDL_CreateTextureFromSurface(render, surface);

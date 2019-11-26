@@ -26,7 +26,7 @@ void        hitBoxGestion(SDL_Rect *size)
 
 bool        CS_Animation::CS_UseAnimation(bool right, SDL_Rect *size, SDL_Rect* &frameDest, SDL_Texture* &textureDest)
 {
-    std::cout << "l'index int comme un connard " << index << std::endl;
+    Tools->verbose(LEVEL3, "sdsd", "animation =", index + 1, "/", nbFrame);
     if (right == true)
     {
         textureDest = textureR;
@@ -39,6 +39,5 @@ bool        CS_Animation::CS_UseAnimation(bool right, SDL_Rect *size, SDL_Rect* 
     }
     frameDest = frame[index];
     index++;
-    std::cout << "nope but only for the first time ?" << std::endl;
     return (animationOver(index, nbFrame, interrupt));
 }

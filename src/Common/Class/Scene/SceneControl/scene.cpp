@@ -2,7 +2,7 @@
 
 CS_Scene::CS_Scene()
 {
-//    std::cout << " --- create scene --- "<< std::endl;
+    Tools->verbose(LEVEL2, "s", "create scene");
     CS_sceneLen = 0;
 
     colorBrightness.CS_setColor(0xFF, 0xFF, 0xFF, 80);
@@ -12,6 +12,7 @@ CS_Scene::~CS_Scene()
 {
     int i;
 
+    Tools->verbose(LEVEL2, "s", "delete scene");
     i = 0;
     while (i < CS_sceneLen)
     {
