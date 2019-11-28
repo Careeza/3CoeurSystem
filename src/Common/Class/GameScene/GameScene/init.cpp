@@ -2,7 +2,9 @@
 
 CS_GameScene::CS_GameScene()
 {
-//    enemies = new(CS_Enemies);
+    verifyMC = false;
+    verifyEnemies = false;
+    verifyParallax = false;
 }
 
 CS_GameScene::~CS_GameScene()

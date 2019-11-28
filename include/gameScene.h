@@ -230,6 +230,10 @@ class   CS_GameScene : public CS_Scene
         void            loadParallax(CS_Parallax *parallaxSource);
         void            loadCamera(CS_Camera *cameraSource);
 
+        bool            haveMC();
+        bool            haveEnemies();
+        bool            haveParallax();
+
         CS_Enemies      *CS_queryEnemies();
         CS_Character    *CS_queryMC();
         CS_Parallax     *QueryParallax();
@@ -240,6 +244,10 @@ class   CS_GameScene : public CS_Scene
         CS_Character    *MC;
         CS_Enemies      *enemies;
         CS_Camera       *camera;
+
+        bool            verifyMC;
+        bool            verifyEnemies;
+        bool            verifyParallax;
 };
 
 class   CS_HitBox
