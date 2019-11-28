@@ -27,7 +27,7 @@ CS_Character    *initMC(SDL_Renderer *render)
     MC->addAnimation(render, walkMC);
     MC->addAnimation(render, sprintMC);
     MC->loadAnimation(STATIC);
-    MC->setSize(10, 10, 45, 90);
+    MC->setSizePos(10, 10, 45, 90);
     
     return (MC);
 }
@@ -64,22 +64,25 @@ void                algoFuite(CS_Character *enemy, CS_Character *MC)
 {
     int         enemyPos;
     int         MCPos;
+    int         i;
 
-    enemyPos = enemy->querySize()->x;
-    MCPos = MC->querySize()->x;
+    enemy->queryPos(enemyPos, i);
+    MC->queryPos(MCPos, i);
 
     enemy->loadAnimation(WALK);
     enemy->setRight(false);
-    enemy->useAnimation();
+//    enemy->useAnimation();
 }
 
 void                algoClone1(CS_Character *enemy, CS_Character *MC)
 {
     int         enemyPos;
     int         MCPos;
+    int         i;
 
-    enemyPos = enemy->querySize()->x;
-    MCPos = MC->querySize()->x;
+    enemy->queryPos(enemyPos, i);
+    MC->queryPos(MCPos, i);
+
 
     if (enemyPos > MCPos && (enemyPos - MCPos) > 100)
     {
@@ -95,16 +98,18 @@ void                algoClone1(CS_Character *enemy, CS_Character *MC)
     {
             enemy->loadAnimation(STATIC);
     }
-    enemy->useAnimation();
+//    enemy->useAnimation();
 }
 
 void                algoClone2(CS_Character *enemy, CS_Character *MC)
 {
     int         enemyPos;
     int         MCPos;
+    int         i;
 
-    enemyPos = enemy->querySize()->x;
-    MCPos = MC->querySize()->x;
+    enemy->queryPos(enemyPos, i);
+    MC->queryPos(MCPos, i);
+
 
     if (enemyPos > MCPos && (enemyPos - MCPos) > 200)
     {
@@ -120,7 +125,6 @@ void                algoClone2(CS_Character *enemy, CS_Character *MC)
     {
             enemy->loadAnimation(STATIC);
     }
-    enemy->useAnimation();
 }
 
 CS_Character        *initClone1(SDL_Renderer *render)
@@ -132,7 +136,7 @@ CS_Character        *initClone1(SDL_Renderer *render)
     clone->addAnimation(render, staticMC);
     clone->addAnimation(render, walkClone);
     clone->loadAnimation(STATIC);
-    clone->setSize(10, 10, 45, 90);
+    clone->setSizePos(10, 10, 45, 90);
     
     return (clone);
 }
@@ -146,7 +150,7 @@ CS_Character        *initClone2(SDL_Renderer *render)
     clone->addAnimation(render, staticMC);
     clone->addAnimation(render, walkClone2);
     clone->loadAnimation(STATIC);
-    clone->setSize(10, 10, 45, 90);
+    clone->setSizePos(10, 10, 45, 90);
     
     return (clone);
 }
@@ -158,6 +162,8 @@ CS_Enemies      *initEnemies(SDL_Renderer *render)
 
     i = 10;
     enemies = new (CS_Enemies);
+
+    enemies->addEnemy(render, initClone1, algoFuite, 30, 90);
 /*    while (i < 95)
     {
         if (rand() % 2 == 0)

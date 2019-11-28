@@ -1,10 +1,21 @@
 # include "gameScene.h"
 
-bool    CS_Character::useAnimation()
+
+bool        CS_Character::nextFrame()
 {
-//    std::cout << "crash here ?" << std::endl;
-    return (animation->CS_UseAnimation(right, size, frame, texture));
+    animation->nextFrame();
 }
+
+void        CS_Character::getFrame()
+{
+    animation->getFrame(right, frame, texture);
+}
+
+void        CS_Character::moveCharacter()
+{
+    animation->moveCharacter(right, x, y);
+}
+
 
 void        CS_Character::setRight(bool rightSource)
 {

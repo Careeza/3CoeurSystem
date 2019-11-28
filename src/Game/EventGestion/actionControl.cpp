@@ -58,22 +58,19 @@ void    useAction2(t_actionTable *table, CS_Settings& settings)
     }
 }
 
-void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, CS_Settings& settings)
+void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *action)
 {
     int                     key;
     int                     info;
     static t_actionTable    table;
-    static t_actionTable    filtre;
     static int              i = 0;
  
     if (i == 0)
     {
         resetActionTable(&table);
-        resetActionTable(&filtre);
         i++;
     }
     info = event.CS_getKeyboardActions(key);
     fillActionTable(&table, value, key, info);
-    filtreActionTable(&table, &filtre);
-    useAction2(&filtre, settings);
+    filtreActionTable(&table, action);
 }

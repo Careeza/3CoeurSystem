@@ -104,8 +104,10 @@ class   authorizedKey
         t_key   keyLeft;
 };
 
+void    useAction2(t_actionTable *table, CS_Settings& settings);
+void    useAction(t_actionTable *table, CS_Settings& settings);
 void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Renderer *render);
-void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, CS_Settings& settings);
+void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *action);
 void    filtreActionTable(t_actionTable *table, t_actionTable *filtre);
 void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);
 void    resetActionTable(t_actionTable *table);

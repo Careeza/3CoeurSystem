@@ -138,10 +138,8 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
     MC = gameScene->CS_queryMC();
     texture = MC->queryTexture();
     frame = MC->queryFrame();
-    Tools->copyRect(MC->querySize(), size);
-
+    MC->querySizePos(size->w, size->h, size->x, size->y);
     size->x -= cameraX;
-    size->y -= cameraY;
 
     SDL_RenderCopy(render, texture, frame, size);
 
@@ -153,7 +151,7 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
         enemy = gameScene->CS_queryEnemies()->QueryEnemy(i);
         texture = enemy->queryTexture();
         frame = enemy->queryFrame();
-        Tools->copyRect(enemy->querySize(), size);
+        enemy->querySize(size->w, size->h, size->x, size->y);
         size->x -= cameraX;
         size->y -= cameraY;
         SDL_RenderCopy(render, texture, frame, size);

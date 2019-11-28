@@ -5,9 +5,9 @@ SDL_Texture *CS_Enemy::queryTexture()
     return (enemy->queryTexture());
 }
 
-SDL_Rect    *CS_Enemy::querySize()
+void        CS_Enemy::querySize(int& w, int& h, int& x, int& y)
 {
-    return (enemy->querySize());
+    enemy->querySizePos(w, h, x, y);
 }
 
 SDL_Rect    *CS_Enemy::queryFrame()

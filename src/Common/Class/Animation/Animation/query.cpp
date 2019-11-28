@@ -18,7 +18,16 @@ SDL_Rect        *CS_Animation::QueryFrame()
     return(frame[index]);
 }
 
-int             CS_Animation::QueryMovement()
+int     CS_Animation::QueryMovementX(bool right)
 {
-    return(movement[index]);
+    if (right)
+        return(movement[index]);
+    else
+        return(-movement[index]);
 }
+
+int     CS_Animation::QueryMovementY()
+{
+    return (0);
+}
+

@@ -1,65 +1,86 @@
 #include "common.h"
 #include "game.h"
 
-void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *value, CS_Settings& settings)
+void    eventManagement(CS_Settings& settings, SDL_Renderer *rend, t_actionValue *value, t_actionTable *action)
 {
     CS_KeyControl   event;
-    CS_Timer        timer;
+
+    while (event.loadEvenement(settings.QueryScene()))
+    {
+        if (settings.QueryPosition() & (homeHome | menuMenu))
+            bouttonManagement(event, settings, rend);
+        if (settings.QueryPosition() == game)
+            actionKeyManagement(event, value, action);
+        escapeKeyManagement(event, settings, rend);
+    }
+}
+
+void    MCManagement(CS_Settings& settings, t_actionTable *action, int& xCamera, int& yCamera)
+{
     CS_Character    *MC;
     CS_Camera       *camera;
+
+    useAction(action, settings);
+    MC = settings.QueryGameScene()->CS_queryMC();
+    MC->getFrame();
+    MC->moveCharacter();
+
+    camera = settings.QueryGameScene()->QueryCamera();
+    camera->moveCamera2(MC->queryMoveX(), 0);
+    camera->queryCameraPosition(xCamera, yCamera);
+}
+
+void    enemyManagement(CS_Settings& settings)
+{
     CS_Enemies      *enemies;
     CS_Enemy        *enemy;
+    int i;
 
+    enemies = settings.QueryGameScene()->CS_queryEnemies();
+    i = 0;
+    while (i < enemies->QueryNbEnemies())
+    {
+        enemy = enemies->QueryEnemy(i);
+        enemy->reloadParam(settings.QueryGameScene()->CS_queryMC());
+        enemy->getFrame();
+        enemy->moveCharacter();
+    i++;
+    }
+}
+
+void    parallaxManagement(CS_Settings& settings, int xCamera, int yCamera)
+{
     CS_Parallax     *parallax;
     CS_Layer        *layer;
+    int             i;
 
+    parallax = settings.QueryGameScene()->QueryParallax();
+    i = 0;
+    while (i < parallax->QueryNbLayers())
+    {
+        layer = parallax->QueryLayer(i);
+        layer->moveLayer(xCamera);
+        i++;
+    }
+}
+
+void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *value, CS_Settings& settings)
+{
+    CS_Timer        timer;
+    t_actionTable   action;
     int             xCamera;
     int             yCamera;
 
-    SDL_Rect        *size;
-    int             i;
-    int             decalage;
-
-    decalage = Tools->transformWidth(45);
+    resetActionTable(&action);
     while (!settings.QueryCloseRequest())
     {
         timer.start();
-        while (event.loadEvenement(settings.QueryScene()))
-        {
-            if (settings.QueryPosition() & (homeHome | menuMenu))
-            {
-                bouttonManagement(event, settings, rend);
-            }
-            if (settings.QueryPosition() == game)
-                actionKeyManagement(event, value, settings);
-            escapeKeyManagement(event, settings, rend);
-        }
+        eventManagement(settings, rend, value, &action);
         if (settings.QueryPosition() == game)
-        {
-            MC = settings.QueryGameScene()->CS_queryMC();
-            MC->useAnimation();
-            
-            size = MC->querySize();
-            camera = settings.QueryGameScene()->QueryCamera();
-//            camera->moveCamera(size->x - decalage, 0);
-
-            camera->queryCameraPosition(xCamera, yCamera);
-            parallax = settings.QueryGameScene()->QueryParallax();
-            i = 0;
-            while (i < parallax->QueryNbLayers())
-            {
-                layer = parallax->QueryLayer(i);
-                layer->moveLayer(xCamera);
-                i++;
-            }
-            enemies = settings.QueryGameScene()->CS_queryEnemies();
-            i = 0;
-            while (i < enemies->QueryNbEnemies())
-            {
-                enemy = enemies->QueryEnemy(i);
-                enemy->reloadParam(settings.QueryGameScene()->CS_queryMC());
-                i++;
-            }
+        {   
+            MCManagement(settings, &action, xCamera, yCamera);
+            enemyManagement(settings);
+            parallaxManagement(settings, xCamera, yCamera);
         }
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
         SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));

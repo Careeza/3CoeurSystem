@@ -6,13 +6,7 @@ void        CS_Enemy::addEnemy(SDL_Renderer *render, CS_Character *(*create)(SDL
     algo = algoSource;
 }
 
-void        CS_Enemy::spawnEnemy(float w, float h)
+void        CS_Enemy::spawnEnemy(float xSource, float ySource)
 {
-    SDL_Rect    *rect;
-
-    rect = enemy->querySize();
-    std::cout << rect->x << " -- " << rect->y <<  "--" << h << std::endl;
-    rect->x = Tools->transformWidth(w);
-    rect->y = Tools->transformHeight(h);
-    std::cout << rect->x << " -- " << rect->y << std::endl;
+    enemy->setPos(xSource, ySource);
 }

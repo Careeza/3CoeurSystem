@@ -100,13 +100,15 @@ class   CS_Animation
 
         void            restartAnimation();
 
-        bool            CS_UseAnimation(bool right, SDL_Rect *size, SDL_Rect* &frame, SDL_Texture* &texture);
-
+        bool            nextFrame();
+        void            getFrame(bool right, SDL_Rect* &frameDest, SDL_Texture* &textureDest);
+        void            moveCharacter(bool right, int& x, int &y);
 
         t_animation     QueryName();
         SDL_Texture     *QueryTexture(bool right);
         SDL_Rect        *QueryFrame();
-        int             QueryMovement();
+        int             QueryMovementX(bool right);
+        int             QueryMovementY();
 
     private:
 
@@ -147,14 +149,26 @@ class   CS_Character
         void        addAnimation(SDL_Renderer *render, CS_Animation*(*f)(SDL_Renderer *render));
         void        loadAnimation(t_animation name);
 
-        bool        useAnimation();
-        void        setSize(float w, float h, float x, float y);
+        bool        nextFrame();
+        void        getFrame();
+        void        moveCharacter();
+
+        void        setSizePos(float wSource, float hSource, float xSource, float ySource);
+        void        setSize(float wSource, float hSource);
+        void        setPos(float xSource, float ySource);
 
         void        setRight(bool rightSource);
 
         SDL_Texture *queryTexture();
-        SDL_Rect    *querySize();
         SDL_Rect    *queryFrame();
+
+        void        querySizePos(int& w, int& h, int& x, int& y);
+        void        querySize(int& w, int& h);
+        void        queryPos(int& x, int& y);
+
+        int         queryMoveX();
+//        int         queryMoveY();
+
 
     private:
 
@@ -165,6 +179,10 @@ class   CS_Character
         SDL_Texture         *texture;
         SDL_Rect            *size;
         SDL_Rect            *frame;
+        int                 x;
+        int                 y;
+        int                 w;
+        int                 h;
 
         bool                right;
 };
@@ -176,11 +194,13 @@ class   CS_Enemy
         ~CS_Enemy();
 
         void    addEnemy(SDL_Renderer *render, CS_Character *(*create)(SDL_Renderer *render), void (*algoSource)(CS_Character *enemy, CS_Character *MC));
-        void    spawnEnemy(float w, float h);
+        void    spawnEnemy(float xSource, float ySource);
         void    reloadParam(CS_Character *MC);
+        void    getFrame();
+        void    moveCharacter();
         
         SDL_Texture *queryTexture();
-        SDL_Rect    *querySize();
+        void        querySize(int& w, int& h, int& x, int& y);
         SDL_Rect    *queryFrame();
     private:
         CS_Character    *enemy;
