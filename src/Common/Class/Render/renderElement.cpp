@@ -130,6 +130,28 @@ void    renderMC(CS_Character *MC, SDL_Renderer *render, SDL_Rect *size, int cam
     SDL_RenderCopy(render, texture, frame, size);
 }
 
+void    renderEnemy(CS_Enemies *enemies, SDL_Renderer *render, SDL_Rect *size, int cameraX, int cameraY)
+{
+    CS_Enemy        *enemy;
+    SDL_Texture     *texture;
+    SDL_Rect        *frame;
+    int             i;
+
+    i = 0;
+
+    while (i < enemies->QueryNbEnemies())
+    {
+        enemy = enemies->QueryEnemy(i);
+        texture = enemy->queryTexture();
+        frame = enemy->queryFrame();
+        enemy->querySize(size->w, size->h, size->x, size->y);
+        size->x -= cameraX;
+        size->y -= cameraY;
+        SDL_RenderCopy(render, texture, frame, size);
+        i++;
+    }
+}
+
 void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
 {
     CS_Enemy        *enemy;
@@ -150,20 +172,7 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
 
     renderMC(gameScene->CS_queryMC(), render, size, cameraX, cameraY);
 
-    int             i;
-
-    i = 0;
-    while (i < gameScene->CS_queryEnemies()->QueryNbEnemies())
-    {
-        enemy = gameScene->CS_queryEnemies()->QueryEnemy(i);
-        texture = enemy->queryTexture();
-        frame = enemy->queryFrame();
-        enemy->querySize(size->w, size->h, size->x, size->y);
-        size->x -= cameraX;
-        size->y -= cameraY;
-        SDL_RenderCopy(render, texture, frame, size);
-        i++;
-    }
+    renderEnemy(gameScene->CS_queryEnemies(), render, size, cameraX, cameraY);
 
     delete size;
 }
