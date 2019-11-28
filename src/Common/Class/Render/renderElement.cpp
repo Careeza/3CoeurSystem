@@ -175,17 +175,28 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
     if (gameScene->haveEnemies())
         renderEnemy(gameScene->CS_queryEnemies(), render, size, cameraX, cameraY);
 
+    dispScene(gameScene, render);
+
     delete size;
 }
 
 void    CS_Renderer::CS_dispScene(CS_Scene *current, CS_GameScene *gameScene, t_pos pos)
 {
-    if (current != NULL)
+    if (gameScene != NULL)
     {
         if (pos & (menuMenu | game))
+        {
+            std::cout << "disp game" << std::endl;
             dispGameScene(gameScene, CS_render);
+        }
+    }
+    if (current != NULL)
+    {
         if (pos & (homeHome | menuMenu))
+        {
+            std::cout << "disp menu" << std::endl;
             dispScene(current, CS_render);
+        }
     }
     SDL_RenderPresent(CS_render);
 }
