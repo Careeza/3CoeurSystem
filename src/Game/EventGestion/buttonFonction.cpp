@@ -2,21 +2,13 @@
 
 using namespace std;
 
-void    closeGame(void* settings, SDL_Renderer *render)
-{
-    CS_Settings *set;
-
-    set = (CS_Settings*)settings;
-    set->getCloseRequest(true);
-}
-
 void    menuToHotkeys(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
     set = (CS_Settings*)settings;
     set->getPosition(menuHotkeys);
-    set->getScene(render);
+    set->getScene(init_menuHotkeys(render));
 }
 
 void    goToMenu(void* settings, SDL_Renderer *render)
@@ -25,7 +17,7 @@ void    goToMenu(void* settings, SDL_Renderer *render)
 
     set = (CS_Settings*)settings;
     set->getPosition(menuMenu);
-    set->getScene(render);
+    set->getScene(init_menu(render));
 }
 
 void    goToHome(void* settings, SDL_Renderer *render)
@@ -34,7 +26,7 @@ void    goToHome(void* settings, SDL_Renderer *render)
 
     set = (CS_Settings*)settings;
     set->getPosition(homeHome);
-    set->getScene(render);
+    set->getScene(init_home(render));
 }
 
 void    homeToHotkeys(void* settings, SDL_Renderer *render)
@@ -43,7 +35,7 @@ void    homeToHotkeys(void* settings, SDL_Renderer *render)
 
     set = (CS_Settings*)settings;
     set->getPosition(homeHotkeys);
-    set->getScene(render);
+    set->getScene(init_homeHotkeys(render));
 }
 
 void    homeToLevelSelect(void* settings, SDL_Renderer *render)
@@ -52,7 +44,7 @@ void    homeToLevelSelect(void* settings, SDL_Renderer *render)
 
     set = (CS_Settings*)settings;
     set->getPosition(homeLevelSelect);
-    set->getScene(render);
+    set->getScene(init_play(render));
 }
 
 void    homeToVideo(void* settings, SDL_Renderer *render)
@@ -61,7 +53,7 @@ void    homeToVideo(void* settings, SDL_Renderer *render)
 
     set = (CS_Settings*)settings;
     set->getPosition(homeVideo);
-    set->getScene(render);
+    set->getScene(init_homeVideo(render));
 }
 
 void    menuTovideo(void* settings, SDL_Renderer *render)
@@ -70,7 +62,7 @@ void    menuTovideo(void* settings, SDL_Renderer *render)
 
     set = (CS_Settings*)settings;
     set->getPosition(menuVideo);
-    set->getScene(render);
+    set->getScene(init_menuVideo(render));
 }
 
 void    homeToSound(void* settings, SDL_Renderer *render)
@@ -79,7 +71,7 @@ void    homeToSound(void* settings, SDL_Renderer *render)
 
     set = (CS_Settings*)settings;
     set->getPosition(homeSound);
-    set->getScene(render);
+    set->getScene(init_homeSound(render));
 }
 
 void    menuToSound(void* settings, SDL_Renderer *render)
@@ -88,7 +80,7 @@ void    menuToSound(void* settings, SDL_Renderer *render)
 
     set = (CS_Settings*)settings;
     set->getPosition(menuSound);
-    set->getScene(render);
+    set->getScene(init_menuSound(render));
 }
 
 void    levelSelectToGame(void* settings, SDL_Renderer *render)

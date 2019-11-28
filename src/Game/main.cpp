@@ -5,24 +5,53 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *valu
 {
     CS_KeyControl   event;
     CS_Timer        timer;
+    CS_Character    *MC;
+    CS_Camera       *camera;
     CS_Enemies      *enemies;
     CS_Enemy        *enemy;
-    int             i;
 
+    CS_Parallax     *parallax;
+    CS_Layer        *layer;
+
+    int             xCamera;
+    int             yCamera;
+
+    SDL_Rect        *size;
+    int             i;
+    int             decalage;
+
+    decalage = Tools->transformWidth(45);
     while (!settings.QueryCloseRequest())
     {
         timer.start();
         while (event.loadEvenement(settings.QueryScene()))
         {
             if (settings.QueryPosition() & (homeHome | menuMenu))
+            {
                 bouttonManagement(event, settings, rend);
+            }
             if (settings.QueryPosition() == game)
                 actionKeyManagement(event, value, settings);
             escapeKeyManagement(event, settings, rend);
         }
         if (settings.QueryPosition() == game)
         {
-            settings.QueryGameScene()->CS_queryMC()->useAnimation();
+            MC = settings.QueryGameScene()->CS_queryMC();
+            MC->useAnimation();
+            
+            size = MC->querySize();
+            camera = settings.QueryGameScene()->QueryCamera();
+//            camera->moveCamera(size->x - decalage, 0);
+
+            camera->queryCameraPosition(xCamera, yCamera);
+            parallax = settings.QueryGameScene()->QueryParallax();
+            i = 0;
+            while (i < parallax->QueryNbLayers())
+            {
+                layer = parallax->QueryLayer(i);
+                layer->moveLayer(xCamera);
+                i++;
+            }
             enemies = settings.QueryGameScene()->CS_queryEnemies();
             i = 0;
             while (i < enemies->QueryNbEnemies())
@@ -49,13 +78,13 @@ void        initSettings(CS_Settings &settings, SDL_Window *window, SDL_Renderer
     settings.getFps(30);
     settings.getPosition(homeHome);
     Tools->getWindowSize(settings.QueryWindowsWidth(), settings.QueryWindowsHeight());
-    settings.initScene(render);
-    settings.initGameScene(render);
+    settings.initScene(init_home(render));
+    settings.initGameScene(init_gameScene(render));
 }
 
 TTF_Font    *CS_Police::CS_font = NULL;
 
-int     main(void)
+int     main(int argc, char **argv)
 {
     SDL_Window      *window;
     SDL_Renderer    *render;

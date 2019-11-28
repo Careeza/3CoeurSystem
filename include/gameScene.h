@@ -13,20 +13,32 @@ typedef enum	e_enemy {
 typedef enum	e_aniamtion {
     STATIC,
     WALK,
+    SPRINT,
 }				t_animation;
 
 # define NOINTERRUPT 1
 # define INTERRUPT 2
+
+
+# define MCWALKL "resources/source/MainCharacter/RunL.png"
+# define MCWALKR "resources/source/MainCharacter/RunR.png"
+
+# define MCSTATICL "resources/source/MainCharacter/staticL.png"
+# define MCSTATICR "resources/source/MainCharacter/staticR.png"
+
 
 class   CS_Layer
 {
     public:
         CS_Layer();
         ~CS_Layer();
-        void        createLayer(string source, float speedSource);
+        void        createLayer(SDL_Renderer *render, std::string source, float speedSource, int zIndexSource);
 
-        void        moveLayer();
+        void        moveLayer(int xSource);
 
+        bool        secondScopeNeeded();
+
+        int         queryZindex();
         SDL_Texture *queryTexture();
         SDL_Rect    *queryScopeMain();
         SDL_Rect    *querySizeMain();
@@ -38,14 +50,42 @@ class   CS_Layer
         
         int         scopeWidth;
         int         scopeHeight;
+        int         scopeX;
+        int         scopeY;
+
+        int         textureW;
+        int         textureH;
+
         SDL_Rect    *scopeMain;
         SDL_Rect    *scopeSecond;
 
         SDL_Rect    *sizeMain;
         SDL_Rect    *sizeSecond;
         
-        int         speed;
-}
+        float       speed;
+
+        int         zIndex;
+
+        bool        needSecondScope;
+};
+
+
+class   CS_Parallax
+{
+    public:
+        CS_Parallax();
+        ~CS_Parallax();
+
+        void        createLayer(SDL_Renderer *render, std::string source, float speedSource, int zIndex);
+
+        void        moveLayer(int index, int x);
+
+        CS_Layer    *QueryLayer(int index);
+        int         QueryNbLayers();
+
+    private:
+        std::vector<CS_Layer *> layers;
+};
 
 class   CS_Animation
 {
@@ -163,6 +203,22 @@ class   CS_Enemies
         std::vector<CS_Enemy *> enemies;   
 };
 
+class   CS_Camera
+{
+    public:
+        CS_Camera();
+        ~CS_Camera();
+
+        void    moveCamera(int xSource, int ySource);
+        void    moveCamera2(int xSource, int ySource);
+
+        void    queryCameraPosition(int& xDest, int& yDest);
+
+    private:
+        int     x;
+        int     y;
+};
+
 class   CS_GameScene : public CS_Scene
 {
     public:
@@ -170,13 +226,20 @@ class   CS_GameScene : public CS_Scene
         ~CS_GameScene();
 
         void            loadMC(CS_Character *MCSource);
-        void            loadEnemies(CS_Enemies *enemies);
+        void            loadEnemies(CS_Enemies *enemiesSource);
+        void            loadParallax(CS_Parallax *parallaxSource);
+        void            loadCamera(CS_Camera *cameraSource);
 
         CS_Enemies      *CS_queryEnemies();
         CS_Character    *CS_queryMC();
+        CS_Parallax     *QueryParallax();
+        CS_Camera       *QueryCamera();
+
     private:
+        CS_Parallax     *parallax;
         CS_Character    *MC;
         CS_Enemies      *enemies;
+        CS_Camera       *camera;
 };
 
 class   CS_HitBox

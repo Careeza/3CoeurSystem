@@ -17,13 +17,6 @@
 # include "tools.h"
 # include "common.h"
 
-# define    CS_MOTION 1
-# define    CS_MOUSE_DOWN 2
-# define    CS_MOUSE_UP 3
-
-void	        init(int flags);
-SDL_Window      *create_window(int flags, const std::string name = "canvas", int x = 0, int y = 0, int w = 0, int h = 0);
-SDL_Renderer    *init_renderer(SDL_Window    *window);
 CS_Scene        *init_home(SDL_Renderer *render);
 CS_Scene        *init_menu(SDL_Renderer *render);
 CS_Scene        *init_menuHotkeys(SDL_Renderer *render);
@@ -35,8 +28,6 @@ CS_Scene        *init_homeSound(SDL_Renderer *render);
 CS_Scene        *init_menuSound(SDL_Renderer *render);
 CS_GameScene    *init_gameScene(SDL_Renderer *render);
 
-
-void    closeGame(void *settings, SDL_Renderer *render);
 void    menuToHotkeys(void *settings, SDL_Renderer *render);
 void    goToMenu(void *settings, SDL_Renderer *render);
 void    goToHome(void *settings, SDL_Renderer *render);
@@ -49,52 +40,6 @@ void    menuToSound(void *settings, SDL_Renderer *render);
 void    levelSelectToGame(void *settings, SDL_Renderer *render);
 void    dispDialogueBox(void *settings, SDL_Renderer *render);
 void    hideDialogueBox(void *settings, SDL_Renderer *render);
-
-class   CS_Settings
-{
-    public:
-        CS_Settings();
-        ~CS_Settings();
-
-        void            getWindowSize(int w, int h);
-
-        void            getCloseRequest(bool close);
-        void            getPauseRequest(bool pause);
-        void            getFps(int fpsSource);
-
-        void            initScene(SDL_Renderer *render);
-        void            initGameScene(SDL_Renderer *render);
-
-        void            getScene(SDL_Renderer *render);
-        void            getGameScene(SDL_Renderer *render);
-        void            getPosition(t_pos position);
-
-        int             QueryWindowsWidth();
-        int             QueryWindowsHeight();
-        float           QueryWindowsResolution();
-
-        bool            QueryCloseRequest();
-        bool            QueryPauseRequest();
-        int             QueryFps();
-
-        t_pos           QueryPosition();
-        CS_Scene        *QueryScene();
-        CS_GameScene    *QueryGameScene();
-
-    private:
-        int             windowWidth;
-        int             windowHeight;
-        float           resolution;
-
-        bool            closeRequested;
-        bool            pauseRequested;
-        int             fps;
-
-        t_pos           pos;
-
-        CS_GameScene    *gameScene;
-        CS_Scene        *Scene;
-};
 
 typedef struct  s_key
 {
@@ -160,7 +105,6 @@ class   authorizedKey
 };
 
 void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Renderer *render);
-int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings, SDL_Renderer *render);
 void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, CS_Settings& settings);
 void    filtreActionTable(t_actionTable *table, t_actionTable *filtre);
 void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);

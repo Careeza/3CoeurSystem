@@ -5,7 +5,7 @@ CS_Animation    *CS_BankAnimation::CS_queryAnimationByname(t_animation nameSourc
     unsigned long i;
 
     i = 0;
-    std::cout << "currentlt have " << animations.size() << " animation(s)" << std::endl;
+//    std::cout << "currentlt have " << animations.size() << " animation(s)" << std::endl;
     while (i < animations.size())
     {
         if (animations[i]->QueryName() == nameSource)

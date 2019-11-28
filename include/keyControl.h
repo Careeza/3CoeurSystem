@@ -11,9 +11,13 @@
 # define    BOUTTON_PRESS 2
 # define    BOUTON_RELEASE 3
 
-#define CS_KEYUP 0
-#define CS_KEYDOWN 1
-#define CS_NOKEY 2
+#define     CS_KEYUP 0
+#define     CS_KEYDOWN 1
+#define     CS_NOKEY 2
+
+# define    CS_MOTION 1
+# define    CS_MOUSE_DOWN 2
+# define    CS_MOUSE_UP 3
 
 typedef struct  s_actionValue
 {

@@ -7,24 +7,55 @@ void    useAction(t_actionTable *table, CS_Settings& settings)
     MC = settings.QueryGameScene()->CS_queryMC();
     if (table->right == true)
     {
-        std::cout << "load animation WALK !" << std::endl;
-        MC->loadAnimation(WALK);
-        std::cout << "load animation OK" << std::endl;
+        if (table->dodge == true)
+        {
+            MC->loadAnimation(SPRINT);
+        }
+        else
+        {
+            MC->loadAnimation(WALK);
+        }
         MC->setRight(true);
     }
     else if (table->left == true)
     {
-        std::cout << "load animation WALK !" << std::endl;
-        MC->loadAnimation(WALK);
-        std::cout << "load animation OK" << std::endl;
+        if (table->dodge == true)
+        {
+            MC->loadAnimation(SPRINT);
+        }
+        else
+        {
+            MC->loadAnimation(WALK);
+        }
         MC->setRight(false);
     }
     else
     {
-        std::cout << "load animation STATIC !" << std::endl;
+//        std::cout << "load animation STATIC !" << std::endl;
         MC->loadAnimation(STATIC);
     }
 //        std::cout << "no moove" << std::endl;
+}
+
+void    useAction2(t_actionTable *table, CS_Settings& settings)
+{
+    CS_Camera    *camera;
+
+    camera = settings.QueryGameScene()->QueryCamera();
+    if (table->right == true)
+    {
+        std::cout << "press" << std::endl;
+        camera->moveCamera2(5, 0);
+    }
+    else if (table->left == true)
+    {
+        std::cout << "press" << std::endl;
+        camera->moveCamera2(-5, 0);
+    }
+    else
+    {
+        std::cout << "No press" << std::endl;
+    }
 }
 
 void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, CS_Settings& settings)
@@ -44,5 +75,5 @@ void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, CS_Settin
     info = event.CS_getKeyboardActions(key);
     fillActionTable(&table, value, key, info);
     filtreActionTable(&table, &filtre);
-    useAction(&filtre, settings);
+    useAction2(&filtre, settings);
 }

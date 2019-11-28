@@ -1,4 +1,5 @@
-#include "game.h"
+# include "tools.h"
+
 
 void	init(int flags)
 {

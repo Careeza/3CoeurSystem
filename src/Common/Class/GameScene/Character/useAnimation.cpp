@@ -2,7 +2,7 @@
 
 bool    CS_Character::useAnimation()
 {
-    std::cout << "crash here ?" << std::endl;
+//    std::cout << "crash here ?" << std::endl;
     return (animation->CS_UseAnimation(right, size, frame, texture));
 }
 

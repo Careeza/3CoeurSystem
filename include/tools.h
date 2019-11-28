@@ -19,6 +19,10 @@ typedef enum	e_debug {
     LEVEL3
 }				t_debug;
 
+void	        init(int flags);
+SDL_Window      *create_window(int flags, const std::string name = "canvas", int x = 0, int y = 0, int w = 0, int h = 0);
+SDL_Renderer    *init_renderer(SDL_Window *window);
+
 class   CS_Tools
 {
     public:
@@ -49,6 +53,10 @@ class   CS_Tools
 
         void    getWindowSize(int w, int h);
         void    debugMode(t_debug debugSource);
+
+        int     modulo(int a, int b);
+
+        void    copyRect(SDL_Rect *rectSource, SDL_Rect *rectDest);
 
     private:
         int     windowWidth;

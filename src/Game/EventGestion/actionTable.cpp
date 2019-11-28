@@ -64,4 +64,5 @@ void    filtreActionTable(t_actionTable *table, t_actionTable *filtre)
         filtre->right = true;
     if (table->left & !table->right)
         filtre->left = true;
+    filtre->dodge = table->dodge;
 }

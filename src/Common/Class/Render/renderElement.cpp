@@ -77,31 +77,90 @@ void    dispScene(CS_Scene *current, SDL_Renderer *render)
     }
 }
 
+void    renderParallax(CS_Parallax *parallax, SDL_Renderer *render)
+{
+    SDL_Rect    *scopeMain;
+    SDL_Rect    *scopeSecond;
+    SDL_Rect    *sizeMain;
+    SDL_Rect    *sizeSecond;
+
+    SDL_Texture *layerTexture;
+
+    CS_Layer    *layer;
+    int         len;
+    int         i;
+
+    len = parallax->QueryNbLayers();
+    i = 0;
+    while (i < len)
+    {
+        layer = parallax->QueryLayer(i);
+        layerTexture = layer->queryTexture();
+        if (layer->secondScopeNeeded())
+        {
+            scopeMain = layer->queryScopeMain();
+            scopeSecond = layer->queryScopeSecond();
+            sizeMain = layer->querySizeMain();
+            sizeSecond = layer->querySizeSecond();
+            SDL_RenderCopy(render, layerTexture, scopeMain, sizeMain);
+            SDL_RenderCopy(render, layerTexture, scopeSecond, sizeSecond);
+        }
+        else
+        {
+            scopeMain = layer->queryScopeMain();
+            sizeMain = layer->querySizeMain();
+            SDL_RenderCopy(render, layerTexture, scopeMain, sizeMain);
+        }
+        i++;
+//        std::cout << "i am here ->" << scopeMain->w << std::endl;
+    }
+}
+
 void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
 {
     CS_Character    *MC;
     CS_Enemy        *enemy;
     SDL_Texture     *texture;
-    SDL_Rect        *size;
     SDL_Rect        *frame;
-    int             i;
+    SDL_Rect        *size;
 
-    dispScene(gameScene, render);
+    CS_Camera       *camera;
+    int             cameraX;
+    int             cameraY;
+
+    size = new (SDL_Rect);
+
+    camera = gameScene->QueryCamera();
+    camera->queryCameraPosition(cameraX, cameraY);
+
+    renderParallax(gameScene->QueryParallax(), render);
+
     MC = gameScene->CS_queryMC();
     texture = MC->queryTexture();
     frame = MC->queryFrame();
-    size = MC->querySize();
+    Tools->copyRect(MC->querySize(), size);
+
+    size->x -= cameraX;
+    size->y -= cameraY;
+
     SDL_RenderCopy(render, texture, frame, size);
+
+    int             i;
+
     i = 0;
     while (i < gameScene->CS_queryEnemies()->QueryNbEnemies())
     {
         enemy = gameScene->CS_queryEnemies()->QueryEnemy(i);
         texture = enemy->queryTexture();
         frame = enemy->queryFrame();
-        size = enemy->querySize();
+        Tools->copyRect(enemy->querySize(), size);
+        size->x -= cameraX;
+        size->y -= cameraY;
         SDL_RenderCopy(render, texture, frame, size);
         i++;
     }
+
+    delete size;
 }
 
 void    CS_Renderer::CS_dispScene(CS_Scene *current, CS_GameScene *gameScene, t_pos pos)

@@ -37,6 +37,7 @@ bool        CS_Animation::CS_UseAnimation(bool right, SDL_Rect *size, SDL_Rect* 
         textureDest = textureL;
         size->x -= movement[index];
     }
+//    hitBoxGestion(size);
     frameDest = frame[index];
     index++;
     return (animationOver(index, nbFrame, interrupt));

@@ -3,6 +3,20 @@
 CS_Animation    *staticMC(SDL_Renderer *render);
 CS_Animation    *walkMC(SDL_Renderer *render);
 
+CS_Animation    *sprintMC(SDL_Renderer *render)
+{
+    CS_Animation    *animation;
+
+    animation = new (CS_Animation);
+
+    animation->newAnimation(SPRINT, INTERRUPT);
+    animation->loadTexture(render, MCWALKL, MCWALKR);
+    animation->cutFrame(6, 6, 1);
+    animation->setMovement(6, 1.5, 1.5, 1.5, 1.5, 1.5, 1.5);
+
+    return (animation);
+}
+
 CS_Character    *initMC(SDL_Renderer *render)
 {
     CS_Character *MC;
@@ -11,22 +25,23 @@ CS_Character    *initMC(SDL_Renderer *render)
 
     MC->addAnimation(render, staticMC);
     MC->addAnimation(render, walkMC);
+    MC->addAnimation(render, sprintMC);
     MC->loadAnimation(STATIC);
-    MC->setSize(10, 10 * Tools->QueryWindowResolution(), 45, 90 - (5 * Tools->QueryWindowResolution()));
+    MC->setSize(10, 10, 45, 90);
     
     return (MC);
 }
 
-CS_Animation    *walkClone1(SDL_Renderer *render)
+CS_Animation    *walkClone(SDL_Renderer *render)
 {
     CS_Animation    *animation;
 
     animation = new (CS_Animation);
 
     animation->newAnimation(WALK, INTERRUPT);
-    animation->loadTexture(render, "resources/source/AllenWalkerL.png", "resources/source/AllenWalkerR.png");
-    animation->cutFrame(5, 5, 1);
-    animation->setMovement(5, 0.5, 0.5, 0.5, 0.5, 0.5);
+    animation->loadTexture(render, MCWALKL, MCWALKL);
+    animation->cutFrame(6, 6, 1);
+    animation->setMovement(6, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
     return (animation);
 }
@@ -38,11 +53,24 @@ CS_Animation    *walkClone2(SDL_Renderer *render)
     animation = new (CS_Animation);
 
     animation->newAnimation(WALK, INTERRUPT);
-    animation->loadTexture(render, "resources/source/AllenWalkerL.png", "resources/source/AllenWalkerR.png");
-    animation->cutFrame(5, 5, 1);
-    animation->setMovement(5, 0.75, 0.75, 0.75, 0.75, 0.75);
+    animation->loadTexture(render, MCWALKL, MCWALKL);
+    animation->cutFrame(6, 6, 1);
+    animation->setMovement(6, 1.25, 1.25, 1.25, 1.25, 1.25, 1.25);
 
     return (animation);
+}
+
+void                algoFuite(CS_Character *enemy, CS_Character *MC)
+{
+    int         enemyPos;
+    int         MCPos;
+
+    enemyPos = enemy->querySize()->x;
+    MCPos = MC->querySize()->x;
+
+    enemy->loadAnimation(WALK);
+    enemy->setRight(false);
+    enemy->useAnimation();
 }
 
 void                algoClone1(CS_Character *enemy, CS_Character *MC)
@@ -102,9 +130,9 @@ CS_Character        *initClone1(SDL_Renderer *render)
     clone = new(CS_Character);
 
     clone->addAnimation(render, staticMC);
-    clone->addAnimation(render, walkClone1);
+    clone->addAnimation(render, walkClone);
     clone->loadAnimation(STATIC);
-    clone->setSize(10, 10 * Tools->QueryWindowResolution(), 45, 90 - (5 * Tools->QueryWindowResolution()));
+    clone->setSize(10, 10, 45, 90);
     
     return (clone);
 }
@@ -118,19 +146,50 @@ CS_Character        *initClone2(SDL_Renderer *render)
     clone->addAnimation(render, staticMC);
     clone->addAnimation(render, walkClone2);
     clone->loadAnimation(STATIC);
-    clone->setSize(10, 10 * Tools->QueryWindowResolution(), 45, 90 - (5 * Tools->QueryWindowResolution()));
+    clone->setSize(10, 10, 45, 90);
     
     return (clone);
 }
 
 CS_Enemies      *initEnemies(SDL_Renderer *render)
 {
-    CS_Enemies *enemies;
+    CS_Enemies  *enemies;
+    int         i;
 
+    i = 10;
     enemies = new (CS_Enemies);
-    enemies->addEnemy(render, initClone1, algoClone1, 10, 90 - (5 * Tools->QueryWindowResolution()));
-    enemies->addEnemy(render, initClone2, algoClone2, 85, 90 - (5 * Tools->QueryWindowResolution()));
+/*    while (i < 95)
+    {
+        if (rand() % 2 == 0)
+            enemies->addEnemy(render, initClone1, algoFuite, i, 90);
+        else
+            enemies->addEnemy(render, initClone2, algoFuite, i, 90);
+        i += 2;
+    }*/
+
     return (enemies);
+}
+
+CS_Parallax     *initParallax(SDL_Renderer *render)
+{
+    CS_Parallax *parallax;
+
+
+    parallax = new (CS_Parallax);
+    parallax->createLayer(render, "resources/source/FondNeige/FOND2/backgroundlayer0.png", 0.0625, 0);
+    parallax->createLayer(render, "resources/source/FondNeige/FOND2/backgroundlayer1.png", 0.125, 1);
+    parallax->createLayer(render, "resources/source/FondNeige/FOND2/backgroundlayer2.png", 0.25, 2);
+    parallax->createLayer(render, "resources/source/FondNeige/FOND2/backgroundlayer3.png", 0.5, 3);
+
+    return (parallax);
+}
+
+CS_Camera       *initCamera()
+{
+    CS_Camera *camera;
+
+    camera = new (CS_Camera);
+    return (camera);
 }
 
 CS_GameScene    *init_gameScene(SDL_Renderer *render)
@@ -143,17 +202,8 @@ CS_GameScene    *init_gameScene(SDL_Renderer *render)
     scene->CS_createElementToSceneFromPng("Background", "resources/source/gameBackground.jpg", 100, 100, 0, 0, 0);
     scene->loadMC(initMC(render));
     scene->loadEnemies(initEnemies(render));
+    scene->loadParallax(initParallax(render));
+    scene->loadCamera(initCamera());
 
     return (scene);
-}
-
-CS_GameScene::CS_GameScene()
-{
-//    enemies = new(CS_Enemies);
-}
-
-CS_GameScene::~CS_GameScene()
-{
-    delete MC;
-//    delete enemies;
 }
