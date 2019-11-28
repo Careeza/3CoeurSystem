@@ -116,9 +116,22 @@ void    renderParallax(CS_Parallax *parallax, SDL_Renderer *render)
     }
 }
 
+void    renderMC(CS_Character *MC, SDL_Renderer *render, SDL_Rect *size, int cameraX, int cameraY)
+{
+    SDL_Texture     *texture;
+    SDL_Rect        *frame;
+
+    texture = MC->queryTexture();
+    frame = MC->queryFrame();
+    MC->querySizePos(size->w, size->h, size->x, size->y);
+    size->x -= cameraX;
+    size->y -= cameraY;
+
+    SDL_RenderCopy(render, texture, frame, size);
+}
+
 void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
 {
-    CS_Character    *MC;
     CS_Enemy        *enemy;
     SDL_Texture     *texture;
     SDL_Rect        *frame;
@@ -135,13 +148,7 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
 
     renderParallax(gameScene->QueryParallax(), render);
 
-    MC = gameScene->CS_queryMC();
-    texture = MC->queryTexture();
-    frame = MC->queryFrame();
-    MC->querySizePos(size->w, size->h, size->x, size->y);
-    size->x -= cameraX;
-
-    SDL_RenderCopy(render, texture, frame, size);
+    renderMC(gameScene->CS_queryMC(), render, size, cameraX, cameraY);
 
     int             i;
 
