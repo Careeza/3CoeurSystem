@@ -206,8 +206,8 @@ CS_GameScene    *init_gameScene(SDL_Renderer *render)
     scene->CS_loadRenderer(render);
 
     scene->CS_createElementToSceneFromPng("Background", "resources/source/gameBackground.jpg", 100, 100, 0, 0, 0);
-    scene->loadMC(initMC(render));
-    scene->loadEnemies(initEnemies(render));
+//    scene->loadMC(initMC(render));
+//    scene->loadEnemies(initEnemies(render));
     scene->loadParallax(initParallax(render));
     scene->loadCamera(initCamera());
 

@@ -30,6 +30,15 @@ void    MCManagement(CS_Settings& settings, t_actionTable *action, int& xCamera,
     camera->queryCameraPosition(xCamera, yCamera);
 }
 
+void    CameraMove(CS_Settings& settings, t_actionTable *action, int& xCamera, int& yCamera)
+{
+    CS_Camera       *camera;
+
+    useAction2(action, settings);
+    camera = settings.QueryGameScene()->QueryCamera();
+    camera->queryCameraPosition(xCamera, yCamera);
+}
+
 void    enemyManagement(CS_Settings& settings)
 {
     CS_Enemies      *enemies;
@@ -77,10 +86,15 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *valu
         timer.start();
         eventManagement(settings, rend, value, &action);
         if (settings.QueryPosition() == game)
-        {   
-            MCManagement(settings, &action, xCamera, yCamera);
-            enemyManagement(settings);
-            parallaxManagement(settings, xCamera, yCamera);
+        {
+            if (settings.QueryGameScene()->haveMC())
+                MCManagement(settings, &action, xCamera, yCamera);
+            else
+                CameraMove(settings, &action, xCamera, yCamera);
+            if (settings.QueryGameScene()->haveEnemies())
+                enemyManagement(settings);
+            if (settings.QueryGameScene()->haveParallax())
+                parallaxManagement(settings, xCamera, yCamera);
         }
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
         SDL_Delay(fmax(0, (1000 / 60) - timer.get_ticks()));

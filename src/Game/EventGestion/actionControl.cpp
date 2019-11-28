@@ -44,17 +44,17 @@ void    useAction2(t_actionTable *table, CS_Settings& settings)
     camera = settings.QueryGameScene()->QueryCamera();
     if (table->right == true)
     {
-        std::cout << "press" << std::endl;
+//        std::cout << "press" << std::endl;
         camera->moveCamera2(5, 0);
     }
     else if (table->left == true)
     {
-        std::cout << "press" << std::endl;
+//        std::cout << "press" << std::endl;
         camera->moveCamera2(-5, 0);
     }
     else
     {
-        std::cout << "No press" << std::endl;
+//        std::cout << "No press" << std::endl;
     }
 }
 
