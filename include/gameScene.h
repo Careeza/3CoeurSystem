@@ -84,11 +84,12 @@ class   CS_Asset
         ~CS_Assets();
 
         void            createAsset(SDL_Renderer *render, std::string source, float w, float h);
-        void            addAsset(int zIndex);
+        void            addAsset(int zIndex, float x, float y);
 
         SDL_Texture     *QueryTexture();
         SDL_Rect        *QuerySize();
         t_assetName     QueryName();
+        int             QueryZIndex();
 
     private:
         SDL_Texture     *texture;
@@ -97,7 +98,7 @@ class   CS_Asset
         t_assetName     name;
 
         int             zIndex;
-}
+};
 
 class   CS_AssetsBank
 {
@@ -105,13 +106,13 @@ class   CS_AssetsBank
         CS_AssetsBank();
         ~CS_AssetsBank();
 
-        void        createAsset(SDL_Renderer *render, std::string source, float w, float h);
+        void        createAsset(SDL_Renderer *render, std::string source, t_assetName name, float w, float h);
 
         CS_Asset    *QueryAsset(t_assetName name);
 
     private:
-        std::vector<CS_Asset *> layers;
-}
+        std::vector<CS_Asset *> assets;
+};
 
 class   CS_Assets
 {
@@ -119,14 +120,17 @@ class   CS_Assets
         CS_Assets();
         ~CS_Assets();
 
-        void        createAsset();
+        void        loadAsset(t_assetName name, int zIndex, float x, float y);
+
+        void        loadBank(CS_AssetsBank *assetsBankSource);
 
         CS_Asset    *QueryAsset(int index);
         int         QueryNbAssets();
 
     private:
-        std::vector<CS_Asset *> layers;
-}
+        std::vector<CS_Asset *>     assets;
+        CS_AssetsBank               *assetsBank;
+};
 
 typedef enum	e_aniamtion {
     STATIC,
