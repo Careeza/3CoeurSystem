@@ -116,6 +116,12 @@ void    renderParallax(CS_Parallax *parallax, SDL_Renderer *render)
     }
 }
 
+void    renderAssets(CS_Assets *assets, SDL_Renderer *render, SDL_Rect *size, int cameraX, int cameraY)
+{
+
+}
+
+
 void    renderMC(CS_Character *MC, SDL_Renderer *render, SDL_Rect *size, int cameraX, int cameraY)
 {
     SDL_Texture     *texture;
@@ -170,6 +176,8 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
 
     if (gameScene->haveParallax())
         renderParallax(gameScene->QueryParallax(), render);
+    if (gameScene->haveAssets())
+        renderAssets(gameScene->QueryAssets(), render, size, cameraX, cameraY);
     if (gameScene->haveMC())
         renderMC(gameScene->CS_queryMC(), render, size, cameraX, cameraY);
     if (gameScene->haveEnemies())

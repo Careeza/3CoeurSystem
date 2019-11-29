@@ -19,3 +19,8 @@ CS_Camera      *CS_GameScene::QueryCamera()
 {
     return (camera);
 }
+
+CS_Assets       *CS_GameScene::QueryAssets()
+{
+    return (assets);
+}

@@ -66,9 +66,26 @@ class   CS_Parallax
 };
 
 typedef enum	e_assetName {
-    Arbre1,
-    Arbre2,
-    Arbre3
+    BigTree01,
+    BigTree02,
+    BigTree03,
+    BushTree01,
+    BushTree02,
+    BushTree03,
+    BushTree04,
+    Grass01,
+    Grass02,
+    Grass03,
+    Grass04,
+    Grass05,
+    Ground01,
+    MediumTree01,
+    MediumTree02,
+    MediumTree03,
+    SmallTree01,
+    SmallTree02,
+    SmallTree03,
+    SmallTree04,
 }				t_assetName;
 
 typedef enum    e_assetBankName {
@@ -80,20 +97,24 @@ typedef enum    e_assetBankName {
 class   CS_Asset
 {
     public:
-        CS_Assets();
-        ~CS_Assets();
+        CS_Asset();
+        ~CS_Asset();
 
-        void            createAsset(SDL_Renderer *render, std::string source, float w, float h);
-        void            addAsset(int zIndexSource, float x, float y);
+        void            createAsset(SDL_Renderer *render, std::string source, float wSource, float hSource);
+        void            addAsset(int zIndexSource, float xSource, float ySource);
 
         SDL_Texture     *QueryTexture();
-        SDL_Rect        *QuerySize();
+        void            QuerySize(int& wDest, int& hDest, int& xDest, int& yDest);
         t_assetName     QueryName();
         int             QueryZIndex();
 
     private:
         SDL_Texture     *texture;
-        SDL_Rect        *size;
+
+        int             w;
+        int             h;
+        int             x;
+        int             y;
 
         t_assetName     name;
 
@@ -314,15 +335,18 @@ class   CS_GameScene : public CS_Scene
         void            loadMC(CS_Character *MCSource);
         void            loadEnemies(CS_Enemies *enemiesSource);
         void            loadParallax(CS_Parallax *parallaxSource);
+        void            loadAssets(CS_Assets *assetsSource);
         void            loadCamera(CS_Camera *cameraSource);
 
         bool            haveMC();
         bool            haveEnemies();
         bool            haveParallax();
+        bool            haveAssets();
 
         CS_Enemies      *CS_queryEnemies();
         CS_Character    *CS_queryMC();
         CS_Parallax     *QueryParallax();
+        CS_Assets       *QueryAssets();
         CS_Camera       *QueryCamera();
 
     private:
@@ -330,10 +354,12 @@ class   CS_GameScene : public CS_Scene
         CS_Character    *MC;
         CS_Enemies      *enemies;
         CS_Camera       *camera;
+        CS_Assets       *assets;
 
         bool            verifyMC;
         bool            verifyEnemies;
         bool            verifyParallax;
+        bool            verifyAssets;
 };
 
 class   CS_HitBox

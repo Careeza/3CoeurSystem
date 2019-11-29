@@ -10,11 +10,18 @@ CS_Assets::~CS_Assets()
     delete assetsBank;
 }
 
-void        loadAsset(t_assetName name, int zIndex, float x, float y);
+void         CS_Assets::loadAsset(t_assetName name, int zIndex, float x, float y)
 {
-    CS_Asset    *asset;
+    CS_Asset        *asset;
+    unsigned long   i;
 
-    asset = assetsBank.QueryAsset(name);
+    asset = assetsBank->QueryAsset(name);
+    asset->addAsset(zIndex, x, y);
+
+    i = 0;
+    while (i < assets.size() && zIndex >= assets[i]->QueryZIndex())
+        i++;
+    assets.emplace(assets.begin() + i, asset);
 }
 
 void        CS_Assets::loadBank(CS_AssetsBank *assetsBankSource)
@@ -24,7 +31,7 @@ void        CS_Assets::loadBank(CS_AssetsBank *assetsBankSource)
 
 CS_Asset    *CS_Assets::QueryAsset(int index)
 {
-    return (assets[i]);
+    return (assets[index]);
 }
 
 int         CS_Assets::QueryNbAssets()

@@ -1,17 +1,19 @@
 # include "gameScene.h"
 
-CS_Asset::CS_Assets()
+CS_Asset::CS_Asset()
 {
-    size = new (SDL_Rect);
+    w = 0;
+    h = 0;
+    x = 0;
+    y = 0;
 }
 
-~CS_Assets()
+CS_Asset::~CS_Asset()
 {
-    delete size;
-    delete texture;
+    SDL_DestroyTexture(texture);
 }
 
-void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, float w, float h)
+void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, float wSource, float hSource)
 {
     SDL_Surface *surfaceAsset;
 
@@ -24,16 +26,16 @@ void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, 
     texture = SDL_CreateTextureFromSurface(render, surfaceAsset);
 	SDL_FreeSurface(surfaceAsset);
 
-    size->w = Tools->transformWidth(w);
-    size->h = Tools->transformHeight(h);
+    w = Tools->transformWidth(wSource);
+    h = Tools->transformHeight(hSource);
 }
 
-void            CS_Asset::addAsset(int zIndexSource, float x, float y)
+void            CS_Asset::addAsset(int zIndexSource, float xSource, float ySource)
 {
     zIndex = zIndexSource;
 
-    size->x = Tools->transformX(x);
-    size->y = Tools->transformY(y);
+    x = Tools->transformX(xSource);
+    y = Tools->transformY(ySource);
 }
 
 SDL_Texture     *CS_Asset::QueryTexture()
@@ -41,9 +43,12 @@ SDL_Texture     *CS_Asset::QueryTexture()
     return (texture);
 }
 
-SDL_Rect        *CS_Asset::QuerySize()
+void        CS_Asset::QuerySize(int& wDest, int& hDest, int& xDest, int &yDest)
 {
-    return (size);
+    wDest = w;
+    hDest = h;
+    xDest = x;
+    yDest = y;
 }
 
 t_assetName     CS_Asset::QueryName()
@@ -51,7 +56,7 @@ t_assetName     CS_Asset::QueryName()
     return (name);
 }
 
-int             QueryZIndex()
+int             CS_Asset::QueryZIndex()
 {
     return (zIndex);
 }

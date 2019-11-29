@@ -12,7 +12,7 @@ CS_AssetsBank::~CS_AssetsBank()
 
 void        CS_AssetsBank::createAsset(SDL_Renderer *render, std::string source, t_assetName name, float w, float h)
 {
-    CS_Asset    asset;
+    CS_Asset    *asset;
 
     asset = new (CS_Asset);
     asset->createAsset(render, source, w, h);
@@ -21,12 +21,12 @@ void        CS_AssetsBank::createAsset(SDL_Renderer *render, std::string source,
 
 CS_Asset    *CS_AssetsBank::QueryAsset(t_assetName name)
 {
-    int i;
+    unsigned long i;
 
     i = 0;
     while (i < assets.size())
     {
-        if (assets[i].QueryName() == name)
+        if (assets[i]->QueryName() == name)
             return (assets[i]);
         i++;
     }

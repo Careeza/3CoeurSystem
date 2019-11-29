@@ -18,6 +18,13 @@ void    CS_GameScene::loadParallax(CS_Parallax *parallaxSource)
     verifyParallax = true;
 }
 
+void    CS_GameScene::loadAssets(CS_Assets *assetsSource)
+{
+    assets = assetsSource;
+    verifyAssets = true;
+}
+
+
 void    CS_GameScene::loadCamera(CS_Camera *cameraSource)
 {
     camera = cameraSource;

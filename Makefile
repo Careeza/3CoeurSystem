@@ -25,8 +25,9 @@ OBJS_COMMON = $(filter $(OBJS_DIR)/Common/%, $(OBJS))
 OBJS_GAME = $(filter $(OBJS_DIR)/Game/%, $(OBJS))
 OBJS_EDITMAP = $(filter $(OBJS_DIR)/EditMap/%, $(OBJS))
 OBJS_EDITANIMATION = $(filter $(OBJS_DIR)/EditAnimation/%, $(OBJS))
+OBJS_EDITASSETS = $(filter $(OBJS_DIR)/EditAssets/%, $(OBJS))
 
-all: game editMap editAnimation
+all: game editMap editAnimation editAssets
 
 $(OBJS_DIR)/%.o $(OBJS_DIR)/%.o.wasm: src/%.cpp Makefile
 	@$(PRECOMPILE)
@@ -36,8 +37,9 @@ $(OBJS_DIR)/%.o $(OBJS_DIR)/%.o.wasm: src/%.cpp Makefile
 game: $(OBJS_GAME) $(OBJS_COMMON)
 editMap: $(OBJS_EDITMAP) $(OBJS_COMMON)
 editAnimation: $(OBJS_EDITANIMATION) $(OBJS_COMMON)
+editAssets: $(OBJS_EDITASSETS) $(OBJS_COMMON)
 
-game editMap editAnimation:
+game editMap editAnimation editAssets:
 	$(CC) -o $@ $^ $(CFLAGS) $(LDFLAGS)
 
 clean:
