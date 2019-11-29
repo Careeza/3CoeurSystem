@@ -84,7 +84,7 @@ class   CS_Asset
         ~CS_Assets();
 
         void            createAsset(SDL_Renderer *render, std::string source, float w, float h);
-        void            addAsset(int zIndex, float x, float y);
+        void            addAsset(int zIndexSource, float x, float y);
 
         SDL_Texture     *QueryTexture();
         SDL_Rect        *QuerySize();

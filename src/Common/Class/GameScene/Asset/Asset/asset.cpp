@@ -28,9 +28,12 @@ void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, 
     size->h = Tools->transformHeight(h);
 }
 
-void            CS_Asset::addAsset(int zIndex)
+void            CS_Asset::addAsset(int zIndexSource, float x, float y)
 {
+    zIndex = zIndexSource;
 
+    size->x = Tools->transformX(x);
+    size->y = Tools->transformY(y);
 }
 
 SDL_Texture     *CS_Asset::QueryTexture()
@@ -46,4 +49,9 @@ SDL_Rect        *CS_Asset::QuerySize()
 t_assetName     CS_Asset::QueryName()
 {
     return (name);
+}
+
+int             QueryZIndex()
+{
+    return (zIndex);
 }
