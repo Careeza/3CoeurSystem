@@ -186,7 +186,7 @@ void    CS_Renderer::CS_dispScene(CS_Scene *current, CS_GameScene *gameScene, t_
     {
         if (pos & (menuMenu | game))
         {
-            std::cout << "disp game" << std::endl;
+//            std::cout << "disp game" << std::endl;
             dispGameScene(gameScene, CS_render);
         }
     }
@@ -194,7 +194,7 @@ void    CS_Renderer::CS_dispScene(CS_Scene *current, CS_GameScene *gameScene, t_
     {
         if (pos & (homeHome | menuMenu))
         {
-            std::cout << "disp menu" << std::endl;
+//            std::cout << "disp menu" << std::endl;
             dispScene(current, CS_render);
         }
     }

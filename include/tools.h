@@ -11,6 +11,7 @@
 # include <iostream>
 # include <string>
 # include <vector>
+# include <memory>
 
 typedef enum	e_debug {
     LEVEL0,

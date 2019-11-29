@@ -5,28 +5,6 @@
 # include "scene.h"
 # include "tools.h"
 
-typedef enum	e_enemy {
-	CubeRouge =          0b00000000000000000000000000000001,
-    CuveVert  =          0b00000000000000000000000000000010,
-}				t_enemy;
-
-typedef enum	e_aniamtion {
-    STATIC,
-    WALK,
-    SPRINT,
-}				t_animation;
-
-# define NOINTERRUPT 1
-# define INTERRUPT 2
-
-
-# define MCWALKL "resources/source/MainCharacter/RunL.png"
-# define MCWALKR "resources/source/MainCharacter/RunR.png"
-
-# define MCSTATICL "resources/source/MainCharacter/staticL.png"
-# define MCSTATICR "resources/source/MainCharacter/staticR.png"
-
-
 class   CS_Layer
 {
     public:
@@ -86,6 +64,85 @@ class   CS_Parallax
     private:
         std::vector<CS_Layer *> layers;
 };
+
+typedef enum	e_assetName {
+    Arbre1,
+    Arbre2,
+    Arbre3
+}				t_assetName;
+
+typedef enum    e_assetBankName {
+    Niveau1,
+    Niveau2,
+    Niveau3
+}               t_assetBankName;
+
+class   CS_Asset
+{
+    public:
+        CS_Assets();
+        ~CS_Assets();
+
+        void            createAsset(SDL_Renderer *render, std::string source, float w, float h);
+        void            addAsset(int zIndex);
+
+        SDL_Texture     *QueryTexture();
+        SDL_Rect        *QuerySize();
+        t_assetName     QueryName();
+
+    private:
+        SDL_Texture     *texture;
+        SDL_Rect        *size;
+
+        t_assetName     name;
+
+        int             zIndex;
+}
+
+class   CS_AssetsBank
+{
+    public:
+        CS_AssetsBank();
+        ~CS_AssetsBank();
+
+        void        createAsset(SDL_Renderer *render, std::string source, float w, float h);
+
+        CS_Asset    *QueryAsset(t_assetName name);
+
+    private:
+        std::vector<CS_Asset *> layers;
+}
+
+class   CS_Assets
+{
+    public:
+        CS_Assets();
+        ~CS_Assets();
+
+        void        createAsset();
+
+        CS_Asset    *QueryAsset(int index);
+        int         QueryNbAssets();
+
+    private:
+        std::vector<CS_Asset *> layers;
+}
+
+typedef enum	e_aniamtion {
+    STATIC,
+    WALK,
+    SPRINT,
+}				t_animation;
+
+# define NOINTERRUPT 1
+# define INTERRUPT 2
+
+
+# define MCWALKL "resources/source/MainCharacter/RunL.png"
+# define MCWALKR "resources/source/MainCharacter/RunR.png"
+
+# define MCSTATICL "resources/source/MainCharacter/staticL.png"
+# define MCSTATICR "resources/source/MainCharacter/staticR.png"
 
 class   CS_Animation
 {
@@ -186,6 +243,11 @@ class   CS_Character
 
         bool                right;
 };
+
+typedef enum	e_enemy {
+	CubeRouge,
+    CuveVert
+}				t_enemy;
 
 class   CS_Enemy
 {

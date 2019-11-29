@@ -11,7 +11,8 @@ int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings, SDL_Ren
     {
         if (saveButton != NULL)
         {
-            saveButton->CS_setZoom(NOZOOM);
+            if (saveButton->CS_haveText())
+                saveButton->CS_setZoom(NOZOOM);
             saveButton->CS_setBrightness(false);
         }
         saveButton = button;
@@ -23,7 +24,8 @@ int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings, SDL_Ren
     }
     else if (buttonInfo == MOUSE_MOTION)
     {
-        button->CS_setZoom(ZOOMIN);
+        if (button->CS_haveText())
+            button->CS_setZoom(ZOOMIN);
         button->CS_setBrightness(true);
         // set zoomIn on
         // set brillance on
@@ -31,7 +33,8 @@ int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings, SDL_Ren
     }
     else if (buttonInfo == BOUTTON_PRESS)
     {
-        button->CS_setZoom(ZOOMOUT);
+        if (button->CS_haveText())
+            button->CS_setZoom(ZOOMOUT);
         button->CS_setBrightness(true);
         // set zoomOut on
         // set brillance on
@@ -39,7 +42,8 @@ int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings, SDL_Ren
     }
     else if (buttonInfo == BOUTON_RELEASE)
     {
-        button->CS_setZoom(NOZOOM);
+        if (button->CS_haveText())
+            button->CS_setZoom(NOZOOM);
         button->CS_setBrightness(false);
         button->CS_useFonction(&settings, render);
         // use fonction
