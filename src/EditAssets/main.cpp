@@ -235,8 +235,6 @@ CS_AssetsBank   *initAssetsBankLevel1(SDL_Renderer *render)
 
     assetsBank = new (CS_AssetsBank);
 
-    createAsset(render, "", BigTree01, 10, 10);
-
     return (assetsBank);
 }
 
