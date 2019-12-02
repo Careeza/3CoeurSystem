@@ -13,7 +13,7 @@ CS_Asset::~CS_Asset()
     SDL_DestroyTexture(texture);
 }
 
-void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, float wSource, float hSource)
+void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, t_assetName nameSource, float wSource, float hSource)
 {
     SDL_Surface *surfaceAsset;
 
@@ -28,6 +28,8 @@ void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, 
 
     w = Tools->transformWidth(wSource);
     h = Tools->transformHeight(hSource);
+
+    name = nameSource;
 }
 
 void            CS_Asset::addAsset(int zIndexSource, float xSource, float ySource)
@@ -37,6 +39,34 @@ void            CS_Asset::addAsset(int zIndexSource, float xSource, float ySourc
     x = Tools->transformX(xSource);
     y = Tools->transformY(ySource);
 }
+
+void            CS_Asset::setTexture(SDL_Texture *textureSource)
+{
+    texture = textureSource;
+}
+
+void            CS_Asset::setName(t_assetName nameSource)
+{
+    name = nameSource;
+}
+
+void            CS_Asset::setSize(int wSource, int hSource)
+{
+    w = wSource;
+    h = hSource;
+}
+
+
+int             CS_Asset::QueryWidth()
+{
+    return (w);
+}
+
+int             CS_Asset::QueryHeight()
+{
+    return (h);
+}
+
 
 SDL_Texture     *CS_Asset::QueryTexture()
 {
@@ -59,4 +89,26 @@ t_assetName     CS_Asset::QueryName()
 int             CS_Asset::QueryZIndex()
 {
     return (zIndex);
+}
+
+void            CS_Asset::resizeAsset(int wSource, int hSource, bool method)
+{
+    if (method == true)
+    {
+        w += wSource;
+        h += hSource;
+        x -= wSource / 2;
+        y -= hSource / 2;
+    }
+    else
+    {
+        x += wSource / 2;
+        y += hSource / 2;
+    }
+}
+
+void            CS_Asset::printSize()
+{
+    std::cout << "size w = " << w / (float)Tools->QueryWindowWidth() * 100 << " size h = " << h / (float)Tools->QueryWindowHeight() * 100 << std::endl;
+    std::cout << "size x = " << x / (float)Tools->QueryWindowWidth() * 100 << " size y = " << y / (float)Tools->QueryWindowHeight() * 100 << std::endl;
 }

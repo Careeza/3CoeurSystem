@@ -120,29 +120,57 @@ void    filtreActionTable(t_actionTable *table, t_actionTable *filtre)
         filtre->right = true;
     if (table->left & !table->right)
         filtre->left = true;
+
+    if (table->up & !table->down)
+        filtre->up = true;
+    if (table->down & !table->up)
+        filtre->down = true;
+
     filtre->dodge = table->dodge;
+    filtre->jump = table->jump;
 }
 
 
 void    useAction2(t_actionTable *table, CS_Settings& settings)
 {
-    CS_Camera    *camera;
+    CS_Camera   *camera;
+    CS_Asset    *asset;
 
     camera = settings.QueryGameScene()->QueryCamera();
-    if (table->right == true)
+    asset = settings.QueryGameScene()->QueryAssets()->QueryAsset(0);
+    if (table->dodge == false)
     {
-//        std::cout << "press" << std::endl;
-        camera->moveCamera2(25, 0);
-    }
-    else if (table->left == true)
-    {
-//        std::cout << "press" << std::endl;
-        camera->moveCamera2(-25, 0);
+        if (table->right == true)
+            asset->resizeAsset(2, 0, true);
+        else if (table->left == true)
+            asset->resizeAsset(-2, 0, true);
+        else if (table->up == true)
+            asset->resizeAsset(0, 2, true);
+        else if (table->down)
+            asset->resizeAsset(0, -2, true);
     }
     else
     {
-//        std::cout << "No press" << std::endl;
+        if (table->right == true)
+            asset->resizeAsset(2, 0, false);
+        else if (table->left == true)
+            asset->resizeAsset(-2, 0, false);
+        else if (table->up == true)
+            asset->resizeAsset(0, 2, false);
+        else if (table->down)
+            asset->resizeAsset(0, -2, false);
     }
+
+    static bool jump = false;
+
+    if (table->jump)
+    {
+        if (!jump)
+            asset->printSize();
+        jump = true;
+    }
+    else
+        jump = false;
 }
 
 void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *action)
@@ -235,6 +263,27 @@ CS_AssetsBank   *initAssetsBankLevel1(SDL_Renderer *render)
 
     assetsBank = new (CS_AssetsBank);
 
+    assetsBank->createAsset(render, "resources/source/assets/BigTree01.png", BigTree01, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree02.png", BigTree02, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree03.png", BigTree03, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree01.png", BushTree01, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree02.png", BushTree02, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree03.png", BushTree03, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree04.png", BushTree04, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/Grass01.png", Grass01, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/Grass02.png", Grass02, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/Grass03.png", Grass03, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/Grass04.png", Grass04, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/Grass05.png", Grass05, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/Ground01.png", Ground01, 10, 5.8);
+    assetsBank->createAsset(render, "resources/source/assets/MediumTree01.png", MediumTree01, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/MediumTree02.png", MediumTree02, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/MediumTree03.png", MediumTree03, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree01.png", SmallTree01, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree02.png", SmallTree02, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree03.png", SmallTree03, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree04.png", SmallTree04, 10, 10);
+
     return (assetsBank);
 }
 
@@ -243,6 +292,20 @@ CS_Assets       *initAssets(SDL_Renderer *render)
     CS_Assets *assets;
 
     assets = new (CS_Assets);
+
+    assets->loadBank(initAssetsBankLevel1(render));
+
+    assets->loadAsset(BigTree01, 1, 45, 45);
+    assets->loadAsset(Ground01, 1, 0, 96);
+    assets->loadAsset(Ground01, 1, 10, 96);
+    assets->loadAsset(Ground01, 1, 20, 96);
+    assets->loadAsset(Ground01, 1, 30, 96);
+    assets->loadAsset(Ground01, 1, 40, 96);
+    assets->loadAsset(Ground01, 1, 50, 96);
+    assets->loadAsset(Ground01, 1, 60, 96);
+    assets->loadAsset(Ground01, 1, 70, 96);
+    assets->loadAsset(Ground01, 1, 80, 96);
+    assets->loadAsset(Ground01, 1, 90, 96);
 
     return (assets);
 }
@@ -255,6 +318,7 @@ CS_GameScene    *init_home(SDL_Renderer *render)
     scene->CS_loadRenderer(render);
     
     scene->loadParallax(initParallax(render));
+    scene->loadAssets(initAssets(render));
     scene->loadCamera(initCamera());
 
     return (scene);

@@ -10,12 +10,26 @@ CS_Assets::~CS_Assets()
     delete assetsBank;
 }
 
+CS_Asset    *copyAsset(CS_Asset *assetSource)
+{
+    CS_Asset *asset;
+
+    asset = new (CS_Asset);
+
+    asset->setTexture(assetSource->QueryTexture());
+    asset->setName(assetSource->QueryName());
+    asset->setSize(assetSource->QueryWidth(), assetSource->QueryHeight());
+
+    return (asset);
+}
+
 void         CS_Assets::loadAsset(t_assetName name, int zIndex, float x, float y)
 {
     CS_Asset        *asset;
     unsigned long   i;
 
-    asset = assetsBank->QueryAsset(name);
+    asset = copyAsset(assetsBank->QueryAsset(name));
+
     asset->addAsset(zIndex, x, y);
 
     i = 0;

@@ -118,7 +118,20 @@ void    renderParallax(CS_Parallax *parallax, SDL_Renderer *render)
 
 void    renderAssets(CS_Assets *assets, SDL_Renderer *render, SDL_Rect *size, int cameraX, int cameraY)
 {
+    CS_Asset        *asset;
+    SDL_Texture     *texture;
+    int             i;
 
+    i = 0;
+
+    while (i < assets->QueryNbAssets())
+    {
+        asset = assets->QueryAsset(i);
+        texture = asset->QueryTexture();
+        asset->QuerySize(size->w, size->h, size->x, size->y);
+        SDL_RenderCopy(render, texture, NULL, size);
+        i++;
+    }
 }
 
 

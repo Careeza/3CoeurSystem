@@ -15,7 +15,7 @@ void        CS_AssetsBank::createAsset(SDL_Renderer *render, std::string source,
     CS_Asset    *asset;
 
     asset = new (CS_Asset);
-    asset->createAsset(render, source, w, h);
+    asset->createAsset(render, source, name, w, h);
     assets.push_back(asset);
 }
 
@@ -27,8 +27,9 @@ CS_Asset    *CS_AssetsBank::QueryAsset(t_assetName name)
     while (i < assets.size())
     {
         if (assets[i]->QueryName() == name)
+        {
             return (assets[i]);
+        }
         i++;
     }
-    Tools->verbose(LEVEL1, "s", "error no Asset found");
 }
