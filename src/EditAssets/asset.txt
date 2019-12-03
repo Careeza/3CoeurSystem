@@ -1,0 +1,35 @@
+
+                                // BIG TREE 01 \\
+
+assetsBank->createAsset(render, "resources/source/assets/BigTree01.png", BigTree01, 30.4, 96.3);
+
+# define YBigTree01 0.0
+# define XBigTree01 34.4
+
+                                //BIG TREE 02 \\
+
+assetsBank->createAsset(render, "resources/source/assets/BigTree02.png", BigTree02, 18.75, 96.3);
+
+# define YBigTree02 0.0
+# define XBigTree02 40.625
+
+                                //BIG TREE 03 \\
+
+assetsBank->createAsset(render, "resources/source/assets/BigTree03.png", BigTree03, 18.75, 96.3);
+
+# define YBigTree03 0.0
+# define XBigTree03 40.625
+
+                                //BUSH TREE 01 \\
+
+assetsBank->createAsset(render, "resources/source/assets/BushTree01.png", BushTree01, 18.75, 96.3);
+
+# define YBushTree01 0.0
+# define XBushTree01 40.625
+
+                                //BUSH TREE 02 \\
+
+assetsBank->createAsset(render, "resources/source/assets/BushTree02.png", BushTree02, 18.75, 96.3);
+
+# define YBushTree01 0.0
+# define XBushTree01 40.625

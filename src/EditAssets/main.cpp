@@ -257,32 +257,92 @@ CS_Parallax     *initParallax(SDL_Renderer *render)
     return (parallax);
 }
 
+# define YBigTree01 0.0
+# define XBigTree01 34.4
+
+# define YBigTree02 0.0
+# define XBigTree02 40.625
+
+# define YBigTree03 0.0
+# define XBigTree03 37.1
+
+# define YBushTree01 87.1
+# define XBushTree01 40.34
+
+# define YBushTree02 86
+# define XBushTree02 39.79
+
+# define YBushTree03 84.5
+# define XBushTree03 40
+
+# define YBushTree04 91.7
+# define XBushTree04 39.5
+
+# define YGrass01 90.5
+# define XGrass01 30.5
+
+# define YGrass02 91.8
+# define XGrass02 38.8
+
+# define YGrass03 87.7
+# define XGrass03 40.3
+
+# define YGrass04 89.8
+# define XGrass04 42.5
+
+# define YGrass05 88.2
+# define XGrass05 44.5
+
+# define YGround01 96
+# define XGround01 0
+
+# define YMediumTree01 28.2
+# define XMediumTree01 44.8
+
+# define YMediumTree02 35.5
+# define XMediumTree02 44.8
+
+# define YMediumTree03 43.1
+# define XMediumTree03 54
+
+# define YSmallTree01 59.3
+# define XSmallTree01 62.7
+
+# define YSmallTree02 53.8
+# define XSmallTree02 63
+
+# define YSmallTree03 48
+# define XSmallTree03 61.3
+
+# define YSmallTree04 53.3
+# define XSmallTree04 63.2
+
 CS_AssetsBank   *initAssetsBankLevel1(SDL_Renderer *render)
 {
     CS_AssetsBank *assetsBank;
 
     assetsBank = new (CS_AssetsBank);
 
-    assetsBank->createAsset(render, "resources/source/assets/BigTree01.png", BigTree01, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/BigTree02.png", BigTree02, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/BigTree03.png", BigTree03, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/BushTree01.png", BushTree01, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/BushTree02.png", BushTree02, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/BushTree03.png", BushTree03, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/BushTree04.png", BushTree04, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/Grass01.png", Grass01, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/Grass02.png", Grass02, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/Grass03.png", Grass03, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/Grass04.png", Grass04, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/Grass05.png", Grass05, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree01.png", BigTree01, 30.4, 96.3);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree02.png", BigTree02, 18.75, 96.3);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree03.png", BigTree03, 25.4, 96.3);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree01.png", BushTree01, 10.5, 8.9);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree02.png", BushTree02, 10.97, 10);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree03.png", BushTree03, 9.4, 11.3);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree04.png", BushTree04, 10.9, 4.2);
+    assetsBank->createAsset(render, "resources/source/assets/Grass01.png", Grass01, 33.3, 5.3);
+    assetsBank->createAsset(render, "resources/source/assets/Grass02.png", Grass02, 2.4, 4.1);
+    assetsBank->createAsset(render, "resources/source/assets/Grass03.png", Grass03, 6.9, 8.2);
+    assetsBank->createAsset(render, "resources/source/assets/Grass04.png", Grass04, 5.5, 6.2);
+    assetsBank->createAsset(render, "resources/source/assets/Grass05.png", Grass05, 5.8, 8);
     assetsBank->createAsset(render, "resources/source/assets/Ground01.png", Ground01, 10, 5.8);
-    assetsBank->createAsset(render, "resources/source/assets/MediumTree01.png", MediumTree01, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/MediumTree02.png", MediumTree02, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/MediumTree03.png", MediumTree03, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/SmallTree01.png", SmallTree01, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/SmallTree02.png", SmallTree02, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/SmallTree03.png", SmallTree03, 10, 10);
-    assetsBank->createAsset(render, "resources/source/assets/SmallTree04.png", SmallTree04, 10, 10);
+    assetsBank->createAsset(render, "resources/source/assets/MediumTree01.png", MediumTree01, 10, 67.8);
+    assetsBank->createAsset(render, "resources/source/assets/MediumTree02.png", MediumTree02, 10, 60.4);
+    assetsBank->createAsset(render, "resources/source/assets/MediumTree03.png", MediumTree03, 4.3, 52.9);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree01.png", SmallTree01, 2.8, 36.7);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree02.png", SmallTree02, 1.9, 42.2);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree03.png", SmallTree03, 3.75, 48);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree04.png", SmallTree04, 2.3, 42.6);
 
     return (assetsBank);
 }
@@ -295,7 +355,26 @@ CS_Assets       *initAssets(SDL_Renderer *render)
 
     assets->loadBank(initAssetsBankLevel1(render));
 
-    assets->loadAsset(BigTree01, 1, 45, 45);
+    //assets->loadAsset(BigTree01, 1, XBigTree02, YBigTree01);
+    //assets->loadAsset(BigTree02, 2, XBigTree02, YBigTree02);
+    //assets->loadAsset(BigTree03, 1, XBigTree03, YBigTree03);
+    //assets->loadAsset(BushTree01, 1, XBushTree01, YBushTree01);
+    //assets->loadAsset(BushTree02, 1, XBushTree02, YBushTree02);
+    //assets->loadAsset(BushTree03, 1, XBushTree03, YBushTree03);
+    //assets->loadAsset(BushTree04, 1, XBushTree04, YBushTree04);
+    //assets->loadAsset(Grass01, 1, XGrass01, YGrass01);
+    //assets->loadAsset(Grass02, 1, XGrass02, YGrass02);
+    //assets->loadAsset(Grass03, 1, XGrass03, YGrass03);
+    //assets->loadAsset(Grass04, 1, XGrass04, YGrass04);
+    //assets->loadAsset(Grass05, 1, XGrass05, YGrass05);
+    //assets->loadAsset(MediumTree01, 1, XMediumTree01, YMediumTree01);
+    //assets->loadAsset(MediumTree02, 1, XMediumTree02, YMediumTree02);
+    //assets->loadAsset(MediumTree03, 1, XMediumTree03, YMediumTree03);
+    //assets->loadAsset(SmallTree01, 1, XSmallTree01, YSmallTree01);
+    //assets->loadAsset(SmallTree02, 1, XSmallTree02, YSmallTree02);
+    //assets->loadAsset(SmallTree03, 1, XSmallTree03, YSmallTree03);
+    //assets->loadAsset(SmallTree04, 1, XSmallTree04, YSmallTree04);
+
     assets->loadAsset(Ground01, 1, 0, 96);
     assets->loadAsset(Ground01, 1, 10, 96);
     assets->loadAsset(Ground01, 1, 20, 96);
