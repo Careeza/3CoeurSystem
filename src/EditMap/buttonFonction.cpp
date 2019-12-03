@@ -1,26 +1,5 @@
 #include "editMap.h"
 
-# define YBigTree01 1
-# define YBigTree02 1
-# define YBigTree03 1
-# define YBushTree01 1
-# define YBushTree02 1
-# define YBushTree03 1
-# define YBushTree04 1
-# define YGrass01 1
-# define YGrass02 1
-# define YGrass03 1
-# define YGrass04 1
-# define YGrass05 1
-# define YGround01 1
-# define YMediumTree01 1
-# define YMediumTree02 1
-# define YMediumTree03 1
-# define YSmallTree01 1
-# define YSmallTree02 1
-# define YSmallTree03 1
-# define YSmallTree04 1
-
 void    loadBigTree01(void* settings, SDL_Renderer *render)
 {
     CS_EditMapSetting *set;

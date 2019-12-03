@@ -129,6 +129,8 @@ void    renderAssets(CS_Assets *assets, SDL_Renderer *render, SDL_Rect *size, in
         asset = assets->QueryAsset(i);
         texture = asset->QueryTexture();
         asset->QuerySize(size->w, size->h, size->x, size->y);
+        size->x -= cameraX;
+        size->y -= cameraY;
         SDL_RenderCopy(render, texture, NULL, size);
         i++;
     }
