@@ -56,6 +56,7 @@ class   CS_KeyControl
         int                                     loadEvenement(CS_Scene *scene);
         int                                     CS_getKeyboardActions(int& key);
         std::shared_ptr<CS_Element>             CS_getBoutton(int &boutonInfo);
+        int                                     CS_getMouseActions(int &x, int &y);
 //      int                                     getMouseActions(int& x, int& y);
 
     private:

@@ -102,17 +102,20 @@ class   CS_Asset
 
         void            createAsset(SDL_Renderer *render, std::string source, t_assetName nameSource, float wSource, float hSource);
         void            addAsset(int zIndexSource, float xSource, float ySource);
+        void            setID(int idSource);
 
         void            setTexture(SDL_Texture *textureSource);
         void            setName(t_assetName nameSource);
         void            setSize(int wSource, int hSource);
 
         void            resizeAsset(int wSource, int hSource, bool method);
+        void            moveAsset(int xSource, int ySource, bool method);
         void            printSize();
 
         SDL_Texture     *QueryTexture();
 
 
+        int             QueryID();
         int             QueryWidth();
         int             QueryHeight();
         void            QuerySize(int& wDest, int& hDest, int& xDest, int& yDest);
@@ -126,6 +129,8 @@ class   CS_Asset
         int             h;
         int             x;
         int             y;
+
+        int             id;
 
         t_assetName     name;
 
@@ -152,7 +157,7 @@ class   CS_Assets
         CS_Assets();
         ~CS_Assets();
 
-        void        loadAsset(t_assetName name, int zIndex, float x, float y);
+        CS_Asset    *loadAsset(t_assetName name, int zIndex, float x, float y);
 
         void        loadBank(CS_AssetsBank *assetsBankSource);
 

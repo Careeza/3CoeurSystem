@@ -56,6 +56,15 @@ void            CS_Asset::setSize(int wSource, int hSource)
     h = hSource;
 }
 
+void            CS_Asset::setID(int idSource)
+{
+    id = idSource;
+}
+
+int             CS_Asset::QueryID()
+{
+    return (id);
+}
 
 int             CS_Asset::QueryWidth()
 {
@@ -89,6 +98,20 @@ t_assetName     CS_Asset::QueryName()
 int             CS_Asset::QueryZIndex()
 {
     return (zIndex);
+}
+
+void            CS_Asset::moveAsset(int xSource, int ySource, bool method)
+{
+    if (method == true)
+    {
+        x = xSource;
+        y = ySource;
+    }
+    else
+    {
+        x += xSource;
+        y += ySource;
+    }
 }
 
 void            CS_Asset::resizeAsset(int wSource, int hSource, bool method)

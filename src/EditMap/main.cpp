@@ -1,4 +1,3 @@
-#include "common.h"
 #include "editMap.h"
 
 TTF_Font    *CS_Police::CS_font = NULL;
@@ -178,14 +177,22 @@ void    parallaxManagement(CS_Settings& settings, int xCamera, int yCamera)
     }
 }
 
-void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_Settings& settings, t_actionValue *value)
+void    moveAssetSelected(CS_Asset *asset);
+
+
+void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_EditMapSetting& settings, t_actionValue *value)
 {
     CS_Timer        timer;
     CS_KeyControl   event;
     CS_Camera       *camera;
     t_actionTable   action;
+
     int             xCamera;
     int             yCamera;
+
+    int             xMouse;
+    int             yMouse;
+    int             buttonInfo;
 
     camera = settings.QueryGameScene()->QueryCamera();
     while (!settings.QueryCloseRequest())
@@ -194,13 +201,15 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_Settings& settin
         while (event.loadEvenement(settings.QueryGameScene()))
         {
 //            std::cout << "boucle here 2" << std::endl;
-            bouttonManagement(event, settings, rend);
+            bouttonManagement2(event, settings, rend);
+            buttonInfo = event.CS_getMouseActions(xMouse, yMouse);
             actionKeyManagement(event, value, &action);
             escapeKeyManagement(event, settings, rend);
         }
         camera->queryCameraPosition(xCamera, yCamera);
         useAction2(&action, settings);
         parallaxManagement(settings, xCamera, yCamera);
+        moveAssetSelected();
 //        std::cout << "boucle here 1" << std::endl;
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
         SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));
@@ -240,46 +249,26 @@ CS_GameScene    *init_home(SDL_Renderer *render)
 //    scene->CS_createElementToScene("filtre", 75, 100, 0, 0, 2);
     scene->CS_setTextColor(0xFF, 0xFF, 0xFF, 0xFF);
 
-    scene->CS_setSceneColor(0x00, 0x00, 0xFF, 255);
-    scene->CS_createButtonToScene("Asset1", 12.5, 10, 75, 0, 1, &closeGame);
-    scene->CS_setSceneColor(0xFF, 0x00, 0x00, 255);
-    scene->CS_createButtonToScene("Asset2", 12.5, 10, 87.5, 0, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0xFF, 0x00, 255);
-    scene->CS_createButtonToScene("Asset3", 12.5, 10, 75, 10, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0x00, 0xFF, 255);
-    scene->CS_createButtonToScene("Asset4", 12.5, 10, 87.5, 10, 1, &closeGame);
-    scene->CS_setSceneColor(0xFF, 0x00, 0x00, 255);
-    scene->CS_createButtonToScene("Asset5", 12.5, 10, 75, 20, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0xFF, 0x00, 255);
-    scene->CS_createButtonToScene("Asset6", 12.5, 10, 87.5, 20, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0x00, 0xFF, 255);
-    scene->CS_createButtonToScene("Asset7", 12.5, 10, 75, 30, 1, &closeGame);
-    scene->CS_setSceneColor(0xFF, 0x00, 0x00, 255);
-    scene->CS_createButtonToScene("Asset8", 12.5, 10, 87.5, 30, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0xFF, 0x00, 255);
-    scene->CS_createButtonToScene("Asset9", 12.5, 10, 75, 40, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0x00, 0xFF, 255);
-    scene->CS_createButtonToScene("Asset10", 12.5, 10, 87.5, 40, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0x00, 0xFF, 255);
-    scene->CS_createButtonToScene("Asset11", 12.5, 10, 75, 50, 1, &closeGame);
-    scene->CS_setSceneColor(0xFF, 0x00, 0x00, 255);
-    scene->CS_createButtonToScene("Asset12", 12.5, 10, 87.5, 50, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0xFF, 0x00, 255);
-    scene->CS_createButtonToScene("Asset13", 12.5, 10, 75, 60, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0x00, 0xFF, 255);
-    scene->CS_createButtonToScene("Asset14", 12.5, 10, 87.5, 60, 1, &closeGame);
-    scene->CS_setSceneColor(0xFF, 0x00, 0x00, 255);
-    scene->CS_createButtonToScene("Asset15", 12.5, 10, 75, 70, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0xFF, 0x00, 255);
-    scene->CS_createButtonToScene("Asset16", 12.5, 10, 87.5, 70, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0x00, 0xFF, 255);
-    scene->CS_createButtonToScene("Asset17", 12.5, 10, 75, 80, 1, &closeGame);
-    scene->CS_setSceneColor(0xFF, 0x00, 0x00, 255);
-    scene->CS_createButtonToScene("Asset18", 12.5, 10, 87.5, 80, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0xFF, 0x00, 255);
-    scene->CS_createButtonToScene("Asset19", 12.5, 10, 75, 90, 1, &closeGame);
-    scene->CS_setSceneColor(0x00, 0x00, 0xFF, 255);
-    scene->CS_createButtonToScene("Asset20", 12.5, 10, 87.5, 90, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset1", "resources/source/assets/BigTree01.png", 12.5, 10, 75, 0, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset2", "resources/source/assets/BigTree02.png", 12.5, 10, 87.5, 0, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset3", "resources/source/assets/BigTree03.png", 12.5, 10, 75, 10, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset4", "resources/source/assets/BushTree01.png", 12.5, 10, 87.5, 10, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset5", "resources/source/assets/BushTree02.png", 12.5, 10, 75, 20, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset6", "resources/source/assets/BushTree03.png", 12.5, 10, 87.5, 20, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset7", "resources/source/assets/BushTree04.png", 12.5, 10, 75, 30, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset8", "resources/source/assets/Grass01.png", 12.5, 10, 87.5, 30, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset9", "resources/source/assets/Grass02.png", 12.5, 10, 75, 40, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset10", "resources/source/assets/Grass03.png",  12.5, 10, 87.5, 40, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset11", "resources/source/assets/Grass04.png",  12.5, 10, 75, 50, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset12", "resources/source/assets/Grass05.png",  12.5, 10, 87.5, 50, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset13", "resources/source/assets/Ground01.png",  12.5, 10, 75, 60, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset14", "resources/source/assets/MediumTree01.png",  12.5, 10, 87.5, 60, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset15", "resources/source/assets/MediumTree02.png",  12.5, 10, 75, 70, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset16", "resources/source/assets/MediumTree03.png",  12.5, 10, 87.5, 70, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset17", "resources/source/assets/SmallTree01.png",  12.5, 10, 75, 80, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset18", "resources/source/assets/SmallTree02.png",  12.5, 10, 87.5, 80, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset19", "resources/source/assets/SmallTree03.png",  12.5, 10, 75, 90, 1, &closeGame);
+    scene->CS_createButtonToSceneFromPng("Asset20", "resources/source/assets/SmallTree04.png",  12.5, 10, 87.5, 90, 1, &closeGame);
 
     scene->loadParallax(initParallax(render));
     scene->loadCamera(initCamera());
@@ -305,13 +294,13 @@ void        initSettings(CS_Settings &settings, SDL_Window *window, SDL_Renderer
 
 int     main(int argc, char **argv)
 {
-    SDL_Window      *window;
-    SDL_Renderer    *render;
-    CS_Renderer     rend;
-    CS_KeyControl   *event;
-    CS_Police       initFont;
-    CS_Settings     settings;
-    t_actionValue   value;
+    SDL_Window          *window;
+    SDL_Renderer        *render;
+    CS_Renderer         rend;
+    CS_KeyControl       *event;
+    CS_Police           initFont;
+    CS_EditMapSetting   settings;
+    t_actionValue       value;
     
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
