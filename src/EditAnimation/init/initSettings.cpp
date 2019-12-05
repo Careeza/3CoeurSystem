@@ -1,6 +1,7 @@
 #include "editAnimation.h"
 
-void        initSettings(CS_Settings &settings, SDL_Window *window, SDL_Renderer *render)
+
+void        initSettings(CS_EditAnimationSetting &settings, SDL_Window *window, SDL_Renderer *render)
 {
     int w;
     int h;
@@ -10,7 +11,8 @@ void        initSettings(CS_Settings &settings, SDL_Window *window, SDL_Renderer
     settings.getWindowSize(w, h);
     settings.getCloseRequest(false);
     settings.getPauseRequest(false);
-    settings.getFps(30);
+    settings.getFps(60);
+    settings.setFpsAnimation(60);
     settings.getPosition(game);
     Tools->getWindowSize(settings.QueryWindowsWidth(), settings.QueryWindowsHeight());
     settings.initGameScene(init_home(render));

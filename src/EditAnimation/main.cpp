@@ -1,6 +1,6 @@
 #include "editAnimation.h"
 
-TTF_Font    *CS_Police::CS_font = NULL;
+TTF_Font    *CS_Police::font = NULL;
 
 void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_EditAnimationSetting& settings, t_actionValue *value)
 {
@@ -30,11 +30,11 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_EditAnimationSet
 
         if (!settings.isPaused())
         {
-            settings.QueryGameScene()->QueryMC()->nextFrame();
+            settings.QueryGameScene()->QueryMC()->nextIndexPas();
             settings.QueryGameScene()->QueryMC()->getFrame();
         }
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
-        SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));
+        SDL_Delay(fmax(0, (1000 / (float)settings.QueryFps()) - timer.get_ticks()));
     }
 }
 
@@ -54,7 +54,7 @@ int     main(int argc, char **argv)
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
 
     TTF_Init();
-    initFont.CS_initPolice("resources/alterebro-pixel-font.ttf");
+    initFont.initPolice("resources/alterebro-pixel-font.ttf");
     
     render = init_renderer(window);
 

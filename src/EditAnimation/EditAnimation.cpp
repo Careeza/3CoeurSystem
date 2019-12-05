@@ -24,3 +24,24 @@ bool    CS_EditAnimationSetting::isPaused()
 {
     return (paused);
 }
+
+void    CS_EditAnimationSetting::setFpsAnimation(int fpsSource)
+{
+    fpsAnimation = fpsSource;
+}
+
+
+int     CS_EditAnimationSetting::QueryFpsAnimation()
+{
+    return (fpsAnimation);
+}
+
+void    CS_EditAnimationSetting::increaseFps()
+{
+    fpsAnimation++;
+}
+
+void    CS_EditAnimationSetting::decreaseFps()
+{
+    fpsAnimation--;
+}

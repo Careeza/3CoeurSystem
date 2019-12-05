@@ -2,7 +2,7 @@
 
 CS_Button::CS_Button()
 {
-    CS_buttonFunction = NULL;
+    buttonFunction = NULL;
 }
 
 CS_Button::~CS_Button()

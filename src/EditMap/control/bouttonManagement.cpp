@@ -6,14 +6,14 @@ int     bouttonManagement2(CS_KeyControl& control, CS_EditMapSetting& settings, 
     std::shared_ptr<CS_Element>             button;
     int                                     buttonInfo;
 
-    button = control.CS_getBoutton(buttonInfo);
+    button = control.getBoutton(buttonInfo);
     if (button != saveButton && buttonInfo != NO_ACTION)
     {
         if (saveButton != NULL)
         {
-            if (saveButton->CS_haveText())
-                saveButton->CS_setZoom(NOZOOM);
-            saveButton->CS_setBrightness(false);
+            if (saveButton->containsText())
+                saveButton->setZoom(NOZOOM);
+            saveButton->setBrightness(false);
         }
         saveButton = button;
     }
@@ -24,28 +24,28 @@ int     bouttonManagement2(CS_KeyControl& control, CS_EditMapSetting& settings, 
     }
     else if (buttonInfo == MOUSE_MOTION)
     {
-        if (button->CS_haveText())
-            button->CS_setZoom(ZOOMIN);
-        button->CS_setBrightness(true);
+        if (button->containsText())
+            button->setZoom(ZOOMIN);
+        button->setBrightness(true);
         // set zoomIn on
         // set brillance on
         return (1);
     }
     else if (buttonInfo == BOUTTON_PRESS)
     {
-        if (button->CS_haveText())
-            button->CS_setZoom(ZOOMOUT);
-        button->CS_setBrightness(true);
+        if (button->containsText())
+            button->setZoom(ZOOMOUT);
+        button->setBrightness(true);
         // set zoomOut on
         // set brillance on
         return (1);
     }
     else if (buttonInfo == BOUTON_RELEASE)
     {
-        if (button->CS_haveText())
-            button->CS_setZoom(NOZOOM);
-        button->CS_setBrightness(false);
-        button->CS_useFonction(&settings, render);
+        if (button->containsText())
+            button->setZoom(NOZOOM);
+        button->setBrightness(false);
+        button->useFonction(&settings, render);
         // use fonction
         return (1);
     }

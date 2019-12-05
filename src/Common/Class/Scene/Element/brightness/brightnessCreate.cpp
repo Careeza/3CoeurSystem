@@ -1,6 +1,6 @@
 #include "scene.h"
 
-void            CS_Brightness::CS_initBright(SDL_Renderer *render, CS_Color color)
+void            CS_Brightness::initBright(SDL_Renderer *render, CS_Color color)
 {
     surface = SDL_CreateRGBSurface(0, 100, 100, 32, rmask, gmask, bmask, amask);
     if (!surface)

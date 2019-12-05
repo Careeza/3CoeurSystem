@@ -48,10 +48,10 @@ class   CS_Color
         CS_Color();
         CS_Color(int red, int green, int blue, int alpha);
 
-        void    setRed(int red);
-        void    setGreen(int green);
-        void    setBlue(int blue);
-        void    setAlpha(int alpha);
+        void    setRed(int redSource);
+        void    setGreen(int greenSource);
+        void    setBlue(int blueSource);
+        void    setAlpha(int alphaSource);
         void    setColor(int red = 0, int green = 0, int blue = 0, int alpha = 0);
 
         int QueryRed();
@@ -99,9 +99,9 @@ class   CS_Police
         CS_Police();
         ~CS_Police();
         void        initPolice(std::string police);
-        void        policeSetting(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
-        void        writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer *render);
-        void        writeTexteScaleW(std::string texte, SDL_Rect *size, SDL_Renderer *render);
+        void        policeSetting(CS_Color colorSource, int flagsSource = ALIGN_CENTER, int marginXSource = 5, int marginYSource = 5);
+        void        writeTexte(std::string texte, SDL_Rect *sizeSource, SDL_Renderer *render);
+        void        writeTexteScaleW(std::string texte, SDL_Rect *sizeSource, SDL_Renderer *render);
         void        changeText(std::string texte, SDL_Rect *size, SDL_Renderer *render);
         void        initZoomIn();
         void        initZoomOut();
@@ -194,7 +194,7 @@ class   CS_Element
         bool            isElementButton();
         bool            isElementDisp();
         bool            isButtonEnable();
-        bool            HaveText();
+        bool            containsText();
         bool            haveBorder();
         bool            haveBrightness();
 

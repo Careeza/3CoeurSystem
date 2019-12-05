@@ -1,6 +1,6 @@
 #include "keyControl.h"
 
-int     CS_KeyControl::CS_getKeyboardActions(int& key)
+int     CS_KeyControl::getKeyboardActions(int& key)
 {
     if (type == SDL_KEYDOWN)
     {

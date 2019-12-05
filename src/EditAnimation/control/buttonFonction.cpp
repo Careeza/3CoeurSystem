@@ -71,3 +71,27 @@ void    right(void* settings, SDL_Renderer *render)
     MC->setRight(true);
     MC->getFrame();
 }
+
+void    incraseFps(void* settings, SDL_Renderer *render)
+{
+    CS_EditAnimationSetting *set;
+    CS_Character            *MC;
+
+    (void)render;
+    set = (CS_EditAnimationSetting*)settings;
+    set->increaseFps();
+    MC = set->QueryGameScene()->QueryMC();
+    MC->setPas(set->QueryFps() / (float)set->QueryFpsAnimation());
+}
+
+void    decreaseFps(void* settings, SDL_Renderer *render)
+{
+    CS_EditAnimationSetting *set;
+    CS_Character            *MC;
+
+    (void)render;
+    set = (CS_EditAnimationSetting*)settings;
+    set->decreaseFps();
+    MC = set->QueryGameScene()->QueryMC();
+    MC->setPas(set->QueryFps() / (float)set->QueryFpsAnimation());
+}

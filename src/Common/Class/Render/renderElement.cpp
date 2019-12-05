@@ -1,4 +1,4 @@
-Q#include "render.h"
+#include "render.h"
 
 void    disp_element(std::shared_ptr<CS_Element> element, SDL_Renderer *render)
 {
@@ -18,7 +18,7 @@ void    disp_text(std::shared_ptr<CS_Element> element, SDL_Renderer *render)
 
     text = element->QueryText();
     texture = text->QueryTexte();
-    size = text->querySize();
+    size = text->QuerySize();
     SDL_RenderCopy(render, texture, NULL, size);
 }
 
@@ -63,18 +63,27 @@ void    dispScene(CS_Scene *current, SDL_Renderer *render)
     while (i < len)
     {
         element = current->QuerySingleElement(i);
-        if (element->CS_isElementDisp())
+        if (element->isElementDisp())
         {
             disp_element(element, render);
-            if (element->CS_haveBrightness())
+            if (element->haveBrightness())
                 disp_brightness(element, render);
-            if (element->CS_haveText())
+            if (element->containsText())
                 disp_text(element, render);
-            if (element->CS_haveBorder()) 
+            if (element->haveBorder()) 
                 disp_border(element, render);
         }
         i++;
     }
+}
+
+void    renderHitBox(CS_HitBox *hitBox, SDL_Renderer *render, SDL_Rect *size, int cameraX, int cameraY)
+{
+    SDL_SetRenderDrawColor(render, 0xFF, 0x0, 0x0, 0xFF);
+    hitBox->QuerySizePos(size->w, size->h, size->x, size->y);
+    size->x -= cameraX;
+    size->y -= cameraY;
+    SDL_RenderDrawRect(render, size);
 }
 
 void    renderParallax(CS_Parallax *parallax, SDL_Renderer *render)
@@ -132,6 +141,7 @@ void    renderAssets(CS_Assets *assets, SDL_Renderer *render, SDL_Rect *size, in
         size->x -= cameraX;
         size->y -= cameraY;
         SDL_RenderCopy(render, texture, NULL, size);
+        renderHitBox(asset->QueryHitBox(), render, size, cameraX, cameraY);
         i++;
     }
 }

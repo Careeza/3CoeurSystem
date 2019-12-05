@@ -2,10 +2,10 @@
 
 CS_Color::CS_Color()
 {
-    CS_red = 0;
-    CS_green = 0;
-    CS_blue = 0;
-    CS_alpha = 0;
+    red = 0;
+    green = 0;
+    blue = 0;
+    alpha = 0;
 }
 
 CS_Color::CS_Color(int red, int green, int blue, int alpha)
@@ -16,24 +16,24 @@ CS_Color::CS_Color(int red, int green, int blue, int alpha)
     setAlpha(alpha);
 }
 
-void    CS_Color::setRed(int red)
+void    CS_Color::setRed(int redSource)
 {
-    red = red;
+    red = redSource;
 }
 
-void    CS_Color::setGreen(int green)
+void    CS_Color::setGreen(int greenSource)
 {
-    green = green;
+    green = greenSource;
 }
 
-void    CS_Color::setBlue(int blue)
+void    CS_Color::setBlue(int blueSource)
 {
-    blue = blue;
+    blue = blueSource;
 }
 
-void    CS_Color::setAlpha(int alpha)
+void    CS_Color::setAlpha(int alphaSource)
 {
-    alpha = alpha;
+    alpha = alphaSource;
 }
 
 void    CS_Color::setColor(int red, int green, int blue, int alpha)

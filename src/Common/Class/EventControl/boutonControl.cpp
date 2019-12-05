@@ -8,7 +8,7 @@ std::shared_ptr<CS_Element>    getButton(CS_Scene *scene, int len, int x_mouse, 
     while (len >= 0)
     {
         button = scene->QuerySingleElement(len);
-        if (button->CS_isElementButton() && button->CS_isElementDisp() && button->CS_isButtonEnable())
+        if (button->isElementButton() && button->isElementDisp() && button->isButtonEnable())
         {
             size = button->QueryElementSize();
             if (x_mouse >= size->x && x_mouse <= (size->x + size->w) && y_mouse >= size->y && y_mouse <= (size->y + size->h))
@@ -22,7 +22,7 @@ std::shared_ptr<CS_Element>    getButton(CS_Scene *scene, int len, int x_mouse, 
         return(button);
 }
 
-std::shared_ptr<CS_Element>     CS_KeyControl::CS_getBoutton(int& boutonInfo)
+std::shared_ptr<CS_Element>     CS_KeyControl::getBoutton(int& boutonInfo)
 {
     std::shared_ptr<CS_Element> button;
 

@@ -70,7 +70,7 @@ void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionT
         resetActionTable(&table);
         i++;
     }
-    info = event.CS_getKeyboardActions(key);
+    info = event.getKeyboardActions(key);
     fillActionTable(&table, value, key, info);
     filtreActionTable(&table, action);
 }

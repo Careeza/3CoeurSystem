@@ -1,6 +1,6 @@
 #include "editMap.h"
 
-TTF_Font    *CS_Police::CS_font = NULL;
+TTF_Font    *CS_Police::font = NULL;
 
 void    parallaxManagement(CS_Settings& settings, int xCamera, int yCamera)
 {
@@ -74,7 +74,7 @@ int     main(int argc, char **argv)
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
 
     TTF_Init();
-    initFont.CS_initPolice("resources/alterebro-pixel-font.ttf");
+    initFont.initPolice("resources/alterebro-pixel-font.ttf");
     
     render = init_renderer(window);
 

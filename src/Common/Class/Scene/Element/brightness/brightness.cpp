@@ -10,7 +10,7 @@ CS_Brightness::~CS_Brightness()
     delete rect;
 }
 
-void            CS_Brightness::CS_destroyTexture()
+void            CS_Brightness::destroyTexture()
 {
     SDL_DestroyTexture(texture);
 }

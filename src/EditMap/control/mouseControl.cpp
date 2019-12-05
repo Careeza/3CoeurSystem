@@ -25,7 +25,7 @@ void    mouseAction(CS_KeyControl event, CS_EditMapSetting &settings, int& xMous
     int             i;
     int             y;
 
-    buttonInfo = event.CS_getMouseActions(xMouse, yMouse);
+    buttonInfo = event.getMouseActions(xMouse, yMouse);
     if (buttonInfo == BOUTON_RELEASE)
     {
         if (settings.QuerySelected())

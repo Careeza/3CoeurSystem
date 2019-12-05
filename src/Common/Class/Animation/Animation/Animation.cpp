@@ -5,6 +5,8 @@ CS_Animation::CS_Animation()
     Tools->verbose(LEVEL2, "s", "create animation");
     interrupt = NOINTERRUPT;
     index = 0;
+    indexPas = 0;
+    pas = 1;
 }
 
 CS_Animation::~CS_Animation()

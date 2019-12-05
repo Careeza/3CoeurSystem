@@ -2,7 +2,6 @@
 
 CS_Assets::CS_Assets()
 {
-
 }
 
 CS_Assets::~CS_Assets()
@@ -12,7 +11,9 @@ CS_Assets::~CS_Assets()
 
 CS_Asset    *copyAsset(CS_Asset *assetSource)
 {
-    CS_Asset *asset;
+    CS_Asset    *asset;
+    t_prop      *prop;
+    t_prop      *propSource;
 
     asset = new (CS_Asset);
 
@@ -20,10 +21,13 @@ CS_Asset    *copyAsset(CS_Asset *assetSource)
     asset->setName(assetSource->QueryName());
     asset->setSize(assetSource->QueryWidth(), assetSource->QueryHeight());
 
-    asset->prop.w = assetSource->prop.w;
-    asset->prop.h = assetSource->prop.h;
-    asset->prop.x = assetSource->prop.x;
-    asset->prop.y = assetSource->prop.y;
+    prop = asset->QueryProportion();
+    propSource = assetSource->QueryProportion();
+
+    prop->w = propSource->w;
+    prop->h = propSource->h;
+    prop->x = propSource->x;
+    prop->y = propSource->y;
 
     return (asset);
 }
@@ -43,13 +47,28 @@ void        CS_Assets::updateID()
 
 CS_Asset    *CS_Assets::loadAsset(t_assetName name, int zIndex, float x, float y)
 {
+    unsigned long   i;
     CS_Asset        *asset;
     CS_HitBox       *hitBox;
-    unsigned long   i;
+    t_prop          *prop;
+    int             wAsset;
+    int             hAsset;
+    int             xAsset;
+    int             yAsset;
 
     asset = copyAsset(assetsBank->QueryAsset(name));
 
     asset->addAsset(zIndex, x, y);
+
+    hitBox = asset->QueryHitBox();
+
+    asset->QuerySize(wAsset, hAsset, xAsset, yAsset);
+    prop = asset->QueryProportion();
+    
+    hitBox->setWPixel((wAsset * prop->w) / 100);
+    hitBox->setHPixel((hAsset * prop->h) / 100);
+    hitBox->setXPixel((wAsset * prop->x) / 100 + xAsset);
+    hitBox->setYPixel((hAsset * prop->y) / 100 + yAsset);
 
     i = 0;
     while (i < assets.size() && zIndex >= assets[i]->QueryZIndex())
@@ -61,12 +80,28 @@ CS_Asset    *CS_Assets::loadAsset(t_assetName name, int zIndex, float x, float y
 
 CS_Asset    *CS_Assets::loadAssetPixel(t_assetName name, int zIndex, int x, int y)
 {
-    CS_Asset        *asset;
     unsigned long   i;
+    CS_Asset        *asset;
+    CS_HitBox       *hitBox;
+    t_prop          *prop;
+    int             wAsset;
+    int             hAsset;
+    int             xAsset;
+    int             yAsset;
 
     asset = copyAsset(assetsBank->QueryAsset(name));
 
     asset->addAssetPixel(zIndex, x, y);
+
+    hitBox = asset->QueryHitBox();
+
+    asset->QuerySize(wAsset, hAsset, xAsset, yAsset);
+    prop = asset->QueryProportion();
+    
+    hitBox->setWPixel((wAsset * prop->w) / 100);
+    hitBox->setHPixel((hAsset * prop->h) / 100);
+    hitBox->setXPixel((wAsset * prop->x) / 100 + xAsset);
+    hitBox->setYPixel((hAsset * prop->y) / 100 + yAsset);
 
     i = 0;
     while (i < assets.size() && zIndex >= assets[i]->QueryZIndex())

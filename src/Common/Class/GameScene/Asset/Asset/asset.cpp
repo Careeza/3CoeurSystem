@@ -2,6 +2,7 @@
 
 CS_Asset::CS_Asset()
 {
+    prop = new (t_prop);
     w = 0;
     h = 0;
     x = 0;
@@ -10,10 +11,11 @@ CS_Asset::CS_Asset()
 
 CS_Asset::~CS_Asset()
 {
+    delete prop;
     SDL_DestroyTexture(texture);
 }
 
-void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, t_assetName nameSource, float wSource, float hSource)
+void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, t_assetName nameSource, float wSource, float hSource, float wProp, float hProp, float xProp, float yProp)
 {
     SDL_Surface *surfaceAsset;
 
@@ -29,6 +31,11 @@ void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, 
     w = Tools->transformWidth(wSource);
     h = Tools->transformHeight(hSource);
 
+    prop->w = wProp;
+    prop->h = hProp;
+    prop->x = xProp;
+    prop->y = yProp;
+
     name = nameSource;
 }
 
@@ -38,6 +45,8 @@ void            CS_Asset::addAsset(int zIndexSource, float xSource, float ySourc
 
     x = Tools->transformX(xSource);
     y = Tools->transformY(ySource);
+
+    hitBox = new (CS_HitBox);
 }
 
 void            CS_Asset::addAssetPixel(int zIndexSource, int xSource, int ySource)
@@ -46,6 +55,8 @@ void            CS_Asset::addAssetPixel(int zIndexSource, int xSource, int ySour
 
     x = xSource;
     y = ySource;
+
+    hitBox = new (CS_HitBox);
 }
 
 void            CS_Asset::setTexture(SDL_Texture *textureSource)
@@ -113,6 +124,12 @@ CS_HitBox       *CS_Asset::QueryHitBox()
     return (hitBox);
 }
 
+t_prop          *CS_Asset::QueryProportion()
+{
+    return (prop);
+}
+
+
 
 void            CS_Asset::moveAsset(int xSource, int ySource, bool method)
 {
@@ -120,11 +137,15 @@ void            CS_Asset::moveAsset(int xSource, int ySource, bool method)
     {
         x = xSource;
         y = ySource;
+        hitBox->setXPixel((w * prop->x) / 100 + x);
+        hitBox->setYPixel((h * prop->y) / 100 + y);
     }
     else
     {
         x += xSource;
         y += ySource;
+        hitBox->moveX(xSource);
+        hitBox->moveY(ySource);
     }
 }
 

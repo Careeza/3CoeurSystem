@@ -1,6 +1,6 @@
 #include "keyControl.h"
 
-int     CS_KeyControl::CS_getMouseActions(int &x, int &y)
+int     CS_KeyControl::getMouseActions(int &x, int &y)
 {
     if (type == SDL_MOUSEMOTION)
     {

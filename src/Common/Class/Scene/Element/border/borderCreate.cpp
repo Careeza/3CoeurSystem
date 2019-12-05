@@ -1,6 +1,6 @@
 #include "scene.h"
 
-void        CS_Border::CS_createRect(SDL_Rect *rect, int w, int h, int x, int y)
+void        CS_Border::createRect(SDL_Rect *rect, int w, int h, int x, int y)
 {
     rect->w = w;
     rect->h = h;
@@ -24,7 +24,7 @@ Uint32  setColor(CS_Color colorSource, SDL_Surface *surface)
     return (color);
 }
 
-void        CS_Border::CS_createTexture(CS_Color colorSource, SDL_Renderer *render)
+void        CS_Border::createTexture(CS_Color colorSource, SDL_Renderer *render)
 {
     Uint32  color;
 
@@ -45,10 +45,10 @@ void        CS_Border::CS_createTexture(CS_Color colorSource, SDL_Renderer *rend
 	SDL_FreeSurface(surface);
 }
 
-void        CS_Border::CS_createBorder(SDL_Rect *elementSize)
+void        CS_Border::createBorder(SDL_Rect *elementSize)
 {
-    CS_createRect(rectUp, elementSize->w + 2 * borderSize_w, borderSize_h, elementSize->x - borderSize_w, elementSize->y - borderSize_h);
-    CS_createRect(rectDown, elementSize->w + 2 * borderSize_w, borderSize_h, elementSize->x - borderSize_w, elementSize->y + elementSize->h);
-    CS_createRect(rectRight, borderSize_w, elementSize->h + borderSize_h * 2, elementSize->x + elementSize->w, elementSize->y - borderSize_h);
-    CS_createRect(rectLeft, borderSize_w, elementSize->h + borderSize_h * 2, elementSize->x - borderSize_w, elementSize->y - borderSize_h);
+    createRect(rectUp, elementSize->w + 2 * borderSize_w, borderSize_h, elementSize->x - borderSize_w, elementSize->y - borderSize_h);
+    createRect(rectDown, elementSize->w + 2 * borderSize_w, borderSize_h, elementSize->x - borderSize_w, elementSize->y + elementSize->h);
+    createRect(rectRight, borderSize_w, elementSize->h + borderSize_h * 2, elementSize->x + elementSize->w, elementSize->y - borderSize_h);
+    createRect(rectLeft, borderSize_w, elementSize->h + borderSize_h * 2, elementSize->x - borderSize_w, elementSize->y - borderSize_h);
 }

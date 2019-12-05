@@ -8,12 +8,33 @@ void        hitBoxGestion(SDL_Rect *size)
         size->x = Tools->QueryWindowWidth() - size->w;
 }
 
+bool        CS_Animation::nextIndexPas()
+{
+    indexPas += pas;
+    index = (int)indexPas;
+    if (index >= nbFrame)
+    {
+        while (index >= nbFrame)
+            index -= nbFrame;
+        return (true);
+    }
+    else
+    {
+        if (interrupt == INTERRUPT)
+            return (true);
+        else
+            return (false);
+    }   
+}
+
+
 bool        CS_Animation::nextFrame()
 {
     index++;
     if (index >= nbFrame)
     {
-        index = 0;
+        while (index >= nbFrame)
+            index -= nbFrame;
         return (true);
     }
     else

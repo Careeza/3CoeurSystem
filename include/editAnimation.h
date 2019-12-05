@@ -28,11 +28,18 @@ class   CS_EditAnimationSetting : public CS_Settings
         void    pause();
         bool    isPaused();
 
+        void    increaseFps();
+        void    decreaseFps();
+
+        void    setFpsAnimation(int fpsSource);
+        int     QueryFpsAnimation();
+
     private:
         bool    paused;
+        int     fpsAnimation;
 };
 
-void            initSettings(CS_Settings &settings, SDL_Window *window, SDL_Renderer *render);
+void            initSettings(CS_EditAnimationSetting &settings, SDL_Window *window, SDL_Renderer *render);
 CS_GameScene    *init_home(SDL_Renderer *render);
 CS_Camera       *initCamera();
 
@@ -42,10 +49,8 @@ void    pause(void* settings, SDL_Renderer *render);
 void    play(void* settings, SDL_Renderer *render);
 void    left(void* settings, SDL_Renderer *render);
 void    right(void* settings, SDL_Renderer *render);
-
-
-
-
+void    incraseFps(void* settings, SDL_Renderer *render);
+void    decreaseFps(void* settings, SDL_Renderer *render);
 
 void    escapeAction(CS_Settings& settings, SDL_Renderer *render);
 void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Renderer *render);

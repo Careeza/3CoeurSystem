@@ -20,7 +20,7 @@ CS_Border::~CS_Border()
     SDL_DestroyTexture(texture);
 }
 
-void        CS_Border::CS_ChangeSettings(int w, int h)
+void        CS_Border::ChangeSettings(int w, int h)
 {
     borderSize_w = w;
     borderSize_h = h;

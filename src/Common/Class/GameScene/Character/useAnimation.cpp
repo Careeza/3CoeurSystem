@@ -6,6 +6,12 @@ bool        CS_Character::nextFrame()
     return (animation->nextFrame());
 }
 
+bool        CS_Character::nextIndexPas()
+{
+    return (animation->nextIndexPas());
+}
+
+
 bool        CS_Character::previousFrame()
 {
     return (animation->previousFrame());

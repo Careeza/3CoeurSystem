@@ -11,12 +11,12 @@ SDL_Rect        *CS_Police::QuerySize()
     if (zoom == NOZOOM)
     {
 //        std::cout << "ZOOM NO" << std::endl;
-        return (CS_size);
+        return (size);
     }
     else if (zoom == ZOOMIN)
-        return (CS_zoomIn);
+        return (zoomIn);
     else if (zoom == ZOOMOUT)
-        return (CS_zoomOut);
+        return (zoomOut);
     else
     {
         std::cout << "weird things happend with the police !" << std::endl;

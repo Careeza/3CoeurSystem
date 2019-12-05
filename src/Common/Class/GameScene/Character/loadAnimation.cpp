@@ -22,6 +22,13 @@ void        CS_Character::loadAnimation(t_animation name)
     }
 }
 
+void        CS_Character::setPas(float pasSource)
+{
+    std::cout << pasSource << std::endl;
+    animation->setPas(pasSource);
+}
+
+
 void        CS_Character::setSizePos(float wSource, float hSource, float xSource, float ySource)
 {
     w = Tools->transformWidth(wSource);

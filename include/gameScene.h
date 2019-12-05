@@ -154,7 +154,7 @@ class   CS_Asset
         CS_Asset();
         ~CS_Asset();
 
-        void            createAsset(SDL_Renderer *render, std::string source, t_assetName nameSource, float wSource, float hSource);
+        void            createAsset(SDL_Renderer *render, std::string source, t_assetName nameSource, float wSource, float hSource, float wProp, float hProp, float xProp, float yProp);
         void            addAsset(int zIndexSource, float xSource, float ySource);
         void            addAssetPixel(int zIndexSource, int xSource, int ySource);
 
@@ -176,6 +176,7 @@ class   CS_Asset
         t_assetName     QueryName();
         int             QueryZIndex();
         CS_HitBox       *QueryHitBox();
+        t_prop          *QueryProportion();
 
     private:
         SDL_Texture     *texture;
@@ -190,7 +191,7 @@ class   CS_Asset
         t_assetName     name;
 
         CS_HitBox       *hitBox;
-        t_prop          prop;
+        t_prop          *prop;
 
         bool            collision;
 };
@@ -201,7 +202,7 @@ class   CS_AssetsBank
         CS_AssetsBank();
         ~CS_AssetsBank();
 
-        void        createAsset(SDL_Renderer *render, std::string source, t_assetName name, float w, float h);
+        void        createAsset(SDL_Renderer *render, std::string source, t_assetName name, float w, float h, float wProp, float hProp, float xProp, float yProp);
 
         CS_Asset    *QueryAsset(t_assetName name);
 
@@ -264,6 +265,9 @@ class   CS_Animation
 
         void            restartAnimation();
 
+        void            setPas(float pasSource);
+        bool            nextIndexPas();
+
         bool            nextFrame();
         bool            previousFrame();
         
@@ -293,6 +297,9 @@ class   CS_Animation
         int                     nbColumnFrame;
         int                     nbLineFrame;
 
+        float                   pas;
+        float                   indexPas;
+
         int                     index;
 };
 
@@ -321,6 +328,9 @@ class   CS_Character
         bool        previousFrame();
         void        getFrame();
         void        moveCharacter();
+
+        void        setPas(float pasSource);
+        bool        nextIndexPas();
 
         void        setSizePos(float wSource, float hSource, float xSource, float ySource);
         void        setSize(float wSource, float hSource);

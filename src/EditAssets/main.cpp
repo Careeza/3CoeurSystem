@@ -1,7 +1,7 @@
 #include "common.h"
 #include "editMap.h"
 
-TTF_Font    *CS_Police::CS_font = NULL;
+TTF_Font    *CS_Police::font = NULL;
 
 void    escapeAction(CS_Settings& settings, SDL_Renderer *render)
 {
@@ -14,7 +14,7 @@ void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Rend
     int         info;
     static bool keyPress;
  
-    info = event.CS_getKeyboardActions(key);
+    info = event.getKeyboardActions(key);
     if (key == SDLK_ESCAPE)
     {
         if (keyPress == false)
@@ -185,7 +185,7 @@ void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionT
         resetActionTable(&table);
         i++;
     }
-    info = event.CS_getKeyboardActions(key);
+    info = event.getKeyboardActions(key);
     fillActionTable(&table, value, key, info);
     filtreActionTable(&table, action);
 }
@@ -324,26 +324,26 @@ CS_AssetsBank   *initAssetsBankLevel1(SDL_Renderer *render)
 
     assetsBank = new (CS_AssetsBank);
 
-    assetsBank->createAsset(render, "resources/source/assets/BigTree01.png", BigTree01, 30.4, 96);
-    assetsBank->createAsset(render, "resources/source/assets/BigTree02.png", BigTree02, 18.75, 96);
-    assetsBank->createAsset(render, "resources/source/assets/BigTree03.png", BigTree03, 25.4, 96);
-    assetsBank->createAsset(render, "resources/source/assets/BushTree01.png", BushTree01, 10.5, 8.9);
-    assetsBank->createAsset(render, "resources/source/assets/BushTree02.png", BushTree02, 11, 10);
-    assetsBank->createAsset(render, "resources/source/assets/BushTree03.png", BushTree03, 9.4, 11.3);
-    assetsBank->createAsset(render, "resources/source/assets/BushTree04.png", BushTree04, 10.9, 4.2);
-    assetsBank->createAsset(render, "resources/source/assets/Grass01.png", Grass01, 33.3, 5.3);
-    assetsBank->createAsset(render, "resources/source/assets/Grass02.png", Grass02, 2.4, 4.1);
-    assetsBank->createAsset(render, "resources/source/assets/Grass03.png", Grass03, 6.9, 8.2);
-    assetsBank->createAsset(render, "resources/source/assets/Grass04.png", Grass04, 5.5, 6.2);
-    assetsBank->createAsset(render, "resources/source/assets/Grass05.png", Grass05, 5.8, 8);
-    assetsBank->createAsset(render, "resources/source/assets/Ground01.png", Ground01, 10, 5.8);
-    assetsBank->createAsset(render, "resources/source/assets/MediumTree01.png", MediumTree01, 10, 67.8);
-    assetsBank->createAsset(render, "resources/source/assets/MediumTree02.png", MediumTree02, 10, 60.4);
-    assetsBank->createAsset(render, "resources/source/assets/MediumTree03.png", MediumTree03, 4.3, 52.9);
-    assetsBank->createAsset(render, "resources/source/assets/SmallTree01.png", SmallTree01, 2.8, 36.7);
-    assetsBank->createAsset(render, "resources/source/assets/SmallTree02.png", SmallTree02, 1.9, 42.2);
-    assetsBank->createAsset(render, "resources/source/assets/SmallTree03.png", SmallTree03, 3.75, 48);
-    assetsBank->createAsset(render, "resources/source/assets/SmallTree04.png", SmallTree04, 2.3, 42.6);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree01.png", BigTree01, 30.4, 96, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree02.png", BigTree02, 18.75, 96, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree03.png", BigTree03, 25.4, 96, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree01.png", BushTree01, 10.5, 8.9, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree02.png", BushTree02, 11, 10, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree03.png", BushTree03, 9.4, 11.3, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree04.png", BushTree04, 10.9, 4.2, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/Grass01.png", Grass01, 33.3, 5.3, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/Grass02.png", Grass02, 2.4, 4.1, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/Grass03.png", Grass03, 6.9, 8.2, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/Grass04.png", Grass04, 5.5, 6.2, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/Grass05.png", Grass05, 5.8, 8, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/Ground01.png", Ground01, 10, 5.8, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/MediumTree01.png", MediumTree01, 10, 67.8, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/MediumTree02.png", MediumTree02, 10, 60.4, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/MediumTree03.png", MediumTree03, 4.3, 52.9, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree01.png", SmallTree01, 2.8, 36.7, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree02.png", SmallTree02, 1.9, 42.2, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree03.png", SmallTree03, 3.75, 48, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/SmallTree04.png", SmallTree04, 2.3, 42.6, 100, 100, 0, 0);
 
     return (assetsBank);
 }
@@ -395,7 +395,7 @@ CS_GameScene    *init_home(SDL_Renderer *render)
     CS_GameScene        *scene;
 
     scene = new(CS_GameScene);
-    scene->CS_loadRenderer(render);
+    scene->loadRenderer(render);
     
     scene->loadParallax(initParallax(render));
     scene->loadAssets(initAssets(render));
@@ -436,7 +436,7 @@ int     main(int argc, char **argv)
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
 
     TTF_Init();
-    initFont.CS_initPolice("resources/alterebro-pixel-font.ttf");
+    initFont.initPolice("resources/alterebro-pixel-font.ttf");
     
     render = init_renderer(window);
 

@@ -1,6 +1,6 @@
 #include "scene.h"
 
-void                        CS_Scene::CS_writeTexte(int index, std::string comment)
+void                        CS_Scene::writeTexte(int index, std::string comment)
 {
     int i;
 
@@ -8,11 +8,12 @@ void                        CS_Scene::CS_writeTexte(int index, std::string comme
         i = lastElement;
     else
         i = index;
-    CS_sceneContain[i]->setPoliceSettings(colorText);
-    CS_sceneContain[i]->CS_addTextToElement(comment, render);
+    std::cout << "element = " << sceneContain[i]->QueryName() << std::endl;
+    sceneContain[i]->setPoliceSettings(colorText);
+    sceneContain[i]->addTextToElement(comment, render);
 }
 
-void                        CS_Scene::CS_writeTexteScaleW(int index, std::string comment)
+void                        CS_Scene::writeTexteScaleW(int index, std::string comment)
 {
     int i;
 
@@ -20,11 +21,11 @@ void                        CS_Scene::CS_writeTexteScaleW(int index, std::string
         i = lastElement;
     else
         i = index;
-    CS_sceneContain[i]->setPoliceSettings(colorText);
-    CS_sceneContain[i]->CS_addTextToElementScaleW(comment, render);
+    sceneContain[i]->setPoliceSettings(colorText);
+    sceneContain[i]->addTextToElementScaleW(comment, render);
 }
 
-void                        CS_Scene::CS_addBorder(int index)
+void                        CS_Scene::addBorder(int index)
 {
     int i;
 
@@ -32,20 +33,20 @@ void                        CS_Scene::CS_addBorder(int index)
         i = lastElement;
     else
         i = index;
-    CS_sceneContain[i]->loadBorder(colorBordure, render);
+    sceneContain[i]->loadBorder(colorBordure, render);
 }
 
 
-void                        CS_Scene::CS_addElementToScene(std::shared_ptr<CS_Element> element)
+void                        CS_Scene::addElementToScene(std::shared_ptr<CS_Element> element)
 {
     int i;
 
     i = 0;
-    while (i < CS_sceneLen && element->QueryElementZIndex() >= CS_sceneContain[i]->QueryElementZIndex())
+    while (i < sceneLen && element->QueryElementZIndex() >= sceneContain[i]->QueryElementZIndex())
         i++;
-    CS_sceneContain.emplace(CS_sceneContain.begin() + i, element);
+    sceneContain.emplace(sceneContain.begin() + i, element);
     lastElement = i;
-    CS_sceneLen++;
+    sceneLen++;
 }
 
 void                        CS_Scene::createElementToScene(std::string name, float w, float h, float x, float y, int z)
@@ -86,11 +87,11 @@ void                        CS_Scene::createButtonToSceneFromPng(std::string nam
 
 void                        CS_Scene::deleteElementFromeScene(int index)
 {
-    if (index >= CS_sceneLen)
+    if (index >= sceneLen)
         std::cout << "trying to delete a non existant element" << std::endl;
     else
     {
-        CS_sceneContain.erase(CS_sceneContain.begin() + index);
-        CS_sceneLen--;
+        sceneContain.erase(sceneContain.begin() + index);
+        sceneLen--;
     }
 }

@@ -74,3 +74,9 @@ void        CS_Animation::setMovement(int nb_frame, ...)
     }
     va_end(op);
 }
+
+void        CS_Animation::setPas(float pasSource)
+{
+    pas = pasSource;
+}
+

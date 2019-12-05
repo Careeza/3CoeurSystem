@@ -26,7 +26,7 @@ void    MCManagement(CS_Settings& settings, t_actionTable *action, int& xCamera,
     MC->moveCharacter();
 
     camera = settings.QueryGameScene()->QueryCamera();
-    camera->moveCamera2(MC->queryMoveX(), 0, settings.QueryGameScene());
+    camera->moveCamera2(MC->QueryMoveX(), 0, settings.QueryGameScene());
     camera->QueryCameraPosition(xCamera, yCamera);
 }
 
@@ -118,7 +118,7 @@ void        initSettings(CS_Settings &settings, SDL_Window *window, SDL_Renderer
     settings.initGameScene(init_gameScene(render));
 }
 
-TTF_Font    *CS_Police::CS_font = NULL;
+TTF_Font    *CS_Police::font = NULL;
 
 int     main(int argc, char **argv)
 {
@@ -137,7 +137,7 @@ int     main(int argc, char **argv)
 //    window = create_window(0, "Game", 0, 0, 2560, 1600);
 
     TTF_Init();
-    initFont.CS_initPolice("resources/alterebro-pixel-font.ttf");
+    initFont.initPolice("resources/alterebro-pixel-font.ttf");
     
     render = init_renderer(window);
 
