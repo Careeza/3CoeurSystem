@@ -8,7 +8,7 @@ void            CS_Brightness::CS_initBright(SDL_Renderer *render, CS_Color colo
         std::cout << "error creating surface" << std::endl;
         exit (0);
     }
-    SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, color.CS_queryRed(), color.CS_queryGreen(), color.CS_queryBlue(), color.CS_queryAlpha()));
+    SDL_FillRect(surface, NULL, SDL_MapRGBA(surface->format, color.QueryRed(), color.QueryGreen(), color.QueryBlue(), color.QueryAlpha()));
     if (!surface)
     {
         std::cout << "error filling surface" << std::endl;

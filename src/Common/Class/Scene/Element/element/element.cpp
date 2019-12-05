@@ -13,7 +13,7 @@ CS_Element::CS_Element()
 
 CS_Element::~CS_Element()
 {
-    SDL_DestroyTexture(CS_queryElementTexture());
+    SDL_DestroyTexture(QueryElementTexture());
     if (elementIsButton)
         delete elementButton;
     else
@@ -25,8 +25,8 @@ CS_Element::~CS_Element()
     delete brightness;
 }
 
-void            CS_Element::CS_useFonction(void *info, SDL_Renderer *render)
+void            CS_Element::useFonction(void *info, SDL_Renderer *render)
 {
     if (elementIsButton)
-        elementButton->CS_useFonction(info, render);
+        elementButton->useFonction(info, render);
 }

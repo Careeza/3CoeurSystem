@@ -41,50 +41,50 @@ void                        CS_Scene::CS_addElementToScene(std::shared_ptr<CS_El
     int i;
 
     i = 0;
-    while (i < CS_sceneLen && element->CS_queryElementZIndex() >= CS_sceneContain[i]->CS_queryElementZIndex())
+    while (i < CS_sceneLen && element->QueryElementZIndex() >= CS_sceneContain[i]->QueryElementZIndex())
         i++;
     CS_sceneContain.emplace(CS_sceneContain.begin() + i, element);
     lastElement = i;
     CS_sceneLen++;
 }
 
-void                        CS_Scene::CS_createElementToScene(std::string name, float w, float h, float x, float y, int z)
+void                        CS_Scene::createElementToScene(std::string name, float w, float h, float x, float y, int z)
 {
     std::shared_ptr<CS_Element> element (new CS_Element);
-    element->CS_CreateNoButtonFromHand(colorSource, colorBrightness, render, w, h, x, y);
-    element->CS_setZIndex(z);
+    element->CreateNoButtonFromHand(colorSource, colorBrightness, render, w, h, x, y);
+    element->setZIndex(z);
     element->loadName(name);
-    CS_addElementToScene(element);
+    addElementToScene(element);
 }
 
-void                        CS_Scene::CS_createButtonToScene(std::string name, float w, float h, float x, float y, int z, void (*f)(void *, SDL_Renderer*))
+void                        CS_Scene::createButtonToScene(std::string name, float w, float h, float x, float y, int z, void (*f)(void *, SDL_Renderer*))
 {
     std::shared_ptr<CS_Element> element (new CS_Element);
-    element->CS_CreateButtonFromHand(colorSource, colorBrightness, render, w, h, x, y, f);
-    element->CS_setZIndex(z);
+    element->CreateButtonFromHand(colorSource, colorBrightness, render, w, h, x, y, f);
+    element->setZIndex(z);
     element->loadName(name);
-    CS_addElementToScene(element);
+    addElementToScene(element);
 }
 
-void                        CS_Scene::CS_createElementToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z)
+void                        CS_Scene::createElementToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z)
 {
     std::shared_ptr<CS_Element> element (new CS_Element);
-    element->CS_CreateNoButtonFromPng(route, colorBrightness, render, w, h, x, y);
-    element->CS_setZIndex(z);
+    element->CreateNoButtonFromPng(route, colorBrightness, render, w, h, x, y);
+    element->setZIndex(z);
     element->loadName(name);
-    CS_addElementToScene(element);
+    addElementToScene(element);
 }
 
-void                        CS_Scene::CS_createButtonToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z, void (*f)(void *, SDL_Renderer*))
+void                        CS_Scene::createButtonToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z, void (*f)(void *, SDL_Renderer*))
 {
     std::shared_ptr<CS_Element> element (new CS_Element);
-    element->CS_CreateButtonFromPng(route, colorBrightness, render, w, h, x, y, f);
-    element->CS_setZIndex(z);
+    element->CreateButtonFromPng(route, colorBrightness, render, w, h, x, y, f);
+    element->setZIndex(z);
     element->loadName(name);
-    CS_addElementToScene(element);
+    addElementToScene(element);
 }
 
-void                        CS_Scene::CS_deleteElementFromeScene(int index)
+void                        CS_Scene::deleteElementFromeScene(int index)
 {
     if (index >= CS_sceneLen)
         std::cout << "trying to delete a non existant element" << std::endl;

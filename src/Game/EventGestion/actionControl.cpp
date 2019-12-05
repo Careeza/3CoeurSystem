@@ -4,7 +4,7 @@ void    useAction(t_actionTable *table, CS_Settings& settings)
 {
     CS_Character    *MC;
 
-    MC = settings.QueryGameScene()->CS_queryMC();
+    MC = settings.QueryGameScene()->QueryMC();
     if (table->right == true)
     {
         if (table->dodge == true)

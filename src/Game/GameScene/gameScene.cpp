@@ -66,8 +66,8 @@ void                algoFuite(CS_Character *enemy, CS_Character *MC)
     int         MCPos;
     int         i;
 
-    enemy->queryPos(enemyPos, i);
-    MC->queryPos(MCPos, i);
+    enemy->QueryPos(enemyPos, i);
+    MC->QueryPos(MCPos, i);
 
     enemy->loadAnimation(WALK);
     enemy->setRight(false);
@@ -80,8 +80,8 @@ void                algoClone1(CS_Character *enemy, CS_Character *MC)
     int         MCPos;
     int         i;
 
-    enemy->queryPos(enemyPos, i);
-    MC->queryPos(MCPos, i);
+    enemy->QueryPos(enemyPos, i);
+    MC->QueryPos(MCPos, i);
 
 
     if (enemyPos > MCPos && (enemyPos - MCPos) > 100)
@@ -107,8 +107,8 @@ void                algoClone2(CS_Character *enemy, CS_Character *MC)
     int         MCPos;
     int         i;
 
-    enemy->queryPos(enemyPos, i);
-    MC->queryPos(MCPos, i);
+    enemy->QueryPos(enemyPos, i);
+    MC->QueryPos(MCPos, i);
 
 
     if (enemyPos > MCPos && (enemyPos - MCPos) > 200)

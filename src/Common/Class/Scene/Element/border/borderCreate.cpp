@@ -16,10 +16,10 @@ Uint32  setColor(CS_Color colorSource, SDL_Surface *surface)
     int     alpha;
     Uint32  color;
 
-    red = colorSource.CS_queryRed();
-    green = colorSource.CS_queryGreen();
-    blue = colorSource.CS_queryBlue();
-    alpha = colorSource.CS_queryAlpha();
+    red = colorSource.QueryRed();
+    green = colorSource.QueryGreen();
+    blue = colorSource.QueryBlue();
+    alpha = colorSource.QueryAlpha();
     color = SDL_MapRGBA(surface->format, red, green, blue, alpha);
     return (color);
 }

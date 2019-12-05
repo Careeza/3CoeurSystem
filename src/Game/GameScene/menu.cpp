@@ -47,11 +47,11 @@ CS_Scene    *init_home(SDL_Renderer *render)
     scene->CS_addBorder(-1);
     scene->CS_writeTexte(-1, "No");
 
-    scene->CS_setDisp(false, scene->CS_queryIndexByName("filtre"));
-    scene->CS_setDisp(false, scene->CS_queryIndexByName("dialogue"));
-    scene->CS_setDisp(false, scene->CS_queryIndexByName("Question"));
-    scene->CS_setDisp(false, scene->CS_queryIndexByName("YES"));
-    scene->CS_setDisp(false, scene->CS_queryIndexByName("NO"));
+    scene->CS_setDisp(false, scene->QueryIndexByName("filtre"));
+    scene->CS_setDisp(false, scene->QueryIndexByName("dialogue"));
+    scene->CS_setDisp(false, scene->QueryIndexByName("Question"));
+    scene->CS_setDisp(false, scene->QueryIndexByName("YES"));
+    scene->CS_setDisp(false, scene->QueryIndexByName("NO"));
     
     return (scene);
 }

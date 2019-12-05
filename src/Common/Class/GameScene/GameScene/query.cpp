@@ -1,11 +1,11 @@
 # include "gameScene.h"
 
-CS_Character    *CS_GameScene::CS_queryMC()
+CS_Character    *CS_GameScene::QueryMC()
 {
     return (MC);
 }
 
-CS_Enemies      *CS_GameScene::CS_queryEnemies()
+CS_Enemies      *CS_GameScene::QueryEnemies()
 {
     return (enemies);
 }

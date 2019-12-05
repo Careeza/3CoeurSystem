@@ -11,24 +11,24 @@ CS_Button::~CS_Button()
 //    delete buttonSize;
 }
 
-void            CS_Button::CS_useFonction(void *info, SDL_Renderer *render)
+void            CS_Button::useFonction(void *info, SDL_Renderer *render)
 {
-    (*CS_buttonFunction)(info, render);
+    (*buttonFunction)(info, render);
 }
 
-void            CS_Button::CS_addButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *, SDL_Renderer*))
+void            CS_Button::addButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *, SDL_Renderer*))
 {
-    CS_addNoButtonFromHand(color, render, w, h, x, y);
-    CS_buttonFunction = f;
+    addNoButtonFromHand(color, render, w, h, x, y);
+    buttonFunction = f;
 }
 
-void            CS_Button::CS_addButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *, SDL_Renderer*))
+void            CS_Button::addButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *, SDL_Renderer*))
 {
-    CS_addNoButtonFromPng(route, render, w, h, x, y);
-    CS_buttonFunction = f;
+    addNoButtonFromPng(route, render, w, h, x, y);
+    buttonFunction = f;
 }
 
-SDL_Texture     *CS_Button::CS_queryButtonTexture()
+SDL_Texture     *CS_Button::QueryButtonTexture()
 {
     return (noButtonTexture);
 }

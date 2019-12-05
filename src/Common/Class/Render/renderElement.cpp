@@ -1,12 +1,12 @@
-#include "render.h"
+Q#include "render.h"
 
 void    disp_element(std::shared_ptr<CS_Element> element, SDL_Renderer *render)
 {
     SDL_Texture     *texture;
     SDL_Rect        *size;
 
-    texture = element->CS_queryElementTexture();
-    size = element->CS_queryElementSize();
+    texture = element->QueryElementTexture();
+    size = element->QueryElementSize();
     SDL_RenderCopy(render, texture, NULL, size);
 }
 
@@ -16,8 +16,8 @@ void    disp_text(std::shared_ptr<CS_Element> element, SDL_Renderer *render)
     SDL_Rect        *size;
     CS_Police       *text;
 
-    text = element->CS_queryText();
-    texture = text->CS_queryTexte();
+    text = element->QueryText();
+    texture = text->QueryTexte();
     size = text->querySize();
     SDL_RenderCopy(render, texture, NULL, size);
 }
@@ -28,15 +28,15 @@ void    disp_border(std::shared_ptr<CS_Element> element, SDL_Renderer *render)
     SDL_Texture     *texture;
     SDL_Rect        *size;
 
-    border = element->CS_queryBorder();
-    texture = border->CS_queryTexture();
-    size = border->CS_queryRectUp();
+    border = element->QueryBorder();
+    texture = border->QueryTexture();
+    size = border->QueryRectUp();
     SDL_RenderCopy(render, texture, NULL, size);
-    size = border->CS_queryRectDown();
+    size = border->QueryRectDown();
     SDL_RenderCopy(render, texture, NULL, size);
-    size = border->CS_queryRectRight();
+    size = border->QueryRectRight();
     SDL_RenderCopy(render, texture, NULL, size);
-    size = border->CS_queryRectLeft();
+    size = border->QueryRectLeft();
     SDL_RenderCopy(render, texture, NULL, size);
 }
 
@@ -46,9 +46,9 @@ void    disp_brightness(std::shared_ptr<CS_Element> element, SDL_Renderer *rende
     SDL_Texture     *texture;
     SDL_Rect        *size;
 
-    brightness = element->CS_queryBrightness();
-    texture = brightness->CS_queryTexture();
-    size = brightness->CS_querySize();
+    brightness = element->QueryBrightness();
+    texture = brightness->QueryTexture();
+    size = brightness->QuerySize();
     SDL_RenderCopy(render, texture, NULL, size);
 }
 
@@ -59,10 +59,10 @@ void    dispScene(CS_Scene *current, SDL_Renderer *render)
     std::shared_ptr<CS_Element>                 element;
 
     i = 0;
-    len = current->CS_querySceneLen();
+    len = current->QuerySceneLen();
     while (i < len)
     {
-        element = current->CS_querySingleElement(i);
+        element = current->QuerySingleElement(i);
         if (element->CS_isElementDisp())
         {
             disp_element(element, render);
@@ -95,20 +95,20 @@ void    renderParallax(CS_Parallax *parallax, SDL_Renderer *render)
     while (i < len)
     {
         layer = parallax->QueryLayer(i);
-        layerTexture = layer->queryTexture();
+        layerTexture = layer->QueryTexture();
         if (layer->secondScopeNeeded())
         {
-            scopeMain = layer->queryScopeMain();
-            scopeSecond = layer->queryScopeSecond();
-            sizeMain = layer->querySizeMain();
-            sizeSecond = layer->querySizeSecond();
+            scopeMain = layer->QueryScopeMain();
+            scopeSecond = layer->QueryScopeSecond();
+            sizeMain = layer->QuerySizeMain();
+            sizeSecond = layer->QuerySizeSecond();
             SDL_RenderCopy(render, layerTexture, scopeMain, sizeMain);
             SDL_RenderCopy(render, layerTexture, scopeSecond, sizeSecond);
         }
         else
         {
-            scopeMain = layer->queryScopeMain();
-            sizeMain = layer->querySizeMain();
+            scopeMain = layer->QueryScopeMain();
+            sizeMain = layer->QuerySizeMain();
             SDL_RenderCopy(render, layerTexture, scopeMain, sizeMain);
         }
         i++;
@@ -142,9 +142,9 @@ void    renderMC(CS_Character *MC, SDL_Renderer *render, SDL_Rect *size, int cam
     SDL_Texture     *texture;
     SDL_Rect        *frame;
 
-    texture = MC->queryTexture();
-    frame = MC->queryFrame();
-    MC->querySizePos(size->w, size->h, size->x, size->y);
+    texture = MC->QueryTexture();
+    frame = MC->QueryFrame();
+    MC->QuerySizePos(size->w, size->h, size->x, size->y);
     size->x -= cameraX;
     size->y -= cameraY;
 
@@ -163,9 +163,9 @@ void    renderEnemy(CS_Enemies *enemies, SDL_Renderer *render, SDL_Rect *size, i
     while (i < enemies->QueryNbEnemies())
     {
         enemy = enemies->QueryEnemy(i);
-        texture = enemy->queryTexture();
-        frame = enemy->queryFrame();
-        enemy->querySize(size->w, size->h, size->x, size->y);
+        texture = enemy->QueryTexture();
+        frame = enemy->QueryFrame();
+        enemy->QuerySize(size->w, size->h, size->x, size->y);
         size->x -= cameraX;
         size->y -= cameraY;
         SDL_RenderCopy(render, texture, frame, size);
@@ -182,7 +182,7 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
     int             cameraY;
 
     camera = gameScene->QueryCamera();
-    camera->queryCameraPosition(cameraX, cameraY);
+    camera->QueryCameraPosition(cameraX, cameraY);
 
     if (gameScene->haveParallax())
         renderParallax(gameScene->QueryParallax(), render);
@@ -192,9 +192,9 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
     dispScene(gameScene, render);
 
     if (gameScene->haveMC())
-        renderMC(gameScene->CS_queryMC(), render, &size, cameraX, cameraY);
+        renderMC(gameScene->QueryMC(), render, &size, cameraX, cameraY);
     if (gameScene->haveEnemies())
-        renderEnemy(gameScene->CS_queryEnemies(), render, &size, cameraX, cameraY);
+        renderEnemy(gameScene->QueryEnemies(), render, &size, cameraX, cameraY);
 }
 
 void    CS_Renderer::CS_dispScene(CS_Scene *current, CS_GameScene *gameScene, t_pos pos)

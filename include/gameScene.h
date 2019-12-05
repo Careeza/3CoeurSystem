@@ -16,12 +16,12 @@ class   CS_Layer
 
         bool        secondScopeNeeded();
 
-        int         queryZindex();
-        SDL_Texture *queryTexture();
-        SDL_Rect    *queryScopeMain();
-        SDL_Rect    *querySizeMain();
-        SDL_Rect    *queryScopeSecond();
-        SDL_Rect    *querySizeSecond();
+        int         QueryZindex();
+        SDL_Texture *QueryTexture();
+        SDL_Rect    *QueryScopeMain();
+        SDL_Rect    *QuerySizeMain();
+        SDL_Rect    *QueryScopeSecond();
+        SDL_Rect    *QuerySizeSecond();
 
     private:
         SDL_Texture *layerTexture;
@@ -301,7 +301,7 @@ class CS_BankAnimation
     public:
         CS_BankAnimation();
         ~CS_BankAnimation();
-        CS_Animation    *CS_queryAnimationByname(t_animation name);
+        CS_Animation    *QueryAnimationByname(t_animation name);
         void            addAnimation(SDL_Renderer *render, CS_Animation *(*f)(SDL_Renderer *render));
 
     private:
@@ -328,15 +328,15 @@ class   CS_Character
 
         void        setRight(bool rightSource);
 
-        SDL_Texture *queryTexture();
-        SDL_Rect    *queryFrame();
+        SDL_Texture *QueryTexture();
+        SDL_Rect    *QueryFrame();
 
-        void        querySizePos(int& w, int& h, int& x, int& y);
-        void        querySize(int& w, int& h);
-        void        queryPos(int& x, int& y);
+        void        QuerySizePos(int& w, int& h, int& x, int& y);
+        void        QuerySize(int& w, int& h);
+        void        QueryPos(int& x, int& y);
 
-        int         queryMoveX();
-//        int         queryMoveY();
+        int         QueryMoveX();
+//        int         QueryMoveY();
 
 
     private:
@@ -373,9 +373,9 @@ class   CS_Enemy
         void    getFrame();
         void    moveCharacter();
         
-        SDL_Texture *queryTexture();
-        void        querySize(int& w, int& h, int& x, int& y);
-        SDL_Rect    *queryFrame();
+        SDL_Texture *QueryTexture();
+        void        QuerySize(int& w, int& h, int& x, int& y);
+        SDL_Rect    *QueryFrame();
     private:
         CS_Character    *enemy;
         void            (*algo)(CS_Character *enemy, CS_Character *MC);
@@ -408,7 +408,7 @@ class   CS_Camera
         void    moveCamera(int xSource, int ySource);
         void    moveCamera2(int xSource, int ySource, CS_GameScene *map);
 
-        void    queryCameraPosition(int& xDest, int& yDest);
+        void    QueryCameraPosition(int& xDest, int& yDest);
 
     private:
         int     x;
@@ -433,8 +433,8 @@ class   CS_GameScene : public CS_Scene
         bool            haveParallax();
         bool            haveAssets();
 
-        CS_Enemies      *CS_queryEnemies();
-        CS_Character    *CS_queryMC();
+        CS_Enemies      *QueryEnemies();
+        CS_Character    *QueryMC();
         CS_Parallax     *QueryParallax();
         CS_Assets       *QueryAssets();
         CS_Camera       *QueryCamera();

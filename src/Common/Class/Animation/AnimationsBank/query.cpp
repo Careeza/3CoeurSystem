@@ -1,6 +1,6 @@
 # include "gameScene.h"
 
-CS_Animation    *CS_BankAnimation::CS_queryAnimationByname(t_animation nameSource)
+CS_Animation    *CS_BankAnimation::QueryAnimationByname(t_animation nameSource)
 {
     unsigned long i;
 
@@ -12,6 +12,6 @@ CS_Animation    *CS_BankAnimation::CS_queryAnimationByname(t_animation nameSourc
             return (animations[i]);
         i++;
     }
-    std::cout << "error in query animation = " << nameSource << " looking for > " << STATIC << "or > " << WALK << std::endl;
+    std::cout << "error in Query(enculé fred) animation = " << nameSource << " looking for > " << STATIC << "or > " << WALK << std::endl;
     exit (0);
 }

@@ -49,7 +49,7 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_EditMapSetting& 
             escapeKeyManagement(event, settings, rend);
         }
         useAction2(&action, settings);
-        camera->queryCameraPosition(xCamera, yCamera);
+        camera->QueryCameraPosition(xCamera, yCamera);
         parallaxManagement(settings, xCamera, yCamera);
         moveAssetSelected(&settings, xMouse + xCamera, yMouse);
 //        std::cout << "boucle here 1" << std::endl;

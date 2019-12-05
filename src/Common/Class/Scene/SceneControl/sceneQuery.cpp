@@ -1,33 +1,33 @@
 #include "scene.h"
 
-std::vector<std::shared_ptr<CS_Element>>     CS_Scene::CS_querySceneElements()
+std::vector<std::shared_ptr<CS_Element>>     CS_Scene::QuerySceneElements()
 {
-    return (CS_sceneContain);
+    return (sceneContain);
 }
 
-std::shared_ptr<CS_Element>                CS_Scene::CS_querySingleElement(int index)
+std::shared_ptr<CS_Element>                CS_Scene::QuerySingleElement(int index)
 {
-    return(CS_sceneContain[index]);
+    return(sceneContain[index]);
 }
 
-int                                         CS_Scene::CS_querySceneLen()
+int                                         CS_Scene::QuerySceneLen()
 {
-    return (CS_sceneLen);
+    return (sceneLen);
 }
 
-std::string                                 CS_Scene::CS_queryName(int index)
+std::string                                 CS_Scene::QueryName(int index)
 {
-    return (CS_sceneContain[index]->CS_queryName());
+    return (sceneContain[index]->QueryName());
 }
 
-int                                         CS_Scene::CS_queryIndexByName(std::string name)
+int                                         CS_Scene::QueryIndexByName(std::string name)
 {
     int i;
 
     i = 0;
-    while (i < CS_sceneLen)
+    while (i < sceneLen)
     {
-        if (CS_sceneContain[i]->CS_queryName().compare(name) == 0)
+        if (sceneContain[i]->QueryName().compare(name) == 0)
             return (i);
         i++;
     }

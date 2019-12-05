@@ -20,7 +20,7 @@ void    setNoButtonSize(float w, float h, float x, float y, SDL_Rect *buttonSize
     Tools->verbose(LEVEL3, "s", "--end DEBUG Size--\n\n");
 }
 
-void    CS_NoButton::CS_resizePixel(int w, int h, int x, int y)
+void    CS_NoButton::resizePixel(int w, int h, int x, int y)
 {
     buttonSize->w = w;
     buttonSize->h = h;
@@ -29,7 +29,7 @@ void    CS_NoButton::CS_resizePixel(int w, int h, int x, int y)
 }
 
 
-void    CS_NoButton::CS_resize(float w, float h, float x, float y)
+void    CS_NoButton::resize(float w, float h, float x, float y)
 {
     setNoButtonSize(w, h, x, y, buttonSize);
 }
@@ -42,15 +42,15 @@ Uint32  setNoButtonColor(CS_Color colorSource, SDL_Surface *surface)
     int     alpha;
     Uint32  color;
 
-    red = colorSource.CS_queryRed();
-    green = colorSource.CS_queryGreen();
-    blue = colorSource.CS_queryBlue();
-    alpha = colorSource.CS_queryAlpha();
+    red = colorSource.QueryRed();
+    green = colorSource.QueryGreen();
+    blue = colorSource.QueryBlue();
+    alpha = colorSource.QueryAlpha();
     color = SDL_MapRGBA(surface->format, red, green, blue, alpha);
     return (color);
 }
 
-void    CS_NoButton::CS_addNoButtonFromHand(CS_Color colorSource, SDL_Renderer *render, float w, float h, float x, float y)
+void    CS_NoButton::addNoButtonFromHand(CS_Color colorSource, SDL_Renderer *render, float w, float h, float x, float y)
 {
     Uint32  color;
 
@@ -72,7 +72,7 @@ void    CS_NoButton::CS_addNoButtonFromHand(CS_Color colorSource, SDL_Renderer *
 	SDL_FreeSurface(noButtonSurface);
 }
 
-void    CS_NoButton::CS_addNoButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y)
+void    CS_NoButton::addNoButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y)
 {
     setNoButtonSize(w, h, x, y, buttonSize);
     noButtonSurface = IMG_Load(route.c_str());
@@ -86,12 +86,12 @@ void    CS_NoButton::CS_addNoButtonFromPng(std::string route, SDL_Renderer *rend
 }
 
 
-SDL_Texture *CS_NoButton::CS_queryNoButtonTexture()
+SDL_Texture *CS_NoButton::QueryNoButtonTexture()
 {
     return (noButtonTexture);
 }
 
-SDL_Rect    *CS_NoButton::CS_QuerySize()
+SDL_Rect    *CS_NoButton::QuerySize()
 {
     return (buttonSize);
 }

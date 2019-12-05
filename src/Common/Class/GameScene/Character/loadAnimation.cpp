@@ -4,7 +4,7 @@ void        CS_Character::loadAnimation(t_animation name)
 {
     CS_Animation            *tmp;
 
-    tmp = bank->CS_queryAnimationByname(name);
+    tmp = bank->QueryAnimationByname(name);
     if (tmp != saveAnimation)
     {
         animation = tmp;

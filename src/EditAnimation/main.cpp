@@ -30,8 +30,8 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_EditAnimationSet
 
         if (!settings.isPaused())
         {
-            settings.QueryGameScene()->CS_queryMC()->nextFrame();
-            settings.QueryGameScene()->CS_queryMC()->getFrame();
+            settings.QueryGameScene()->QueryMC()->nextFrame();
+            settings.QueryGameScene()->QueryMC()->getFrame();
         }
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
         SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));

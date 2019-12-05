@@ -1,11 +1,11 @@
 #include "scene.h"
 
-SDL_Texture     *CS_Brightness::CS_queryTexture()
+SDL_Texture     *CS_Brightness::QueryTexture()
 {
     return (texture);
 }
 
-SDL_Rect        *CS_Brightness::CS_querySize()
+SDL_Rect        *CS_Brightness::QuerySize()
 {
     return (rect);
 }

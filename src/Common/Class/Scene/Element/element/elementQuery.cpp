@@ -1,60 +1,60 @@
 #include "scene.h"
 
-int             CS_Element::CS_queryElementZIndex()
+int             CS_Element::QueryElementZIndex()
 {
     return(elementZIndex);
 }
 
-SDL_Texture     *CS_Element::CS_queryElementTexture()
+SDL_Texture     *CS_Element::QueryElementTexture()
 {
-    if (CS_isElementButton())
+    if (isElementButton())
     {
-        return (elementButton->CS_queryNoButtonTexture());
+        return (elementButton->QueryNoButtonTexture());
     }
     else
     {
-        return (elementNoButton->CS_queryNoButtonTexture());
+        return (elementNoButton->QueryNoButtonTexture());
     }
 }
 
-SDL_Rect         *CS_Element::CS_queryElementSize()
+SDL_Rect         *CS_Element::QueryElementSize()
 {
-    if (CS_isElementButton())
+    if (isElementButton())
     {
-        return (elementButton->CS_QuerySize());
+        return (elementButton->QuerySize());
     }
     else
     {
-        return (elementNoButton->CS_QuerySize());
+        return (elementNoButton->QuerySize());
     }
 }
 
-CS_Border       *CS_Element::CS_queryBorder()
+CS_Border       *CS_Element::QueryBorder()
 {
     return (border);
 }
 
-CS_Police       *CS_Element::CS_queryText()
+CS_Police       *CS_Element::QueryText()
 {
     return (text);
 }
 
-SDL_Texture     *CS_Element::CS_queryTextTexture()
+SDL_Texture     *CS_Element::QueryTextTexture()
 {
-    return (text->CS_queryTexte());
+    return (text->QueryTexte());
 }
 
-SDL_Rect        *CS_Element::CS_queryTextSize()
+SDL_Rect        *CS_Element::QueryTextSize()
 {
-    return (text->querySize());
+    return (text->QuerySize());
 }
 
-CS_Brightness   *CS_Element::CS_queryBrightness()
+CS_Brightness   *CS_Element::QueryBrightness()
 {
     return (brightness);
 }
 
-std::string     CS_Element::CS_queryName()
+std::string     CS_Element::QueryName()
 {
     return (name);
 }

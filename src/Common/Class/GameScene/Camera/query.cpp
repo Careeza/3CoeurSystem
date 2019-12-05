@@ -1,6 +1,6 @@
 #include "gameScene.h"
 
-void    CS_Camera::queryCameraPosition(int& xDest, int& yDest)
+void    CS_Camera::QueryCameraPosition(int& xDest, int& yDest)
 {
     xDest = x;
     yDest = y;

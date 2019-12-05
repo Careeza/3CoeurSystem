@@ -1,31 +1,31 @@
 #include "gameScene.h"
 
-SDL_Texture         *CS_Layer::queryTexture()
+SDL_Texture         *CS_Layer::QueryTexture()
 {
     return (layerTexture);
 }
 
-SDL_Rect            *CS_Layer::queryScopeMain()
+SDL_Rect            *CS_Layer::QueryScopeMain()
 {
     return (scopeMain);
 }
 
-SDL_Rect            *CS_Layer::querySizeMain()
+SDL_Rect            *CS_Layer::QuerySizeMain()
 {
     return (sizeMain);
 }
 
-SDL_Rect            *CS_Layer::queryScopeSecond()
+SDL_Rect            *CS_Layer::QueryScopeSecond()
 {
     return (scopeSecond);
 }
 
-SDL_Rect            *CS_Layer::querySizeSecond()
+SDL_Rect            *CS_Layer::QuerySizeSecond()
 {
     return (sizeSecond);
 }
 
-int         CS_Layer::queryZindex()
+int         CS_Layer::QueryZindex()
 {
     return (zIndex);
 }

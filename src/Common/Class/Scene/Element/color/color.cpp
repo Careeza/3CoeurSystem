@@ -10,56 +10,56 @@ CS_Color::CS_Color()
 
 CS_Color::CS_Color(int red, int green, int blue, int alpha)
 {
-    CS_setRed(red);
-    CS_setGreen(green);
-    CS_setBlue(blue);
-    CS_setAlpha(alpha);
+    setRed(red);
+    setGreen(green);
+    setBlue(blue);
+    setAlpha(alpha);
 }
 
-void    CS_Color::CS_setRed(int red)
+void    CS_Color::setRed(int red)
 {
-    CS_red = red;
+    red = red;
 }
 
-void    CS_Color::CS_setGreen(int green)
+void    CS_Color::setGreen(int green)
 {
-    CS_green = green;
+    green = green;
 }
 
-void    CS_Color::CS_setBlue(int blue)
+void    CS_Color::setBlue(int blue)
 {
-    CS_blue = blue;
+    blue = blue;
 }
 
-void    CS_Color::CS_setAlpha(int alpha)
+void    CS_Color::setAlpha(int alpha)
 {
-    CS_alpha = alpha;
+    alpha = alpha;
 }
 
-void    CS_Color::CS_setColor(int red, int green, int blue, int alpha)
+void    CS_Color::setColor(int red, int green, int blue, int alpha)
 {
-    CS_setRed(red);
-    CS_setGreen(green);
-    CS_setBlue(blue);
-    CS_setAlpha(alpha);
+    setRed(red);
+    setGreen(green);
+    setBlue(blue);
+    setAlpha(alpha);
 }
 
-int CS_Color::CS_queryRed()
+int CS_Color::QueryRed()
 {
-    return (CS_red);
+    return (red);
 }
         
-int CS_Color::CS_queryGreen()
+int CS_Color::QueryGreen()
 {
-    return (CS_green);
+    return (green);
 }
         
-int CS_Color::CS_queryBlue()
+int CS_Color::QueryBlue()
 {
-    return (CS_blue);
+    return (blue);
 }
         
-int CS_Color::CS_queryAlpha()
+int CS_Color::QueryAlpha()
 {
-    return (CS_alpha);
+    return (alpha);
 }

@@ -1,16 +1,16 @@
 #include "gameScene.h"
 
-SDL_Texture *CS_Enemy::queryTexture()
+SDL_Texture *CS_Enemy::QueryTexture()
 {
-    return (enemy->queryTexture());
+    return (enemy->QueryTexture());
 }
 
-void        CS_Enemy::querySize(int& w, int& h, int& x, int& y)
+void        CS_Enemy::QuerySize(int& w, int& h, int& x, int& y)
 {
-    enemy->querySizePos(w, h, x, y);
+    enemy->QuerySizePos(w, h, x, y);
 }
 
-SDL_Rect    *CS_Enemy::queryFrame()
+SDL_Rect    *CS_Enemy::QueryFrame()
 {
-    return (enemy->queryFrame());
+    return (enemy->QueryFrame());
 }

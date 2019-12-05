@@ -7,7 +7,7 @@ void    nextFrame(void* settings, SDL_Renderer *render)
 
     (void)render;
     set = (CS_EditAnimationSetting*)settings;
-    MC = set->QueryGameScene()->CS_queryMC();
+    MC = set->QueryGameScene()->QueryMC();
     if (set->isPaused())
     {
         MC->nextFrame();
@@ -22,7 +22,7 @@ void    previousFrame(void* settings, SDL_Renderer *render)
 
     (void)render;
     set = (CS_EditAnimationSetting*)settings;
-    MC = set->QueryGameScene()->CS_queryMC();
+    MC = set->QueryGameScene()->QueryMC();
     if (set->isPaused())
     {
         MC->previousFrame();
@@ -55,7 +55,7 @@ void    left(void* settings, SDL_Renderer *render)
 
     (void)render;
     set = (CS_EditAnimationSetting*)settings;
-    MC = set->QueryGameScene()->CS_queryMC();
+    MC = set->QueryGameScene()->QueryMC();
     MC->setRight(false);
     MC->getFrame();
 }
@@ -67,7 +67,7 @@ void    right(void* settings, SDL_Renderer *render)
 
     (void)render;
     set = (CS_EditAnimationSetting*)settings;
-    MC = set->QueryGameScene()->CS_queryMC();
+    MC = set->QueryGameScene()->QueryMC();
     MC->setRight(true);
     MC->getFrame();
 }

@@ -227,7 +227,7 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_Settings& settin
             actionKeyManagement(event, value, &action);
             escapeKeyManagement(event, settings, rend);
         }
-        camera->queryCameraPosition(xCamera, yCamera);
+        camera->QueryCameraPosition(xCamera, yCamera);
         useAction2(&action, settings);
         parallaxManagement(settings, xCamera, yCamera);
 //        std::cout << "boucle here 1" << std::endl;

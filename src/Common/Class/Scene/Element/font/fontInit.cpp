@@ -15,10 +15,10 @@ void    CS_Police::CS_policeSetting(CS_Color color, int flags, int marginX, int 
     CS_flags = flags;
     CS_marginX = marginX;
     CS_marginY = marginY;
-    CS_color.r = color.CS_queryRed();
-    CS_color.g = color.CS_queryGreen();
-    CS_color.b = color.CS_queryBlue();
-    CS_color.a = color.CS_queryAlpha();
+    CS_color.r = color.QueryRed();
+    CS_color.g = color.QueryGreen();
+    CS_color.b = color.QueryBlue();
+    CS_color.a = color.QueryAlpha();
 }
 
 void    CS_Police::initZoomIn()

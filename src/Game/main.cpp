@@ -21,13 +21,13 @@ void    MCManagement(CS_Settings& settings, t_actionTable *action, int& xCamera,
     CS_Camera       *camera;
 
     useAction(action, settings);
-    MC = settings.QueryGameScene()->CS_queryMC();
+    MC = settings.QueryGameScene()->QueryMC();
     MC->getFrame();
     MC->moveCharacter();
 
     camera = settings.QueryGameScene()->QueryCamera();
     camera->moveCamera2(MC->queryMoveX(), 0, settings.QueryGameScene());
-    camera->queryCameraPosition(xCamera, yCamera);
+    camera->QueryCameraPosition(xCamera, yCamera);
 }
 
 void    CameraMove(CS_Settings& settings, t_actionTable *action, int& xCamera, int& yCamera)
@@ -36,7 +36,7 @@ void    CameraMove(CS_Settings& settings, t_actionTable *action, int& xCamera, i
 
     useAction2(action, settings);
     camera = settings.QueryGameScene()->QueryCamera();
-    camera->queryCameraPosition(xCamera, yCamera);
+    camera->QueryCameraPosition(xCamera, yCamera);
 }
 
 void    enemyManagement(CS_Settings& settings)
@@ -45,12 +45,12 @@ void    enemyManagement(CS_Settings& settings)
     CS_Enemy        *enemy;
     int i;
 
-    enemies = settings.QueryGameScene()->CS_queryEnemies();
+    enemies = settings.QueryGameScene()->QueryEnemies();
     i = 0;
     while (i < enemies->QueryNbEnemies())
     {
         enemy = enemies->QueryEnemy(i);
-        enemy->reloadParam(settings.QueryGameScene()->CS_queryMC());
+        enemy->reloadParam(settings.QueryGameScene()->QueryMC());
         enemy->getFrame();
         enemy->moveCharacter();
     i++;

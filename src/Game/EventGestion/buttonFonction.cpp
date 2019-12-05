@@ -101,17 +101,17 @@ void    dispDialogueBox(void* settings, SDL_Renderer *render)
     (void)render;
     set = (CS_Settings*)settings;
     scene = set->QueryScene();
-    scene->CS_setDisp(true, scene->CS_queryIndexByName("filtre"));
-    scene->CS_setDisp(true, scene->CS_queryIndexByName("dialogue"));
-    scene->CS_setDisp(true, scene->CS_queryIndexByName("Question"));
-    scene->CS_setDisp(true, scene->CS_queryIndexByName("YES"));
-    scene->CS_setDisp(true, scene->CS_queryIndexByName("NO"));
+    scene->CS_setDisp(true, scene->QueryIndexByName("filtre"));
+    scene->CS_setDisp(true, scene->QueryIndexByName("dialogue"));
+    scene->CS_setDisp(true, scene->QueryIndexByName("Question"));
+    scene->CS_setDisp(true, scene->QueryIndexByName("YES"));
+    scene->CS_setDisp(true, scene->QueryIndexByName("NO"));
 
-    scene->CS_setButton(false, scene->CS_queryIndexByName("Play"));
-    scene->CS_setButton(false, scene->CS_queryIndexByName("Hotkeys"));
-    scene->CS_setButton(false, scene->CS_queryIndexByName("Video"));
-    scene->CS_setButton(false, scene->CS_queryIndexByName("Sound"));
-    scene->CS_setButton(false, scene->CS_queryIndexByName("Exit game"));
+    scene->CS_setButton(false, scene->QueryIndexByName("Play"));
+    scene->CS_setButton(false, scene->QueryIndexByName("Hotkeys"));
+    scene->CS_setButton(false, scene->QueryIndexByName("Video"));
+    scene->CS_setButton(false, scene->QueryIndexByName("Sound"));
+    scene->CS_setButton(false, scene->QueryIndexByName("Exit game"));
     set->getPosition(homeBox);
 }
 
@@ -123,16 +123,16 @@ void    hideDialogueBox(void* settings, SDL_Renderer *render)
     (void)render;
     set = (CS_Settings*)settings;
     scene = set->QueryScene();
-    scene->CS_setDisp(false, scene->CS_queryIndexByName("filtre"));
-    scene->CS_setDisp(false, scene->CS_queryIndexByName("dialogue"));
-    scene->CS_setDisp(false, scene->CS_queryIndexByName("Question"));
-    scene->CS_setDisp(false, scene->CS_queryIndexByName("YES"));
-    scene->CS_setDisp(false, scene->CS_queryIndexByName("NO"));
+    scene->CS_setDisp(false, scene->QueryIndexByName("filtre"));
+    scene->CS_setDisp(false, scene->QueryIndexByName("dialogue"));
+    scene->CS_setDisp(false, scene->QueryIndexByName("Question"));
+    scene->CS_setDisp(false, scene->QueryIndexByName("YES"));
+    scene->CS_setDisp(false, scene->QueryIndexByName("NO"));
 
-    scene->CS_setButton(true, scene->CS_queryIndexByName("Play"));
-    scene->CS_setButton(true, scene->CS_queryIndexByName("Hotkeys"));
-    scene->CS_setButton(true, scene->CS_queryIndexByName("Video"));
-    scene->CS_setButton(true, scene->CS_queryIndexByName("Sound"));
-    scene->CS_setButton(true, scene->CS_queryIndexByName("Exit game"));
+    scene->CS_setButton(true, scene->QueryIndexByName("Play"));
+    scene->CS_setButton(true, scene->QueryIndexByName("Hotkeys"));
+    scene->CS_setButton(true, scene->QueryIndexByName("Video"));
+    scene->CS_setButton(true, scene->QueryIndexByName("Sound"));
+    scene->CS_setButton(true, scene->QueryIndexByName("Exit game"));
     set->getPosition(homeHome);
 }

@@ -9,7 +9,7 @@ void        CS_Parallax::createLayer(SDL_Renderer *render, std::string source, f
     layer->createLayer(render, source, speedSource, zIndex);
 
     i = 0;
-    while (i < layers.size() && zIndex >= layers[i]->queryZindex())
+    while (i < layers.size() && zIndex >= layers[i]->QueryZindex())
         i++;
     layers.emplace(layers.begin() + i, layer);
 }
