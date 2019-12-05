@@ -32,4 +32,5 @@ CS_Asset    *CS_AssetsBank::QueryAsset(t_assetName name)
         }
         i++;
     }
+    return (NULL);
 }

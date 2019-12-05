@@ -87,6 +87,7 @@ void    levelSelectToGame(void* settings, SDL_Renderer *render)
 {
     CS_Settings *set;
 
+    (void)render;
     set = (CS_Settings*)settings;
     set->getPosition(game);
 //    set->getScene(render);
@@ -97,6 +98,7 @@ void    dispDialogueBox(void* settings, SDL_Renderer *render)
     CS_Settings *set;
     CS_Scene    *scene;
 
+    (void)render;
     set = (CS_Settings*)settings;
     scene = set->QueryScene();
     scene->CS_setDisp(true, scene->CS_queryIndexByName("filtre"));
@@ -118,6 +120,7 @@ void    hideDialogueBox(void* settings, SDL_Renderer *render)
     CS_Settings *set;
     CS_Scene    *scene;
 
+    (void)render;
     set = (CS_Settings*)settings;
     scene = set->QueryScene();
     scene->CS_setDisp(false, scene->CS_queryIndexByName("filtre"));

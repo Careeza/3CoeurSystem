@@ -8,6 +8,7 @@ void    CS_Police::CS_writeTexte(std::string texte, SDL_Rect *size, SDL_Renderer
 
     surface = TTF_RenderText_Blended(CS_font, texte.c_str(), CS_color);
     texture = SDL_CreateTextureFromSurface(render, surface);
+    haveTexture = true;
     SDL_QueryTexture(texture, NULL, NULL, &w, &h);
     SDL_FreeSurface(surface);
     if (texte.compare("") != 0)
@@ -61,6 +62,7 @@ void    CS_Police::CS_writeTexteScaleW(std::string texte, SDL_Rect *size, SDL_Re
 
     surface = TTF_RenderText_Blended(CS_font, texte.c_str(), CS_color);
     texture = SDL_CreateTextureFromSurface(render, surface);
+    haveTexture = true;
     SDL_QueryTexture(texture, NULL, NULL, &w, &h);
     SDL_FreeSurface(surface);
     if (texte.compare("") != 0)

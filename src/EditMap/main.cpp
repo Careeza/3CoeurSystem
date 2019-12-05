@@ -8,6 +8,7 @@ void    parallaxManagement(CS_Settings& settings, int xCamera, int yCamera)
     CS_Layer        *layer;
     int             i;
 
+    (void)yCamera;
     parallax = settings.QueryGameScene()->QueryParallax();
     i = 0;
     while (i < parallax->QueryNbLayers())
@@ -66,7 +67,9 @@ int     main(int argc, char **argv)
     CS_Police           initFont;
     CS_EditMapSetting   settings;
     t_actionValue       value;
-    
+
+    (void)argc;
+    (void)argv;    
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
 

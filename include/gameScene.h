@@ -447,22 +447,6 @@ class   CS_HitBox
         int                 y;
 };
 
-class   CS_HitBoxes
-{
-    public:
-        CS_HitBoxes();
-        ~CS_HitBoxes();
-        void                addHitbox(float w, float h, float x, float y, int type);
-        int                 testHitbox(SDL_Rect* hitbox);
-    private:
-        std::vector<CS_HitBox*>          asset;
-        std::vector<CS_HitBox*>          intelligentAsset;
-        std::vector<CS_HitBox*>          floor;
-        std::vector<CS_HitBox*>          ennemies;
-        CS_HitBox*                       MC;
-
-};
-
 void    moveWithTest(bool right, int w, int h, int& x, int &y, CS_GameScene *map);
 
 #endif

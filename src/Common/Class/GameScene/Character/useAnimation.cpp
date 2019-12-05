@@ -3,12 +3,12 @@
 
 bool        CS_Character::nextFrame()
 {
-    animation->nextFrame();
+    return (animation->nextFrame());
 }
 
 bool        CS_Character::previousFrame()
 {
-    animation->previousFrame();
+    return (animation->previousFrame());
 }
 
 void        CS_Character::getFrame()

@@ -8,6 +8,7 @@ void    moveAssetSelected(CS_EditMapSetting *settings, int xMouse, int yMouse)
     int         x;
     int         y;
 
+    (void)yMouse;
     if (settings->QuerySelected())
     {
         asset = settings->QueryAsset();

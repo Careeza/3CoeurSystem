@@ -48,6 +48,8 @@ int     main(int argc, char **argv)
     CS_EditAnimationSetting settings;
     t_actionValue           value;
     
+    (void)argc;
+    (void)argv;
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
 

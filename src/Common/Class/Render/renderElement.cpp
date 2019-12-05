@@ -175,16 +175,11 @@ void    renderEnemy(CS_Enemies *enemies, SDL_Renderer *render, SDL_Rect *size, i
 
 void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
 {
-    CS_Enemy        *enemy;
-    SDL_Texture     *texture;
-    SDL_Rect        *frame;
-    SDL_Rect        *size;
+    SDL_Rect        size;
 
     CS_Camera       *camera;
     int             cameraX;
     int             cameraY;
-
-    size = new (SDL_Rect);
 
     camera = gameScene->QueryCamera();
     camera->queryCameraPosition(cameraX, cameraY);
@@ -192,16 +187,14 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
     if (gameScene->haveParallax())
         renderParallax(gameScene->QueryParallax(), render);
     if (gameScene->haveAssets())
-        renderAssets(gameScene->QueryAssets(), render, size, cameraX, cameraY);
+        renderAssets(gameScene->QueryAssets(), render, &size, cameraX, cameraY);
 
     dispScene(gameScene, render);
 
     if (gameScene->haveMC())
-        renderMC(gameScene->CS_queryMC(), render, size, cameraX, cameraY);
+        renderMC(gameScene->CS_queryMC(), render, &size, cameraX, cameraY);
     if (gameScene->haveEnemies())
-        renderEnemy(gameScene->CS_queryEnemies(), render, size, cameraX, cameraY);
-
-    delete size;
+        renderEnemy(gameScene->CS_queryEnemies(), render, &size, cameraX, cameraY);
 }
 
 void    CS_Renderer::CS_dispScene(CS_Scene *current, CS_GameScene *gameScene, t_pos pos)

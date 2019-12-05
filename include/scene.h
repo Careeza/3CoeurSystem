@@ -122,6 +122,8 @@ class   CS_Police
         int                 div_y;
         int                 zoom;
 
+        bool                haveTexture;
+
         SDL_Color           CS_color;
         SDL_Rect            *CS_size;
         SDL_Rect            *CS_zoomIn;

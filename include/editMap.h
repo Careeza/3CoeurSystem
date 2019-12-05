@@ -50,25 +50,25 @@ class   CS_EditMapSetting : public CS_Settings
 # define YBushTree02 86
 # define XBushTree02 39.79
 
-# define YBushTree03 84.5
+# define YBushTree03 84.7
 # define XBushTree03 40
 
-# define YBushTree04 91.7
+# define YBushTree04 91.8
 # define XBushTree04 39.5
 
-# define YGrass01 90.5
+# define YGrass01 90.7
 # define XGrass01 30.5
 
-# define YGrass02 91.8
+# define YGrass02 91.9
 # define XGrass02 38.8
 
-# define YGrass03 87.7
+# define YGrass03 87.8
 # define XGrass03 40.3
 
 # define YGrass04 89.8
 # define XGrass04 42.5
 
-# define YGrass05 88.2
+# define YGrass05 88
 # define XGrass05 44.5
 
 # define YGround01 96
@@ -77,7 +77,7 @@ class   CS_EditMapSetting : public CS_Settings
 # define YMediumTree01 28.2
 # define XMediumTree01 44.8
 
-# define YMediumTree02 35.5
+# define YMediumTree02 35.6
 # define XMediumTree02 44.8
 
 # define YMediumTree03 43.1
@@ -92,9 +92,8 @@ class   CS_EditMapSetting : public CS_Settings
 # define YSmallTree03 48
 # define XSmallTree03 61.3
 
-# define YSmallTree04 53.3
+# define YSmallTree04 53.4
 # define XSmallTree04 63.2
-
 
 void    loadBigTree01(void* settings, SDL_Renderer *render);
 void    loadBigTree02(void* settings, SDL_Renderer *render);
