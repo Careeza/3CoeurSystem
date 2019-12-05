@@ -19,11 +19,3 @@ void    CS_HitBox::setHitBox(float wSource, float hSource, float xSource, float 
     x = Tools->transformX(xSource);
     y = Tools->transformY(ySource);
 }
-
-void    CS_HitBox::setHitBoxProportion(float wSource, float hSource, float xSource, float ySource)
-{
-    wProp = Tools->transformWidth(wSource);
-    hProp = Tools->transformHeight(hSource);
-    xProp = Tools->transformX(xSource);
-    yProp = Tools->transformY(ySource);
-}

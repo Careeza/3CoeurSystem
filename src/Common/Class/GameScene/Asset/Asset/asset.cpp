@@ -108,6 +108,12 @@ int             CS_Asset::QueryZIndex()
     return (zIndex);
 }
 
+CS_HitBox       *CS_Asset::QueryHitBox()
+{
+    return (hitBox);
+}
+
+
 void            CS_Asset::moveAsset(int xSource, int ySource, bool method)
 {
     if (method == true)

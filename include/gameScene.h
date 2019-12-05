@@ -65,6 +65,60 @@ class   CS_Parallax
         std::vector<CS_Layer *> layers;
 };
 
+class   CS_HitBox
+{
+    public:
+        CS_HitBox();
+        ~CS_HitBox();
+        bool                Collision(int wTest, int hTest, int xTest, int yTest);
+
+        void                setW(float wSource);
+        void                setH(float hSource);
+        void                setX(float xSource);
+        void                setY(float ySource);
+
+        void                setWPixel(int wSource);
+        void                setHPixel(int hSource);
+        void                setXPixel(int xSource);
+        void                setYPixel(int ySource);
+
+        void                moveX(int xSource);
+        void                moveY(int ySource);
+        void                extandW(int wSource);
+        void                extandH(int hSource);
+        void                extandSize(int wSource, int hSource);
+
+        void                setHitBoxSize(float wSource, float hSource);
+        void                setHitBoxPos(float xSource, float ySource);
+        void                setHitBox(float wSource, float hSource, float xSource, float ySource);
+
+        void                setHitBoxSizePixel(int wSource, int hSource);
+        void                setHitBoxPosPixel(int xSource, int ySource);
+        void                setHitBoxPixel(int wSource, int hSource, int xSource, int ySource);
+
+        int                 QueryW();
+        int                 QueryH();
+        int                 QueryX();
+        int                 QueryY();
+
+        void                QuerySize(int& wDest, int& hDest);
+        void                QueryPos(int& xDest, int &yDest);
+        void                QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);
+
+    private:
+        int                 w;
+        int                 h;
+        int                 x;
+        int                 y;
+};
+
+typedef struct  e_prop {
+    float w;
+    float h;
+    float x;
+    float y;
+}               t_prop;
+
 typedef enum	e_assetName {
     BigTree01,
     BigTree02,
@@ -115,28 +169,30 @@ class   CS_Asset
         void            printSize();
 
         SDL_Texture     *QueryTexture();
-
-
         int             QueryID();
         int             QueryWidth();
         int             QueryHeight();
         void            QuerySize(int& wDest, int& hDest, int& xDest, int& yDest);
         t_assetName     QueryName();
         int             QueryZIndex();
+        CS_HitBox       *QueryHitBox();
 
     private:
         SDL_Texture     *texture;
 
+        int             zIndex;
         int             w;
         int             h;
         int             x;
         int             y;
 
         int             id;
-
         t_assetName     name;
 
-        int             zIndex;
+        CS_HitBox       *hitBox;
+        t_prop          prop;
+
+        bool            collision;
 };
 
 class   CS_AssetsBank
@@ -398,65 +454,6 @@ class   CS_GameScene : public CS_Scene
 
         int             borneMinX;
         int             borneMaxX;
-};
-
-class   CS_HitBox
-{
-    public:
-        CS_HitBox();
-        ~CS_HitBox();
-        bool                Collision(int wTest, int hTest, int xTest, int yTest);
-
-        void                setW(float wSource);
-        void                setH(float hSource);
-        void                setX(float xSource);
-        void                setY(float ySource);
-
-        void                setWPixel(int wSource);
-        void                setHPixel(int hSource);
-        void                setXPixel(int xSource);
-        void                setYPixel(int ySource);
-
-        void                moveX(int xSource);
-        void                moveY(int ySource);
-        void                extandW(int wSource);
-        void                extandH(int hSource);
-        void                extandSize(int wSource, int hSource);
-
-        void                setHitBoxSize(float wSource, float hSource);
-        void                setHitBoxPos(float xSource, float ySource);
-        void                setHitBox(float wSource, float hSource, float xSource, float ySource);
-
-        void                setHitBoxSizePixel(int wSource, int hSource);
-        void                setHitBoxPosPixel(int xSource, int ySource);
-        void                setHitBoxPixel(int wSource, int hSource, int xSource, int ySource);
-
-        void                setHitBoxProportion(float wSource, float hSource, float xSource, float ySource);
-
-        int                 QueryW();
-        int                 QueryH();
-        int                 QueryX();
-        int                 QueryY();
-
-        float               QueryWProp();
-        float               QueryHProp();
-        float               QueryXProp();
-        float               QueryYProp();
-
-        void                QuerySize(int& wDest, int& hDest);
-        void                QueryPos(int& xDest, int &yDest);
-        void                QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);
-
-    private:
-        int                 w;
-        int                 h;
-        int                 x;
-        int                 y;
-
-        float               wProp;
-        float               hProp;
-        float               xProp;
-        float               yProp;
 };
 
 void    moveWithTest(bool right, int w, int h, int& x, int &y, CS_GameScene *map);

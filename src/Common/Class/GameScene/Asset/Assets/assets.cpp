@@ -20,6 +20,11 @@ CS_Asset    *copyAsset(CS_Asset *assetSource)
     asset->setName(assetSource->QueryName());
     asset->setSize(assetSource->QueryWidth(), assetSource->QueryHeight());
 
+    asset->prop.w = assetSource->prop.w;
+    asset->prop.h = assetSource->prop.h;
+    asset->prop.x = assetSource->prop.x;
+    asset->prop.y = assetSource->prop.y;
+
     return (asset);
 }
 
@@ -39,6 +44,7 @@ void        CS_Assets::updateID()
 CS_Asset    *CS_Assets::loadAsset(t_assetName name, int zIndex, float x, float y)
 {
     CS_Asset        *asset;
+    CS_HitBox       *hitBox;
     unsigned long   i;
 
     asset = copyAsset(assetsBank->QueryAsset(name));
