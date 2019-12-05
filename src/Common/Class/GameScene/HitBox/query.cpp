@@ -39,3 +39,23 @@ void    CS_HitBox::QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest)
     xDest = x;
     yDest = y;
 }
+
+float   CS_HitBox::QueryWProp()
+{
+    return(wProp);
+}
+
+float   CS_HitBox::QueryHProp()
+{
+    return (hProp);
+}
+
+float   CS_HitBox::QueryXProp()
+{
+    return (xProp);
+}
+
+float   CS_HitBox::QueryYProp()
+{
+    return (yProp);
+}

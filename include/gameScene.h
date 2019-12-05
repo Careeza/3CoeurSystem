@@ -431,10 +431,17 @@ class   CS_HitBox
         void                setHitBoxPosPixel(int xSource, int ySource);
         void                setHitBoxPixel(int wSource, int hSource, int xSource, int ySource);
 
+        void                setHitBoxProportion(float wSource, float hSource, float xSource, float ySource);
+
         int                 QueryW();
         int                 QueryH();
         int                 QueryX();
         int                 QueryY();
+
+        float               QueryWProp();
+        float               QueryHProp();
+        float               QueryXProp();
+        float               QueryYProp();
 
         void                QuerySize(int& wDest, int& hDest);
         void                QueryPos(int& xDest, int &yDest);
@@ -445,6 +452,11 @@ class   CS_HitBox
         int                 h;
         int                 x;
         int                 y;
+
+        float               wProp;
+        float               hProp;
+        float               xProp;
+        float               yProp;
 };
 
 void    moveWithTest(bool right, int w, int h, int& x, int &y, CS_GameScene *map);
