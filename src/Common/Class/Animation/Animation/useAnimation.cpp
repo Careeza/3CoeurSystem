@@ -25,6 +25,22 @@ bool        CS_Animation::nextFrame()
     }   
 }
 
+bool            CS_Animation::previousFrame()
+{
+    index--;
+    if (index < 0)
+    {
+        index = nbFrame - 1;
+        return (true);
+    }
+    else
+    {
+        if (interrupt == INTERRUPT)
+            return (true);
+        else
+            return (false);
+    }   
+}
 
 void        CS_Animation::getFrame(bool right, SDL_Rect* &frameDest, SDL_Texture* &textureDest)
 {

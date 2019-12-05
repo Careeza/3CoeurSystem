@@ -6,6 +6,11 @@ bool        CS_Character::nextFrame()
     animation->nextFrame();
 }
 
+bool        CS_Character::previousFrame()
+{
+    animation->previousFrame();
+}
+
 void        CS_Character::getFrame()
 {
     animation->getFrame(right, frame, texture);

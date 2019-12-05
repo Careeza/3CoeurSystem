@@ -193,12 +193,13 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
         renderParallax(gameScene->QueryParallax(), render);
     if (gameScene->haveAssets())
         renderAssets(gameScene->QueryAssets(), render, size, cameraX, cameraY);
+
+    dispScene(gameScene, render);
+
     if (gameScene->haveMC())
         renderMC(gameScene->CS_queryMC(), render, size, cameraX, cameraY);
     if (gameScene->haveEnemies())
         renderEnemy(gameScene->CS_queryEnemies(), render, size, cameraX, cameraY);
-
-    dispScene(gameScene, render);
 
     delete size;
 }

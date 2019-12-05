@@ -46,7 +46,7 @@ clean:
 	rm -rf build
 
 fclean: clean
-	rm -rf game editMap editAnimation
+	rm -rf game editMap editAnimation editAssets
 
 re:
 	$(MAKE) fclean

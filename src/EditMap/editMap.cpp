@@ -13,6 +13,7 @@ CS_EditMapSetting::~CS_EditMapSetting()
 void        CS_EditMapSetting::setAssetSelected(CS_Asset *assetSource)
 {
     assetSelected = assetSource;
+    selected = true;
 }
 
 void        CS_EditMapSetting::setSelected(bool selectedSource)

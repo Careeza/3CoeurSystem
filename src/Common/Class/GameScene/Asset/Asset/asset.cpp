@@ -40,6 +40,14 @@ void            CS_Asset::addAsset(int zIndexSource, float xSource, float ySourc
     y = Tools->transformY(ySource);
 }
 
+void            CS_Asset::addAssetPixel(int zIndexSource, int xSource, int ySource)
+{
+    zIndex = zIndexSource;
+
+    x = xSource;
+    y = ySource;
+}
+
 void            CS_Asset::setTexture(SDL_Texture *textureSource)
 {
     texture = textureSource;

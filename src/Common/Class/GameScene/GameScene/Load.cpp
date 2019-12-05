@@ -29,3 +29,9 @@ void    CS_GameScene::loadCamera(CS_Camera *cameraSource)
 {
     camera = cameraSource;
 }
+
+void    CS_GameScene::setBorneMap(float borneMinXSource, float borneMaxXSource)
+{
+    borneMaxX = Tools->transformWidth(borneMaxXSource);
+    borneMinX = Tools->transformHeight(borneMinXSource);
+}

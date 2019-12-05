@@ -26,7 +26,7 @@ void    MCManagement(CS_Settings& settings, t_actionTable *action, int& xCamera,
     MC->moveCharacter();
 
     camera = settings.QueryGameScene()->QueryCamera();
-    camera->moveCamera2(MC->queryMoveX(), 0);
+    camera->moveCamera2(MC->queryMoveX(), 0, settings.QueryGameScene());
     camera->queryCameraPosition(xCamera, yCamera);
 }
 
@@ -97,7 +97,7 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *valu
                 parallaxManagement(settings, xCamera, yCamera);
         }
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
-        SDL_Delay(fmax(0, (1000 / 60) - timer.get_ticks()));
+//        SDL_Delay(fmax(0, (1000 / 60) - timer.get_ticks()));
     }
 }
 
@@ -131,7 +131,7 @@ int     main(int argc, char **argv)
 
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
-//    window = create_window(0, "Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 600);
+//    window = create_window(0, "Game", 0, 0, 2560, 1600);
 
     TTF_Init();
     initFont.CS_initPolice("resources/alterebro-pixel-font.ttf");

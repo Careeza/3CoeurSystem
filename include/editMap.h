@@ -95,7 +95,6 @@ class   CS_EditMapSetting : public CS_Settings
 # define YSmallTree04 53.3
 # define XSmallTree04 63.2
 
-int     bouttonManagement2(CS_KeyControl& control, CS_EditMapSetting& settings, SDL_Renderer *render);
 
 void    loadBigTree01(void* settings, SDL_Renderer *render);
 void    loadBigTree02(void* settings, SDL_Renderer *render);
@@ -118,5 +117,39 @@ void    loadSmallTree02(void* settings, SDL_Renderer *render);
 void    loadSmallTree03(void* settings, SDL_Renderer *render);
 void    loadSmallTree04(void* settings, SDL_Renderer *render);
 
+void            initSettings(CS_Settings &settings, SDL_Window *window, SDL_Renderer *render);
+
+CS_GameScene    *init_home(SDL_Renderer *render);
+
+CS_AssetsBank   *initAssetsBankLevel1(SDL_Renderer *render);
+CS_Assets       *initAssets(SDL_Renderer *render);
+
+CS_Parallax     *initParallax(SDL_Renderer *render);
+
+CS_Camera       *initCamera();
+
+void    setGround(CS_GameScene *scene);
+
+void    deleteActualAsset(CS_EditMapSetting *set);
+void    changeButton(CS_EditMapSetting *set);
+
+void    escapeAction(CS_Settings& settings, SDL_Renderer *render);
+void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Renderer *render);
+
+void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);
+void    fillActionValue(t_actionValue *value);
+void    resetActionTable(t_actionTable *table);
+void    filtreActionTable(t_actionTable *table, t_actionTable *filtre);
+void    useAction2(t_actionTable *table, CS_EditMapSetting& settings);
+void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *action);
+
+void    parallaxManagement(CS_Settings& settings, int xCamera, int yCamera);
+
+void    moveAssetSelected(CS_EditMapSetting *settings, int xMouse, int yMouse);
+void    mouseAction(CS_KeyControl event, CS_EditMapSetting &settings, int& xMouse, int &yMouse, int xCamera, int Ycamera);
+
+int     bouttonManagement2(CS_KeyControl& control, CS_EditMapSetting& settings, SDL_Renderer *render);
+
+void    getAsset(CS_EditMapSetting *set, int xMouse, int yMouse);
 
 #endif

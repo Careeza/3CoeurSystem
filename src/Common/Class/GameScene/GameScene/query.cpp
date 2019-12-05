@@ -24,3 +24,9 @@ CS_Assets       *CS_GameScene::QueryAssets()
 {
     return (assets);
 }
+
+void            CS_GameScene::QueryBorne(int& borneMinXDest, int& borneMaxXDest)
+{
+    borneMaxXDest = borneMaxX;
+    borneMinXDest = borneMinX;
+}

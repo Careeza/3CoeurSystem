@@ -45,12 +45,12 @@ void    useAction2(t_actionTable *table, CS_Settings& settings)
     if (table->right == true)
     {
 //        std::cout << "press" << std::endl;
-        camera->moveCamera2(5, 0);
+        camera->moveCamera2(5, 0, settings.QueryGameScene());
     }
     else if (table->left == true)
     {
 //        std::cout << "press" << std::endl;
-        camera->moveCamera2(-5, 0);
+        camera->moveCamera2(-5, 0, settings.QueryGameScene());
     }
     else
     {
