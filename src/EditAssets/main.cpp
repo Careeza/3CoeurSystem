@@ -272,25 +272,25 @@ CS_Parallax     *initParallax(SDL_Renderer *render)
 # define YBushTree02 86
 # define XBushTree02 39.79
 
-# define YBushTree03 84.5
+# define YBushTree03 84.7
 # define XBushTree03 40
 
-# define YBushTree04 91.7
+# define YBushTree04 91.8
 # define XBushTree04 39.5
 
-# define YGrass01 90.5
+# define YGrass01 90.7
 # define XGrass01 30.5
 
-# define YGrass02 91.8
+# define YGrass02 91.9
 # define XGrass02 38.8
 
-# define YGrass03 87.7
+# define YGrass03 87.8
 # define XGrass03 40.3
 
 # define YGrass04 89.8
 # define XGrass04 42.5
 
-# define YGrass05 88.2
+# define YGrass05 88
 # define XGrass05 44.5
 
 # define YGround01 96
@@ -299,7 +299,7 @@ CS_Parallax     *initParallax(SDL_Renderer *render)
 # define YMediumTree01 28.2
 # define XMediumTree01 44.8
 
-# define YMediumTree02 35.5
+# define YMediumTree02 35.6
 # define XMediumTree02 44.8
 
 # define YMediumTree03 43.1
@@ -314,7 +314,7 @@ CS_Parallax     *initParallax(SDL_Renderer *render)
 # define YSmallTree03 48
 # define XSmallTree03 61.3
 
-# define YSmallTree04 53.3
+# define YSmallTree04 53.4
 # define XSmallTree04 63.2
 
 CS_AssetsBank   *initAssetsBankLevel1(SDL_Renderer *render)
@@ -323,11 +323,11 @@ CS_AssetsBank   *initAssetsBankLevel1(SDL_Renderer *render)
 
     assetsBank = new (CS_AssetsBank);
 
-    assetsBank->createAsset(render, "resources/source/assets/BigTree01.png", BigTree01, 30.4, 96.3);
-    assetsBank->createAsset(render, "resources/source/assets/BigTree02.png", BigTree02, 18.75, 96.3);
-    assetsBank->createAsset(render, "resources/source/assets/BigTree03.png", BigTree03, 25.4, 96.3);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree01.png", BigTree01, 30.4, 96);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree02.png", BigTree02, 18.75, 96);
+    assetsBank->createAsset(render, "resources/source/assets/BigTree03.png", BigTree03, 25.4, 96);
     assetsBank->createAsset(render, "resources/source/assets/BushTree01.png", BushTree01, 10.5, 8.9);
-    assetsBank->createAsset(render, "resources/source/assets/BushTree02.png", BushTree02, 10.97, 10);
+    assetsBank->createAsset(render, "resources/source/assets/BushTree02.png", BushTree02, 11, 10);
     assetsBank->createAsset(render, "resources/source/assets/BushTree03.png", BushTree03, 9.4, 11.3);
     assetsBank->createAsset(render, "resources/source/assets/BushTree04.png", BushTree04, 10.9, 4.2);
     assetsBank->createAsset(render, "resources/source/assets/Grass01.png", Grass01, 33.3, 5.3);
@@ -356,7 +356,7 @@ CS_Assets       *initAssets(SDL_Renderer *render)
     assets->loadBank(initAssetsBankLevel1(render));
 
     //assets->loadAsset(BigTree01, 1, XBigTree02, YBigTree01);
-    //assets->loadAsset(BigTree02, 2, XBigTree02, YBigTree02);
+    //assets->loadAsset(BigTree02, 1, XBigTree02, YBigTree02);
     //assets->loadAsset(BigTree03, 1, XBigTree03, YBigTree03);
     //assets->loadAsset(BushTree01, 1, XBushTree01, YBushTree01);
     //assets->loadAsset(BushTree02, 1, XBushTree02, YBushTree02);
