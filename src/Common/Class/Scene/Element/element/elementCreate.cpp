@@ -62,3 +62,9 @@ void            CS_Element::addTextToElementScaleW(std::string comment, SDL_Rend
     text->initZoomOut();
 }
 
+void            CS_Element::changeText(std::string comment, SDL_Renderer *render)
+{
+    text->changeText(comment, QueryElementSize(), render);
+    text->initZoomIn();
+    text->initZoomOut();    
+}

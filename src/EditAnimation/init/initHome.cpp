@@ -63,6 +63,10 @@ CS_GameScene    *init_home(SDL_Renderer *render)
     scene->createButtonToSceneFromPng("Asset19", "resources/source/greenCube.png",  12.5, 10, 75, 90, 1, &closeGame);
     scene->createButtonToSceneFromPng("Asset20", "resources/source/greenCube.png",  12.5, 10, 87.5, 90, 1, &closeGame);
 
+    scene->setSceneColor(0xFF, 0xFF, 0xFF, 0xFF);
+    scene->createElementToScene("fps", 10, 10, 0, 0, 0);
+    scene->writeTexte(-1, "60");
+
     scene->setBorneMap(0, 1000);
     scene->loadMC(initMC(render));
     scene->loadCamera(initCamera());

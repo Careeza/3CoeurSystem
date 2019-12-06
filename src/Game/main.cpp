@@ -26,6 +26,7 @@ void    MCManagement(CS_Settings& settings, t_actionTable *action, int& xCamera,
     MC->moveCharacter();
 
     camera = settings.QueryGameScene()->QueryCamera();
+    std::cout << "MoveX = " << MC->QueryMoveX() << std::endl;
     camera->moveCamera2(MC->QueryMoveX(), 0, settings.QueryGameScene());
     camera->QueryCameraPosition(xCamera, yCamera);
 }

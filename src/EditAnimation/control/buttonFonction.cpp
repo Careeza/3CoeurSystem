@@ -77,11 +77,18 @@ void    incraseFps(void* settings, SDL_Renderer *render)
     CS_EditAnimationSetting *set;
     CS_Character            *MC;
 
+    std::shared_ptr<CS_Element> element;
+    int                         index;
+
     (void)render;
     set = (CS_EditAnimationSetting*)settings;
     set->increaseFps();
     MC = set->QueryGameScene()->QueryMC();
-    MC->setPas(set->QueryFps() / (float)set->QueryFpsAnimation());
+    MC->setPas((set->QueryFpsAnimation() / (float)set->QueryFps()));
+
+    index = set->QueryGameScene()->QueryIndexByName("fps");
+    element = set->QueryGameScene()->QuerySingleElement(index);
+    element->changeText(std::to_string(set->QueryFpsAnimation()), render);
 }
 
 void    decreaseFps(void* settings, SDL_Renderer *render)
@@ -89,9 +96,16 @@ void    decreaseFps(void* settings, SDL_Renderer *render)
     CS_EditAnimationSetting *set;
     CS_Character            *MC;
 
+    std::shared_ptr<CS_Element> element;
+    int                         index;
+
     (void)render;
     set = (CS_EditAnimationSetting*)settings;
     set->decreaseFps();
     MC = set->QueryGameScene()->QueryMC();
-    MC->setPas(set->QueryFps() / (float)set->QueryFpsAnimation());
+    MC->setPas((set->QueryFpsAnimation() / (float)set->QueryFps()));
+
+    index = set->QueryGameScene()->QueryIndexByName("fps");
+    element = set->QueryGameScene()->QuerySingleElement(index);
+    element->changeText(std::to_string(set->QueryFpsAnimation()), render);
 }

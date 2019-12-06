@@ -82,11 +82,11 @@ void    CS_Police::writeTexteScaleW(std::string texte, SDL_Rect *sizeSource, SDL
     size->x = div_x;
 }
 
-/*void            CS_Police::changeText(std::string texte, SDL_Rect *size, SDL_Renderer *render);
+void            CS_Police::changeText(std::string texte, SDL_Rect *size, SDL_Renderer *render)
 {
     SDL_DestroyTexture(texture);
-    CS_writeTexte(texte, size, render);
-}*/
+    writeTexte(texte, size, render);
+}
 
 void            CS_Police::zoomText(int zoomInfo)
 {

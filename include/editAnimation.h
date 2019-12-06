@@ -51,6 +51,8 @@ void    left(void* settings, SDL_Renderer *render);
 void    right(void* settings, SDL_Renderer *render);
 void    incraseFps(void* settings, SDL_Renderer *render);
 void    decreaseFps(void* settings, SDL_Renderer *render);
+void    changeText(void* settings, SDL_Renderer *render);
+
 
 void    escapeAction(CS_Settings& settings, SDL_Renderer *render);
 void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Renderer *render);

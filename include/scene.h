@@ -217,6 +217,7 @@ class   CS_Element
         void            setPoliceSettings(CS_Color color, int flags = ALIGN_CENTER, int marginX = 5, int marginY = 5);
         void            addTextToElement(std::string comment, SDL_Renderer *render);
         void            addTextToElementScaleW(std::string comment, SDL_Renderer *render);
+        void            changeText(std::string comment, SDL_Renderer *render);
 
         void            loadName(std::string nameSrc);
         void            loadBorder(CS_Color colorSource, SDL_Renderer *render);
