@@ -99,7 +99,7 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *valu
                 parallaxManagement(settings, xCamera, yCamera);
         }
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
-//        SDL_Delay(fmax(0, (1000 / 60) - timer.get_ticks()));
+        SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));
     }
 }
 

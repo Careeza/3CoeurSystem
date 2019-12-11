@@ -167,6 +167,14 @@ void            CS_Asset::resizeAsset(int wSource, int hSource, bool method)
 
 void            CS_Asset::printSize()
 {
+    CS_HitBox   *hitBox;
+
     std::cout << "size w = " << w / (float)Tools->QueryWindowWidth() * 100 << " size h = " << h / (float)Tools->QueryWindowHeight() * 100 << std::endl;
     std::cout << "size x = " << x / (float)Tools->QueryWindowWidth() * 100 << " size y = " << y / (float)Tools->QueryWindowHeight() * 100 << std::endl;
+
+    hitBox = QueryHitBox();
+
+    std::cout << "hitBox w = " << (hitBox->QueryW() * 100) / (float)w << " hitBox h = " << (hitBox->QueryH() * 100) / (float)h << std::endl;
+    std::cout << "hitBox x = " << (hitBox->QueryX() - x * 100) / (float)w << " hitBox y = " << (hitBox->QueryY() - y * 100) / (float)h << std::endl;
+
 }

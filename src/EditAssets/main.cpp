@@ -135,30 +135,32 @@ void    useAction2(t_actionTable *table, CS_Settings& settings)
 {
     CS_Camera   *camera;
     CS_Asset    *asset;
+    CS_HitBox   *hitBox;
 
     camera = settings.QueryGameScene()->QueryCamera();
     asset = settings.QueryGameScene()->QueryAssets()->QueryAsset(0);
+    hitBox = asset->QueryHitBox();
     if (table->dodge == false)
     {
         if (table->right == true)
-            asset->resizeAsset(2, 0, true);
+            hitBox->extandW(1);
         else if (table->left == true)
-            asset->resizeAsset(-2, 0, true);
+            hitBox->extandW(-1);
         else if (table->up == true)
-            asset->resizeAsset(0, 2, true);
+            hitBox->extandH(-1);
         else if (table->down)
-            asset->resizeAsset(0, -2, true);
+            hitBox->extandH(1);
     }
     else
     {
         if (table->right == true)
-            asset->resizeAsset(2, 0, false);
+            hitBox->moveX(1);
         else if (table->left == true)
-            asset->resizeAsset(-2, 0, false);
+            hitBox->moveX(-1);
         else if (table->up == true)
-            asset->resizeAsset(0, 2, false);
+            hitBox->moveY(-1);
         else if (table->down)
-            asset->resizeAsset(0, -2, false);
+            hitBox->moveY(1);
     }
 
     static bool jump = false;
@@ -356,7 +358,7 @@ CS_Assets       *initAssets(SDL_Renderer *render)
 
     assets->loadBank(initAssetsBankLevel1(render));
 
-    //assets->loadAsset(BigTree01, 1, XBigTree02, YBigTree01);
+    assets->loadAsset(BigTree01, 1, XBigTree02, YBigTree01);
     //assets->loadAsset(BigTree02, 1, XBigTree02, YBigTree02);
     //assets->loadAsset(BigTree03, 1, XBigTree03, YBigTree03);
     //assets->loadAsset(BushTree01, 1, XBushTree01, YBushTree01);
