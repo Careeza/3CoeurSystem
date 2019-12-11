@@ -21,9 +21,9 @@ class   CS_Force
         ~CS_Force();
 
         void    setAccelerationX(float aXsource);
-        void    setAccelerationY(float aXsource);
+        void    setAccelerationY(float aYsource);
         void    setAccelerationXPixel(int aXsource);
-        void    setAccelerationYPixel(int aXsource);
+        void    setAccelerationYPixel(int aYsource);
 
         void    usePhysic(int& vXDest, int& vYDest);
 
