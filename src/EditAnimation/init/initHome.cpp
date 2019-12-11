@@ -7,9 +7,9 @@ CS_Animation    *walkMC(SDL_Renderer *render)
     animation = new (CS_Animation);
 
     animation->newAnimation(WALK, INTERRUPT);
-    animation->loadTexture(render, "resources/source/testtqblette.png", "resources/source/testtqblette.png");
-    animation->cutFrame(10, 10, 1);
-    animation->setMovement(10, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+    animation->loadTexture(render, "resources/source/Slime1.png", "resources/source/Slime1.png");
+    animation->cutFrame(8, 8, 1);
+    animation->setMovement(8, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
     return (animation);
 }
@@ -22,7 +22,7 @@ CS_Character    *initMC(SDL_Renderer *render)
 
     MC->addAnimation(render, walkMC);
     MC->loadAnimation(WALK);
-    MC->setSizePos(10, 10 * Tools->QueryWindowResolution(), 32.5, 45);
+    MC->setSizePos(10, 10, 32.5, 45);
     MC->getFrame();
     
     return (MC);

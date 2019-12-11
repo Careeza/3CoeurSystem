@@ -14,14 +14,16 @@
 # include <memory>
 
 
-class   CS_Physic
+class   CS_Force
 {
     public:
-        CS_Physic();
-        ~CS_Physic();
+        CS_Force();
+        ~CS_Force();
 
-        void    setAX(float aXsource);
-        void    setAY(float aYSource);
+        void    setAccelerationX(float aXsource);
+        void    setAccelerationY(float aXsource);
+        void    setAccelerationXPixel(int aXsource);
+        void    setAccelerationYPixel(int aXsource);
 
         void    usePhysic(int& vXDest, int& vYDest);
 
@@ -31,14 +33,70 @@ class   CS_Physic
         
 };
 
-class   CS_WorldPhysic
+class   CS_WorldPhysics
 {
     public:
-        CS_WorldPhysic();
-        ~CS_WorldPhysic();
+        CS_WorldPhysics();
+        ~CS_WorldPhysics();
+
+        void        setGravity();
+        void        setWind();
+
+        CS_Force    QueryGravity();
+        CS_Force    QueryWind();
 
     private:
+        CS_Force    gravity;
+        CS_Force    wind;
 
+};
+
+class   CS_Speed
+{
+    public:
+        CS_Speed();
+        ~CS_Speed();
+
+        void    setSpeedX(float vXSource);
+        void    setSpeedY(float vYSource);
+        void    setSpeed(float vXSource, float vYSource);
+
+        
+        void    setSpeedXPixel(int vXSource);
+        void    setSpeedYPixel(int vYSource);
+        void    setSpeedPixel(int vXSource, int vYSource);
+
+        void    updateSpeed(CS_Force force);
+        void    updateSpeed(int aXSource, int aYSource);
+
+        void    moveObject(int &x, int &y);
+        
+    private:
+        int     vX;
+        int     vY;
+};
+
+class   CS_Position
+{
+    public:
+        CS_Position();
+        ~CS_Position();
+
+        void    setPositionX(float xSource);
+        void    setPositionY(float xSource);
+        void    setPositionXPixel(int xSource);
+        void    setPositionYPixel(int xSource);
+
+        void    updatePosition(CS_Speed speed);
+        void    updatePosition(int vXSource, int vYSource);
+
+        void    QueryPostion(int& xDest, int& yDest);
+        int     QueryPostionX();
+        int     QueryPostionY();
+
+    private:
+        int x;
+        int y;
 };
 
 class   CS_PersonalPhysic
@@ -47,8 +105,15 @@ class   CS_PersonalPhysic
         CS_PersonalPhysic();
         ~CS_PersonalPhysic();
 
+        void    loadWorldPhysics(CS_WorldPhysics *WorldPhysicsSource);
+        void    updatePosition();
+        void    updatePosition(int vX, int vY);
+
+
     private:
-        CS_Physic *physic;
+        CS_WorldPhysics  *WorldPhysics;
+        CS_Speed        speed;
+        CS_Position     position;
 };
 
 class   CS_HitBox
