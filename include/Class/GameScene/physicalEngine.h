@@ -25,11 +25,11 @@ class   CS_Force
         void    setAccelerationXPixel(int aXsource);
         void    setAccelerationYPixel(int aYsource);
 
-        void    usePhysic(int& vXDest, int& vYDest);
+        void    usePhysic(float& vXDest, float& vYDest, int deltaT);
 
     private:
-        int aX;
-        int aY;
+        float aX;
+        float aY;
         
 };
 
@@ -39,8 +39,10 @@ class   CS_WorldPhysics
         CS_WorldPhysics();
         ~CS_WorldPhysics();
 
-        void        setGravity();
-        void        setWind();
+        void        setGravityPixel(int aX, int aY);
+        void        setWindPixel(int aX, int aY);
+        void        setGravity(float aX, float aY);
+        void        setWind(float aX, float aY);
 
         CS_Force    QueryGravity();
         CS_Force    QueryWind();
@@ -83,9 +85,9 @@ class   CS_Position
         ~CS_Position();
 
         void    setPositionX(float xSource);
-        void    setPositionY(float xSource);
+        void    setPositionY(float ySource);
         void    setPositionXPixel(int xSource);
-        void    setPositionYPixel(int xSource);
+        void    setPositionYPixel(int ySource);
 
         void    updatePosition(CS_Speed speed);
         void    updatePosition(int vXSource, int vYSource);
@@ -109,11 +111,12 @@ class   CS_PersonalPhysic
         void    updatePosition();
         void    updatePosition(int vX, int vY);
 
-
     private:
         CS_WorldPhysics  *WorldPhysics;
         CS_Speed        speed;
         CS_Position     position;
+        bool            onGround;
+        bool            bounciness;
 };
 
 class   CS_HitBox
