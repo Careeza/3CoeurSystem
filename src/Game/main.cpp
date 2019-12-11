@@ -78,13 +78,23 @@ void    parallaxManagement(CS_Settings& settings, int xCamera, int yCamera)
 void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *value, CS_Settings& settings)
 {
     CS_Timer        timer;
+    CS_Timer        time;
     t_actionTable   action;
     int             xCamera;
     int             yCamera;
+    int t1;
+    int t2;
+    int deltat;
+
+    time.start();
 
     resetActionTable(&action);
+
     while (!settings.QueryCloseRequest())
     {
+        t1 = time.get_ticks();
+        t2 = time.get_ticks();
+        deltat = t2-t1;
         timer.start();
         eventManagement(settings, rend, value, &action);
         if (settings.QueryPosition() == game)
@@ -139,7 +149,7 @@ int     main(int argc, char **argv)
 
     TTF_Init();
     initFont.initPolice("resources/alterebro-pixel-font.ttf");
-    
+
     render = init_renderer(window);
 
     initSettings(settings, window, render);

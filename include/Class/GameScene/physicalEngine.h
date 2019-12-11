@@ -22,16 +22,13 @@ class   CS_Physic
 
         void    setAX(float aXsource);
         void    setAY(float aYSource);
-        void    setVX(float vXSource);
-        void    setVY(float vYSource);
 
         void    usePhysic(int& vXDest, int& vYDest);
 
     private:
         int aX;
         int aY;
-        int vX;
-        int vY;
+        
 };
 
 class   CS_WorldPhysic

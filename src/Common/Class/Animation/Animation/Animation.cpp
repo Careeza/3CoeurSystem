@@ -1,4 +1,4 @@
-# include "gameScene.h"s
+# include "gameScene.h"
 
 CS_Animation::CS_Animation()
 {
