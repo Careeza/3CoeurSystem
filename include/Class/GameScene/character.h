@@ -23,21 +23,24 @@ class   CS_Character
 
         void        addAnimation(SDL_Renderer *render, CS_Animation*(*f)(SDL_Renderer *render));
         void        loadAnimation(t_animation name);
+        void        loadPhysic(CS_PersonalPhysic *physicSource);
 
         bool        nextFrame();
         bool        previousFrame();
+
         void        getFrame();
+
         void        moveCharacter();
 
-        void        setPas(float pasSource);
         bool        nextIndexPas();
 
+        void        setPas(float pasSource);
         void        setPos(float xSource, float ySource);
-
         void        setRight(bool rightSource);
 
         SDL_Texture *QueryTexture();
         SDL_Rect    *QueryFrame();
+
         void        QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);
         void        QuerySize(int& wDest, int& hDest);
         void        QueryPos(int& xDest, int& yDest);

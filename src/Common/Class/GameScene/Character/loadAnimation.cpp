@@ -22,6 +22,12 @@ void        CS_Character::loadAnimation(t_animation name)
     }
 }
 
+void        CS_Character::loadPhysic(CS_PersonalPhysic *physicSource)
+{
+    physic = physicSource;
+}
+
+
 void        CS_Character::setPas(float pasSource)
 {
     std::cout << pasSource << std::endl;

@@ -1,6 +1,6 @@
 # include "gameScene.h"
 
-CS_Animation    *staticMC(SDL_Renderer *render)
+CS_Animation        *staticMC(SDL_Renderer *render)
 {
     CS_Animation    *animation;
 
@@ -15,7 +15,7 @@ CS_Animation    *staticMC(SDL_Renderer *render)
     return (animation);
 }
 
-CS_Animation    *walkMC(SDL_Renderer *render)
+CS_Animation        *walkMC(SDL_Renderer *render)
 {
     CS_Animation    *animation;
 
@@ -30,7 +30,7 @@ CS_Animation    *walkMC(SDL_Renderer *render)
     return (animation);
 }
 
-CS_Animation    *sprintMC(SDL_Renderer *render)
+CS_Animation        *sprintMC(SDL_Renderer *render)
 {
     CS_Animation    *animation;
 
@@ -45,7 +45,19 @@ CS_Animation    *sprintMC(SDL_Renderer *render)
     return (animation);
 }
 
-CS_Character    *initMC(SDL_Renderer *render)
+CS_PersonalPhysic   *initPhysic()
+{
+    CS_PersonalPhysic *physic;
+
+    physic = new (CS_PersonalPhysic);
+
+    physic->setPosX(45);
+    physic->setPosY(90);
+    
+    return (physic);
+}
+
+CS_Character        *initMC(SDL_Renderer *render)
 {
     CS_Character *MC;
 
@@ -55,6 +67,7 @@ CS_Character    *initMC(SDL_Renderer *render)
     MC->addAnimation(render, walkMC);
     MC->addAnimation(render, sprintMC);
     MC->loadAnimation(STATIC);
+    MC->loadPhysic(initPhysic());
     MC->setPos(45, 90);
     
     return (MC);

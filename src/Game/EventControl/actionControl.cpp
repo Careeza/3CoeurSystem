@@ -7,22 +7,35 @@ void    useAction(t_actionTable *table, CS_Settings& settings)
     MC = settings.QueryGameScene()->QueryMC();
     if (table->right == true)
     {
-        if (table->dodge == true)
-            MC->loadAnimation(SPRINT);
-        else
-            MC->loadAnimation(WALK);
         MC->setRight(true);
+        if (table->dodge == true)
+        {
+            MC->loadAnimation(SPRINT);
+        }
+        else
+        {
+
+            MC->loadAnimation(WALK);
+        }
     }
     else if (table->left == true)
     {
-        if (table->dodge == true)
-            MC->loadAnimation(SPRINT);
-        else
-            MC->loadAnimation(WALK);
         MC->setRight(false);
+        if (table->dodge == true)
+        {
+            MC->loadAnimation(SPRINT);
+        }
+        else
+        {
+            MC->loadAnimation(WALK);
+            
+        }
     }
     else
+    {
         MC->loadAnimation(STATIC);
+
+    }
 }
 
 void    useAction2(t_actionTable *table, CS_Settings& settings)
