@@ -25,11 +25,11 @@ class   CS_Force
         void    setAccelerationXPixel(int aXsource);
         void    setAccelerationYPixel(int aYsource);
 
-        void    usePhysic(float& vXDest, float& vYDest, int deltaT);
+        void    usePhysic(int& vXDest, int& vYDest, float deltaT);
 
     private:
-        float aX;
-        float aY;
+        int aX;
+        int aY;
         
 };
 
@@ -68,10 +68,10 @@ class   CS_Speed
         void    setSpeedYPixel(int vYSource);
         void    setSpeedPixel(int vXSource, int vYSource);
 
-        void    updateSpeed(CS_Force force);
-        void    updateSpeed(int aXSource, int aYSource);
+        void    updateSpeed(CS_Force force, float deltaT);
+        void    updateSpeed(int aXSource, int aYSource, float deltaT);
 
-        void    moveObject(int &x, int &y);
+        void    moveObject(int &x, int &y, float deltaT);
         
     private:
         int     vX;
@@ -89,8 +89,8 @@ class   CS_Position
         void    setPositionXPixel(int xSource);
         void    setPositionYPixel(int ySource);
 
-        void    updatePosition(CS_Speed speed);
-        void    updatePosition(int vXSource, int vYSource);
+        void    updatePosition(CS_Speed speed, float deltaT);
+        void    updatePosition(int vXSource, int vYSource, float deltaT);
 
         void    QueryPostion(int& xDest, int& yDest);
         int     QueryPostionX();
@@ -108,8 +108,21 @@ class   CS_PersonalPhysic
         ~CS_PersonalPhysic();
 
         void    loadWorldPhysics(CS_WorldPhysics *WorldPhysicsSource);
-        void    updatePosition();
-        void    updatePosition(int vX, int vY);
+
+        void    setOnGround(bool onGroundSource);
+        void    setBounciness(bool bouncinessSource);
+        void    setGravity(bool gravitySource);
+
+        void    setSpeedX(int speedX);
+        void    setSpeedY(int speedY);
+
+        void    setPosX(float posX);
+        void    setPosY(float posY);
+        void    setPosXPixel(int speedX);
+        void    setPosYPixel(int speedY);
+
+        void    updateSpeed(float deltaT);
+        void    updatePosition(float deltaT);
 
     private:
         CS_WorldPhysics  *WorldPhysics;
@@ -117,6 +130,7 @@ class   CS_PersonalPhysic
         CS_Position     position;
         bool            onGround;
         bool            bounciness;
+        bool            gravity;
 };
 
 class   CS_HitBox

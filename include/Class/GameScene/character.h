@@ -13,6 +13,8 @@
 # include <vector>
 # include <memory>
 
+# include "physicalEngine.h"
+
 class   CS_Character
 {
     public:
@@ -30,37 +32,31 @@ class   CS_Character
         void        setPas(float pasSource);
         bool        nextIndexPas();
 
-        void        setSizePos(float wSource, float hSource, float xSource, float ySource);
-        void        setSize(float wSource, float hSource);
         void        setPos(float xSource, float ySource);
 
         void        setRight(bool rightSource);
 
         SDL_Texture *QueryTexture();
         SDL_Rect    *QueryFrame();
-
-        void        QuerySizePos(int& w, int& h, int& x, int& y);
-        void        QuerySize(int& w, int& h);
-        void        QueryPos(int& x, int& y);
+        void        QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);
+        void        QuerySize(int& wDest, int& hDest);
+        void        QueryPos(int& xDest, int& yDest);
 
         int         QueryMoveX();
 //        int         QueryMoveY();
 
 
     private:
+        SDL_Texture         *texture;
+        SDL_Rect            *frame;
 
         CS_BankAnimation    *bank;
         CS_Animation        *animation;
         CS_Animation        *saveAnimation;
-        
-        SDL_Texture         *texture;
-        SDL_Rect            *size;
-        SDL_Rect            *frame;
+        CS_PersonalPhysic   *physic;
+
         int                 x;
         int                 y;
-        int                 w;
-        int                 h;
-
         bool                right;
 };
 

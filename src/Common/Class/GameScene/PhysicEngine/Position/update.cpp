@@ -1,13 +1,13 @@
 # include "gameScene.h"
 
-void    CS_Position::updatePosition(CS_Speed speed)
+void    CS_Position::updatePosition(CS_Speed speed, float deltaT)
 {
-    speed.moveObject(x, y);
+    speed.moveObject(x, y, deltaT);
 
 }
 
-void    CS_Position::updatePosition(int vXSource, int vYSource)
+void    CS_Position::updatePosition(int vXSource, int vYSource, float deltaT)
 {
-    x += vXSource;
-    y += vYSource;
+    x += vXSource * deltaT;
+    y += vYSource * deltaT;
 }

@@ -76,8 +76,8 @@ void        CS_Animation::getFrame(bool right, SDL_Rect* &frameDest, SDL_Texture
 void        CS_Animation::moveCharacter(bool right, int& x, int &y)
 {
     if (right == true)
-        x += movement[index];
+        x += speed;
     else
-        x -= movement[index];
+        x -= speed;
     (void)y;
 }

@@ -29,20 +29,6 @@ void        CS_Character::setPas(float pasSource)
 }
 
 
-void        CS_Character::setSizePos(float wSource, float hSource, float xSource, float ySource)
-{
-    w = Tools->transformWidth(wSource);
-    h = Tools->transformHeight(hSource);
-    x = Tools->transformX(xSource);
-    y = Tools->transformY(ySource);
-}
-
-void        CS_Character::setSize(float wSource, float hSource)
-{
-    w = Tools->transformWidth(wSource);
-    h = Tools->transformHeight(hSource);
-}
-
 void        CS_Character::setPos(float xSource, float ySource)
 {
     x = Tools->transformX(xSource);

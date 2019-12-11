@@ -1,4 +1,3 @@
-#include "common.h"
 #include "game.h"
 
 void    eventManagement(CS_Settings& settings, SDL_Renderer *rend, t_actionValue *value, t_actionTable *action)
@@ -87,14 +86,14 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *valu
     int deltat;
 
     time.start();
-
+    t1 = 0;
+    t2 = 0;
     resetActionTable(&action);
 
     while (!settings.QueryCloseRequest())
     {
-        t1 = time.get_ticks();
-        t2 = time.get_ticks();
         deltat = t2-t1;
+        t1 = time.get_ticks();
         timer.start();
         eventManagement(settings, rend, value, &action);
         if (settings.QueryPosition() == game)
@@ -110,6 +109,7 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, t_actionValue *valu
         }
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
         SDL_Delay(fmax(0, (1000 / 30) - timer.get_ticks()));
+        t2 = time.get_ticks();
     }
 }
 

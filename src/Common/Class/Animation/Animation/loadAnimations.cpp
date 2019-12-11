@@ -59,24 +59,19 @@ void        CS_Animation::cutFrame(int nb_frame, int nb_columnframe, int nb_line
     }
 }
 
-void        CS_Animation::setMovement(int nb_frame, ...)
+void        CS_Animation::setSpeed(float speedSource)
 {
-    va_list op;
-    int     i;
-
-    i = 0;
-    va_start(op, nb_frame);
-    movement.resize(nb_frame);
-    while (i < nb_frame)
-    {
-        movement[i] = Tools->transformX((float)va_arg(op, double));
-        i++;
-    }
-    va_end(op);
+    speed = Tools->transformWidth(speedSource);
 }
 
 void        CS_Animation::setPas(float pasSource)
 {
     pas = pasSource;
+}
+
+void            CS_Animation::setSize(float wSource, float hSource)
+{
+    w = Tools->transformWidth(wSource);
+    h = Tools->transformHeight(hSource);
 }
 

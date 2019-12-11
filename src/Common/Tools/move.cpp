@@ -11,13 +11,9 @@ void    checkBorder(int w, int h, int &x, int &y, CS_GameScene *map)
     (void)h;
     map->QueryBorne(BorderMinX, BorderMaxX);
     if (x < BorderMinX)
-    {
         x = BorderMinX;
-    }
     if (x + w > BorderMaxX)
-    {
         x = BorderMaxX - w;
-    }
 }
 
 void    moveWithTest(bool right, int w, int h, int& x, int &y, CS_GameScene *map)

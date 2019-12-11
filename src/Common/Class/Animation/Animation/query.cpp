@@ -21,9 +21,9 @@ SDL_Rect        *CS_Animation::QueryFrame()
 int     CS_Animation::QueryMovementX(bool right)
 {
     if (right)
-        return(movement[index]);
+        return(speed);
     else
-        return(-movement[index]);
+        return(-speed);
 }
 
 int     CS_Animation::QueryMovementY()
@@ -31,3 +31,8 @@ int     CS_Animation::QueryMovementY()
     return (0);
 }
 
+void            CS_Animation::QuerySize(int &wDest, int& hDest)
+{
+    wDest = w;
+    hDest = h;
+}

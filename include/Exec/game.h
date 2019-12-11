@@ -113,4 +113,11 @@ void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int
 void    resetActionTable(t_actionTable *table);
 void    fillActionValue(t_actionValue *value);
 
+CS_Parallax     *initParallax(SDL_Renderer *render);
+CS_Enemies      *initEnemies(SDL_Renderer *render);
+CS_Character    *initMC(SDL_Renderer *render);
+CS_Camera       *initCamera();
+
+
+
 #endif

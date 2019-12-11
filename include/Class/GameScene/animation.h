@@ -38,7 +38,8 @@ class   CS_Animation
         void            newAnimation(t_animation nameSource, int stop);
         void            loadTexture(SDL_Renderer *render, std::string png_left, std::string png_right);
         void            cutFrame(int nb_frame, int nb_columnframe, int nb_lineframe);
-        void            setMovement(int nb_frame, ...);
+        void            setSpeed(float speedSource);
+        void            setSize(float wSource, float hSource);
 
         void            restartAnimation();
 
@@ -56,6 +57,7 @@ class   CS_Animation
         t_animation     QueryName();
         SDL_Texture     *QueryTexture(bool right);
         SDL_Rect        *QueryFrame();
+        void            QuerySize(int &wDest, int& hDest);
         int             QueryMovementX(bool right);
         int             QueryMovementY();
 
@@ -68,8 +70,11 @@ class   CS_Animation
         SDL_Texture             *textureL;
         std::vector<SDL_Rect *> frame;
 
-        std::vector<int>        movement;
-        
+        int                     speed;
+
+        int                     w;
+        int                     h;
+
         int                     nbFrame;
         int                     nbColumnFrame;
         int                     nbLineFrame;

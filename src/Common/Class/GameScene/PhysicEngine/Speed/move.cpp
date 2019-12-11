@@ -1,19 +1,19 @@
 # include "gameScene.h"
 
-void    CS_Speed::updateSpeed(CS_Force force)
+void    CS_Speed::updateSpeed(CS_Force force, float deltaT)
 {
-
+    force.usePhysic(vX, vY, deltaT);
 }
 
-void    CS_Speed::updateSpeed(int aXSource, int aYSource)
+void    CS_Speed::updateSpeed(int aXSource, int aYSource, float deltaT)
 {
-    vX += aXSource;
-    vY += aYSource;
+    vX += aXSource * deltaT;
+    vY += aYSource * deltaT;
 }
 
 
-void    CS_Speed::moveObject(int &x, int &y)
+void    CS_Speed::moveObject(int &x, int &y, float deltaT)
 {
-    x += vX;
-    y += vY;
+    x += vX * deltaT;
+    y += vY * deltaT;
 }

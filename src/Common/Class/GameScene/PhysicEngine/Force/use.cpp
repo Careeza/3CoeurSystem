@@ -1,7 +1,7 @@
 # include "gameScene.h"
 
-void    CS_Force::usePhysic(int& vXDest, int& vYDest)
+void    CS_Force::usePhysic(int& vXDest, int& vYDest, float deltaT)
 {
-    vXDest += aX;
-    vYDest += aY;
+    vXDest += aX * deltaT;
+    vYDest += aY * deltaT;
 }
