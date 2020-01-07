@@ -12,7 +12,7 @@ void        initSettings(CS_EditAnimationSetting &settings, SDL_Window *window, 
     settings.getCloseRequest(false);
     settings.getPauseRequest(false);
     settings.getFps(60);
-    settings.setFpsAnimation(60);
+    settings.setFpsAnimation(1000);
     settings.getPosition(game);
     Tools->getWindowSize(settings.QueryWindowsWidth(), settings.QueryWindowsHeight());
     settings.initGameScene(init_home(render));

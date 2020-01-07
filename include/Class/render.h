@@ -24,6 +24,7 @@ class   CS_Renderer
     public:
         void    CS_loadRenderer(SDL_Renderer *render);
         void    CS_dispScene(CS_Scene *current, CS_GameScene *gameScene, t_pos pos);
+        void    CS_dispScene2(SDL_Texture *screen);
 };
 
 #endif

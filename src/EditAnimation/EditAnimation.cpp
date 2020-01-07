@@ -36,12 +36,12 @@ int     CS_EditAnimationSetting::QueryFpsAnimation()
     return (fpsAnimation);
 }
 
-void    CS_EditAnimationSetting::increaseFps()
+void    CS_EditAnimationSetting::increaseFps(int fps)
 {
-    fpsAnimation++;
+    fpsAnimation += fps;
 }
 
-void    CS_EditAnimationSetting::decreaseFps()
+void    CS_EditAnimationSetting::decreaseFps(int fps)
 {
-    fpsAnimation--;
+    fpsAnimation -= fps;
 }

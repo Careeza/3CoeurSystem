@@ -3,10 +3,10 @@
 CS_Animation::CS_Animation()
 {
     Tools->verbose(LEVEL2, "s", "create animation");
-    interrupt = NOINTERRUPT;
+    animationEnd = false;
+    interrupt = false;
     index = 0;
-    indexPas = 0;
-    pas = 1;
+    time = 0;
 }
 
 CS_Animation::~CS_Animation()
@@ -19,4 +19,5 @@ CS_Animation::~CS_Animation()
 void        CS_Animation::restartAnimation()
 {
     index = 0;
+    time = 0;
 }

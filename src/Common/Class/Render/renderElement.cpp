@@ -207,6 +207,15 @@ void    dispGameScene(CS_GameScene *gameScene, SDL_Renderer *render)
         renderEnemy(gameScene->QueryEnemies(), render, &size, cameraX, cameraY);
 }
 
+void    CS_Renderer::CS_dispScene2(SDL_Texture *screen)
+{
+    SDL_SetRenderTarget(CS_render, NULL);
+    SDL_RenderCopy(CS_render, screen, NULL, NULL);
+    SDL_RenderPresent(CS_render);
+    SDL_SetRenderTarget(CS_render, screen);
+}
+
+
 void    CS_Renderer::CS_dispScene(CS_Scene *current, CS_GameScene *gameScene, t_pos pos)
 {
     if (gameScene != NULL)

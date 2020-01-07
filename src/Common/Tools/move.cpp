@@ -26,3 +26,33 @@ void    moveWithTest(bool right, int w, int h, int& x, int &y, CS_GameScene *map
     {
     }
 }
+
+void    checkBorder(int w, int BorderMinX, int BorderMaxX, CS_PersonalPhysic *physic)
+{
+    int x;
+
+    x = physic->QueryPostionX();
+    if (x < BorderMinX)
+        physic->setPosXPixel(BorderMinX);
+    if (x + w > BorderMaxX)
+        physic->setPosXPixel(BorderMaxX - w);
+}
+
+void    checkGround(int h, CS_PersonalPhysic *physic)
+{
+    int y;
+
+    y = physic->QueryPostionY();
+    if (y + h > Tools->QueryWindowHeight())
+    {
+        physic->setPosYPixel(Tools->QueryWindowHeight() - h);
+        physic->setOnGround(true);
+        physic->setSpeedY(0);
+    }
+}
+
+void    verifyHitbox(CS_PersonalPhysic *physic, int w, int h, int BorderMinX, int BorderMaxX)
+{
+    checkBorder(w, BorderMinX, BorderMaxX, physic);
+    checkGround(h, physic);
+}

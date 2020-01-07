@@ -135,8 +135,6 @@ void    changeButton(CS_EditMapSetting *set);
 void    escapeAction(CS_Settings& settings, SDL_Renderer *render);
 void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Renderer *render);
 
-void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);
-void    fillActionValue(t_actionValue *value);
 void    resetActionTable(t_actionTable *table);
 void    filtreActionTable(t_actionTable *table, t_actionTable *filtre);
 void    useAction2(t_actionTable *table, CS_EditMapSetting& settings);

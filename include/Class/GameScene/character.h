@@ -25,27 +25,29 @@ class   CS_Character
         void        loadAnimation(t_animation name);
         void        loadPhysic(CS_PersonalPhysic *physicSource);
 
-        bool        nextFrame();
-        bool        previousFrame();
+        void        nextFrame();
+        void        previousFrame();
+
+        void        updateFrame(int deltaT);
 
         void        getFrame();
 
-        void        moveCharacter();
+        void        setAnimationTime(int animationTimeSource);
 
-        bool        nextIndexPas();
-
-        void        setPas(float pasSource);
-        void        setPos(float xSource, float ySource);
+        void        moveCharacter(float deltaT, int BorderMinX, int BorderMaxX);
         void        setRight(bool rightSource);
-
-        SDL_Texture *QueryTexture();
-        SDL_Rect    *QueryFrame();
 
         void        QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);
         void        QuerySize(int& wDest, int& hDest);
         void        QueryPos(int& xDest, int& yDest);
 
-        int         QueryMoveX();
+        CS_PersonalPhysic   *QeuryPhysique();
+        SDL_Texture         *QueryTexture();
+        SDL_Rect            *QueryFrame();
+
+        bool                VerifyRight();
+
+        int                 QueryMoveX();
 //        int         QueryMoveY();
 
 
@@ -58,8 +60,6 @@ class   CS_Character
         CS_Animation        *saveAnimation;
         CS_PersonalPhysic   *physic;
 
-        int                 x;
-        int                 y;
         bool                right;
 };
 

@@ -1,18 +1,31 @@
 #include "editAnimation.h"
 
-CS_Animation    *walkMC(SDL_Renderer *render)
+CS_Animation        *walkMC(SDL_Renderer *render)
 {
     CS_Animation    *animation;
 
     animation = new (CS_Animation);
 
-    animation->newAnimation(WALK, INTERRUPT);
-    animation->loadTexture(render, "resources/source/YellowSlime.png", "resources/source/YellowSlime.png");
-    animation->cutFrame(5, 5, 1);
-    animation->setSpeed(1.0);
-    animation->setSize(10, 10);
+    animation->newAnimation(WALK, true);
+    animation->loadTexture(render, "resources/source/MainCharacter/runLMC.png", "resources/source/MainCharacter/runRMC.png");
+    animation->setSize(20, 20);
+    animation->cutFrame(8, 8, 1);
+    animation->setSpeed(30, 0);
+    animation->setAnimationTime(542);
 
     return (animation);
+}
+
+CS_PersonalPhysic   *initPhysic()
+{
+    CS_PersonalPhysic *physic;
+
+    physic = new (CS_PersonalPhysic);
+
+    physic->setPosX(32.5);
+    physic->setPosY(45);
+    
+    return (physic);
 }
 
 CS_Character    *initMC(SDL_Renderer *render)
@@ -23,9 +36,9 @@ CS_Character    *initMC(SDL_Renderer *render)
 
     MC->addAnimation(render, walkMC);
     MC->loadAnimation(WALK);
-    MC->setPos(32.5, 45);
     MC->getFrame();
-    
+    MC->loadPhysic(initPhysic());
+
     return (MC);
 }
 
@@ -60,11 +73,15 @@ CS_GameScene    *init_home(SDL_Renderer *render)
     scene->writeTexte(-1, "+fps");
     scene->createButtonToScene("Asset8", 12.5, 10, 87.5, 30, 1, &decreaseFps);
     scene->writeTexte(-1, "-fps");
+    scene->createButtonToScene("Asset9", 12.5, 10, 75, 40, 1, &incraseFps10);
+    scene->writeTexteScaleW(-1, "++fps");
+    scene->createButtonToScene("Asset10", 12.5, 10, 87.5, 40, 1, &decreaseFps10);
+    scene->writeTexteScaleW(-1, "--fps");
+    scene->createButtonToScene("Asset11", 12.5, 10, 75, 50, 1, &incraseFps100);
+    scene->writeTexteScaleW(-1, "+++fps");
+    scene->createButtonToScene("Asset12",  12.5, 10, 87.5, 50, 1, &decreaseFps100);
+    scene->writeTexteScaleW(-1, "---fps");
     scene->setTextColor(0x00, 0x00, 0x00, 0xFF);
-    scene->createButtonToSceneFromPng("Asset9", "resources/source/greenCube.png", 12.5, 10, 75, 40, 1, &closeGame);
-    scene->createButtonToSceneFromPng("Asset10", "resources/source/greenCube.png",  12.5, 10, 87.5, 40, 1, &closeGame);
-    scene->createButtonToSceneFromPng("Asset11", "resources/source/greenCube.png",  12.5, 10, 75, 50, 1, &closeGame);
-    scene->createButtonToSceneFromPng("Asset12", "resources/source/greenCube.png",  12.5, 10, 87.5, 50, 1, &closeGame);
     scene->createButtonToSceneFromPng("Asset13", "resources/source/greenCube.png",  12.5, 10, 75, 60, 1, &closeGame);
     scene->createButtonToSceneFromPng("Asset14", "resources/source/greenCube.png",  12.5, 10, 87.5, 60, 1, &closeGame);
     scene->createButtonToSceneFromPng("Asset15", "resources/source/greenCube.png",  12.5, 10, 75, 70, 1, &closeGame);
@@ -76,7 +93,7 @@ CS_GameScene    *init_home(SDL_Renderer *render)
 
     scene->setSceneColor(0xFF, 0xFF, 0xFF, 0xFF);
     scene->createElementToScene("fps", 10, 10, 0, 0, 0);
-    scene->writeTexte(-1, "60");
+    scene->writeTexte(-1, "542");
 
     scene->setBorneMap(0, 1000);
     scene->loadMC(initMC(render));

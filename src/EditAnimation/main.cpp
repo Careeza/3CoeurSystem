@@ -7,34 +7,48 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_EditAnimationSet
     CS_Timer        timer;
     CS_KeyControl   event;
     CS_Camera       *camera;
-    t_actionTable   action;
+    t_action        action;
+    t_actionTable   actionTable;
+
+    CS_Timer        time;
+    int             t1;
+    int             t2;
+    int             deltaTMS;
 
     int             xMouse;
     int             yMouse;
 
     xMouse = 0;
     yMouse = 0;
+    time.start();
+    t1 = 0;
+    t2 = 0;
     camera = settings.QueryGameScene()->QueryCamera();
     while (!settings.QueryCloseRequest())
     {
+        deltaTMS = t2-t1;
+        t1 = time.get_ticks();
         timer.start();
         while (event.loadEvenement(settings.QueryGameScene()))
         {
 //            std::cout << "boucle here 2" << std::endl;
             if (!bouttonManagement2(event, settings, rend))
                 mouseAction(event, settings, xMouse, yMouse);
-            actionKeyManagement(event, value, &action);
+            actionKeyManagement(event, value, &actionTable, &action);
             escapeKeyManagement(event, settings, rend);
         }
+        transformActionTable(&actionTable);
+        fillAction(&actionTable, &action);
         useAction2(&action, settings);
 
         if (!settings.isPaused())
         {
-            settings.QueryGameScene()->QueryMC()->nextIndexPas();
+            settings.QueryGameScene()->QueryMC()->updateFrame(deltaTMS);
             settings.QueryGameScene()->QueryMC()->getFrame();
         }
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
         SDL_Delay(fmax(0, (1000 / (float)settings.QueryFps()) - timer.get_ticks()));
+        t2 = time.get_ticks();
     }
 }
 

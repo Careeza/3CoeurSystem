@@ -12,5 +12,5 @@ void    CS_Enemy::getFrame()
 
 void    CS_Enemy::moveCharacter()
 {
-    enemy->moveCharacter();
+//    enemy->moveCharacter();
 }

@@ -12,7 +12,7 @@ void    CS_Speed::updateSpeed(int aXSource, int aYSource, float deltaT)
 }
 
 
-void    CS_Speed::moveObject(int &x, int &y, float deltaT)
+void    CS_Speed::moveObject(float &x, float &y, float deltaT)
 {
     x += vX * deltaT;
     y += vY * deltaT;

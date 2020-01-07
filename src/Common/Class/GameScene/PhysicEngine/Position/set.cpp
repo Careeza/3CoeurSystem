@@ -7,7 +7,7 @@ void    CS_Position::setPositionX(float xSource)
 
 void    CS_Position::setPositionY(float ySource)
 {
-    x = Tools->transformWidth(ySource);
+    y = Tools->transformHeight(ySource);
 }
 
 void    CS_Position::setPositionXPixel(int xSource)

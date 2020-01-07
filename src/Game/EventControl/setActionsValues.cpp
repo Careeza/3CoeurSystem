@@ -1,31 +1,16 @@
 #include "game.h"
 
-void    fillActionValue(t_actionValue *value)
+void    resetAction(t_action *table)
 {
-    value->up = SDLK_z;
-    value->down = SDLK_s;
-    value->right = SDLK_d;
-    value->left = SDLK_q;
-    value->jump = SDLK_SPACE;
-    value->dodge = SDLK_LSHIFT;
-    value->att = -1;
-    value->att_sp = -1;
-    value->use = SDLK_f;
-    value->spell_1 = SDLK_a;
-    value->spell_2 = SDLK_e;
-}
-
-void    resetActionTable(t_actionTable *table)
-{
-    table->up = false;
-    table->down = false;
-    table->right = false;
-    table->left = false;
-    table->jump = false;
-    table->dodge = false;
-    table->att = false;
-    table->att_sp = false;
-    table->use = false;
-    table->spell_1 = false;
-    table->spell_2 = false;
+    table->up = KeyNoPress;
+    table->down = KeyNoPress;
+    table->right = KeyNoPress;
+    table->left = KeyNoPress;
+    table->jump = KeyNoPress;
+    table->dodge = KeyNoPress;
+    table->att = KeyNoPress;
+    table->att_sp = KeyNoPress;
+    table->use = KeyNoPress;
+    table->spell_1 = KeyNoPress;
+    table->spell_2 = KeyNoPress;
 }

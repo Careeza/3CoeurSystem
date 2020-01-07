@@ -28,8 +28,8 @@ class   CS_EditAnimationSetting : public CS_Settings
         void    pause();
         bool    isPaused();
 
-        void    increaseFps();
-        void    decreaseFps();
+        void    increaseFps(int fps);
+        void    decreaseFps(int fps);
 
         void    setFpsAnimation(int fpsSource);
         int     QueryFpsAnimation();
@@ -51,6 +51,10 @@ void    left(void* settings, SDL_Renderer *render);
 void    right(void* settings, SDL_Renderer *render);
 void    incraseFps(void* settings, SDL_Renderer *render);
 void    decreaseFps(void* settings, SDL_Renderer *render);
+void    incraseFps10(void* settings, SDL_Renderer *render);
+void    decreaseFps10(void* settings, SDL_Renderer *render);
+void    incraseFps100(void* settings, SDL_Renderer *render);
+void    decreaseFps100(void* settings, SDL_Renderer *render);
 void    changeText(void* settings, SDL_Renderer *render);
 
 
@@ -59,9 +63,9 @@ void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Rend
 void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);
 void    fillActionValue(t_actionValue *value);
 void    resetActionTable(t_actionTable *table);
-void    filtreActionTable(t_actionTable *table, t_actionTable *filtre);
-void    useAction2(t_actionTable *table, CS_EditAnimationSetting& settings);
-void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *action);
+void    fillAction(t_actionTable *table, t_action *action);
+void    useAction2(t_action *table, CS_EditAnimationSetting& settings);
+void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *actionTable, t_action *action);
 void    mouseAction(CS_KeyControl event, CS_EditAnimationSetting &settings, int& xMouse, int &yMouse);
 int     bouttonManagement2(CS_KeyControl& control, CS_EditAnimationSetting& settings, SDL_Renderer *render);
 

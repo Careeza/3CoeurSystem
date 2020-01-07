@@ -43,3 +43,8 @@ void    CS_PersonalPhysic::setPosYPixel(int posY)
 {
     position.setPositionYPixel(posY);
 }
+
+void        CS_PersonalPhysic::setHitBox(CS_HitBox *hitboxSource)
+{
+    hitbox = hitboxSource;
+}

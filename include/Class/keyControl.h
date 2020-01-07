@@ -19,6 +19,18 @@
 # define    CS_MOUSE_DOWN 2
 # define    CS_MOUSE_UP 3
 
+typedef enum    e_keyManagement
+{
+    keyNone             = 0b0000,
+    KeyPress            = 0b0001,
+    KeyHold             = 0b0010,
+    KeyHoldPress        = 0b0011,
+    KeyRelease          = 0b0100,
+    KeyNoPress          = 0b1000,
+    KeyReleaseNoPress   = 0b1100,
+    KeyPressRelease     = 0b0101
+}               t_keyManagement;
+
 typedef struct  s_actionValue
 {
     int        up;
@@ -34,20 +46,49 @@ typedef struct  s_actionValue
     int        spell_2;
 }               t_actionValue;
 
-typedef struct  s_actionTable
+typedef struct          s_actionTable
 {
-    bool        up;
-    bool        down;
-    bool        right;
-    bool        left;
-    bool        jump;
-    bool        dodge;
-    bool        att;
-    bool        att_sp;
-    bool        use;
-    bool        spell_1;
-    bool        spell_2;
-}               t_actionTable;
+    t_keyManagement     up;
+    t_keyManagement     down;
+    t_keyManagement     right;
+    t_keyManagement     left;
+    t_keyManagement     jump;
+    t_keyManagement     dodge;
+    t_keyManagement     att;
+    t_keyManagement     att_sp;
+    t_keyManagement     use;
+    t_keyManagement     spell_1;
+    t_keyManagement     spell_2;
+
+    t_keyManagement     upSave;
+    t_keyManagement     downSave;
+    t_keyManagement     rightSave;
+    t_keyManagement     leftSave;
+    t_keyManagement     jumpSave;
+    t_keyManagement     dodgeSave;
+    t_keyManagement     attSave;
+    t_keyManagement     att_spSave;
+    t_keyManagement     useSave;
+    t_keyManagement     spell_1Save;
+    t_keyManagement     spell_2Save;
+}                       t_actionTable;
+
+typedef struct  s_action
+{
+    t_keyManagement     up;
+    t_keyManagement     down;
+    t_keyManagement     right;
+    t_keyManagement     left;
+    t_keyManagement     jump;
+    t_keyManagement     dodge;
+    t_keyManagement     att;
+    t_keyManagement     att_sp;
+    t_keyManagement     use;
+    t_keyManagement     spell_1;
+    t_keyManagement     spell_2;
+    t_keyManagement     noAction;
+
+}               t_action;
 
 class   CS_KeyControl
 {
@@ -66,5 +107,11 @@ class   CS_KeyControl
         int             len;
         CS_Scene        *scene;
 };
+
+
+void    fillActionValue(t_actionValue *value);
+void    initActionTable(t_actionTable *table);
+void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);
+void    transformActionTable(t_actionTable *table);
 
 #endif

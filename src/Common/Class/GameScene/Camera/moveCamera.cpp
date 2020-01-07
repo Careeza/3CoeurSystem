@@ -10,7 +10,59 @@ void    CS_Camera::moveCamera2(int xSource, int ySource, CS_GameScene *map)
 {
     x += xSource;
     y += ySource;
-    moveWithTest(xSource > 0, Tools->QueryWindowWidth(), Tools->QueryWindowHeight(), x, y, map);
+//./g    verifyHitbox(Tools->QueryWindowWidth(), Tools->QueryWindowHeight(), x, y, map);
+}
+
+#define Decalage 300
+
+/*void    CS_Camera::moveCamera3(CS_Character *MC, float deltaT)
+{
+    int xMC;
+    int yMC;
+
+    MC->QueryPos(xMC, yMC);
+
+    int velocity;
+    int distance;
+    int WindowW;
+
+    WindowW = Tools->QueryWindowWidth();
+    if (MC->VerifyRight())
+        distance = (x + WindowW / 2) - (xMC + Decalage);
+    else
+        distance = (x + WindowW / 2) - (xMC - Decalage);
+    velocity = (distance / Decalage) * VELOCITY;
+    x += velocity * deltaT;
+}
+*/
+
+
+void    CS_Camera::moveCamera3(CS_Character *MC, float deltaT)
+{
+    int xMC;
+    int yMC;
+
+    MC->QueryPos(xMC, yMC);
+
+    int vX;
+    int vY;
+
+    vY = 0;
+    vX = MC->QueryMoveX();
+
+    std::cout << vX << " << VX" << std::endl;
+
+    int velocity;
+    int distance;
+    int WindowW;
+
+    WindowW = Tools->QueryWindowWidth();
+    if (vY == 0)
+        distance = (x + WindowW / 2) - (xMC + Decalage);
+    else
+        distance = (x + WindowW / 2) - (xMC - Decalage);
+    velocity = (distance / Decalage) * vX;
+    x += vX * deltaT;
 }
 
 /*void    CS_Camera::moveCamera3(int posX, int yPos, CS_GameScene *map)

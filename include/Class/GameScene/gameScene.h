@@ -20,12 +20,13 @@ class   CS_Camera
 
         void    moveCamera(int xSource, int ySource);
         void    moveCamera2(int xSource, int ySource, CS_GameScene *map);
+        void    moveCamera3(CS_Character *MC, float deltaT);
 
         void    QueryCameraPosition(int& xDest, int& yDest);
 
     private:
-        int     x;
-        int     y;
+        float     x;
+        float     y;
 };
 
 class   CS_GameScene : public CS_Scene
@@ -69,6 +70,7 @@ class   CS_GameScene : public CS_Scene
         int             borneMaxX;
 };
 
-void    moveWithTest(bool right, int w, int h, int& x, int &y, CS_GameScene *map);
+void            verifyHitbox(CS_PersonalPhysic *physic, int w, int h, int BorderMinX, int BorderMaxX);
+void            moveWithTest(bool right, int w, int h, int& x, int &y, CS_GameScene *map);
 
 #endif

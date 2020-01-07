@@ -8,5 +8,5 @@ void        CS_Enemy::addEnemy(SDL_Renderer *render, CS_Character *(*create)(SDL
 
 void        CS_Enemy::spawnEnemy(float xSource, float ySource)
 {
-    enemy->setPos(xSource, ySource);
+//    enemy->setPos(xSource, ySource);
 }

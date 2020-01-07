@@ -1,20 +1,15 @@
 # include "gameScene.h"
 
 
-bool        CS_Character::nextFrame()
+void        CS_Character::nextFrame()
 {
-    return (animation->nextFrame());
-}
-
-bool        CS_Character::nextIndexPas()
-{
-    return (animation->nextIndexPas());
+    animation->nextFrame();
 }
 
 
-bool        CS_Character::previousFrame()
+void        CS_Character::previousFrame()
 {
-    return (animation->previousFrame());
+    animation->previousFrame();
 }
 
 void        CS_Character::getFrame()
@@ -22,13 +17,29 @@ void        CS_Character::getFrame()
     animation->getFrame(right, frame, texture);
 }
 
-void        CS_Character::moveCharacter()
+void        CS_Character::moveCharacter(float deltaT, int BorderMinX, int BorderMaxX)
 {
-    animation->moveCharacter(right, x, y);
+    int w;
+    int h;
+
+    physic->updateSpeed(deltaT);
+    physic->updatePosition(deltaT);
+    QuerySize(w, h);
+    verifyHitbox(physic, w, h, BorderMinX, BorderMaxX);
 }
 
 
 void        CS_Character::setRight(bool rightSource)
 {
     right = rightSource;
+}
+
+void        CS_Character::updateFrame(int deltaT)
+{
+    animation->nextFrame2(deltaT);
+}
+
+void        CS_Character::setAnimationTime(int animationTimeSource)
+{
+    animation->setAnimationTime(animationTimeSource);
 }

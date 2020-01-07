@@ -8,9 +8,14 @@ SDL_Texture *CS_Character::QueryTexture()
 void    CS_Character::QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest)
 {
     animation->QuerySize(wDest, hDest);
-    xDest = x;
-    yDest = y;
+    physic->QueryPostion(xDest, yDest);
 }
+
+CS_PersonalPhysic   *CS_Character::QeuryPhysique()
+{
+    return (physic);
+}
+
 
 void    CS_Character::QuerySize(int& wDest, int& hDest)
 {
@@ -19,8 +24,7 @@ void    CS_Character::QuerySize(int& wDest, int& hDest)
 
 void    CS_Character::QueryPos(int& xDest, int& yDest)
 {
-    xDest = x;
-    yDest = y;
+    physic->QueryPostion(xDest, yDest);
 }
 
 

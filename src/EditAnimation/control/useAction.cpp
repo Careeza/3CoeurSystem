@@ -1,19 +1,37 @@
 #include "editAnimation.h"
 
-void    filtreActionTable(t_actionTable *table, t_actionTable *filtre)
+void    resetAction(t_action *table)
 {
-    resetActionTable(filtre);
+    table->up = KeyNoPress;
+    table->down = KeyNoPress;
+    table->right = KeyNoPress;
+    table->left = KeyNoPress;
+    table->jump = KeyNoPress;
+    table->dodge = KeyNoPress;
+    table->att = KeyNoPress;
+    table->att_sp = KeyNoPress;
+    table->use = KeyNoPress;
+    table->spell_1 = KeyNoPress;
+    table->spell_2 = KeyNoPress;
+}
+
+void    fillAction(t_actionTable *table, t_action *action)
+{
+    resetAction(action);
 //    std::cout << "reset" << std::endl;
-    if (table->right & !table->left)
-        filtre->right = true;
-    if (table->left & !table->right)
-        filtre->left = true;
-    filtre->dodge = table->dodge;
-    filtre->jump = table->jump;
+
+
+    if (table->right & KeyHoldPress)
+    if ((table->right & KeyHoldPress) && !(table->left & KeyHoldPress))
+        action->right = table->right;
+    if ((table->left & KeyHoldPress) && !(table->right & KeyHoldPress))
+        action->left = table->left;
+    action->dodge = table->dodge;
+    action->jump = table->jump;
 }
 
 
-void    useAction2(t_actionTable *table, CS_EditAnimationSetting& settings)
+void    useAction2(t_action *table, CS_EditAnimationSetting& settings)
 {
     (void)table;
     (void)settings;

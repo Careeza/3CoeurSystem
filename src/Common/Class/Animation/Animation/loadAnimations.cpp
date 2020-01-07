@@ -38,6 +38,7 @@ void        CS_Animation::cutFrame(int nb_frame, int nb_columnframe, int nb_line
     int         frameWidth;
     int         frameHeight;
     SDL_Rect    *newFrame;
+    CS_HitBox   *newHitBox;
 
     i = 0;
     SDL_QueryTexture (textureL, NULL, NULL, &width, &height);
@@ -47,26 +48,30 @@ void        CS_Animation::cutFrame(int nb_frame, int nb_columnframe, int nb_line
     nbColumnFrame = nb_columnframe;
     nbLineFrame = nb_lineframe;
     frame.resize(nb_frame);
+    hitboxes.resize(nb_frame);
     while (i < nb_frame)
     {
         newFrame = new (SDL_Rect);
+        newFrame->w = frameWidth;
+        newFrame->h = frameHeight;
+        newFrame->x = frameWidth * (i % nb_columnframe);
+        newFrame->y = frameHeight * (i / nb_columnframe);
         frame[i] = newFrame;
-        frame[i]->w = frameWidth;
-        frame[i]->h = frameHeight;
-        frame[i]->x = frameWidth * (i % nb_columnframe);
-        frame[i]->y = frameHeight * (i / nb_columnframe);
+
+        newHitBox = new (CS_HitBox);
+        newHitBox->setWPixel(w);
+        newHitBox->setHPixel(h);
+        newHitBox->setXPixel(0);
+        newHitBox->setYPixel(0);
+        hitboxes[i] = newHitBox;
         i++;
     }
 }
 
-void        CS_Animation::setSpeed(float speedSource)
+void        CS_Animation::setSpeed(float speedXSource, float speedYSource)
 {
-    speed = Tools->transformWidth(speedSource);
-}
-
-void        CS_Animation::setPas(float pasSource)
-{
-    pas = pasSource;
+    speedX = Tools->transformWidth(speedXSource);
+    speedY = Tools->transformHeight(speedYSource);
 }
 
 void            CS_Animation::setSize(float wSource, float hSource)
@@ -75,3 +80,8 @@ void            CS_Animation::setSize(float wSource, float hSource)
     h = Tools->transformHeight(hSource);
 }
 
+void            CS_Animation::setAnimationTime(int animationTimeSource)
+{
+    animationTime = animationTimeSource;
+    frameTime = animationTimeSource / (float)nbFrame;
+}

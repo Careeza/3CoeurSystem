@@ -6,11 +6,12 @@ CS_Animation        *staticMC(SDL_Renderer *render)
 
     animation = new (CS_Animation);
 
-    animation->newAnimation(STATIC, INTERRUPT);
-    animation->loadTexture(render, MCSTATICL, MCSTATICR);
+    animation->newAnimation(STATIC, true);
+    animation->loadTexture(render, "resources/source/MainCharacter/MCstaticL.png", "resources/source/MainCharacter/MCstaticR.png");
+    animation->setSize(20, 20);
     animation->cutFrame(4, 4, 1);
-    animation->setSpeed(0);
-    animation->setSize(10, 10);
+    animation->setSpeed(0, 0);
+    animation->setAnimationTime(500);
 
     return (animation);
 }
@@ -21,11 +22,12 @@ CS_Animation        *walkMC(SDL_Renderer *render)
 
     animation = new (CS_Animation);
 
-    animation->newAnimation(WALK, INTERRUPT);
-    animation->loadTexture(render, MCWALKL, MCWALKR);
-    animation->cutFrame(6, 6, 1);
-    animation->setSpeed(1);
-    animation->setSize(10, 10);
+    animation->newAnimation(WALK, true);
+    animation->loadTexture(render, "resources/source/MainCharacter/runLMC.png", "resources/source/MainCharacter/runRMC.png");
+    animation->setSize(20, 20);
+    animation->cutFrame(8, 8, 1);
+    animation->setSpeed(30, 0);
+    animation->setAnimationTime(600);
 
     return (animation);
 }
@@ -36,11 +38,12 @@ CS_Animation        *sprintMC(SDL_Renderer *render)
 
     animation = new (CS_Animation);
 
-    animation->newAnimation(SPRINT, INTERRUPT);
+    animation->newAnimation(SPRINT, true);
     animation->loadTexture(render, MCWALKL, MCWALKR);
-    animation->cutFrame(6, 6, 1);
-    animation->setSpeed(1.5);
     animation->setSize(10, 10);
+    animation->cutFrame(6, 6, 1);
+    animation->setSpeed(15, 0);
+    animation->setAnimationTime(542);
 
     return (animation);
 }
@@ -51,8 +54,8 @@ CS_PersonalPhysic   *initPhysic()
 
     physic = new (CS_PersonalPhysic);
 
-    physic->setPosX(45);
-    physic->setPosY(90);
+    physic->setPosX(40);
+    physic->setPosY(0);
     
     return (physic);
 }
@@ -68,7 +71,6 @@ CS_Character        *initMC(SDL_Renderer *render)
     MC->addAnimation(render, sprintMC);
     MC->loadAnimation(STATIC);
     MC->loadPhysic(initPhysic());
-    MC->setPos(45, 90);
     
     return (MC);
 }

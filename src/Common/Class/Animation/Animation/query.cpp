@@ -21,14 +21,14 @@ SDL_Rect        *CS_Animation::QueryFrame()
 int     CS_Animation::QueryMovementX(bool right)
 {
     if (right)
-        return(speed);
+        return(speedX);
     else
-        return(-speed);
+        return(-speedX);
 }
 
 int     CS_Animation::QueryMovementY()
 {
-    return (0);
+    return (speedY);
 }
 
 void            CS_Animation::QuerySize(int &wDest, int& hDest)

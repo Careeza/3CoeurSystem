@@ -104,14 +104,22 @@ class   authorizedKey
         t_key   keyLeft;
 };
 
-void    useAction2(t_actionTable *table, CS_Settings& settings);
-void    useAction(t_actionTable *table, CS_Settings& settings);
+
+
+void    useAction2(t_action *table, CS_Settings& settings);
+void    useAction(t_action *table, CS_Settings& settings, int deltaT);
+
+void    CameraMove(CS_Settings& settings, t_action *action, int& xCamera, int& yCamera);
+void    enemyManagement(CS_Settings& settings);
+void    MCManagement(CS_Settings& settings, t_action *action, int& xCamera, int& yCamera, float deltaTMS, int deltaTS);
+void    parallaxManagement(CS_Settings& settings, int xCamera, int yCamera);
+
+
 void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Renderer *render);
-void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *action);
-void    filtreActionTable(t_actionTable *table, t_actionTable *filtre);
-void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info);
-void    resetActionTable(t_actionTable *table);
-void    fillActionValue(t_actionValue *value);
+void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *actionTable, t_action *action);
+void    eventManagement(CS_Settings& settings, SDL_Renderer *rend, t_actionValue *value, t_actionTable *actionTable, t_action *action);
+void    fillAction(t_actionTable *table, t_action *action);
+void    resetAction(t_action *table);
 
 CS_Parallax     *initParallax(SDL_Renderer *render);
 CS_Enemies      *initEnemies(SDL_Renderer *render);

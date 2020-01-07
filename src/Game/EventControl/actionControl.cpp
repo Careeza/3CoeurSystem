@@ -1,70 +1,70 @@
 #include "game.h"
 
-void    useAction(t_actionTable *table, CS_Settings& settings)
+void    goToRight(CS_Character *MC, bool right)
 {
-    CS_Character    *MC;
+    MC->setRight(right);
+    MC->loadAnimation(WALK);
+}
 
-    MC = settings.QueryGameScene()->QueryMC();
-    if (table->right == true)
+void    directionSet(t_action *table, CS_Character *MC)
+{
+    if (table->right & KeyPressRelease)
     {
-        MC->setRight(true);
-        if (table->dodge == true)
-        {
-            MC->loadAnimation(SPRINT);
-        }
+        if (table->right & KeyPress)
+            goToRight(MC, true);
         else
         {
-
-            MC->loadAnimation(WALK);
+            if (table->left & KeyHoldPress)
+                goToRight(MC, false);
+            else
+                MC->loadAnimation(STATIC);
         }
     }
-    else if (table->left == true)
+    else if (table->left & KeyPressRelease)
     {
-        MC->setRight(false);
-        if (table->dodge == true)
-        {
-            MC->loadAnimation(SPRINT);
-        }
+        if (table->left & KeyPress)
+            goToRight(MC, false);
         else
         {
-            MC->loadAnimation(WALK);
-            
+            if (table->right & KeyHoldPress)
+                goToRight(MC, true);
+            else
+                MC->loadAnimation(STATIC);
         }
-    }
-    else
-    {
-        MC->loadAnimation(STATIC);
-
     }
 }
 
-void    useAction2(t_actionTable *table, CS_Settings& settings)
+void    useAction(t_action *table, CS_Settings& settings, int deltaT)
+{
+    CS_Character        *MC;
+
+    MC = settings.QueryGameScene()->QueryMC();
+    MC->updateFrame(deltaT);
+    if ((table->right & KeyPressRelease) || (table->left & KeyPressRelease))
+        directionSet(table, MC);
+    if (table->jump & KeyPress)
+        MC->QeuryPhysique()->setSpeedY(-1000);
+}
+
+void    useAction2(t_action *table, CS_Settings& settings)
 {
     CS_Camera    *camera;
 
     camera = settings.QueryGameScene()->QueryCamera();
-    if (table->right == true)
+    if (table->right & KeyHoldPress)
         camera->moveCamera2(5, 0, settings.QueryGameScene());
-    else if (table->left == true)
+    else if (table->left & KeyHoldPress)
         camera->moveCamera2(-5, 0, settings.QueryGameScene());
     else
         ;
 //        std::cout << "No press" << std::endl;
 }
 
-void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *action)
+void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *actionTable, t_action *action)
 {
     int                     key;
     int                     info;
-    static t_actionTable    table;
-    static int              i = 0;
  
-    if (i == 0)
-    {
-        resetActionTable(&table);
-        i++;
-    }
     info = event.getKeyboardActions(key);
-    fillActionTable(&table, value, key, info);
-    filtreActionTable(&table, action);
+    fillActionTable(actionTable, value, key, info);
 }
