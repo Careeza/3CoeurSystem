@@ -2,7 +2,7 @@
 
 TTF_Font    *CS_Police::font = NULL;
 
-void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_EditAnimationSetting& settings, t_actionValue *value)
+void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_EditAnimationSetting& settings, t_actionValue *value, SDL_Texture *screen)
 {
     CS_Timer        timer;
     CS_KeyControl   event;
@@ -47,6 +47,7 @@ void    infiniteLoop(CS_Renderer render, SDL_Renderer *rend, CS_EditAnimationSet
             settings.QueryGameScene()->QueryMC()->getFrame();
         }
         render.CS_dispScene(settings.QueryScene(), settings.QueryGameScene(), settings.QueryPosition());
+        render.CS_dispScene2(screen);
         SDL_Delay(fmax(0, (1000 / (float)settings.QueryFps()) - timer.get_ticks()));
         t2 = time.get_ticks();
     }
@@ -61,16 +62,25 @@ int     main(int argc, char **argv)
     CS_Police               initFont;
     CS_EditAnimationSetting settings;
     t_actionValue           value;
+    SDL_Texture             *screen;
+    int                     w;
+    int                     h;
     
     (void)argc;
     (void)argv;
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
-    window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP);
+    window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_ALLOW_HIGHDPI);
+    SDL_GetWindowSize(window, &w, &h);
 
     TTF_Init();
     initFont.initPolice("resources/alterebro-pixel-font.ttf");
     
     render = init_renderer(window);
+
+    screen = SDL_CreateTexture(render, SDL_PIXELFORMAT_RGBA8888, 
+                                SDL_TEXTUREACCESS_TARGET, w, h);
+
+    SDL_SetRenderTarget(render, screen); // => On va dessiner sur la texture
 
     initSettings(settings, window, render);
 
@@ -80,7 +90,7 @@ int     main(int argc, char **argv)
 
     fillActionValue(&value);
 
-    infiniteLoop(rend, render, settings, &value);
+    infiniteLoop(rend, render, settings, &value, screen);
 
     TTF_Quit();
     SDL_Quit();

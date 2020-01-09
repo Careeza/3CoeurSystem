@@ -19,6 +19,7 @@ typedef enum	e_aniamtion {
     STATIC,
     WALK,
     SPRINT,
+    ATTACK,
 }				t_animation;
 
 # define MCWALKL "resources/source/Slime/runLSlime.png"
@@ -33,12 +34,13 @@ class   CS_Animation
         CS_Animation();
         ~CS_Animation();
 
-        void            newAnimation(t_animation nameSource, int stop);
+        void            newAnimation(t_animation nameSource, bool stop);
         void            loadTexture(SDL_Renderer *render, std::string png_left, std::string png_right);
         void            cutFrame(int nb_frame, int nb_columnframe, int nb_lineframe);
         void            setSpeed(float speedXSource, float speedYsource);
         void            setSize(float wSource, float hSource);
         void            setAnimationTime(int animationTimeSource);
+        void            setInterrupt(bool interruptSource);
 
         void            restartAnimation();
 

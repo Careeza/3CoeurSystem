@@ -15,9 +15,9 @@ class   CS_Scene
 
         void                                        addElementToScene(std::shared_ptr<CS_Element> element);
         void                                        createElementToScene(std::string name, float w, float h, float x, float y, int z);
-        void                                        createButtonToScene(std::string name, float w, float h, float x, float y, int z, void (*f)(void *, SDL_Renderer*));
+        void                                        createButtonToScene(std::string name, float w, float h, float x, float y, int z, t_buttonValue (*f)());
         void                                        createElementToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z);
-        void                                        createButtonToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z, void (*f)(void *, SDL_Renderer*));
+        void                                        createButtonToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z, t_buttonValue (*f)());
         void                                        deleteElementFromeScene(int index);
         
         void                                        setSceneColor(int r, int g, int b, int a);
@@ -37,6 +37,9 @@ class   CS_Scene
         void                                        writeTexteScaleW(int index, std::string comment);
         void                                        addBorder(int index);
 
+        void                                        setDispScene(bool dispSource);
+        bool                                        QueryDispScene();
+
     private:
         std::vector<std::shared_ptr<CS_Element>>    sceneContain;
         int                                         lastElement;
@@ -46,6 +49,8 @@ class   CS_Scene
         CS_Color                                    colorText;
         CS_Color                                    colorBordure;
         CS_Color                                    colorBrightness;
+
+        bool                                        dispScene;
 
     protected:
         SDL_Renderer                                *render;

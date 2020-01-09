@@ -1,6 +1,6 @@
 # include "gameScene.h"
 
-void    CS_Animation::newAnimation(t_animation nameSource, int stop)
+void    CS_Animation::newAnimation(t_animation nameSource, bool stop)
 {
     name = nameSource;
     interrupt = stop;
@@ -84,4 +84,9 @@ void            CS_Animation::setAnimationTime(int animationTimeSource)
 {
     animationTime = animationTimeSource;
     frameTime = animationTimeSource / (float)nbFrame;
+}
+
+void            CS_Animation::setInterrupt(bool interruptSource)
+{
+    interrupt = interruptSource;
 }

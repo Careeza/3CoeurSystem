@@ -24,7 +24,6 @@ class   CS_Settings
 
         void            getScene(CS_Scene *sceneSource);
         void            getGameScene(SDL_Renderer *render);
-        void            getPosition(t_pos position);
 
         int             QueryWindowsWidth();
         int             QueryWindowsHeight();
@@ -34,7 +33,6 @@ class   CS_Settings
         bool            QueryPauseRequest();
         int             QueryFps();
 
-        t_pos           QueryPosition();
         CS_Scene        *QueryScene();
         CS_GameScene    *QueryGameScene();
 
@@ -47,13 +45,8 @@ class   CS_Settings
         bool            pauseRequested;
         int             fps;
 
-        t_pos           pos;
-
         CS_GameScene    *gameScene;
         CS_Scene        *Scene;
 };
-
-void    closeGame(void *settings, SDL_Renderer *render);
-int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings, SDL_Renderer *render);
 
 #endif

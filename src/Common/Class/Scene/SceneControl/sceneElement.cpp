@@ -58,7 +58,7 @@ void                        CS_Scene::createElementToScene(std::string name, flo
     addElementToScene(element);
 }
 
-void                        CS_Scene::createButtonToScene(std::string name, float w, float h, float x, float y, int z, void (*f)(void *, SDL_Renderer*))
+void                        CS_Scene::createButtonToScene(std::string name, float w, float h, float x, float y, int z, t_buttonValue (*f)())
 {
     std::shared_ptr<CS_Element> element (new CS_Element);
     element->CreateButtonFromHand(colorSource, colorBrightness, render, w, h, x, y, f);
@@ -76,7 +76,7 @@ void                        CS_Scene::createElementToSceneFromPng(std::string na
     addElementToScene(element);
 }
 
-void                        CS_Scene::createButtonToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z, void (*f)(void *, SDL_Renderer*))
+void                        CS_Scene::createButtonToSceneFromPng(std::string name, std::string route, float w, float h, float x, float y, int z, t_buttonValue (*f)())
 {
     std::shared_ptr<CS_Element> element (new CS_Element);
     element->CreateButtonFromPng(route, colorBrightness, render, w, h, x, y, f);

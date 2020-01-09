@@ -13,22 +13,6 @@
 # include <vector>
 # include <memory>
 
-typedef enum	e_pos {
-	homeHome =          0b00000000100000000000000000000000,
-    homeVideo =         0b00000000100000010000000000000000,
-    homeSound =         0b00000000100000100000000000000000,
-    homeHotkeys =       0b00000000100001000000000000000000, 
-    homeLevelSelect =   0b00000000100010000000000000000000,
-    homeBox =           0b00000000100100000000000000000000,
-
-
-    menuMenu =          0b00000000000000001000000000000000,
-    menuVideo =         0b00000000000000001000000100000000,
-    menuSound =         0b00000000000000001000001000000000,
-    menuHotkeys =       0b00000000000000001000010000000000,
-
-    game =              0b00000000000000000000000010000000,
-}				t_pos;
 
 # if SDL_BYTEORDER == SDL_BIG_ENDIAN
     #define rmask 0xff000000

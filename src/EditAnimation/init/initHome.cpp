@@ -7,9 +7,9 @@ CS_Animation        *walkMC(SDL_Renderer *render)
     animation = new (CS_Animation);
 
     animation->newAnimation(WALK, true);
-    animation->loadTexture(render, "resources/source/MainCharacter/runLMC.png", "resources/source/MainCharacter/runRMC.png");
+    animation->loadTexture(render, "resources/source/MainCharacter/MCrunL.png", "resources/source/MainCharacter/MCrunR.png");
     animation->setSize(20, 20);
-    animation->cutFrame(8, 8, 1);
+    animation->cutFrame(5, 5, 1);
     animation->setSpeed(30, 0);
     animation->setAnimationTime(542);
 

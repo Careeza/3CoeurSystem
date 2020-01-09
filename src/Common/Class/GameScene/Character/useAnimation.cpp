@@ -14,7 +14,8 @@ void        CS_Character::previousFrame()
 
 void        CS_Character::getFrame()
 {
-    animation->getFrame(right, frame, texture);
+    texture = animation->QueryTexture(right);
+    frame = animation->QueryFrame();
 }
 
 void        CS_Character::moveCharacter(float deltaT, int BorderMinX, int BorderMaxX)

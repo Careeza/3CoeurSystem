@@ -6,6 +6,7 @@ CS_Scene::CS_Scene()
     sceneLen = 0;
 
     colorBrightness.setColor(0xFF, 0xFF, 0xFF, 80);
+    dispScene = true;
 }
 
 CS_Scene::~CS_Scene()
@@ -53,6 +54,12 @@ void                        CS_Scene::setDisp(bool disp, int index)
         index = lastElement;
     sceneContain[index]->setDisp(disp);
 }
+
+void                        CS_Scene::setDispScene(bool dispSource)
+{
+    dispScene = dispSource;
+}
+
 
 void                        CS_Scene::setButton(bool button, int index)
 {

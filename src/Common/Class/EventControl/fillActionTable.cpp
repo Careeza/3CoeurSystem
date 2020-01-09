@@ -14,12 +14,18 @@ void    fillPress(t_actionTable *table, t_actionValue *value, int key)
         table->jumpSave = KeyPress;
     else if (value->dodge == key)
         table->dodgeSave = KeyPress;
+    else if (value->att == key)
+        table->attSave = KeyPress;
+    else if (value->att_sp == key)
+        table->att_spSave = KeyPress;
     else if (value->use == key)
         table->useSave = KeyPress;
     else if (value->spell_1 == key)
         table->spell_1Save = KeyPress;
     else if (value->spell_2 == key)
         table->spell_2Save = KeyPress;
+    else if (value->escape == key)
+        table->escapeSave = KeyPress;
 }
 
 void    fillNoPress(t_actionTable *table, t_actionValue *value, int key)
@@ -36,48 +42,28 @@ void    fillNoPress(t_actionTable *table, t_actionValue *value, int key)
         table->jumpSave = KeyRelease;
     else if (value->dodge == key)
         table->dodgeSave = KeyRelease;
+    else if (value->att == key)
+        table->attSave = KeyRelease;
+    else if (value->att_sp == key)
+        table->att_spSave = KeyRelease;
     else if (value->use == key)
         table->useSave = KeyRelease;
     else if (value->spell_1 == key)
         table->spell_1Save = KeyRelease;
     else if (value->spell_2 == key)
-        table->spell_2Save = KeyRelease;}
-
-void    fillActionTable(t_actionTable *table, t_actionValue *value, int key, int info)
-{
-    if (info == CS_KEYDOWN)
-    {
-        fillPress(table, value, key);
-    }
-    else if (info == CS_KEYUP)
-    {
-        fillNoPress(table, value, key);
-    }
+        table->spell_2Save = KeyRelease;
+    else if (value->escape == key)
+        table->escapeSave = KeyRelease;
 }
 
-void    initActionTable(t_actionTable *table)
+void    CS_KeyControl::fillActionTable(t_actionTable *table, t_actionValue *value)
 {
-    table->up = KeyNoPress;
-    table->down = KeyNoPress;
-    table->right = KeyNoPress;
-    table->left = KeyNoPress;
-    table->jump = KeyNoPress;
-    table->dodge = KeyNoPress;
-    table->att = KeyNoPress;
-    table->att_sp = KeyNoPress;
-    table->use = KeyNoPress;
-    table->spell_1 = KeyNoPress;
-    table->spell_2 = KeyNoPress;
-
-    table->upSave = KeyNoPress;
-    table->downSave = KeyNoPress;
-    table->rightSave = KeyNoPress;
-    table->leftSave = KeyNoPress;
-    table->jumpSave = KeyNoPress;
-    table->dodgeSave = KeyNoPress;
-    table->attSave = KeyNoPress;
-    table->att_spSave = KeyNoPress;
-    table->useSave = KeyNoPress;
-    table->spell_1Save = KeyNoPress;
-    table->spell_2Save = KeyNoPress;
+    if (type == SDL_KEYDOWN)
+        fillPress(table, value, getKey());
+    else if (type == SDL_KEYUP)
+        fillNoPress(table, value, getKey());
+    if (type == SDL_MOUSEBUTTONDOWN)
+        fillPress(table, value, getButton());
+    else if (type == SDL_MOUSEBUTTONUP)
+        fillNoPress(table, value, getButton());
 }

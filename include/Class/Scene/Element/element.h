@@ -48,12 +48,12 @@ class   CS_Element
         void            changeBorder(int w, int h);
         void            loadBrightness(SDL_Renderer *render, CS_Color colorSource);
 
-        void            useFonction(void *info, SDL_Renderer *render);
+        t_buttonValue   useFonction();
 
         void            CreateNoButtonFromHand(CS_Color color, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y);
-        void            CreateButtonFromHand(CS_Color color, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *, SDL_Renderer*));
+        void            CreateButtonFromHand(CS_Color color, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y, t_buttonValue (*f)());
         void            CreateNoButtonFromPng(std::string route, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y);
-        void            CreateButtonFromPng(std::string route, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *, SDL_Renderer*));
+        void            CreateButtonFromPng(std::string route, CS_Color colorBrightness, SDL_Renderer *render, float w, float h, float x, float y, t_buttonValue (*f)());
 
         void            resizeElement(float w, float h, float x, float y);
         void            resizeElementPixel(int w, int h, int x, int y);

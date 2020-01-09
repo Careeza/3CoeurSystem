@@ -21,8 +21,3 @@ void    CS_Settings::getFps(int fpsSource)
 {
     fps = fpsSource;
 }
-
-void    CS_Settings::getPosition(t_pos position)
-{
-    pos = position;
-}

@@ -50,7 +50,7 @@ void    CS_Camera::moveCamera3(CS_Character *MC, float deltaT)
     vY = 0;
     vX = MC->QueryMoveX();
 
-    std::cout << vX << " << VX" << std::endl;
+    //std::cout << vX << " << VX" << std::endl;
 
     int velocity;
     int distance;

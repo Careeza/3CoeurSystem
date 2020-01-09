@@ -23,3 +23,5 @@ CS_Police::~CS_Police()
     if (haveTexture)
         SDL_DestroyTexture(texture);
 }
+
+TTF_Font    *CS_Police::font = NULL;

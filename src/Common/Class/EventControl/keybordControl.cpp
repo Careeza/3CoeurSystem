@@ -1,22 +1,6 @@
 #include "keyControl.h"
 
-int     CS_KeyControl::getKeyboardActions(int& key)
+int     CS_KeyControl::getKey()
 {
-    if (type == SDL_KEYDOWN)
-    {
-        key = event.key.keysym.sym;
-        return (CS_KEYDOWN);
-        std::cout << "key DOWN !" << std::endl;
-    }
-    else if (type == SDL_KEYUP)
-    {
-        key = event.key.keysym.sym;
-        return (CS_KEYUP);
-        std::cout << "key UP !" << std::endl;
-    }
-    else
-    {
-        key = 0;
-        return (CS_NOKEY);
-    }
+    return (event.key.keysym.sym);
 }

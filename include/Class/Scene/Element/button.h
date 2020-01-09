@@ -4,6 +4,20 @@
 
 #include "../preSet.h"
 
+typedef enum        e_buttonValue
+{
+    noButton,
+    trueButton,
+    falseButton,
+    exitButton,
+    levelSelectButton,
+    creditButton,
+    homeButton,
+    gameButton,
+    menuButton,
+    backButton,
+}                   t_buttonValue;
+
 class   CS_NoButton
 {
     public:
@@ -29,13 +43,13 @@ class   CS_Button : public CS_NoButton
     public:
         CS_Button();
         ~CS_Button();
-        void            useFonction(void *info, SDL_Renderer *render);
-        void            addButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *, SDL_Renderer*));
-        void            addButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y, void (*f)(void *, SDL_Renderer*));
+        t_buttonValue   useFonction();
+        void            addButtonFromHand(CS_Color color, SDL_Renderer *render, float w, float h, float x, float y, t_buttonValue (*f)());
+        void            addButtonFromPng(std::string route, SDL_Renderer *render, float w, float h, float x, float y, t_buttonValue (*f)());
         SDL_Texture     *QueryButtonTexture();
 
     private:
-            void    (*buttonFunction)(void*, SDL_Renderer*);
+            t_buttonValue   (*buttonFunction)();
 };
 
 #endif

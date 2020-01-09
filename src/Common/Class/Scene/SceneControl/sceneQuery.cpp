@@ -35,3 +35,8 @@ int                                         CS_Scene::QueryIndexByName(std::stri
     return (-1);
 }
 
+
+bool                                    CS_Scene::QueryDispScene()
+{
+    return (dispScene);
+}

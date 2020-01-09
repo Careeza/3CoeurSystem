@@ -2,5 +2,5 @@
 
 bool            CS_Animation::verifyAnimationEnd()
 {
-    return (interrupt && animationEnd);
+    return (animationEnd || interrupt);
 }

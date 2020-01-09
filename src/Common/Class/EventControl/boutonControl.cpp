@@ -1,6 +1,6 @@
 #include "keyControl.h"
 
-std::shared_ptr<CS_Element>    getButton(CS_Scene *scene, int len, int x_mouse, int y_mouse)
+std::shared_ptr<CS_Element>    getButtonSplit(CS_Scene *scene, int len, int x_mouse, int y_mouse)
 {
     std::shared_ptr<CS_Element> button;
     SDL_Rect                    *size;
@@ -22,40 +22,63 @@ std::shared_ptr<CS_Element>    getButton(CS_Scene *scene, int len, int x_mouse, 
         return(button);
 }
 
-std::shared_ptr<CS_Element>     CS_KeyControl::getBoutton(int& boutonInfo)
+std::shared_ptr<CS_Element>     CS_KeyControl::getButtonScene()
 {
     std::shared_ptr<CS_Element> button;
+    int                         x;
+    int                         y;
 
-    if (type == SDL_MOUSEMOTION)
+    SDL_GetMouseState(&x, &y);
+    button = getButtonSplit(scene, len, x, y);
+    return (button);
+}
+
+t_buttonValue                   CS_KeyControl::useButton(t_keyManagement mouse, std::shared_ptr<CS_Element> button)
+{
+    static std::shared_ptr<CS_Element>      saveButton = NULL;
+
+    if (button != saveButton)
     {
-        button = getButton(scene, len, event.motion.x, event.motion.y);
-        if (button == NULL)
-            boutonInfo = NO_BOUTON;
-        else
-            boutonInfo = MOUSE_MOTION;
-        return (button);
+        if (saveButton != NULL)
+        {
+            if (saveButton->containsText())
+                saveButton->setZoom(NOZOOM);
+            saveButton->setBrightness(false);
+        }
+        saveButton = button;
     }
-    else if (type == SDL_MOUSEBUTTONDOWN)
+    if (button != NULL)
     {
-        button = getButton(scene, len, event.motion.x, event.motion.y);
-        if (button == NULL)
-            boutonInfo = NO_BOUTON;
+        if (mouse & KeyNoPress)
+        {
+            if (button->containsText())
+                button->setZoom(ZOOMIN); //set zoomIn on
+            button->setBrightness(true); // set brillance on
+            return (noButton);
+        }
+        else if (mouse & KeyHoldPress)
+        {
+            if (button->containsText())
+                button->setZoom(ZOOMOUT);
+            button->setBrightness(true);
+            return (noButton);
+        }
+        else if (mouse & KeyRelease)
+        {
+            if (button->containsText())
+                button->setZoom(NOZOOM);
+            button->setBrightness(false);
+            return (button->useFonction());
+        }
         else
-            boutonInfo = BOUTTON_PRESS;
-        return (button);
-    }
-    else if (type == SDL_MOUSEBUTTONUP)
-    {
-        button = getButton(scene, len, event.motion.x, event.motion.y);
-        if (button == NULL)
-            boutonInfo = NO_BOUTON;
-        else
-            boutonInfo = BOUTON_RELEASE;
-        return (button);
+        {
+            std::cout << "weird error here" << std::endl;
+            exit (0);
+            return (noButton);
+        }
     }
     else
     {
-        boutonInfo = NO_ACTION;
-        return (NULL);
+        return (noButton);
     }
 }

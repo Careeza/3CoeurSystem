@@ -4,7 +4,13 @@ void        CS_Animation::nextFrame2(int deltaT)
 {
     time += deltaT;
     if (time >= animationTime)
-        time -= animationTime;
+    {
+        time = 0;
+        animationEnd = true;
+
+    }
+    else
+        animationEnd = false;
     index = time / frameTime;
     if (index == nbFrame)
     {
@@ -13,10 +19,6 @@ void        CS_Animation::nextFrame2(int deltaT)
         std::cout << "frame time = " << frameTime << std::endl;
         exit (0);
     }
-    if (index == nbFrame - 1)
-        animationEnd = true;
-    else
-        animationEnd = false;
 }
 
 

@@ -47,6 +47,8 @@ class   CS_Character
 
         bool                VerifyRight();
 
+        bool                verifyAnimationEnd();
+
         int                 QueryMoveX();
 //        int         QueryMoveY();
 

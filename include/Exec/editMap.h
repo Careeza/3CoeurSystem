@@ -35,6 +35,7 @@ class   CS_EditMapSetting : public CS_Settings
         CS_Asset    *assetSelected;        
 };
 
+
 # define YBigTree01 0.0
 # define XBigTree01 34.4
 

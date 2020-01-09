@@ -1,6 +1,6 @@
 #include "game.h"
 
-int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings, SDL_Renderer *render)
+/*t_buttonValue     bouttonManagement(CS_KeyControl& control)
 {
     static std::shared_ptr<CS_Element>      saveButton = NULL;
     std::shared_ptr<CS_Element>             button;
@@ -20,35 +20,29 @@ int     bouttonManagement(CS_KeyControl& control, CS_Settings& settings, SDL_Ren
     if (buttonInfo == NO_BOUTON)
     {
         // do nothing for the moment
-        return (0);
+        return (noButton);
     }
     else if (buttonInfo == MOUSE_MOTION)
     {
         if (button->containsText())
             button->setZoom(ZOOMIN);
         button->setBrightness(true);
-        // set zoomIn on
-        // set brillance on
-        return (0);
+        return (noButton);
     }
     else if (buttonInfo == BOUTTON_PRESS)
     {
         if (button->containsText())
             button->setZoom(ZOOMOUT);
         button->setBrightness(true);
-        // set zoomOut on
-        // set brillance on
-        return (0);
+        return (noButton);
     }
     else if (buttonInfo == BOUTON_RELEASE)
     {
         if (button->containsText())
             button->setZoom(NOZOOM);
         button->setBrightness(false);
-        button->useFonction(&settings, render);
-        // use fonction
-        return (0);
+        return (button->useFonction());
     }
     else
-        return (0);
-}
+        return (noButton);
+}*/

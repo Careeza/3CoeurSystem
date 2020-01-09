@@ -39,8 +39,3 @@ CS_GameScene    *CS_Settings::QueryGameScene()
 {
     return (gameScene);
 }
-
-t_pos           CS_Settings::QueryPosition()
-{
-    return (pos);
-}

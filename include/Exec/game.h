@@ -17,115 +17,29 @@
 # include "tools.h"
 # include "common.h"
 
-CS_Scene        *init_home(SDL_Renderer *render);
-CS_Scene        *init_menu(SDL_Renderer *render);
-CS_Scene        *init_menuHotkeys(SDL_Renderer *render);
-CS_Scene        *init_homeHotkeys(SDL_Renderer *render);
-CS_Scene        *init_play(SDL_Renderer *render);
-CS_Scene        *init_homeVideo(SDL_Renderer *render);
-CS_Scene        *init_menuVideo(SDL_Renderer *render);
-CS_Scene        *init_homeSound(SDL_Renderer *render);
-CS_Scene        *init_menuSound(SDL_Renderer *render);
-CS_GameScene    *init_gameScene(SDL_Renderer *render);
-
-void    menuToHotkeys(void *settings, SDL_Renderer *render);
-void    goToMenu(void *settings, SDL_Renderer *render);
-void    goToHome(void *settings, SDL_Renderer *render);
-void    homeToHotkeys(void *settings, SDL_Renderer *render);
-void    homeToLevelSelect(void *settings, SDL_Renderer *render);
-void    homeToVideo(void *settings, SDL_Renderer *render);
-void    menuTovideo(void *settings, SDL_Renderer *render);
-void    homeToSound(void *settings, SDL_Renderer *render);
-void    menuToSound(void *settings, SDL_Renderer *render);
-void    levelSelectToGame(void *settings, SDL_Renderer *render);
-void    dispDialogueBox(void *settings, SDL_Renderer *render);
-void    hideDialogueBox(void *settings, SDL_Renderer *render);
-
-typedef struct  s_key
-{
-    int     value;
-    std::string  name;
-}               t_key;
-
-
-class   authorizedKey
-{
-    public:
-        void    loadAuthorizedKey();
-        std::string  keyName(int key);
-
-    private:
-        t_key   keyA;
-        t_key   keyB;
-        t_key   keyC;
-        t_key   keyD;
-        t_key   keyE;
-        t_key   keyF;
-        t_key   keyG;
-        t_key   keyH;
-        t_key   keyI;
-        t_key   keyJ;
-        t_key   keyK;
-        t_key   keyL;
-        t_key   keyM;
-        t_key   keyN;
-        t_key   keyO;
-        t_key   keyP;
-        t_key   keyQ;
-        t_key   keyR;
-        t_key   keyS;
-        t_key   keyT;
-        t_key   keyU;
-        t_key   keyV;
-        t_key   keyW;
-        t_key   keyX;
-        t_key   keyY;
-        t_key   keyZ;
-
-        t_key   key0;
-        t_key   key1;
-        t_key   key2;
-        t_key   key3;
-        t_key   key4;
-        t_key   key5;
-        t_key   key6;
-        t_key   key7;
-        t_key   key8;
-        t_key   key9;
-
-        t_key   keyTab;
-        t_key   keyMaj;
-        t_key   keyCtrl;
-        t_key   keySpace;
-        t_key   keyEnter;
-        t_key   keyUp;
-        t_key   keyDown;
-        t_key   keyRight;
-        t_key   keyLeft;
-};
+typedef enum	e_pos {
+	home,
+    levelSelect,
+    game,
+    close,
+}				t_pos;
 
 
 
-void    useAction2(t_action *table, CS_Settings& settings);
-void    useAction(t_action *table, CS_Settings& settings, int deltaT);
+void            homeGetEvenement(CS_Scene *scene, std::shared_ptr<CS_Element>& button, t_actionValue *value, t_actionTable *actionTable);
+void            homeEventProcessing(t_actionTable *actionTable, t_action *action);
+bool            callDialogueBox(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable);
 
-void    CameraMove(CS_Settings& settings, t_action *action, int& xCamera, int& yCamera);
-void    enemyManagement(CS_Settings& settings);
-void    MCManagement(CS_Settings& settings, t_action *action, int& xCamera, int& yCamera, float deltaTMS, int deltaTS);
-void    parallaxManagement(CS_Settings& settings, int xCamera, int yCamera);
+t_buttonValue   closeGame();
+t_buttonValue   returnTrue();
+t_buttonValue   returnFalse();
 
+t_pos           boucleHome(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable);
+CS_Scene        *initHome(SDL_Renderer *render);
+t_pos           homeUseEvent(t_action action, std::shared_ptr<CS_Element> button);
 
-void    escapeKeyManagement(CS_KeyControl event, CS_Settings& settings, SDL_Renderer *render);
-void    actionKeyManagement(CS_KeyControl event, t_actionValue *value, t_actionTable *actionTable, t_action *action);
-void    eventManagement(CS_Settings& settings, SDL_Renderer *rend, t_actionValue *value, t_actionTable *actionTable, t_action *action);
-void    fillAction(t_actionTable *table, t_action *action);
-void    resetAction(t_action *table);
-
-CS_Parallax     *initParallax(SDL_Renderer *render);
-CS_Enemies      *initEnemies(SDL_Renderer *render);
-CS_Character    *initMC(SDL_Renderer *render);
-CS_Camera       *initCamera();
-
-
+bool            boucleDialogue(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable);
+CS_Scene        *initDialogue(SDL_Renderer *render);
+int             boucleUseEvent(t_action action, std::shared_ptr<CS_Element> button);
 
 #endif

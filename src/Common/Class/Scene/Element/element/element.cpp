@@ -25,8 +25,9 @@ CS_Element::~CS_Element()
     delete brightness;
 }
 
-void            CS_Element::useFonction(void *info, SDL_Renderer *render)
+t_buttonValue   CS_Element::useFonction()
 {
     if (elementIsButton)
-        elementButton->useFonction(info, render);
+        return (elementButton->useFonction());
+    return (noButton);
 }
