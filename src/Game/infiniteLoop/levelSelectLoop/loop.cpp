@@ -1,26 +1,25 @@
 #include "game.h"
 
-bool    loopDialogue(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable)
+t_pos    loopLevelSelect(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable) // => need le render et les settings et la texture screen
 {
     CS_Scene                    *scene;
     t_action                    action;
     std::shared_ptr<CS_Element> button;
     CS_Timer                    timer;
-
-    int                         answer = -1;
+    t_pos                       pos;
 
     CS_KeyControl::resetAction(&action);
-    scene = initDialogue(render->QueryRender()); //initHomeKey
+    scene = initLevelSelect(render->QueryRender()); //initHomeKey
+    pos = levelSelect;
 
-    while (answer == -1)
+    while (pos == levelSelect)
     {
         timer.start();
 
         homeGetEvenement(scene, button, value, actionTable);
         homeEventProcessing(actionTable, &action);
-        answer = dialogueUseEvent(action, button);
+        pos = levelSelectEvent(action, button);
 
-        render->renderScreenSave();
         render->renderScene(scene);
         render->dispScreen();
 
@@ -28,9 +27,5 @@ bool    loopDialogue(CS_Renderer *render, t_actionValue *value, t_actionTable *a
     }
 
     delete scene;
-    std::cout << "here" << std::endl;
-    if (answer == 0)
-        return (true);
-    else
-        return (false);
+    return (pos);
 }

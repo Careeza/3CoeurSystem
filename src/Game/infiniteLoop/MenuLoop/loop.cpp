@@ -1,47 +1,46 @@
 #include "game.h"
 
-
-
-t_pos   closeRequested(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable)
-{
-    render->saveScreen();
-    if (loopDialogue(render, value, actionTable))
-        return (close);
-    else
-        return (home);
-}
-
-t_pos    loopHome(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable) // => need le render et les settings et la texture screen
+bool    loopMenu(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable) // => need le render et les settings et la texture screen
 {
     CS_Scene                    *scene;
     t_action                    action;
     std::shared_ptr<CS_Element> button;
     CS_Timer                    timer;
-    t_pos                       pos;
+    int                         answer = -1;
+
 
     CS_KeyControl::resetAction(&action);
-    scene = initHome(render->QueryRender()); //initHomeKey
-    pos = home;
+    scene = initMenu(render->QueryRender()); //initHomeKey
 
-    while (pos == home)
+    while (answer == -1)
     {
         timer.start();
 
         homeGetEvenement(scene, button, value, actionTable);
         homeEventProcessing(actionTable, &action);
-        pos = homeUseEvent(action, button, render, value, actionTable);
+        answer = MenuUseEvent(action, button);
 
+        render->renderScreenSave();
         render->renderScene(scene);
         render->dispScreen();
 
-        if (pos == close)
-            pos = closeRequested(render, value, actionTable);
-
         SDL_Delay(fmax(0, (1000 / (float)60 - timer.get_ticks())));
+
+        if (answer == 0)
+        {
+            if (loopDialogue(render, value, actionTable))
+                answer = 0;
+            else
+                answer = -1;
+        }
     }
 
     delete scene;
-    return (pos);
+
+    if (answer == 0)
+        return (true);
+    else
+        return (false);
 }
 
 

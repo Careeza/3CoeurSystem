@@ -1,6 +1,6 @@
 #include "game.h"
 
-int     dialogueUseButton(t_keyManagement mouse, std::shared_ptr<CS_Element> button)
+int     MenuUseButton(t_keyManagement mouse, std::shared_ptr<CS_Element> button)
 {
     t_buttonValue buttonValue;
 
@@ -14,9 +14,9 @@ int     dialogueUseButton(t_keyManagement mouse, std::shared_ptr<CS_Element> but
 
 }
 
-int     dialogueUseEvent(t_action action, std::shared_ptr<CS_Element> button)
+int     MenuUseEvent(t_action action, std::shared_ptr<CS_Element> button)
 {
     if (action.escape == KeyPress)
         return (1);
-    return (dialogueUseButton(action.att, button));
+    return (MenuUseButton(action.att, button));
 }

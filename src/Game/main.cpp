@@ -79,14 +79,15 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value)
 
     pos = home;
     CS_KeyControl::initActionTable(&actionTable);
+    logoCinematics(&render);
     while (pos != close)
     {
         if (pos == home)
-            pos = boucleHome(&render, value, &actionTable);
-        else if (pos == game)
-        {}
+            pos = loopHome(&render, value, &actionTable);
         else if (pos == levelSelect)
-        {}
+            pos = loopLevelSelect(&render, value, &actionTable);
+        else if (pos == game)
+            pos = loopGame(&render, value, &actionTable);
     }
 }
 
@@ -99,7 +100,7 @@ void    initGame(CS_Renderer& rend)
     int h;
 
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_ALLOW_HIGHDPI);
-//  window = create_window(0, "Game", 0, 0, 400, 225);
+//    window = create_window(SDL_WINDOW_ALLOW_HIGHDPI, "Game", 0, 0, 1920, 1080);
     SDL_GetWindowSize(window, &w, &h);
 
     Tools->getWindowSize(w, h);
