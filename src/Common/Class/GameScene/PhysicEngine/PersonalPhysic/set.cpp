@@ -15,12 +15,12 @@ void    CS_PersonalPhysic::setGravity(bool gravitySource)
     gravity = gravitySource;
 }
 
-void    CS_PersonalPhysic::setSpeedX(int speedX)
+void    CS_PersonalPhysic::setSpeedX(float speedX)
 {
     speed.setSpeedXPixel(speedX);
 }
 
-void    CS_PersonalPhysic::setSpeedY(int speedY)
+void    CS_PersonalPhysic::setSpeedY(float speedY)
 {
     speed.setSpeedYPixel(speedY);
 }
@@ -48,3 +48,9 @@ void        CS_PersonalPhysic::setHitBox(CS_HitBox *hitboxSource)
 {
     hitbox = hitboxSource;
 }
+
+void        CS_PersonalPhysic::setAttack(CS_HitBox *attackSource)
+{
+    attack = attackSource;
+}
+

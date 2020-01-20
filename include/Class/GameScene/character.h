@@ -13,7 +13,10 @@
 # include <vector>
 # include <memory>
 
-# include "physicalEngine.h"
+# include "animation.h"
+
+# define MOINE true
+# define KITSUNE false
 
 class   CS_Character
 {
@@ -34,20 +37,34 @@ class   CS_Character
 
         void        setAnimationTime(int animationTimeSource);
 
-        void        moveCharacter(float deltaT, int BorderMinX, int BorderMaxX);
+        void        moveCharacter(int deltaT, int BorderMinX, int BorderMaxX);
         void        setRight(bool rightSource);
 
         void        QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);
         void        QuerySize(int& wDest, int& hDest);
         void        QueryPos(int& xDest, int& yDest);
 
-        CS_PersonalPhysic   *QeuryPhysique();
+        void        setOnGround(bool onGroundSource);
+        bool        verifyOnGround();
+
+        void        useJump();
+
+        void        setJump(int jumpSource);
+        void        setMaxJump(int maxJumpSource);
+        int         QueryJump();
+
+        void        swapMC();
+        void        setMC(bool moineSource);
+
+        CS_Animation        *QueryAnimation();
+        CS_PersonalPhysic   *QueryPhysic();
         SDL_Texture         *QueryTexture();
         SDL_Rect            *QueryFrame();
 
         bool                VerifyRight();
 
         bool                verifyAnimationEnd();
+        bool                MCIsMoine();
 
         int                 QueryMoveX();
 //        int         QueryMoveY();
@@ -57,12 +74,18 @@ class   CS_Character
         SDL_Texture         *texture;
         SDL_Rect            *frame;
 
-        CS_BankAnimation    *bank;
+        CS_BankAnimation    *bankMoine;
+        CS_BankAnimation    *bankKitsune;
+
         CS_Animation        *animation;
-        CS_Animation        *saveAnimation;
         CS_PersonalPhysic   *physic;
 
         bool                right;
+
+        bool                moine;
+        bool                onGround;
+        int                 jump;
+        int                 maxJump;
 };
 
 #endif

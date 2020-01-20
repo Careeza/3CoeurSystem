@@ -45,6 +45,25 @@ void        CS_Assets::updateID()
 }
 
 
+void        CS_Assets::addToGround(CS_Asset *asset, int xAsset)
+{
+    int x;
+    int y;
+    int w;
+    int h;
+
+    unsigned long   i;
+    i = 0;
+    while (i < ground.size())
+    {
+        ground[i]->QuerySize(w, h, x, y);
+        if (x > xAsset)
+            break;
+        i++;
+    }
+    ground.emplace(ground.begin() + i, asset);
+}
+
 CS_Asset    *CS_Assets::loadAsset(t_assetName name, int zIndex, float x, float y)
 {
     unsigned long   i;
@@ -74,6 +93,10 @@ CS_Asset    *CS_Assets::loadAsset(t_assetName name, int zIndex, float x, float y
     while (i < assets.size() && zIndex >= assets[i]->QueryZIndex())
         i++;
     assets.emplace(assets.begin() + i, asset);
+
+    if (name == Ground01)
+        addToGround(asset, xAsset);
+
     updateID();
     return (asset);
 }
@@ -107,6 +130,10 @@ CS_Asset    *CS_Assets::loadAssetPixel(t_assetName name, int zIndex, int x, int 
     while (i < assets.size() && zIndex >= assets[i]->QueryZIndex())
         i++;
     assets.emplace(assets.begin() + i, asset);
+
+    if (name == Ground01)
+        addToGround(asset, xAsset);
+
     updateID();
     return (asset);
 }

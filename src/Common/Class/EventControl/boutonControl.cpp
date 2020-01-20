@@ -29,7 +29,7 @@ std::shared_ptr<CS_Element>     CS_KeyControl::getButtonScene()
     int                         y;
 
     SDL_GetMouseState(&x, &y);
-    button = getButtonSplit(scene, len, x, y);
+    button = getButtonSplit(scene, len, x * 2, y * 2);
     return (button);
 }
 
@@ -61,7 +61,7 @@ t_buttonValue                   CS_KeyControl::useButton(t_keyManagement mouse, 
             if (button->containsText())
                 button->setZoom(ZOOMOUT);
             button->setBrightness(true);
-            return (noButton);
+            return (noAction);
         }
         else if (mouse & KeyRelease)
         {

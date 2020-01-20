@@ -23,6 +23,8 @@ class   CS_Camera
         void    moveCamera3(CS_Character *MC, float deltaT);
 
         void    QueryCameraPosition(int& xDest, int& yDest);
+        int     QueryCameraPositionX();
+        int     QueryCameraPositionY();
 
     private:
         float     x;

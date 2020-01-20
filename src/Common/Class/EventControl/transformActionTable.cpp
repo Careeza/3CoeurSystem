@@ -16,7 +16,6 @@ void    transform(t_keyManagement& save, t_keyManagement& transform)
             if (transform != KeyHold)
             {
                 transform = KeyPress;
-                std::cout << "test" << std::endl;
             }
         }
         else

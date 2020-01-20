@@ -9,3 +9,13 @@ bool    CS_Character::verifyAnimationEnd()
 {
     return (animation->verifyAnimationEnd());
 }
+
+bool    CS_Character::MCIsMoine()
+{
+    return (moine);
+}
+
+bool    CS_Character::verifyOnGround()
+{
+    return (onGround);
+}

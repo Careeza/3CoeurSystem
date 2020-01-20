@@ -10,9 +10,13 @@ CS_GameScene::CS_GameScene()
 
 CS_GameScene::~CS_GameScene()
 {
-    delete MC;
-    delete enemies;
-    delete parallax;
+    if (haveMC())
+        delete MC;
+    if (haveEnemies())
+        delete enemies;
+    if (haveParallax())
+        delete parallax;
+    if (haveAssets())
+        delete assets;
     delete camera;
-    delete assets;
 }

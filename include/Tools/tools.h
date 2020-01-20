@@ -34,17 +34,17 @@ class   CS_Tools
         void    setSize(SDL_Rect *size, SDL_Rect *container, float w, float h, float x, float y);
         void    setSize(SDL_Rect *size, int w, int h, int x, int y);
 
-        int     transformWidth(float w);
-        int     transformWidth(SDL_Rect *container, float w);
+        float   transformWidth(float w);
+        float   transformWidth(SDL_Rect *container, float w);
         
-        int     transformHeight(float h);
-        int     transformHeight(SDL_Rect *container, float h);
+        float   transformHeight(float h);
+        float   transformHeight(SDL_Rect *container, float h);
 
-        int     transformX(float x);
-        int     transformX(SDL_Rect *container, float x);
+        float   transformX(float x);
+        float   transformX(SDL_Rect *container, float x);
 
-        int     transformY(float y);
-        int     transformY(SDL_Rect *container, float y);
+        float   transformY(float y);
+        float   transformY(SDL_Rect *container, float y);
 
         int     QueryWindowWidth();
         int     QueryWindowHeight();

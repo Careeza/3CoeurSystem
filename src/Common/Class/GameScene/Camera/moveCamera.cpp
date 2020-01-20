@@ -2,15 +2,15 @@
 
 void    CS_Camera::moveCamera(int xSource, int ySource)
 {
-    x = xSource;
-    y = ySource;
+    x = (xSource + x) / 2;
+    y = (ySource + y) / 2;
 }
 
 void    CS_Camera::moveCamera2(int xSource, int ySource, CS_GameScene *map)
 {
     x += xSource;
     y += ySource;
-//./g    verifyHitbox(Tools->QueryWindowWidth(), Tools->QueryWindowHeight(), x, y, map);
+//    verifyHitbox(Tools->QueryWindowWidth(), Tools->QueryWindowHeight(), x, y, map);
 }
 
 #define Decalage 300

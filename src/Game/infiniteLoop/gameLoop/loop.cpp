@@ -25,7 +25,12 @@ void    gameEventProcessing(t_actionTable *actionTable, t_action *action)
     action->jump = actionTable->jump;
 }
 
-t_pos    loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable) // => need le render et les settings et la texture screen
+void    moveCamera(CS_Camera *camera)
+{
+    camera->moveCamera(Tools->QueryWindowWidth(), 0);
+}
+
+t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable) // => need le render et les settings et la texture screen
 {
     CS_GameScene                *scene;
     t_action                    action;
@@ -37,14 +42,19 @@ t_pos    loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *acti
     pos = game;
 
     int             deltaTMS;
-    float           deltaTS;
     CS_Character    *MC;
 
     MC = scene->QueryMC();
+
+    CS_Timer                    time;
+    int                         ticks = 0;
+    int                         wait;
+    
+    time.start();
     while (pos == game)
     {
+        ticks++;
         deltaTMS = timer.get_ticks();
-        deltaTS = deltaTMS / (float)1000;
  
         timer.start();
 
@@ -52,21 +62,21 @@ t_pos    loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *acti
         gameEventProcessing(actionTable, &action);
 
         MC->updateFrame(deltaTMS);
-        useAction(&action, MC, deltaTMS);
-        pos = gameUseEvent(action, render, value, actionTable);
-        MC->moveCharacter(deltaTS, -100000, 100000);
+        useAction(&action, MC);
+        pos = gameUseEvent(action, render, value, actionTable, &timer);
+        MC->moveCharacter(deltaTMS, -100000, 100000);
         MC->getFrame();
 
-        parallaxManagement(scene->QueryParallax(), 0, 0);
-
-//        MCManagement(settings, &action, xCamera, yCamera, deltaTS, deltaTMS);
-
+        parallaxManagement(scene->QueryParallax(), scene->QueryCamera());
 
         render->renderGameScene(scene);
         render->dispScreen();
 
-        SDL_Delay(fmax(0, (1000 / (float)60 - timer.get_ticks())));
+        wait = fmax(0, (1000 / (float)60 - timer.get_ticks()));
+        std::cout << "deltaT = " << timer.get_ticks() << " wait = " << wait << std::endl;
+        SDL_Delay(wait);
     }
+    std::cout << "fps = " << ticks / (time.get_ticks() / 1000.0) << std::endl; 
 
     delete scene;
     return (pos);

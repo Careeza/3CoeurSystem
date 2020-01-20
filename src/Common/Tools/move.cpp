@@ -43,11 +43,15 @@ void    checkGround(int h, CS_PersonalPhysic *physic)
     int y;
 
     y = physic->QueryPostionY();
-    if (y + h > Tools->QueryWindowHeight())
+    if (y + h >= Tools->QueryWindowHeight())
     {
         physic->setPosYPixel(Tools->QueryWindowHeight() - h);
         physic->setOnGround(true);
         physic->setSpeedY(0);
+    }
+    else
+    {
+        physic->setOnGround(false);
     }
 }
 

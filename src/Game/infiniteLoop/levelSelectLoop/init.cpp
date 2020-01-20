@@ -7,7 +7,7 @@ CS_Scene    *initLevelSelect(SDL_Renderer *render)
     scene = new(CS_Scene);
     scene->loadRenderer(render);
     
-    scene->createElementToSceneFromPng("Background", "resources/source/HomeJeu.png", 100, 100, 0, 0, 0);
+    scene->createElementToSceneFromPng("Background", "resources/source/HomeJeu.png", 100, 90, 0, 5, 0);
 
     scene->setBorderColor(0x00, 0x00, 0x00, 180);
     scene->setTextColor(0xFF, 0xFF, 0xFF, 255);

@@ -1,7 +1,5 @@
 #include "game.h"
 
-
-
 t_pos   closeRequested(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable)
 {
     render->saveScreen();

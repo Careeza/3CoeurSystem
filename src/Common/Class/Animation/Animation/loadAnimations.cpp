@@ -39,6 +39,9 @@ void        CS_Animation::cutFrame(int nb_frame, int nb_columnframe, int nb_line
     int         frameHeight;
     SDL_Rect    *newFrame;
     CS_HitBox   *newHitBox;
+    CS_HitBox   *newHitBox2;
+    CS_HitBox   *newAttack;
+    CS_HitBox   *newAttack2;
 
     i = 0;
     SDL_QueryTexture (textureL, NULL, NULL, &width, &height);
@@ -48,7 +51,10 @@ void        CS_Animation::cutFrame(int nb_frame, int nb_columnframe, int nb_line
     nbColumnFrame = nb_columnframe;
     nbLineFrame = nb_lineframe;
     frame.resize(nb_frame);
-    hitboxes.resize(nb_frame);
+    hitboxesR.resize(nb_frame);
+    hitboxesL.resize(nb_frame);
+    attackR.resize(nb_frame);
+    attackL.resize(nb_frame);
     while (i < nb_frame)
     {
         newFrame = new (SDL_Rect);
@@ -63,7 +69,28 @@ void        CS_Animation::cutFrame(int nb_frame, int nb_columnframe, int nb_line
         newHitBox->setHPixel(h);
         newHitBox->setXPixel(0);
         newHitBox->setYPixel(0);
-        hitboxes[i] = newHitBox;
+        hitboxesR[i] = newHitBox;
+
+        newHitBox2 = new (CS_HitBox);
+        newHitBox2->setWPixel(w);
+        newHitBox2->setHPixel(h);
+        newHitBox2->setXPixel(0);
+        newHitBox2->setYPixel(0);
+        hitboxesL[i] = newHitBox2;
+
+        newAttack = new (CS_HitBox);
+        newAttack->setWPixel(w);
+        newAttack->setHPixel(h);
+        newAttack->setXPixel(0);
+        newAttack->setYPixel(0);
+        attackR[i] = newAttack;
+
+        newAttack2 = new (CS_HitBox);
+        newAttack2->setWPixel(w);
+        newAttack2->setHPixel(h);
+        newAttack2->setXPixel(0);
+        newAttack2->setYPixel(0);
+        attackL[i] = newAttack2;
         i++;
     }
 }
@@ -72,6 +99,8 @@ void        CS_Animation::setSpeed(float speedXSource, float speedYSource)
 {
     speedX = Tools->transformWidth(speedXSource);
     speedY = Tools->transformHeight(speedYSource);
+    std::cout << "speed = " << speedX << " speedSource = " << speedXSource << std::endl;
+
 }
 
 void            CS_Animation::setSize(float wSource, float hSource)
@@ -80,10 +109,11 @@ void            CS_Animation::setSize(float wSource, float hSource)
     h = Tools->transformHeight(hSource);
 }
 
-void            CS_Animation::setAnimationTime(int animationTimeSource)
+void            CS_Animation::setAnimationTime(int animationTimeSource, int indexStartSource)
 {
     animationTime = animationTimeSource;
     frameTime = animationTimeSource / (float)nbFrame;
+    indexStart = indexStartSource;
 }
 
 void            CS_Animation::setInterrupt(bool interruptSource)

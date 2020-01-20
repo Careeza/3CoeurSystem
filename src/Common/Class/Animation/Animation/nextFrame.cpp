@@ -5,7 +5,7 @@ void        CS_Animation::nextFrame2(int deltaT)
     time += deltaT;
     if (time >= animationTime)
     {
-        time = 0;
+        time = indexStart * frameTime;
         animationEnd = true;
 
     }

@@ -1,17 +1,19 @@
 #include "game.h"
 
-void    parallaxManagement(CS_Parallax *parallax, int xCamera, int yCamera)
+void    parallaxManagement(CS_Parallax *parallax, CS_Camera *camera)
 {
 
     CS_Layer        *layer;
     int             i;
+    int             x;
+    int             y;
 
-    (void)yCamera;
     i = 0;
+    camera->QueryCameraPosition(x, y);
     while (i < parallax->QueryNbLayers())
     {
         layer = parallax->QueryLayer(i);
-        layer->moveLayer(xCamera);
+        layer->moveLayer(x);
         i++;
     }
 }

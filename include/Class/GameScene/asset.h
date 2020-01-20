@@ -114,7 +114,7 @@ class   CS_Assets
 
         CS_Asset    *loadAsset(t_assetName name, int zIndex, float x, float y);
         CS_Asset    *loadAssetPixel(t_assetName name, int zIndex, int x, int y);
-
+        void        addToGround(CS_Asset *asset, int xAsset);
 
         void        loadBank(CS_AssetsBank *assetsBankSource);
 
@@ -129,6 +129,7 @@ class   CS_Assets
 
     private:
         std::vector<CS_Asset *>     assets;
+        std::vector<CS_Asset *>     ground;
         CS_AssetsBank               *assetsBank;
 };
 

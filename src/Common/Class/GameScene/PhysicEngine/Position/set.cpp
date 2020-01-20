@@ -10,12 +10,12 @@ void    CS_Position::setPositionY(float ySource)
     y = Tools->transformHeight(ySource);
 }
 
-void    CS_Position::setPositionXPixel(int xSource)
+void    CS_Position::setPositionXPixel(float xSource)
 {
     x = xSource;
 }
 
-void    CS_Position::setPositionYPixel(int ySource)
+void    CS_Position::setPositionYPixel(float ySource)
 {
     y = ySource;
 }

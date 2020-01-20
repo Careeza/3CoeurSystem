@@ -137,8 +137,8 @@ void            CS_Asset::moveAsset(int xSource, int ySource, bool method)
     {
         x = xSource;
         y = ySource;
-        hitBox->setXPixel((w * prop->x) / 100 + x);
-        hitBox->setYPixel((h * prop->y) / 100 + y);
+//        hitBox->setXPixel((w * prop->x) / 100 + x);
+//        hitBox->setYPixel((h * prop->y) / 100 + y);
     }
     else
     {

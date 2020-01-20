@@ -2,7 +2,7 @@
 
 void    CS_Renderer::renderEnemy(CS_Enemies *enemies, int cameraX, int cameraY)
 {
-    CS_Enemy        *enemy;
+/*    CS_Enemy        *enemy;
     SDL_Texture     *texture;
     SDL_Rect        *frame;
     SDL_Rect        size;
@@ -20,5 +20,5 @@ void    CS_Renderer::renderEnemy(CS_Enemies *enemies, int cameraX, int cameraY)
         size.y -= cameraY;
         SDL_RenderCopy(render, texture, frame, &size);
         i++;
-    }
+    }*/
 }

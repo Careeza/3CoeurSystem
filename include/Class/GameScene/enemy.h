@@ -20,24 +20,70 @@ typedef enum	e_enemy {
     CuveVert
 }				t_enemy;
 
+typedef enum    e_enemyAction {
+    WalkR,
+    WalkL,
+    AttR,
+    AttL,
+    StaticR,
+    StaticL,
+}               t_enemyAction;
+
 class   CS_Enemy
 {
     public:
         CS_Enemy();
         ~CS_Enemy();
 
-        void    addEnemy(SDL_Renderer *render, CS_Character *(*create)(SDL_Renderer *render), void (*algoSource)(CS_Character *enemy, CS_Character *MC));
-        void    spawnEnemy(float xSource, float ySource);
-        void    reloadParam(CS_Character *MC);
-        void    getFrame();
-        void    moveCharacter();
+
+        void                initEnemyAnimationBank(CS_BankAnimation *animationBankSource);
+        void                initEnemyPhysic(CS_PersonalPhysic *physicSource);
+
+        void                setActionToUse(CS_Character *MC);
+        void                useEnemyAction();
+        void                updateFrame(int deltaT);
+        void                moveCharacter(int deltaT);
+        void                getFrame();
         
-        SDL_Texture *QueryTexture();
-        void        QuerySize(int& w, int& h, int& x, int& y);
-        SDL_Rect    *QueryFrame();
+        void                setID(int idSource);
+
+
+        void                QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);
+        void                QuerySize(int& wDest, int& hDest);
+        void                QueryPos(int& xDest, int& yDest);
+
+        t_enemy             QueryName();
+        int                 QueryID();
+        CS_Animation        *QueryAnimation();
+        CS_PersonalPhysic   *QueryPhysic();
+        SDL_Texture         *QueryTexture();
+        SDL_Rect            *QueryFrame();
+
+
     private:
-        CS_Character    *enemy;
-        void            (*algo)(CS_Character *enemy, CS_Character *MC);
+        t_enemy             name;
+        t_enemyAction       action;
+        t_enemyAction       (*algo)(CS_Character *MC, CS_PersonalPhysic *physic);
+        SDL_Texture         *texture;
+        SDL_Rect            *frame;
+        CS_BankAnimation    *animationBank;
+        CS_PersonalPhysic   *physic;
+        CS_Animation        *animation;
+        int                 id;
+        bool                right;
+
+};
+
+class   CS_EnemyBank
+{
+    public:
+        CS_EnemyBank();
+        ~CS_EnemyBank();
+        void        addEnemy(CS_Enemy *enemySource);
+        CS_Enemy    *QueryEnemy(t_enemy name);
+
+    private:
+        std::vector<CS_Enemy *> enemy;
 };
 
 class   CS_Enemies
@@ -46,14 +92,17 @@ class   CS_Enemies
         CS_Enemies();
         ~CS_Enemies();
 
-        void        addEnemy(SDL_Renderer *render, CS_Character *(*create)(SDL_Renderer *render), void (*algo)(CS_Character *enemy, CS_Character *MC), float w, float h);
-        void        reloadParam(int index, CS_Character *MC);
+        void        loadEnemyBank(CS_EnemyBank *enemyBankSource);
+        void        addAnEnemy(float x, float y, t_enemy name);
+        void        addAnEnemyPixel(int x, int y, t_enemy name);
 
-        CS_Enemy    *QueryEnemy(int index);
-        int         QueryNbEnemies();
+        void        deleteEnemy(int index);
+        void        updateID();
 
     private:
-        std::vector<CS_Enemy *> enemies;   
+        std::vector<CS_Enemy *>     enemy;
+        CS_EnemyBank               *enemyBank;
+
 };
 
 #endif

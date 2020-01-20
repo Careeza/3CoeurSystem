@@ -15,7 +15,63 @@ int     CS_PersonalPhysic::QueryPostionY()
     return (position.QueryPostionY());
 }
 
-CS_HitBox   *CS_PersonalPhysic::QueryHitBox()
+int     CS_PersonalPhysic::QuerySpeedX()
+{
+    return (speed.QuerySpeedX());
+}
+
+int     CS_PersonalPhysic::QuerySpeedY()
+{
+    return (speed.QuerySpeedY());
+}
+
+
+void    CS_PersonalPhysic::QueryHitBox(int& wDest, int& hDest, int& xDest, int& yDest)
+{
+    int w;
+    int h;
+    int xDecale;
+    int yDecale;
+
+    hitbox->QuerySizePos(w, h, xDecale, yDecale);
+
+    int x;
+    int y;
+
+    QueryPostion(x, y);
+
+    wDest = w;
+    hDest = h;
+    xDest = x + xDecale;
+    yDest = y + yDecale;
+}
+
+CS_HitBox   *CS_PersonalPhysic::QueryRawHitbox()
 {
     return (hitbox);
+}
+
+void    CS_PersonalPhysic::QueryAttack(int& wDest, int& hDest, int& xDest, int& yDest)
+{
+    int w;
+    int h;
+    int xDecale;
+    int yDecale;
+
+    attack->QuerySizePos(w, h, xDecale, yDecale);
+
+    int x;
+    int y;
+
+    QueryPostion(x, y);
+
+    wDest = w;
+    hDest = h;
+    xDest = x + xDecale;
+    yDest = y + yDecale;
+}
+
+CS_HitBox   *CS_PersonalPhysic::QueryRawAttack()
+{
+    return (attack);
 }

@@ -14,21 +14,22 @@ void    CS_Speed::setSpeed(float vXSource, float vYSource)
 {
     vX = Tools->transformWidth(vXSource);
     vY = Tools->transformHeight(vYSource);
+    std::cout << "speed vX" << std::endl;
 }
 
 
         
-void    CS_Speed::setSpeedXPixel(int vXSource)
+void    CS_Speed::setSpeedXPixel(float vXSource)
 {
     vX = vXSource;
 }
 
-void    CS_Speed::setSpeedYPixel(int vYSource)
+void    CS_Speed::setSpeedYPixel(float vYSource)
 {
     vY = vYSource;
 }
 
-void    CS_Speed::setSpeedPixel(int vXSource, int vYSource)
+void    CS_Speed::setSpeedPixel(float vXSource, float vYSource)
 {
     vX = vXSource;
     vY = vYSource;

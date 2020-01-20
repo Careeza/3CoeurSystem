@@ -77,14 +77,14 @@ class   CS_Force
 
         void    setAccelerationX(float aXsource);
         void    setAccelerationY(float aYsource);
-        void    setAccelerationXPixel(int aXsource);
-        void    setAccelerationYPixel(int aYsource);
+        void    setAccelerationXPixel(float aXsource);
+        void    setAccelerationYPixel(float aYsource);
 
-        void    usePhysic(int& vXDest, int& vYDest, float deltaT);
+        void    usePhysic(float& vXDest, float& vYDest, int deltaT);
 
     private:
-        int aX;
-        int aY;
+        float aX;
+        float aY;
         
 };
 
@@ -94,8 +94,8 @@ class   CS_WorldPhysics
         CS_WorldPhysics();
         ~CS_WorldPhysics();
 
-        void        setGravityPixel(int aX, int aY);
-        void        setWindPixel(int aX, int aY);
+        void        setGravityPixel(float aX, float aY);
+        void        setWindPixel(float aX, float aY);
         void        setGravity(float aX, float aY);
         void        setWind(float aX, float aY);
 
@@ -121,18 +121,21 @@ class   CS_Speed
         void    setSpeed(float vXSource, float vYSource);
 
         
-        void    setSpeedXPixel(int vXSource);
-        void    setSpeedYPixel(int vYSource);
-        void    setSpeedPixel(int vXSource, int vYSource);
+        void    setSpeedXPixel(float vXSource);
+        void    setSpeedYPixel(float vYSource);
+        void    setSpeedPixel(float vXSource, float vYSource);
 
-        void    updateSpeed(CS_Force force, float deltaT);
-        void    updateSpeed(int aXSource, int aYSource, float deltaT);
+        void    updateSpeed(CS_Force force, int deltaT);
+        void    updateSpeed(float aXSource, float aYSource, int deltaT);
 
-        void    moveObject(float &x, float &y, float deltaT);
+        void    moveObject(float &x, float &y, int deltaT);
+
+        int     QuerySpeedX();
+        int     QuerySpeedY();
         
     private:
-        int     vX;
-        int     vY;
+        float     vX;
+        float     vY;
 };
 
 class   CS_Position
@@ -143,11 +146,11 @@ class   CS_Position
 
         void    setPositionX(float xSource);
         void    setPositionY(float ySource);
-        void    setPositionXPixel(int xSource);
-        void    setPositionYPixel(int ySource);
+        void    setPositionXPixel(float xSource);
+        void    setPositionYPixel(float ySource);
 
-        void    updatePosition(CS_Speed speed, float deltaT);
-        void    updatePosition(int vXSource, int vYSource, float deltaT);
+        void    updatePosition(CS_Speed speed, int deltaT);
+        void    updatePosition(float vXSource, float vYSource, int deltaT);
 
         void    QueryPostion(int& xDest, int& yDest);
         int     QueryPostionX();
@@ -168,31 +171,41 @@ class   CS_PersonalPhysic
         void        setBounciness(bool bouncinessSource);
         void        setGravity(bool gravitySource);
         void        setHitBox(CS_HitBox *hitboxSource);
+        void        setAttack(CS_HitBox *attackSource);
 
         bool        verifyOnGround();
         bool        verifyBounciness();
         bool        verifyGravity();
 
-        void        setSpeedX(int speedX);
-        void        setSpeedY(int speedY);
+        void        setSpeedX(float speedX);
+        void        setSpeedY(float speedY);
 
         void        setPosX(float posX);
         void        setPosY(float posY);
         void        setPosXPixel(int speedX);
         void        setPosYPixel(int speedY);
 
-        void        updateSpeed(float deltaT);
-        void        updatePosition(float deltaT);
+        void        updateSpeed(int deltaT);
+        void        updatePosition(int deltaT);
 
         int         QueryPostionX();
         int         QueryPostionY();
+
+        int         QuerySpeedX();
+        int         QuerySpeedY();
+
         void        QueryPostion(int& xDest, int& yDest);
-        CS_HitBox   *QueryHitBox();
+        void        QueryHitBox(int& wDest, int& hDest, int& xDest, int& yDest);
+        CS_HitBox   *QueryRawHitbox();
+        void        QueryAttack(int& wDest, int& hDest, int& xDest, int& yDest);
+        CS_HitBox   *QueryRawAttack();
+
 
     private:
         CS_Speed        speed;
         CS_Position     position;
         CS_HitBox       *hitbox;
+        CS_HitBox       *attack;
         bool            onGround;
         bool            bounciness;
         bool            gravity;

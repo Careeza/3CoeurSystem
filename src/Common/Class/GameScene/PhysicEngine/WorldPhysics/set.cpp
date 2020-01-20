@@ -1,12 +1,12 @@
 # include "gameScene.h"
 
-void        CS_WorldPhysics::setGravityPixel(int aX, int aY)
+void        CS_WorldPhysics::setGravityPixel(float aX, float aY)
 {
     gravity.setAccelerationXPixel(aX);
     gravity.setAccelerationYPixel(aY);
 }
 
-void        CS_WorldPhysics::setWindPixel(int aX, int aY)
+void        CS_WorldPhysics::setWindPixel(float aX, float aY)
 {
     wind.setAccelerationXPixel(aX);
     wind.setAccelerationYPixel(aY);

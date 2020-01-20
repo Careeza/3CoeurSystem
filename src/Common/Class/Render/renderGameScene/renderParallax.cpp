@@ -1,5 +1,11 @@
 #include "render.h"
 
+void    renderHitBox(SDL_Renderer *render, SDL_Rect *rect)
+{
+    SDL_SetRenderDrawColor(render, 255, 0, 0, 255);
+    SDL_RenderDrawRect(render, rect);
+}
+
 void    CS_Renderer::renderParallax(CS_Parallax *parallax)
 {
     SDL_Rect    *scopeMain;
@@ -27,12 +33,19 @@ void    CS_Renderer::renderParallax(CS_Parallax *parallax)
             sizeSecond = layer->QuerySizeSecond();
             SDL_RenderCopy(render, layerTexture, scopeMain, sizeMain);
             SDL_RenderCopy(render, layerTexture, scopeSecond, sizeSecond);
+            if (i == len - 1)
+            {
+                renderHitBox(render, sizeMain);
+                renderHitBox(render, sizeSecond);
+            }
         }
         else
         {
             scopeMain = layer->QueryScopeMain();
             sizeMain = layer->QuerySizeMain();
             SDL_RenderCopy(render, layerTexture, scopeMain, sizeMain);
+            if (i == len -1)
+                renderHitBox(render, sizeMain);
         }
         i++;
     }

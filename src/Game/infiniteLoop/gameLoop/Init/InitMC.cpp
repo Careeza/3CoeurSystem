@@ -1,13 +1,78 @@
 # include "gameScene.h"
 
-CS_Animation        *staticMC(SDL_Renderer *render)
+CS_Animation        *staticKitsune(SDL_Renderer *render)
 {
     CS_Animation    *animation;
 
     animation = new (CS_Animation);
 
     animation->newAnimation(STATIC, true);
-    animation->loadTexture(render, "resources/source/MainCharacter/MCstaticL.png", "resources/source/MainCharacter/MCstaticR.png");
+    animation->loadTexture(render, "resources/source/MainCharacter/Kitsune/MC2staticL.png", "resources/source/MainCharacter/Kitsune/MC2staticR.png");
+    animation->setSize(20, 20);
+    animation->cutFrame(5, 5, 1);
+    animation->setSpeed(0, 0);
+    animation->setAnimationTime(500);
+
+    return (animation);
+}
+
+CS_Animation        *walkKitsune(SDL_Renderer *render)
+{
+    CS_Animation    *animation;
+
+    animation = new (CS_Animation);
+
+    animation->newAnimation(WALK, true);
+    animation->loadTexture(render, "resources/source/MainCharacter/Kitsune/MC2HtoFandrunL.png", "resources/source/MainCharacter/Kitsune/MC2HtoFandrunR.png");
+    animation->setSize(20, 20);
+    animation->cutFrame(18, 18, 1);
+    animation->setSpeed(0.03, 0);
+    animation->setAnimationTime(1200, 12);
+
+    return (animation);
+}
+
+
+CS_Animation        *fallMoine(SDL_Renderer *render)
+{
+    CS_Animation    *animation;
+
+    animation = new (CS_Animation);
+
+    animation->newAnimation(FALL, true);
+    animation->loadTexture(render, "resources/source/MainCharacter/Moine/MCfallL.png", "resources/source/MainCharacter/Moine/MCfallR.png");
+    animation->setSize(20, 20);
+    animation->cutFrame(2, 2, 1);
+    animation->setSpeed(0.03, 0);
+    animation->setAnimationTime(200);
+
+    return (animation);
+}
+
+CS_Animation        *jumpMoine(SDL_Renderer *render)
+{
+    CS_Animation    *animation;
+
+    animation = new (CS_Animation);
+
+    animation->newAnimation(JUMP, true);
+    animation->loadTexture(render, "resources/source/MainCharacter/Moine/MCjumpL.png", "resources/source/MainCharacter/Moine/MCjumpR.png");
+    animation->setSize(20, 20);
+    animation->cutFrame(3, 3, 1);
+    animation->setSpeed(0.03, 0);
+    animation->setAnimationTime(300);
+
+    return (animation);
+}
+
+CS_Animation        *staticMoine(SDL_Renderer *render)
+{
+    CS_Animation    *animation;
+
+    animation = new (CS_Animation);
+
+    animation->newAnimation(STATIC, true);
+    animation->loadTexture(render, "resources/source/MainCharacter/Moine/MCstaticL.png", "resources/source/MainCharacter/Moine/MCstaticR.png");
     animation->setSize(20, 20);
     animation->cutFrame(4, 4, 1);
     animation->setSpeed(0, 0);
@@ -16,30 +81,30 @@ CS_Animation        *staticMC(SDL_Renderer *render)
     return (animation);
 }
 
-CS_Animation        *walkMC(SDL_Renderer *render)
+CS_Animation        *walkMoine(SDL_Renderer *render)
 {
     CS_Animation    *animation;
 
     animation = new (CS_Animation);
 
     animation->newAnimation(WALK, true);
-    animation->loadTexture(render, "resources/source/MainCharacter/MCrunL.png", "resources/source/MainCharacter/MCrunR.png");
+    animation->loadTexture(render, "resources/source/MainCharacter/Moine/MCrunL.png", "resources/source/MainCharacter/Moine/MCrunR.png");
     animation->setSize(20, 20);
     animation->cutFrame(5, 5, 1);
-    animation->setSpeed(30, 0);
+    animation->setSpeed(0.03, 0);
     animation->setAnimationTime(400);
 
     return (animation);
 }
 
-CS_Animation        *attackMC(SDL_Renderer *render)
+CS_Animation        *attackMoine(SDL_Renderer *render)
 {
     CS_Animation    *animation;
 
     animation = new (CS_Animation);
 
     animation->newAnimation(ATTACK, false);
-    animation->loadTexture(render, "resources/source/MainCharacter/MCpunchL.png", "resources/source/MainCharacter/MCpunchR.png");
+    animation->loadTexture(render, "resources/source/MainCharacter/Moine/MCpunchL.png", "resources/source/MainCharacter/Moine/MCpunchR.png");
     animation->setSize(20, 20);
     animation->cutFrame(3, 3, 1);
     animation->setSpeed(0, 0);
@@ -55,7 +120,7 @@ CS_PersonalPhysic   *initPhysic()
     physic = new (CS_PersonalPhysic);
 
     physic->setPosX(40);
-    physic->setPosY(0);
+    physic->setPosY(20);
     
     return (physic);
 }
@@ -66,9 +131,16 @@ CS_Character        *initMC(SDL_Renderer *render)
 
     MC = new(CS_Character);
 
-    MC->addAnimation(render, staticMC);
-    MC->addAnimation(render, walkMC);
-    MC->addAnimation(render, attackMC);
+    MC->setMC(KITSUNE);
+    MC->addAnimation(render, staticKitsune);
+    MC->addAnimation(render, walkKitsune);
+
+    MC->setMC(MOINE);
+    MC->addAnimation(render, staticMoine);
+    MC->addAnimation(render, walkMoine);
+    MC->addAnimation(render, attackMoine);
+    MC->addAnimation(render, fallMoine);
+    MC->addAnimation(render, jumpMoine);
 
     MC->loadAnimation(STATIC);
     MC->loadPhysic(initPhysic());

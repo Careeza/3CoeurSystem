@@ -4,12 +4,15 @@ void        CS_Character::loadAnimation(t_animation name)
 {
     CS_Animation    *newAnimation;
 
-    newAnimation = bank->QueryAnimationByname(name);
+    if (moine)
+        newAnimation = bankMoine->QueryAnimationByname(name);
+    else
+        newAnimation = bankKitsune->QueryAnimationByname(name);
     if (newAnimation == NULL)
     {
         std::cout << "error in loadAnimation => MC" << std::endl;
         exit (0);
-    } 
+    }
     if (newAnimation != animation)
     {
         animation = newAnimation;

@@ -16,9 +16,11 @@ void        CS_Character::getFrame()
 {
     texture = animation->QueryTexture(right);
     frame = animation->QueryFrame();
+    physic->setHitBox(animation->QueryHitbox(right));
+    physic->setAttack(animation->QueryAttack(right));
 }
 
-void        CS_Character::moveCharacter(float deltaT, int BorderMinX, int BorderMaxX)
+void        CS_Character::moveCharacter(int deltaT, int BorderMinX, int BorderMaxX)
 {
     int w;
     int h;
@@ -27,13 +29,37 @@ void        CS_Character::moveCharacter(float deltaT, int BorderMinX, int Border
     physic->updatePosition(deltaT);
     QuerySize(w, h);
     verifyHitbox(physic, w, h, BorderMinX, BorderMaxX);
+    setOnGround(physic->verifyOnGround());
+    if (onGround)
+        jump = maxJump;
 }
+
+void        CS_Character::useJump()
+{
+    if (jump > 0)
+    {
+        QueryPhysic()->setSpeedY(-1);
+        jump--;
+    }
+}
+
 
 
 void        CS_Character::setRight(bool rightSource)
 {
     right = rightSource;
 }
+
+void        CS_Character::setOnGround(bool onGroundSource)
+{
+    onGround = onGroundSource;
+}
+
+void        CS_Character::setMaxJump(int maxJumpSource)
+{
+    maxJump = maxJumpSource;
+}
+
 
 void        CS_Character::updateFrame(int deltaT)
 {

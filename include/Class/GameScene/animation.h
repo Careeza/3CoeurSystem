@@ -20,14 +20,10 @@ typedef enum	e_aniamtion {
     WALK,
     SPRINT,
     ATTACK,
+    FALL,
+    JUMP,
 }				t_animation;
-
-# define MCWALKL "resources/source/Slime/runLSlime.png"
-# define MCWALKR "resources/source/Slime/runRSlime.png"
-
-# define MCSTATICL "resources/source/MainCharacter/staticLMC.png"
-# define MCSTATICR "resources/source/MainCharacter/staticRMC.png"
-
+ 
 class   CS_Animation
 {
     public:
@@ -39,8 +35,11 @@ class   CS_Animation
         void            cutFrame(int nb_frame, int nb_columnframe, int nb_lineframe);
         void            setSpeed(float speedXSource, float speedYsource);
         void            setSize(float wSource, float hSource);
-        void            setAnimationTime(int animationTimeSource);
+        void            setAnimationTime(int animationTimeSource, int indexStartSource = 0);
         void            setInterrupt(bool interruptSource);
+
+        void            setHitBox(int indexSource, bool right, float wSource, float hSource, float xSource, float ySource);
+        void            setAttack(int indexSource, bool right, float wSource, float hSource, float xSource, float ySource);
 
         void            restartAnimation();
 
@@ -54,11 +53,18 @@ class   CS_Animation
         t_animation     QueryName();
 
         SDL_Texture     *QueryTexture(bool right);
+        CS_HitBox       *QueryHitbox(bool right);
+        CS_HitBox       *QueryAttack(bool right);
         SDL_Rect        *QueryFrame();
         void            QuerySize(int &wDest, int& hDest);
         
-        int             QueryMovementX(bool right);
-        int             QueryMovementY();
+        float           QueryMovementX(bool right);
+        float           QueryMovementY();
+        int             QueryAnimationTime();
+        int             QueryIndex();
+        int             QueryMaxIndex();
+
+        
 
     private:
 
@@ -68,10 +74,13 @@ class   CS_Animation
         SDL_Texture                 *textureR;
         SDL_Texture                 *textureL;
         std::vector<SDL_Rect *>     frame;
-        std::vector<CS_HitBox *>    hitboxes;
+        std::vector<CS_HitBox *>    hitboxesR;
+        std::vector<CS_HitBox *>    hitboxesL;
+        std::vector<CS_HitBox *>    attackR;
+        std::vector<CS_HitBox *>    attackL;
 
-        int                         speedX;
-        int                         speedY;
+        float                       speedX;
+        float                       speedY;
 
         int                         w;
         int                         h;
@@ -90,6 +99,7 @@ class   CS_Animation
         float                       time;
 
         int                         index;
+        int                         indexStart;
 };
 
 class CS_BankAnimation

@@ -28,7 +28,7 @@ OBJS_EDITANIMATION = $(filter $(OBJS_DIR)/EditAnimation/%, $(OBJS))
 OBJS_EDITASSETS = $(filter $(OBJS_DIR)/EditAssets/%, $(OBJS))
 
 #editMap editAnimation editAssets
-all: game editAnimation
+all: game editAnimation editMap
 
 $(OBJS_DIR)/%.o $(OBJS_DIR)/%.o.wasm: src/%.cpp Makefile
 	@$(PRECOMPILE)

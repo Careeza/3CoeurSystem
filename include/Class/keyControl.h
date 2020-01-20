@@ -98,6 +98,8 @@ class   CS_KeyControl
         int                                     getKey();
         int                                     getButton();
         std::shared_ptr<CS_Element>             getButtonScene();
+        void                                    updateMousePos();
+        void                                    getMousePos(int& xDest, int& yDest);
 
 
     private:
@@ -105,6 +107,8 @@ class   CS_KeyControl
         Uint32          type;
         int             len;
         CS_Scene        *scene;
+        int             xMouse;
+        int             yMouse;
 };
 
 #endif
