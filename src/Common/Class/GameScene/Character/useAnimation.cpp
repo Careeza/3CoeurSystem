@@ -16,8 +16,7 @@ void        CS_Character::getFrame()
 {
     texture = animation->QueryTexture(right);
     frame = animation->QueryFrame();
-    physic->setHitBox(animation->QueryHitbox(right));
-    physic->setAttack(animation->QueryAttack(right));
+
 }
 
 void        CS_Character::moveCharacter(int deltaT, int BorderMinX, int BorderMaxX)
@@ -27,8 +26,10 @@ void        CS_Character::moveCharacter(int deltaT, int BorderMinX, int BorderMa
 
     physic->updateSpeed(deltaT);
     physic->updatePosition(deltaT);
-    QuerySize(w, h);
-    verifyHitbox(physic, w, h, BorderMinX, BorderMaxX);
+    physic->setHitBox(animation->QueryHitbox(right));
+    physic->setAttack(animation->QueryAttack(right));
+    animation->QuerySize(w, h);
+    verifyHitbox2(w, h, physic, NULL);
     setOnGround(physic->verifyOnGround());
     if (onGround)
         jump = maxJump;

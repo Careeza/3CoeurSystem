@@ -61,4 +61,10 @@ void            useAction(t_action *table, CS_Character *MC);
 void            parallaxManagement(CS_Parallax *parallax, CS_Camera *camera);
 CS_Assets       *initAssets(SDL_Renderer *render);
 
+
+CS_Enemy        *initEnfant1(SDL_Renderer *render);
+CS_EnemyBank    *initBankEnemies(SDL_Renderer *render);
+
+
+
 #endif

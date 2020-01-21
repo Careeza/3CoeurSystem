@@ -16,7 +16,9 @@
 # include "character.h"
 
 typedef enum	e_enemy {
-	CubeRouge,
+	Enfant1,
+    Enfant2,
+    Enfant3,
     CuveVert
 }				t_enemy;
 
@@ -36,11 +38,13 @@ class   CS_Enemy
         ~CS_Enemy();
 
 
+        void                setName(t_enemy nameSource);
         void                initEnemyAnimationBank(CS_BankAnimation *animationBankSource);
         void                initEnemyPhysic(CS_PersonalPhysic *physicSource);
+        void                initAlgo(t_enemyAction (*algoSource)(CS_Character *MC, CS_PersonalPhysic *physic));
 
         void                setActionToUse(CS_Character *MC);
-        void                useEnemyAction();
+        void                loadAnimation(t_animation name);
         void                updateFrame(int deltaT);
         void                moveCharacter(int deltaT);
         void                getFrame();
@@ -54,15 +58,16 @@ class   CS_Enemy
 
         t_enemy             QueryName();
         int                 QueryID();
+        CS_BankAnimation    *QueryAnimationBank();
         CS_Animation        *QueryAnimation();
         CS_PersonalPhysic   *QueryPhysic();
         SDL_Texture         *QueryTexture();
         SDL_Rect            *QueryFrame();
+        t_enemyAction (*QueryAlgo())(CS_Character *MC, CS_PersonalPhysic *physic);
 
 
     private:
         t_enemy             name;
-        t_enemyAction       action;
         t_enemyAction       (*algo)(CS_Character *MC, CS_PersonalPhysic *physic);
         SDL_Texture         *texture;
         SDL_Rect            *frame;
@@ -95,12 +100,16 @@ class   CS_Enemies
         void        loadEnemyBank(CS_EnemyBank *enemyBankSource);
         void        addAnEnemy(float x, float y, t_enemy name);
         void        addAnEnemyPixel(int x, int y, t_enemy name);
+        void        updateEnemies(CS_Character *MC, int deltaT);
 
         void        deleteEnemy(int index);
         void        updateID();
 
+        CS_Enemy    *QueryEnemy(int index);
+        int         QueryNbEnemies();
+
     private:
-        std::vector<CS_Enemy *>     enemy;
+        std::vector<CS_Enemy *>     enemies;
         CS_EnemyBank               *enemyBank;
 
 };

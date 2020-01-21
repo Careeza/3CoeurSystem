@@ -72,6 +72,7 @@ class   CS_GameScene : public CS_Scene
         int             borneMaxX;
 };
 
+void            verifyHitbox2(int wMC, int hMC, CS_PersonalPhysic *physic, CS_GameScene *map);
 void            verifyHitbox(CS_PersonalPhysic *physic, int w, int h, int BorderMinX, int BorderMaxX);
 void            moveWithTest(bool right, int w, int h, int& x, int &y, CS_GameScene *map);
 

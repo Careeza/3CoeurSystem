@@ -60,3 +60,30 @@ void    verifyHitbox(CS_PersonalPhysic *physic, int w, int h, int BorderMinX, in
     checkBorder(w, BorderMinX, BorderMaxX, physic);
     checkGround(h, physic);
 }
+
+void    verifyHitbox2(int wMC, int hMC, CS_PersonalPhysic *physic, CS_GameScene *map)
+{
+    int wHitbox;
+    int hHitbox;
+    int xHitbox;
+    int yHitbox;
+
+    physic->QueryHitBox(wHitbox, hHitbox, xHitbox, yHitbox);
+
+    int y;
+    int x;
+
+    physic->QueryPostion(x, y);
+
+    int decalY;
+    int decalX;
+
+    decalY = yHitbox - y;
+    decalX = xHitbox - x;
+    if (yHitbox + hHitbox >= Tools->QueryWindowHeight())
+    {
+        physic->setPosYPixel(Tools->QueryWindowHeight() - hHitbox - decalY);
+        physic->setOnGround(true);
+        physic->setSpeedY(0);
+    }
+}

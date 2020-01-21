@@ -78,6 +78,16 @@ CS_Animation        *staticMoine(SDL_Renderer *render)
     animation->setSpeed(0, 0);
     animation->setAnimationTime(500);
 
+    animation->setHitBox(0, true, 0.138889, 0.594444, 0.421875, 0.125);
+    animation->setHitBox(1, true, 0.138889, 0.563889, 0.421875, 0.155556);
+    animation->setHitBox(2, true, 0.138889, 0.533333, 0.421875, 0.186111);
+    animation->setHitBox(3, true, 0.138889, 0.563889, 0.421875, 0.155556);
+
+    animation->setHitBox(0, false, 0.138889, 0.594444, 0.439236, 0.125);
+    animation->setHitBox(1, false, 0.138889, 0.563889, 0.439236, 0.155556);
+    animation->setHitBox(2, false, 0.138889, 0.533333, 0.439236, 0.186111);
+    animation->setHitBox(3, false, 0.138889, 0.563889, 0.439236, 0.155556);
+
     return (animation);
 }
 
@@ -119,8 +129,8 @@ CS_PersonalPhysic   *initPhysic()
 
     physic = new (CS_PersonalPhysic);
 
-    physic->setPosX(40);
-    physic->setPosY(20);
+    physic->setPosX(60);
+    physic->setPosY(0);
     
     return (physic);
 }

@@ -67,6 +67,8 @@ t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actio
         MC->moveCharacter(deltaTMS, -100000, 100000);
         MC->getFrame();
 
+        scene->QueryEnemies()->updateEnemies(MC, deltaTMS);
+
         parallaxManagement(scene->QueryParallax(), scene->QueryCamera());
 
         render->renderGameScene(scene);

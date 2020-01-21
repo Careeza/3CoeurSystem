@@ -26,6 +26,11 @@ int                 CS_Enemy::QueryID()
     return (id);
 }
 
+CS_BankAnimation    *CS_Enemy::QueryAnimationBank()
+{
+    return (animationBank);
+}
+
 
 CS_Animation        *CS_Enemy::QueryAnimation()
 {
@@ -45,4 +50,9 @@ SDL_Texture         *CS_Enemy::QueryTexture()
 SDL_Rect            *CS_Enemy::QueryFrame()
 {
     return (frame);
+}
+
+t_enemyAction (*CS_Enemy::QueryAlgo())(CS_Character *MC, CS_PersonalPhysic *physic)
+{
+    return (algo);
 }

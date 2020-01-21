@@ -33,19 +33,12 @@ void    CS_Renderer::renderParallax(CS_Parallax *parallax)
             sizeSecond = layer->QuerySizeSecond();
             SDL_RenderCopy(render, layerTexture, scopeMain, sizeMain);
             SDL_RenderCopy(render, layerTexture, scopeSecond, sizeSecond);
-            if (i == len - 1)
-            {
-                renderHitBox(render, sizeMain);
-                renderHitBox(render, sizeSecond);
-            }
         }
         else
         {
             scopeMain = layer->QueryScopeMain();
             sizeMain = layer->QuerySizeMain();
             SDL_RenderCopy(render, layerTexture, scopeMain, sizeMain);
-            if (i == len -1)
-                renderHitBox(render, sizeMain);
         }
         i++;
     }
