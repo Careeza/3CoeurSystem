@@ -19,7 +19,7 @@ CS_AssetsBank   *initAssetsBankLevel1(SDL_Renderer *render)
     assetsBank->createAsset(render, "resources/source/assets/Grass04.png", Grass04, 5.5, 6.2, 100, 100, 0, 0);
     assetsBank->createAsset(render, "resources/source/assets/Grass05.png", Grass05, 5.8, 8, 100, 100, 0, 0);
     assetsBank->createAsset(render, "resources/source/assets/Ground01.png", Ground01, 10, 5.8, 100, 100, 0, 0);
-    assetsBank->createAsset(render, "resources/source/assets/MediumTree01.png", MediumTree01, 10, 67.8, 100, 100, 0, 0);
+    assetsBank->createAsset(render, "resources/source/assets/plateforme.png", Plateforme, 10, 5.8, 100, 100, 0, 0);
     assetsBank->createAsset(render, "resources/source/assets/MediumTree02.png", MediumTree02, 10, 60.4, 100, 100, 0, 0);
     assetsBank->createAsset(render, "resources/source/assets/MediumTree03.png", MediumTree03, 4.3, 52.9, 100, 100, 0, 0);
     assetsBank->createAsset(render, "resources/source/assets/SmallTree01.png", SmallTree01, 2.8, 36.7, 100, 100, 0, 0);

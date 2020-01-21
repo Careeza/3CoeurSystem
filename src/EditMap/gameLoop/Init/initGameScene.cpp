@@ -27,7 +27,7 @@ CS_GameScene    *initGameScene(SDL_Renderer *render)
     scene->createButtonToSceneFromPng("Asset11", "resources/source/assets/Grass04.png",  12.5, 10, 75, 50, 1, &useButton10);
     scene->createButtonToSceneFromPng("Asset12", "resources/source/assets/Grass05.png",  12.5, 10, 87.5, 50, 1, &useButton11);
     scene->createButtonToSceneFromPng("Asset13", "resources/source/assets/Ground01.png",  12.5, 10, 75, 60, 1, &useButton12);
-    scene->createButtonToSceneFromPng("Asset14", "resources/source/assets/MediumTree01.png",  12.5, 10, 87.5, 60, 1, &useButton13);
+    scene->createButtonToSceneFromPng("Asset14", "resources/source/assets/plateforme.png",  12.5, 10, 87.5, 60, 1, &useButton13);
     scene->createButtonToSceneFromPng("Asset15", "resources/source/assets/MediumTree02.png",  12.5, 10, 75, 70, 1, &useButton14);
     scene->createButtonToSceneFromPng("Asset16", "resources/source/assets/MediumTree03.png",  12.5, 10, 87.5, 70, 1, &useButton15);
     scene->createButtonToSceneFromPng("Asset17", "resources/source/assets/SmallTree01.png",  12.5, 10, 75, 80, 1, &useButton16);

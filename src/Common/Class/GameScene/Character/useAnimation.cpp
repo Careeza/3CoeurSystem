@@ -16,7 +16,8 @@ void        CS_Character::getFrame()
 {
     texture = animation->QueryTexture(right);
     frame = animation->QueryFrame();
-
+    physic->setHitBox(animation->QueryHitbox(right));
+    physic->setAttack(animation->QueryAttack(right));
 }
 
 void        CS_Character::moveCharacter(int deltaT, int BorderMinX, int BorderMaxX)

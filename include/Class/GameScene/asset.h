@@ -29,6 +29,7 @@ typedef enum	e_assetName {
     Grass04,
     Grass05,
     Ground01,
+    Plateforme,
     MediumTree01,
     MediumTree02,
     MediumTree03,

@@ -7,7 +7,7 @@ CS_Enemies      *initEnemies(SDL_Renderer *render)
     enemies = new (CS_Enemies);
 
     enemies->loadEnemyBank(initBankEnemies(render));
-    enemies->addAnEnemy(10, 10, Enfant1);
+//    enemies->addAnEnemy(10, 10, Enfant1);
     std::cout << "here" << std::endl;
 
     return (enemies);
