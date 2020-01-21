@@ -37,6 +37,53 @@ CS_Assets       *initAssets(SDL_Renderer *render)
     assets = new (CS_Assets);
 
     assets->loadBank(initAssetsBankLevel1(render));
+    
+    assets->loadAsset(Ground01, 1, -0.0694444, 94.3333);
+    assets->loadAsset(Ground01, 1, 9.86111, 94.3333);
+    assets->loadAsset(Ground01, 1, 19.7917, 94.3333);
+    assets->loadAsset(Ground01, 1, 29.7222, 94.3333);
+    assets->loadAsset(Ground01, 1, 39.6528, 94.3333);
+    assets->loadAsset(Ground01, 1, 49.5833, 94.3333);
+    assets->loadAsset(Ground01, 1, 59.5139, 94.3333);
+    assets->loadAsset(Ground01, 1, 69.4444, 94.3333);
+    assets->loadAsset(Ground01, 1, 79.375, 94.3333);
+    assets->loadAsset(Ground01, 1, 89.3056, 94.3333);
+    assets->loadAsset(Ground01, 1, 99.2361, 94.3333);
+    assets->loadAsset(Ground01, 1, 109.167, 94.3333);
+    assets->loadAsset(Ground01, 1, 119.097, 94.3333);
+    assets->loadAsset(Ground01, 1, 129.028, 94.3333);
+    assets->loadAsset(Ground01, 1, 138.958, 94.3333);
+    assets->loadAsset(Ground01, 1, 148.889, 94.3333);
+    assets->loadAsset(Ground01, 1, 158.819, 94.3333);
+    assets->loadAsset(Ground01, 1, 168.75, 94.3333);
+    assets->loadAsset(Ground01, 1, 178.681, 94.3333);
+    assets->loadAsset(Ground01, 1, 188.611, 94.3333);
+    assets->loadAsset(Ground01, 1, 198.542, 94.3333);
+    assets->loadAsset(Ground01, 1, 208.472, 94.3333);
+    assets->loadAsset(Ground01, 1, 218.403, 94.3333);
+    assets->loadAsset(Ground01, 1, 228.333, 94.3333);
+    assets->loadAsset(Ground01, 1, 238.264, 94.3333);
+    assets->loadAsset(Ground01, 1, 248.194, 94.3333);
+    assets->loadAsset(Ground01, 1, 258.125, 94.3333);
+    assets->loadAsset(Ground01, 1, 268.056, 94.3333);
+    assets->loadAsset(Ground01, 1, 277.986, 94.3333);
+    assets->loadAsset(Ground01, 1, 287.917, 94.3333);
+    assets->loadAsset(Ground01, 1, 297.847, 94.3333);
+    assets->loadAsset(Ground01, 1, 307.708, 94.3333);
+    assets->loadAsset(Ground01, 1, 317.569, 94.3333);
+    assets->loadAsset(Ground01, 1, 327.5, 94.3333);
+    assets->loadAsset(Ground01, 1, 337.431, 94.3333);
+    assets->loadAsset(Ground01, 1, 347.361, 94.3333);
+    assets->loadAsset(Ground01, 1, 357.292, 94.3333);
+    assets->loadAsset(Ground01, 1, 367.222, 94.3333);
+    assets->loadAsset(Ground01, 1, 377.153, 94.3333);
+    assets->loadAsset(Ground01, 1, 387.083, 94.3333);
+    assets->loadAsset(Ground01, 1, -10, 94.3333);
+    assets->loadAsset(Ground01, 1, -19.9306, 94.3333);
+    assets->loadAsset(Ground01, 1, 404.167, 74.3333);
+    assets->loadAsset(Ground01, 1, 428.264, 74.2222);
+    assets->loadAsset(Ground01, 1, 429.792, 61.3333);
+
 
     return (assets);
 }
