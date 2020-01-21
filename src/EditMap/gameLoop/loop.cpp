@@ -91,9 +91,9 @@ void    placeAsset(CS_KeyControl event, CS_Camera *camera, CS_Asset* &assetSelec
 void    editAnimationUseAction(CS_KeyControl event, t_action *table, CS_Camera *camera, CS_Asset* &assetSelected, CS_Assets *assets, bool& haveAnAsset)
 {
     if (table->left & KeyHoldPress)
-        camera->moveCamera2(-5, 0, NULL);
+        camera->moveCamera2(-10, 0, NULL);
     if (table->right & KeyHoldPress)
-        camera->moveCamera2(5, 0, NULL);
+        camera->moveCamera2(10, 0, NULL);
     if (table->dodge & KeyPress)
         changeButton(assetSelected, assets, haveAnAsset);
     if (table->att & KeyRelease)

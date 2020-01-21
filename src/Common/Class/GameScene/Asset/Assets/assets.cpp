@@ -180,6 +180,10 @@ void        printName(t_assetName name)
         std::cout << "SmallTree03";
     else if (name == SmallTree04)
         std::cout << "SmallTree04";
+    else if (name == Plateforme)
+        std::cout << "Plateforme";
+    else if (name == Dirt)
+        std::cout << "Dirt";
 }
 
 //    assets->loadAsset(BigTree01, 1, XBigTree02, YBigTree01);
@@ -220,7 +224,6 @@ void        CS_Assets::printAsset()
     
     std::cout << std::endl << " return (assets);" << std::endl;
     std::cout << "}" << std::endl;
-    exit (0);
 }
 
 void        CS_Assets::loadBank(CS_AssetsBank *assetsBankSource)

@@ -102,7 +102,7 @@ void    loadMediumTree01(CS_Asset* &assetSelected, CS_Assets *assets, bool& have
 void    loadMediumTree02(CS_Asset* &assetSelected, CS_Assets *assets, bool& haveAnAsset)
 {
     changeButton(assetSelected, assets, haveAnAsset);    
-    assetSelected = assets->loadAsset(MediumTree02, 1, 40, YMediumTree02);
+    assetSelected = assets->loadAsset(Dirt, 1, 40, YMediumTree02);
     haveAnAsset = true;
 }
 
