@@ -56,7 +56,7 @@ CS_GameScene    *initGameScene(SDL_Renderer *render);
 CS_Character    *initMC(SDL_Renderer *render);
 CS_Parallax     *initParallax(SDL_Renderer *render);
 t_pos           gameUseEvent(t_action action, CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable, CS_Timer *timer);
-void            useAction(t_action *table, CS_Character *MC);
+void            useAction(t_action *table, CS_GameScene *scene);
 void            parallaxManagement(CS_Parallax *parallax, CS_Camera *camera);
 CS_Assets       *initAssets(SDL_Renderer *render);
 
@@ -64,6 +64,12 @@ CS_Projectiles  *initProjectiles(SDL_Renderer *render);
 
 void            resolveAllAction(CS_GameScene *scene);
 CS_Enemy        *initEnfant1(SDL_Renderer *render);
+CS_Enemy        *initEnfant2(SDL_Renderer *render);
+CS_Enemy        *initEnfant3(SDL_Renderer *render);
+CS_Enemy        *initEnfant4(SDL_Renderer *render);
+CS_Enemy        *initEnfant5(SDL_Renderer *render);
+CS_Enemy        *initEnfant6(SDL_Renderer *render);
+
 CS_EnemyBank    *initBankEnemies(SDL_Renderer *render);
 
 

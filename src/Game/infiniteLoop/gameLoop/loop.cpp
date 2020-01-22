@@ -62,7 +62,7 @@ t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actio
         gameEventProcessing(actionTable, &action);
 
         MC->updateFrame(deltaTMS);
-        useAction(&action, MC);
+        useAction(&action, scene);
         pos = gameUseEvent(action, render, value, actionTable, &timer);
         MC->moveCharacter(deltaTMS);
         MC->getFrame();

@@ -40,14 +40,41 @@ void    walkMC(CS_Character *MC)
     }
 }
 
-void    useAction(t_action *table, CS_Character *MC)
+void    useAttack(CS_GameScene *scene)
 {
+    CS_Character    *MC;
+    int             x;
+    int             y;
+    int             w;
+    int             h;
+
+    MC = scene->QueryMC();
+    if (MC->MCIsMoine())
+        MC->loadAnimation(ATTACK);
+    else
+    {
+        MC->loadAnimation(ATTACK);
+        MC->QueryPhysic()->QueryHitBox(w, h, x, y);
+        if (MC->VerifyRight())
+            scene->QueryProjectile()->spawnProjectile(projectile3, x + w, y + h / 4, true);
+        else
+            scene->QueryProjectile()->spawnProjectile(projectile3, x, y + h / 4, false);
+    }    
+}
+
+void    useAction(t_action *table, CS_GameScene *scene)
+{
+    CS_Character    *MC;
+
+    MC = scene->QueryMC();
     if (MC->verifyAnimationEnd())
     {
         if (table->jump & KeyPress)
             MC->useJump();
         else if (table->att & KeyPress)
-            MC->loadAnimation(ATTACK);
+        {
+            useAttack(scene);
+        }
         else if (table->dodge & KeyPress)
             MC->swapMC();
         else if (table->right & KeyHoldPress || table->left & KeyHoldPress)

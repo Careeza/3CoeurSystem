@@ -28,6 +28,7 @@ typedef enum	e_enemy {
 	Enfant10,
     Enfant11,
     Enfant12,
+    Boss,
 }				t_enemy;
 
 typedef enum    e_enemyAction {

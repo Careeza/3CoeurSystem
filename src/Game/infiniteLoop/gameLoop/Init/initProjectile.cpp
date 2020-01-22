@@ -1,5 +1,34 @@
 # include "gameScene.h"
 
+CS_Animation        *initAnimationProjectile3(SDL_Renderer *render)
+{
+    CS_Animation    *animation;
+    
+    animation = new (CS_Animation);
+
+    animation->newAnimation(STATIC, true);
+    animation->loadTexture(render, "resources/source/Projectiles/FlameL.png", "resources/source/Projectiles/FlameR.png");
+    animation->setSize(3, 3);
+    animation->cutFrame(3, 3, 1);
+    animation->setSpeed(0.03, 0);
+    animation->setAnimationTime(300);
+
+    return (animation);
+}
+
+CS_Projectile       *initProjectile3(SDL_Renderer *render)
+{
+    CS_Projectile   *projectile;
+
+    projectile = new (CS_Projectile);
+
+    projectile->setName(projectile3);
+    projectile->setRange(3000);
+    projectile->initAnimation(initAnimationProjectile3(render));
+
+    return (projectile);
+}
+
 CS_Animation        *initAnimationProjectile2(SDL_Renderer *render)
 {
     CS_Animation    *animation;
@@ -66,6 +95,7 @@ CS_ProjectileBank   *initProjectileBank(SDL_Renderer *render)
 
     projectileBank->addProjectile(initProjectile1(render));
     projectileBank->addProjectile(initProjectile2(render));
+    projectileBank->addProjectile(initProjectile3(render));
 
     return (projectileBank);
 }

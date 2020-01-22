@@ -37,9 +37,9 @@ CS_Animation        *walkKitsune(SDL_Renderer *render)
     animation->newAnimation(WALK, true);
     animation->loadTexture(render, "resources/source/MainCharacter/Kitsune/MC2HrunL.png", "resources/source/MainCharacter/Kitsune/MC2HrunR.png");
     animation->setSize(20, 20);
-    animation->cutFrame(18, 18, 1);
+    animation->cutFrame(4, 4, 1);
     animation->setSpeed(0.03, 0);
-    animation->setAnimationTime(1200, 12);
+    animation->setAnimationTime(400);
 
     animation->setHitBox(0, true, 0.157986, 0.669444, 0.439236, 0.155556);
     animation->setHitBox(1, true, 0.175347, 0.669444, 0.439236, 0.155556);
@@ -63,15 +63,15 @@ CS_Animation        *jumpKitsune(SDL_Renderer *render)
     animation->newAnimation(JUMP, true);
     animation->loadTexture(render, "resources/source/MainCharacter/Kitsune/MC2jumpL.png", "resources/source/MainCharacter/Kitsune/MC2jumpR.png");
     animation->setSize(20, 20);
-    animation->cutFrame(3, 3, 1);
+    animation->cutFrame(2, 2, 1);
     animation->setSpeed(0.03, 0);
-    animation->setAnimationTime(300);
+    animation->setAnimationTime(200);
 
-    animation->setHitBox(0, 0.121528, 0.563889, 0.456597, 0.186111);
-    animation->setHitBox(1, 0.121528, 0.563889, 0.456597, 0.186111);
+    animation->setHitBox(0, true, 0.121528, 0.563889, 0.456597, 0.186111);
+    animation->setHitBox(1, true, 0.121528, 0.563889, 0.456597, 0.186111);
 
-    animation->setHitBox(0, 0.121528, 0.563889, 0.421875, 0.186111);
-    animation->setHitBox(1, 0.104167, 0.563889, 0.421875, 0.186111);
+    animation->setHitBox(0, true, 0.121528, 0.563889, 0.421875, 0.186111);
+    animation->setHitBox(1, true, 0.104167, 0.563889, 0.421875, 0.186111);
 
     return (animation);
 }
@@ -89,13 +89,13 @@ CS_Animation        *attackKitsune(SDL_Renderer *render)
     animation->setSpeed(0, 0);
     animation->setAnimationTime(300);
 
-    animation->setHitBox(0, 0.121528, 0.563889, 0.456597, 0.186111);
-    animation->setHitBox(1, 0.104167, 0.563889, 0.473958, 0.186111);
-    animation->setHitBox(2, 0.104167, 0.563889, 0.456597, 0.186111);
+    animation->setHitBox(0, true, 0.121528, 0.563889, 0.456597, 0.186111);
+    animation->setHitBox(1, true, 0.104167, 0.563889, 0.473958, 0.186111);
+    animation->setHitBox(2, true, 0.104167, 0.563889, 0.456597, 0.186111);
 
-    animation->setHitBox(0, 0.121528, 0.563889, 0.421875, 0.186111);
-    animation->setHitBox(1, 0.104167, 0.563889, 0.421875, 0.186111);
-    animation->setHitBox(2, 0.104167, 0.563889, 0.439236, 0.186111);
+    animation->setHitBox(0, false, 0.121528, 0.563889, 0.421875, 0.186111);
+    animation->setHitBox(1, false, 0.104167, 0.563889, 0.421875, 0.186111);
+    animation->setHitBox(2, false, 0.104167, 0.563889, 0.439236, 0.186111);
 
     return (animation);
 }
@@ -224,6 +224,8 @@ CS_Character        *initMC(SDL_Renderer *render)
     MC->setMC(KITSUNE);
     MC->addAnimation(render, staticKitsune);
     MC->addAnimation(render, walkKitsune);
+    MC->addAnimation(render, jumpKitsune);
+    MC->addAnimation(render, attackKitsune);
 
     MC->setMC(MOINE);
     MC->addAnimation(render, staticMoine);

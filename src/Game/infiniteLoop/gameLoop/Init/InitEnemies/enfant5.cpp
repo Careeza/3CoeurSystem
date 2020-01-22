@@ -1,16 +1,16 @@
 # include "game.h"
 
-CS_Animation        *walkEnfant1(SDL_Renderer *render)
+CS_Animation        *walkEnfant5(SDL_Renderer *render)
 {
     CS_Animation    *animation;
 
     animation = new (CS_Animation);
 
     animation->newAnimation(WALK, true);
-    animation->loadTexture(render, "resources/source/Enemies/Enfants/Noir1runL.png", "resources/source/Enemies/Enfants/Noir1runR.png");
+    animation->loadTexture(render, "resources/source/Enemies/Enfants/Noire2runL.png", "resources/source/Enemies/Enfants/Noire2runR.png");
     animation->setSize(20, 20);
     animation->cutFrame(5, 5, 1);
-    animation->setSpeed(0.015, 0);
+    animation->setSpeed(0.03, 0);
     animation->setAnimationTime(500);
 
     animation->setHitBox(0, true, 0.104167, 0.469444, 0.473958, 0.280556);
@@ -28,18 +28,18 @@ CS_Animation        *walkEnfant1(SDL_Renderer *render)
     return (animation);
 }
 
-static CS_BankAnimation    *initBankAnimation1(SDL_Renderer *render)
+static CS_BankAnimation    *initBankAnimation5(SDL_Renderer *render)
 {
     CS_BankAnimation *bank;
 
     bank = new (CS_BankAnimation);
 
-    bank->addAnimation(render, walkEnfant1);
+    bank->addAnimation(render, walkEnfant5);
 
     return (bank);
 }
 
-t_enemyAction   initAlgoEnfant1(CS_Character *MC, CS_PersonalPhysic *physic)
+t_enemyAction   initAlgoEnfant5(CS_Character *MC, CS_PersonalPhysic *physic)
 {
     int xMC;
     int YMC;
@@ -57,15 +57,15 @@ t_enemyAction   initAlgoEnfant1(CS_Character *MC, CS_PersonalPhysic *physic)
         return (WalkL);
 }
 
-CS_Enemy    *initEnfant1(SDL_Renderer *render)
+CS_Enemy    *initEnfant5(SDL_Renderer *render)
 {
     CS_Enemy    *enemy;
 
     enemy = new (CS_Enemy);
 
-    enemy->initEnemyAnimationBank(initBankAnimation1(render));
-    enemy->initAlgo(initAlgoEnfant1);
-    enemy->setName(Enfant1);
+    enemy->initEnemyAnimationBank(initBankAnimation5(render));
+    enemy->initAlgo(initAlgoEnfant5);
+    enemy->setName(Enfant5);
 
     return (enemy);
 }
