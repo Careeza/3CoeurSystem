@@ -32,23 +32,6 @@ CS_Animation        *walkKitsune(SDL_Renderer *render)
     return (animation);
 }
 
-
-CS_Animation        *fallMoine(SDL_Renderer *render)
-{
-    CS_Animation    *animation;
-
-    animation = new (CS_Animation);
-
-    animation->newAnimation(FALL, true);
-    animation->loadTexture(render, "resources/source/MainCharacter/Moine/MCfallL.png", "resources/source/MainCharacter/Moine/MCfallR.png");
-    animation->setSize(20, 20);
-    animation->cutFrame(2, 2, 1);
-    animation->setSpeed(0.03, 0);
-    animation->setAnimationTime(200);
-
-    return (animation);
-}
-
 CS_Animation        *jumpMoine(SDL_Renderer *render)
 {
     CS_Animation    *animation;
@@ -117,6 +100,7 @@ CS_Animation        *walkMoine(SDL_Renderer *render)
     animation->setHitBox(2, true, 0.15625, 0.655556, 0.421875, 0.0930556);
     animation->setHitBox(3, true, 0.229167, 0.655556, 0.385417, 0.0930556);
     animation->setHitBox(4, true, 0.138889, 0.655556, 0.4375, 0.0930556);
+
     animation->setHitBox(0, false, 0.138889, 0.655556, 0.4375, 0.0930556);
     animation->setHitBox(1, false, 0.15625, 0.655556, 0.421875, 0.0930556);
     animation->setHitBox(2, false, 0.15625, 0.655556, 0.421875, 0.0930556);
@@ -176,7 +160,6 @@ CS_Character        *initMC(SDL_Renderer *render)
     MC->addAnimation(render, staticMoine);
     MC->addAnimation(render, walkMoine);
     MC->addAnimation(render, attackMoine);
-    MC->addAnimation(render, fallMoine);
     MC->addAnimation(render, jumpMoine);
 
     MC->loadAnimation(STATIC);

@@ -19,7 +19,15 @@ typedef enum	e_enemy {
 	Enfant1,
     Enfant2,
     Enfant3,
-    CuveVert
+	Enfant4,
+    Enfant5,
+    Enfant6,
+	Enfant7,
+    Enfant8,
+    Enfant9,
+	Enfant10,
+    Enfant11,
+    Enfant12,
 }				t_enemy;
 
 typedef enum    e_enemyAction {
