@@ -51,3 +51,8 @@ int                 CS_Projectile::QueryRange()
 {
     return (range);
 }
+
+bool                CS_Projectile::QueryAlly()
+{
+    return (ally);
+}

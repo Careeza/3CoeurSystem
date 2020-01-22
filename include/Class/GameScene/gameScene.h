@@ -20,6 +20,7 @@ class   CS_Camera
         ~CS_Camera();
 
         void    moveCamera(int xSource, int ySource);
+        void    moveCamera2(int xSource, int ySource);
         void    moveCamera3(CS_Character *MC);
 
         void    QueryCameraPosition(int& xDest, int& yDest);

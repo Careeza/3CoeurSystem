@@ -7,6 +7,13 @@ void    CS_Camera::moveCamera(int xSource, int ySource)
     y = ySource;
 }
 
+void    CS_Camera::moveCamera2(int xSource, int ySource)
+{
+    x += xSource;
+    y += ySource;
+}
+
+
 void    CS_Camera::moveCamera3(CS_Character *MC)
 {
     int wMC;

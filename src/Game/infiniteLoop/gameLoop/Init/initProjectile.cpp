@@ -25,6 +25,7 @@ CS_Projectile       *initProjectile3(SDL_Renderer *render)
     projectile->setName(projectile3);
     projectile->setRange(3000);
     projectile->initAnimation(initAnimationProjectile3(render));
+    projectile->setAlly(true);
 
     return (projectile);
 }
@@ -54,6 +55,7 @@ CS_Projectile       *initProjectile2(SDL_Renderer *render)
     projectile->setName(projectile2);
     projectile->setRange(3000);
     projectile->initAnimation(initAnimationProjectile2(render));
+    projectile->setAlly(false);
 
     return (projectile);
 }
@@ -83,6 +85,7 @@ CS_Projectile       *initProjectile1(SDL_Renderer *render)
     projectile->setName(projectile1);
     projectile->setRange(3000);
     projectile->initAnimation(initAnimationProjectile1(render));
+    projectile->setAlly(false);
 
     return (projectile);
 }

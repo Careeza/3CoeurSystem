@@ -221,6 +221,38 @@ void    checkEnemies(CS_Enemies *enemies, CS_OnScreen *onScreen)
     }
 }
 
+void    resolveAttMC(CS_Character *MC, CS_Enemies *enemies)
+{
+    int         i;
+    CS_Enemy    *enemy;
+
+    int         wMC;
+    int         hMC;
+    int         xMC;
+    int         yMC;
+
+    i = 0;
+    MC->QueryPhysic()->QueryAttack(wMC, hMC, xMC, yMC);
+
+    int         wEnemy;
+    int         hEnemy;
+    int         xEnemy;
+    int         yEnemy;
+    while (i < enemies->QueryNbEnemies())
+    {
+        enemy = enemies->QueryEnemy(i);
+        enemy->QueryPhysic()->QueryHitBox(wEnemy, hEnemy, xEnemy, yEnemy);
+        if ((xMC <= xEnemy + wEnemy && xMC + wMC >= xEnemy && yMC <= yEnemy + hEnemy && hMC + yMC >= yEnemy))
+            enemies->deleteEnemy(i);
+        i++;
+    }
+}
+
+void    resolveAllyProjectile(CS_Projectiles *projectile, CS_Enemies *enemies)
+{
+    
+}
+
 void    resolveAllAction(CS_GameScene *scene)
 {
     CS_Character *MC;
@@ -229,10 +261,11 @@ void    resolveAllAction(CS_GameScene *scene)
     checkGround(MC->QueryPhysic(), scene->QueryOnScreen());
     checkPlateforme(MC->QueryPhysic(), scene->QueryOnScreen());
     checkBorder(MC->QueryPhysic());
-    checkEnemies(scene->QueryEnemies(), scene->QueryOnScreen());
     MC->setOnGround(MC->QueryPhysic()->verifyOnGround());
     MC->updateJump();
     checkBorderCamera(scene->QueryCamera());
     scene->QueryOnScreen()->updateOnScreen(MC, scene->QueryAssets());
-
+    checkEnemies(scene->QueryEnemies(), scene->QueryOnScreen());
+    resolveAttMC(scene->QueryMC(), scene->QueryEnemies());
+    resolveAllyProjectile(scene->QueryProjectile(), scene->QueryEnemies());
 }

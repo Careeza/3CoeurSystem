@@ -40,6 +40,7 @@ class   CS_Projectile
         void                setID(int idSource);
         void                setRight(int rightSource);
         void                setRange(int rangeSource);
+        void                setAlly(bool allySource);
 
         void                QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);
         void                QuerySize(int& wDest, int& hDest);
@@ -47,6 +48,7 @@ class   CS_Projectile
 
         int                 QueryID();
         int                 QueryRange();
+        bool                QueryAlly();
         t_projectile        QueryName();
         CS_Animation        *QueryAnimation();
         CS_PersonalPhysic   *QueryPhysic();
@@ -62,6 +64,7 @@ class   CS_Projectile
         int                 range;
         int                 id;
         bool                right;
+        bool                ally;
 };
 
 class   CS_ProjectileBank

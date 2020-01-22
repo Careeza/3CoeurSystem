@@ -30,3 +30,7 @@ void                CS_Projectile::setRange(int rangeSource)
     range = rangeSource;
 }
 
+void                CS_Projectile::setAlly(bool allySource)
+{
+    ally = allySource;
+}
