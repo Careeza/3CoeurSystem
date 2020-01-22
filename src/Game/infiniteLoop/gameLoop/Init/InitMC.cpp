@@ -123,6 +123,7 @@ CS_Animation        *attackMoine(SDL_Renderer *render)
     animation->setSpeed(0, 0);
     animation->setAnimationTime(300);
 
+
     animation->setHitBox(0, true, 0.140625, 0.594444, 0.420139, 0.125);
     animation->setHitBox(1, true, 0.140625, 0.561111, 0.420139, 0.155556);
     animation->setHitBox(2, true, 0.140625, 0.591667, 0.420139, 0.125);
