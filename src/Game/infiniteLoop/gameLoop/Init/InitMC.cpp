@@ -45,6 +45,7 @@ CS_Animation        *jumpMoine(SDL_Renderer *render)
     animation->setSpeed(0.03, 0);
     animation->setAnimationTime(300);
 
+
     animation->setHitBox(0, true, 0.121528, 0.594444, 0.439236, 0.125);
     animation->setHitBox(1, true, 0.121528, 0.594444, 0.439236, 0.125);
     animation->setHitBox(2, true, 0.121528, 0.594444, 0.439236, 0.125);
