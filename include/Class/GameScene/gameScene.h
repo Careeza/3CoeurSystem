@@ -8,6 +8,7 @@
 # include "backGround.h"
 # include "character.h"
 # include "enemy.h"
+# include "projectile.h"
 # include "../../Tools/tools.h"
 
 class   CS_GameScene;
@@ -19,8 +20,7 @@ class   CS_Camera
         ~CS_Camera();
 
         void    moveCamera(int xSource, int ySource);
-        void    moveCamera2(int xSource, int ySource, CS_GameScene *map);
-        void    moveCamera3(CS_Character *MC, float deltaT);
+        void    moveCamera3(CS_Character *MC);
 
         void    QueryCameraPosition(int& xDest, int& yDest);
         int     QueryCameraPositionX();
@@ -29,6 +29,23 @@ class   CS_Camera
     private:
         float     x;
         float     y;
+};
+
+class   CS_OnScreen
+{
+    public:
+        void    initOnScreen(CS_Character *MC, CS_Assets *ground);
+        void    updateOnScreen(CS_Character *MC, CS_Assets *ground);
+
+        CS_Asset    *QueryOnScreen(int index);
+        int         QueryNbOnScreen();
+
+    private:
+        std::vector<CS_Asset *>     onScreen;
+        int                         indexMin;
+        int                         indexMax;
+        int                         screenW;
+        int                         screenH;
 };
 
 class   CS_GameScene : public CS_Scene
@@ -42,6 +59,8 @@ class   CS_GameScene : public CS_Scene
         void            loadParallax(CS_Parallax *parallaxSource);
         void            loadAssets(CS_Assets *assetsSource);
         void            loadCamera(CS_Camera *cameraSource);
+        void            loadProjectiles(CS_Projectiles *projectilesSource);
+        void            loadOnScreen(CS_OnScreen *onScreenSource);
         void            setBorneMap(float borneMaxXSource, float borneMinXSource);
 
         bool            haveMC();
@@ -54,26 +73,26 @@ class   CS_GameScene : public CS_Scene
         CS_Parallax     *QueryParallax();
         CS_Assets       *QueryAssets();
         CS_Camera       *QueryCamera();
+        CS_Projectiles  *QueryProjectile();
+        CS_OnScreen     *QueryOnScreen();
         void            QueryBorne(int& borneMaxXDest, int& borneMinXDest);
 
     private:
-        CS_Parallax     *parallax;
-        CS_Character    *MC;
-        CS_Enemies      *enemies;
-        CS_Camera       *camera;
-        CS_Assets       *assets;
+        CS_Parallax                 *parallax;
+        CS_Character                *MC;
+        CS_Enemies                  *enemies;
+        CS_Camera                   *camera;
+        CS_Assets                   *assets;
+        CS_Projectiles              *projectiles;
+        CS_OnScreen                 *onScreen;
 
-        bool            verifyMC;
-        bool            verifyEnemies;
-        bool            verifyParallax;
-        bool            verifyAssets;
+        bool                        verifyMC;
+        bool                        verifyEnemies;
+        bool                        verifyParallax;
+        bool                        verifyAssets;
 
-        int             borneMinX;
-        int             borneMaxX;
+        int                         borneMinX;
+        int                         borneMaxX;
 };
-
-void            verifyHitbox2(int wMC, int hMC, CS_PersonalPhysic *physic, CS_GameScene *map);
-void            verifyHitbox(CS_PersonalPhysic *physic, int w, int h, int BorderMinX, int BorderMaxX);
-void            moveWithTest(bool right, int w, int h, int& x, int &y, CS_GameScene *map);
 
 #endif

@@ -1,14 +1,18 @@
 #include "render.h"
 
-void    drawHitBox(CS_PersonalPhysic *physic, SDL_Renderer *render)
+void    drawHitBox(CS_PersonalPhysic *physic, int cameraX, int cameraY, SDL_Renderer *render)
 {
     SDL_Rect    rect;
 
     SDL_SetRenderDrawColor(render, 0x00, 0xFF, 0x00, 0xFF);
     physic->QueryHitBox(rect.w, rect.h, rect.x, rect.y);
+    rect.x -= cameraX;
+    rect.y -= cameraY;
     SDL_RenderDrawRect(render, &rect);
     SDL_SetRenderDrawColor(render, 0xFF, 0x00, 0x00, 0xFF);
     physic->QueryAttack(rect.w, rect.h, rect.x, rect.y);
+    rect.x -= cameraX;
+    rect.y -= cameraY;
     SDL_RenderDrawRect(render, &rect);
 }
 
@@ -24,7 +28,7 @@ void    CS_Renderer::renderMC(CS_Character *MC, int cameraX, int cameraY)
     size.x -= cameraX;
     size.y -= cameraY;
 
-    drawHitBox(MC->QueryPhysic(), render);
+    drawHitBox(MC->QueryPhysic(), cameraX, cameraY, render);
 
     SDL_RenderCopy(render, texture, frame, &size);
 }

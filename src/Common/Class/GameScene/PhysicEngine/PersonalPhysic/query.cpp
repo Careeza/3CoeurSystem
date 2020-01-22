@@ -15,12 +15,12 @@ int     CS_PersonalPhysic::QueryPostionY()
     return (position.QueryPostionY());
 }
 
-int     CS_PersonalPhysic::QuerySpeedX()
+float     CS_PersonalPhysic::QuerySpeedX()
 {
     return (speed.QuerySpeedX());
 }
 
-int     CS_PersonalPhysic::QuerySpeedY()
+float     CS_PersonalPhysic::QuerySpeedY()
 {
     return (speed.QuerySpeedY());
 }

@@ -30,6 +30,18 @@ void    CS_GameScene::loadCamera(CS_Camera *cameraSource)
     camera = cameraSource;
 }
 
+void    CS_GameScene::loadOnScreen(CS_OnScreen *onScreenSource)
+{
+    onScreen = onScreenSource;
+    onScreen->initOnScreen(MC, assets);
+}
+
+void    CS_GameScene::loadProjectiles(CS_Projectiles *projectilesSource)
+{
+    projectiles = projectilesSource;
+}
+
+
 void    CS_GameScene::setBorneMap(float borneMinXSource, float borneMaxXSource)
 {
     borneMaxX = Tools->transformWidth(borneMaxXSource);

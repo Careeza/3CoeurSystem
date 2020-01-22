@@ -44,24 +44,61 @@ void        CS_Assets::updateID()
     }
 }
 
-
-void        CS_Assets::addToGround(CS_Asset *asset, int xAsset)
+void        CS_Assets::updateIDGround()
 {
-    int x;
-    int y;
+    unsigned long   i;
+
+    i = 0;
+    while (i < ground.size())
+    {
+        ground[i]->setID(i);
+        i++;
+    }
+}
+
+
+int     addToGround(CS_Asset *asset, std::vector<CS_Asset *> ground)
+{
     int w;
     int h;
+    int x;
+    int y;
+
+    int newW;
+    int newH;
+    int newX;
+    int nexY;
+
+    asset->QuerySize(newW, newH, newX, nexY);
 
     unsigned long   i;
     i = 0;
     while (i < ground.size())
     {
         ground[i]->QuerySize(w, h, x, y);
-        if (x > xAsset)
+        if (newX < x)
             break;
         i++;
     }
-    ground.emplace(ground.begin() + i, asset);
+    return (i);
+}
+
+void        CS_Assets::loadGround()
+{
+    unsigned long   i;
+    int             index;
+
+    i = 0;
+    while (i < assets.size())
+    {
+        if (assets[i]->QueryName() == Ground01 || assets[i]->QueryName() == Plateforme)
+        {
+            index = addToGround(assets[i], ground);
+            ground.emplace(ground.begin() + index, assets[i]);
+        }
+        i++;
+    }
+    updateIDGround();
 }
 
 CS_Asset    *CS_Assets::loadAsset(t_assetName name, int zIndex, float x, float y)
@@ -93,9 +130,6 @@ CS_Asset    *CS_Assets::loadAsset(t_assetName name, int zIndex, float x, float y
     while (i < assets.size() && zIndex >= assets[i]->QueryZIndex())
         i++;
     assets.emplace(assets.begin() + i, asset);
-
-    if (name == Ground01)
-        addToGround(asset, xAsset);
 
     updateID();
     return (asset);
@@ -130,9 +164,6 @@ CS_Asset    *CS_Assets::loadAssetPixel(t_assetName name, int zIndex, int x, int 
     while (i < assets.size() && zIndex >= assets[i]->QueryZIndex())
         i++;
     assets.emplace(assets.begin() + i, asset);
-
-    if (name == Ground01)
-        addToGround(asset, xAsset);
 
     updateID();
     return (asset);
@@ -247,4 +278,14 @@ CS_Asset    *CS_Assets::QueryAsset(int index)
 int         CS_Assets::QueryNbAssets()
 {
     return (assets.size());
+}
+
+CS_Asset    *CS_Assets::QueryGround(int index)
+{
+    return(ground[index]);
+}
+
+int         CS_Assets::QueryNbGround()
+{
+    return(ground.size());
 }

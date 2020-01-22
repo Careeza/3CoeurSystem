@@ -5,10 +5,10 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value)
     t_pos           pos;
     t_actionTable   actionTable;
 
-    pos = home;
+    pos = game;
     CS_KeyControl::initActionTable(&actionTable);
-    logoCinematics(&render, value, &actionTable);
-    homeCinematics(&render, value, &actionTable);
+//    logoCinematics(&render, value, &actionTable);
+//    homeCinematics(&render, value, &actionTable);
     while (pos != close)
     {
         if (pos == home)

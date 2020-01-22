@@ -25,7 +25,6 @@ typedef enum	e_pos {
 }				t_pos;
 
 
-
 void            homeGetEvenement(CS_Scene *scene, std::shared_ptr<CS_Element>& button, t_actionValue *value, t_actionTable *actionTable);
 void            basicGetEvenement(CS_Scene *scene, t_actionValue *value, t_actionTable *actionTable);
 void            homeEventProcessing(t_actionTable *actionTable, t_action *action);
@@ -61,7 +60,9 @@ void            useAction(t_action *table, CS_Character *MC);
 void            parallaxManagement(CS_Parallax *parallax, CS_Camera *camera);
 CS_Assets       *initAssets(SDL_Renderer *render);
 
+CS_Projectiles  *initProjectiles(SDL_Renderer *render);
 
+void            resolveAllAction(CS_GameScene *scene);
 CS_Enemy        *initEnfant1(SDL_Renderer *render);
 CS_EnemyBank    *initBankEnemies(SDL_Renderer *render);
 

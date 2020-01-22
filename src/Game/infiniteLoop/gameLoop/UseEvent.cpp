@@ -30,10 +30,13 @@ void    walkMC(CS_Character *MC)
     else
     {
         if (MC->QueryPhysic()->QuerySpeedY() < 0)
-            MC->loadAnimation(JUMP);
+        {
+            MC->loadAnimation(JUMP); //HOTFIX
+        }
         else
-            MC->loadAnimation(FALL);
-
+        {
+            MC->loadAnimation(JUMP); //HOTFIX
+        }
     }
 }
 

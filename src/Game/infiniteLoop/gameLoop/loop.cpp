@@ -64,10 +64,15 @@ t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actio
         MC->updateFrame(deltaTMS);
         useAction(&action, MC);
         pos = gameUseEvent(action, render, value, actionTable, &timer);
-        MC->moveCharacter(deltaTMS, -100000, 100000);
+        MC->moveCharacter(deltaTMS);
         MC->getFrame();
 
         scene->QueryEnemies()->updateEnemies(MC, deltaTMS);
+        scene->QueryProjectile()->updateProjectiles(deltaTMS);
+
+        scene->QueryCamera()->moveCamera3(MC);
+
+        resolveAllAction(scene);
 
         parallaxManagement(scene->QueryParallax(), scene->QueryCamera());
 
@@ -78,7 +83,7 @@ t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actio
         std::cout << "deltaT = " << timer.get_ticks() << " wait = " << wait << std::endl;
         SDL_Delay(wait);
     }
-    std::cout << "fps = " << ticks / (time.get_ticks() / 1000.0) << std::endl; 
+//    std::cout << "fps = " << ticks / (time.get_ticks() / 1000.0) << std::endl; 
 
     delete scene;
     return (pos);

@@ -100,7 +100,6 @@ CS_Animation        *walkMoine(SDL_Renderer *render)
     animation->setHitBox(3, true, 0.229167, 0.594444, 0.385417, 0.155556);
     animation->setHitBox(4, true, 0.138889, 0.625, 0.438368, 0.125);
 
-
     animation->setHitBox(0, false, 0.138889, 0.656944, 0.438368, 0.0930556);
     animation->setHitBox(1, false, 0.15625, 0.656944, 0.421875, 0.0930556);
     animation->setHitBox(2, false, 0.15625, 0.625, 0.421875, 0.125);

@@ -32,12 +32,13 @@ class   CS_Character
         void        previousFrame();
 
         void        updateFrame(int deltaT);
+        void        updateJump();
 
         void        getFrame();
 
         void        setAnimationTime(int animationTimeSource);
 
-        void        moveCharacter(int deltaT, int BorderMinX, int BorderMaxX);
+        void        moveCharacter(int deltaT);
         void        setRight(bool rightSource);
 
         void        QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);

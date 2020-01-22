@@ -116,18 +116,22 @@ class   CS_Assets
 
         CS_Asset    *loadAsset(t_assetName name, int zIndex, float x, float y);
         CS_Asset    *loadAssetPixel(t_assetName name, int zIndex, int x, int y);
-        void        addToGround(CS_Asset *asset, int xAsset);
+        void        loadGround();
 
         void        loadBank(CS_AssetsBank *assetsBankSource);
 
         void        deleteAsset(int index);
 
         void        updateID();
+        void        updateIDGround();
 
         void        printAsset();
 
         CS_Asset    *QueryAsset(int index);
         int         QueryNbAssets();
+
+        CS_Asset    *QueryGround(int index);
+        int         QueryNbGround();
 
     private:
         std::vector<CS_Asset *>     assets;

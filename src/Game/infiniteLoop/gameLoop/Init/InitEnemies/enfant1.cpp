@@ -7,7 +7,7 @@ CS_Animation        *walkEnfant1(SDL_Renderer *render)
     animation = new (CS_Animation);
 
     animation->newAnimation(WALK, true);
-    animation->loadTexture(render, "resources/source/Enemies/Enfant1/BonhommeNoirRin1L.png", "resources/source/Enemies/Enfant1/BonhommeNoirRin1R.png");
+    animation->loadTexture(render, "resources/source/Enemies/Enfants/Noir1runL.png", "resources/source/Enemies/Enfants/Noir1runR.png");
     animation->setSize(20, 20);
     animation->cutFrame(5, 5, 1);
     animation->setSpeed(0.03, 0);

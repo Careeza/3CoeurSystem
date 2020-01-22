@@ -28,15 +28,6 @@ void                CS_Enemy::setActionToUse(CS_Character *MC)
     }
 }
 
-/*
-    WalkR,
-    WalkL,
-    AttR,
-    AttL,
-    StaticR,
-    StaticL,
-*/
-
 void                CS_Enemy::updateFrame(int deltaT)
 {
     animation->nextFrame2(deltaT);
@@ -44,13 +35,8 @@ void                CS_Enemy::updateFrame(int deltaT)
 
 void                CS_Enemy::moveCharacter(int deltaT)
 {
-    int w;
-    int h;
-
     physic->updateSpeed(deltaT);
     physic->updatePosition(deltaT);
-    QuerySize(w, h);
-    verifyHitbox(physic, w, h, -5000, 5000);
 }
 
 void                CS_Enemy::getFrame()

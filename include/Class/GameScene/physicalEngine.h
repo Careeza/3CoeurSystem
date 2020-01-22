@@ -130,8 +130,8 @@ class   CS_Speed
 
         void    moveObject(float &x, float &y, int deltaT);
 
-        int     QuerySpeedX();
-        int     QuerySpeedY();
+        float   QuerySpeedX();
+        float   QuerySpeedY();
         
     private:
         float     vX;
@@ -191,8 +191,8 @@ class   CS_PersonalPhysic
         int         QueryPostionX();
         int         QueryPostionY();
 
-        int         QuerySpeedX();
-        int         QuerySpeedY();
+        float       QuerySpeedX();
+        float       QuerySpeedY();
 
         void        QueryPostion(int& xDest, int& yDest);
         void        QueryHitBox(int& wDest, int& hDest, int& xDest, int& yDest);

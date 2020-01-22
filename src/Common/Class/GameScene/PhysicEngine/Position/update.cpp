@@ -3,6 +3,7 @@
 void    CS_Position::updatePosition(CS_Speed speed, int deltaT)
 {
     speed.moveObject(x, y, deltaT);
+//    std::cout << "y = " << y << std::endl;
 }
 
 void    CS_Position::updatePosition(float vXSource, float vYSource, int deltaT)

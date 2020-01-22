@@ -20,20 +20,10 @@ void        CS_Character::getFrame()
     physic->setAttack(animation->QueryAttack(right));
 }
 
-void        CS_Character::moveCharacter(int deltaT, int BorderMinX, int BorderMaxX)
+void        CS_Character::moveCharacter(int deltaT)
 {
-    int w;
-    int h;
-
-    physic->updateSpeed(deltaT);
     physic->updatePosition(deltaT);
-    physic->setHitBox(animation->QueryHitbox(right));
-    physic->setAttack(animation->QueryAttack(right));
-    animation->QuerySize(w, h);
-    verifyHitbox2(w, h, physic, NULL);
-    setOnGround(physic->verifyOnGround());
-    if (onGround)
-        jump = maxJump;
+    physic->updateSpeed(deltaT);
 }
 
 void        CS_Character::useJump()
@@ -67,6 +57,13 @@ void        CS_Character::updateFrame(int deltaT)
 {
     animation->nextFrame2(deltaT);
 }
+
+void        CS_Character::updateJump()
+{
+    if (onGround)
+        jump = maxJump;
+}
+
 
 void        CS_Character::setAnimationTime(int animationTimeSource)
 {

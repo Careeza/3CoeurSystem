@@ -35,6 +35,7 @@ class   CS_Renderer
         void    renderAssets(CS_Assets *assets, int cameraX, int cameraY);
         void    renderMC(CS_Character *MC, int cameraX, int cameraY);
         void    renderEnemy(CS_Enemies *enemies, int cameraX, int cameraY);
+        void    renderProjectiles(CS_Projectiles *projectiles, int cameraX, int cameraY);
 
         void    renderTexture(SDL_Texture *texture, SDL_Rect *frame, SDL_Rect *size);
         void    renderScreenSave();
