@@ -57,7 +57,8 @@ void    printHitBox(CS_Animation *animation, bool right)
 
         animation->QuerySize(w, h);
 
-        std::cout << "setHitBox(" << index;
+        std::cout << "animation->setHitBox(" << index;
+        std::cout << ", " << (right ? "true" : "false");
         std::cout << ", " << hitBox->QueryW() / (float)w;
         std::cout << ", " << hitBox->QueryH() / (float)h;
         std::cout << ", " << hitBox->QueryX() / (float)w;
@@ -167,7 +168,7 @@ void    changeParams(CS_GameScene *scene, t_buttonValue buttonValue, CS_Renderer
 
     index = scene->QueryIndexByName("y");
     element = scene->QuerySingleElement(index);
-    element->changeText("y=" + std::to_string(hitBox->QueryY()), render->QueryRender());
+    element->changeText("y=" + std::to_string(hitBox->QueryY() + hitBox->QueryH()), render->QueryRender());
 }
 
 bool   editAnimationUseEvent(CS_GameScene *scene, t_action action, std::shared_ptr<CS_Element> button, CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable, bool& playAnimation)

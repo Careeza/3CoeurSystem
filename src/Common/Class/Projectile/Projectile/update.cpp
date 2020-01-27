@@ -8,7 +8,7 @@ void                CS_Projectile::updateFrame(int deltaT)
 
 void                CS_Projectile::moveProjectile(int deltaT)
 {
-    physic->updatePosition(deltaT);
+//    physic->updatePosition(deltaT);
 }
 
 void                CS_Projectile::getFrame()

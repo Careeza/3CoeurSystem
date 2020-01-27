@@ -10,7 +10,7 @@ void    CS_OnScreen::initOnScreen(CS_Character *MC, CS_Assets *assets)
     int x;
     int y;
 
-    screenW = Tools->QueryWindowWidth() / 2;
+    screenW = Tools->QueryWindowWidth();
     screenH = Tools->QueryWindowHeight();
 
     MC->QuerySizePos(w, h, x, y);
@@ -49,7 +49,7 @@ void    CS_OnScreen::updateOnScreen(CS_Character *MC, CS_Assets *ground)
     int x;
     int y;
 
-    screenW = Tools->QueryWindowWidth() / 2;
+    screenW = Tools->QueryWindowWidth();
     screenH = Tools->QueryWindowHeight();
 
     MC->QuerySizePos(w, h, x, y);
@@ -62,60 +62,55 @@ void    CS_OnScreen::updateOnScreen(CS_Character *MC, CS_Assets *ground)
     int         xAsset;
     int         yAsset;
 
-    if (MC->VerifyRight())
+
+    while (indexMax + 1 < ground->QueryNbGround())
     {
-        while (indexMax + 1 < ground->QueryNbGround())
+        asset = ground->QueryGround(indexMax + 1);
+        asset->QuerySize(wAsset, hAsset, xAsset, yAsset);
+        if (xAsset + wAsset > bornMin && xAsset < bornMax)
         {
-            asset = ground->QueryGround(indexMax + 1);
-            asset->QuerySize(wAsset, hAsset, xAsset, yAsset);
-            if (xAsset + wAsset > bornMin && xAsset < bornMax)
-            {
-                onScreen.push_back(asset);
-                indexMax++;
-            }
-            else
-                break;
+            onScreen.push_back(asset);
+            indexMax++;
         }
-        while (indexMin < indexMax)
-        {
-            asset = ground->QueryGround(indexMin);
-            asset->QuerySize(wAsset, hAsset, xAsset, yAsset);
-            if (!(xAsset + wAsset > bornMin && xAsset < bornMax))
-            {
-                onScreen.erase(onScreen.begin());
-                indexMin++;
-            }
-            else
-                break;
-        }
+        else
+            break;
     }
-    else
+    while (indexMin < indexMax)
     {
-        while (indexMin - 1 > 0)
+        asset = ground->QueryGround(indexMin);
+        asset->QuerySize(wAsset, hAsset, xAsset, yAsset);
+        if (!(xAsset + wAsset > bornMin && xAsset < bornMax))
         {
-            asset = ground->QueryGround(indexMin - 1);
-            asset->QuerySize(wAsset, hAsset, xAsset, yAsset);
-            if (xAsset + wAsset > bornMin && xAsset < bornMax)
-            {
-                onScreen.emplace(onScreen.begin(), asset);
-                indexMin--;
-            }
-            else
-                break;
+            onScreen.erase(onScreen.begin());
+            indexMin++;
         }
-        while (indexMax > indexMin)
+        else
+            break;
+    }
+    while (indexMin - 1 > 0)
+    {
+        asset = ground->QueryGround(indexMin - 1);
+        asset->QuerySize(wAsset, hAsset, xAsset, yAsset);
+        if (xAsset + wAsset > bornMin && xAsset < bornMax)
         {
-            asset = ground->QueryGround(indexMax);
-            asset->QuerySize(wAsset, hAsset, xAsset, yAsset);
-            if (!(xAsset + wAsset > bornMin && xAsset < bornMax))
-            {
-                onScreen.pop_back();
-                indexMax--;
-            }
-            else
-                break;
+            onScreen.emplace(onScreen.begin(), asset);
+            indexMin--;
         }
-    }    
+        else
+            break;
+    }
+    while (indexMax > indexMin)
+    {
+        asset = ground->QueryGround(indexMax);
+        asset->QuerySize(wAsset, hAsset, xAsset, yAsset);
+        if (!(xAsset + wAsset > bornMin && xAsset < bornMax))
+        {
+            onScreen.pop_back();
+            indexMax--;
+        }
+        else
+            break;
+    }
 }
 
 

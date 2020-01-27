@@ -13,6 +13,7 @@
 # include <vector>
 # include <memory>
 
+class   CS_GameScene;
 
 class   CS_HitBox
 {
@@ -149,8 +150,8 @@ class   CS_Position
         void    setPositionXPixel(float xSource);
         void    setPositionYPixel(float ySource);
 
-        void    updatePosition(CS_Speed speed, int deltaT);
-        void    updatePosition(float vXSource, float vYSource, int deltaT);
+        bool    updatePosition(CS_GameScene *scene, CS_HitBox *hitbox, CS_Speed speed, int deltaT);
+        bool    updatePosition(CS_GameScene *scene, CS_HitBox *hitbox, float vXSource, float vYSource, int deltaT);
 
         void    QueryPostion(int& xDest, int& yDest);
         int     QueryPostionX();
@@ -186,7 +187,7 @@ class   CS_PersonalPhysic
         void        setPosYPixel(int speedY);
 
         void        updateSpeed(int deltaT);
-        void        updatePosition(int deltaT);
+        void        updatePosition(CS_GameScene *scene, int deltaT);
 
         int         QueryPostionX();
         int         QueryPostionY();

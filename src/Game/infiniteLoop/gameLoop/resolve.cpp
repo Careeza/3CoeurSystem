@@ -248,9 +248,43 @@ void    resolveAttMC(CS_Character *MC, CS_Enemies *enemies)
     }
 }
 
-void    resolveAllyProjectile(CS_Projectiles *projectile, CS_Enemies *enemies)
+void    resolveAllyProjectile(CS_Projectiles *projectileSource, CS_Enemies *enemies)
 {
+    int             i;
+    int             j;
+    CS_Projectile   *projectile;
     
+    int         wMC;
+    int         hMC;
+    int         xMC;
+    int         yMC;
+
+    CS_Enemy    *enemy;
+
+    int         wEnemy;
+    int         hEnemy;
+    int         xEnemy;
+    int         yEnemy;
+
+    i = 0;
+    while (i < projectileSource->QueryNbProjectile())
+    {
+        j = 0;
+        projectile = projectileSource->QueryProjectile(i);
+        if (projectile->QueryAlly())
+        {
+            projectile->QuerySizePos(wMC, hMC, xMC, yMC);
+            while (j < enemies->QueryNbEnemies())
+            {
+                enemy = enemies->QueryEnemy(j);
+                enemy->QueryPhysic()->QueryHitBox(wEnemy, hEnemy, xEnemy, yEnemy);
+                if ((xMC <= xEnemy + wEnemy && xMC + wMC >= xEnemy && yMC <= yEnemy + hEnemy && hMC + yMC >= yEnemy))
+                    enemies->deleteEnemy(j);
+                j++;                
+            }
+        }
+        i++;
+    }
 }
 
 void    resolveAllAction(CS_GameScene *scene)
@@ -258,14 +292,14 @@ void    resolveAllAction(CS_GameScene *scene)
     CS_Character *MC;
 
     MC = scene->QueryMC();
-    checkGround(MC->QueryPhysic(), scene->QueryOnScreen());
-    checkPlateforme(MC->QueryPhysic(), scene->QueryOnScreen());
+//    checkGround(MC->QueryPhysic(), scene->QueryOnScreen());
+//    checkPlateforme(MC->QueryPhysic(), scene->QueryOnScreen());
     checkBorder(MC->QueryPhysic());
     MC->setOnGround(MC->QueryPhysic()->verifyOnGround());
     MC->updateJump();
     checkBorderCamera(scene->QueryCamera());
     scene->QueryOnScreen()->updateOnScreen(MC, scene->QueryAssets());
-    checkEnemies(scene->QueryEnemies(), scene->QueryOnScreen());
-    resolveAttMC(scene->QueryMC(), scene->QueryEnemies());
-    resolveAllyProjectile(scene->QueryProjectile(), scene->QueryEnemies());
+//    checkEnemies(scene->QueryEnemies(), scene->QueryOnScreen());
+//    resolveAttMC(scene->QueryMC(), scene->QueryEnemies());
+//    resolveAllyProjectile(scene->QueryProjectile(), scene->QueryEnemies());
 }

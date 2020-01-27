@@ -70,8 +70,8 @@ CS_Animation        *jumpKitsune(SDL_Renderer *render)
     animation->setHitBox(0, true, 0.121528, 0.563889, 0.456597, 0.186111);
     animation->setHitBox(1, true, 0.121528, 0.563889, 0.456597, 0.186111);
 
-    animation->setHitBox(0, true, 0.121528, 0.563889, 0.421875, 0.186111);
-    animation->setHitBox(1, true, 0.104167, 0.563889, 0.421875, 0.186111);
+    animation->setHitBox(0, false, 0.121528, 0.563889, 0.421875, 0.186111);
+    animation->setHitBox(1, false, 0.104167, 0.563889, 0.421875, 0.186111);
 
     return (animation);
 }
@@ -210,7 +210,7 @@ CS_PersonalPhysic   *initPhysic()
     physic = new (CS_PersonalPhysic);
 
     physic->setPosX(20);
-    physic->setPosY(0);
+    physic->setPosY(10);
     
     return (physic);
 }

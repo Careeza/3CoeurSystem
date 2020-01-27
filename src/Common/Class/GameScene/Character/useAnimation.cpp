@@ -20,10 +20,12 @@ void        CS_Character::getFrame()
     physic->setAttack(animation->QueryAttack(right));
 }
 
-void        CS_Character::moveCharacter(int deltaT)
+void        CS_Character::moveCharacter(int deltaT, CS_GameScene *scene)
 {
-    physic->updatePosition(deltaT);
+    physic->setHitBox(animation->QueryHitbox(right));
+    physic->setAttack(animation->QueryAttack(right));
     physic->updateSpeed(deltaT);
+    physic->updatePosition(scene, deltaT);
 }
 
 void        CS_Character::useJump()

@@ -22,6 +22,7 @@ CS_Projectile        *copyProjectile(CS_Projectile *projectileSource)
 
     newProjectile->initAnimation(projectileSource->QueryAnimation());
     newProjectile->setRange(projectileSource->QueryRange());
+    newProjectile->setAlly(projectileSource->QueryAlly());
 
     return (newProjectile);
 }

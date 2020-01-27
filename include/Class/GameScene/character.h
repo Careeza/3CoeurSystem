@@ -38,7 +38,7 @@ class   CS_Character
 
         void        setAnimationTime(int animationTimeSource);
 
-        void        moveCharacter(int deltaT);
+        void        moveCharacter(int deltaT, CS_GameScene *scene);
         void        setRight(bool rightSource);
 
         void        QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);

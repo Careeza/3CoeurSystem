@@ -36,7 +36,7 @@ void                CS_Enemy::updateFrame(int deltaT)
 void                CS_Enemy::moveCharacter(int deltaT)
 {
     physic->updateSpeed(deltaT);
-    physic->updatePosition(deltaT);
+//    physic->updatePosition(deltaT);
 }
 
 void                CS_Enemy::getFrame()

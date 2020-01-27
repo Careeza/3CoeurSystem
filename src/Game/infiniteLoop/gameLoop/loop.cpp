@@ -64,7 +64,7 @@ t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actio
         MC->updateFrame(deltaTMS);
         useAction(&action, scene);
         pos = gameUseEvent(action, render, value, actionTable, &timer);
-        MC->moveCharacter(deltaTMS);
+        MC->moveCharacter(deltaTMS, scene);
         MC->getFrame();
 
         scene->QueryEnemies()->updateEnemies(MC, deltaTMS);
@@ -80,7 +80,6 @@ t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actio
         render->dispScreen();
 
         wait = fmax(0, (1000 / (float)60 - timer.get_ticks()));
-        std::cout << "deltaT = " << timer.get_ticks() << " wait = " << wait << std::endl;
         SDL_Delay(wait);
     }
 //    std::cout << "fps = " << ticks / (time.get_ticks() / 1000.0) << std::endl; 
