@@ -21,17 +21,17 @@ SDL_Rect        *CS_Animation::QueryFrame()
 CS_HitBox       *CS_Animation::QueryHitbox(bool right)
 {
     if (right)
-        return (hitboxesR[index]);
+        return (hitboxesR);
     else
-        return (hitboxesL[index]);
+        return (hitboxesL);
 }
 
 CS_HitBox       *CS_Animation::QueryAttack(bool right)
 {
     if (right)
-        return (attackR[index]);
+        return (attackR);
     else
-        return (attackL[index]);
+        return (attackL);
 }
 
 
@@ -67,4 +67,20 @@ int             CS_Animation::QueryIndex()
 int             CS_Animation::QueryMaxIndex()
 {
     return (nbFrame);
+}
+
+int             CS_Animation::QueryNbColumnFrame()
+{
+    return (nbColumnFrame);
+}
+
+int             CS_Animation::QueryNbLineFrame()
+{
+    return (nbLineFrame);
+}
+
+
+int             CS_Animation::QueryAnimationInterrupt()
+{
+    return (interrupt);
 }

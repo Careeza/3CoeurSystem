@@ -13,7 +13,7 @@ void        CS_Enemies::updateID()
 }
 
 
-void        CS_Enemies::updateEnemies(CS_Character *MC, int deltaT)
+void        CS_Enemies::updateEnemies(CS_Character *MC, CS_GameScene *scene, int deltaT)
 {
     unsigned long i;
 
@@ -22,7 +22,7 @@ void        CS_Enemies::updateEnemies(CS_Character *MC, int deltaT)
     {
         enemies[i]->setActionToUse(MC);
         enemies[i]->updateFrame(deltaT);
-        enemies[i]->moveCharacter(deltaT);
+        enemies[i]->moveCharacter(scene, deltaT);
         enemies[i]->getFrame();
         i++;
     }

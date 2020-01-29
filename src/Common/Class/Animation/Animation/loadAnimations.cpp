@@ -38,10 +38,6 @@ void        CS_Animation::cutFrame(int nb_frame, int nb_columnframe, int nb_line
     int         frameWidth;
     int         frameHeight;
     SDL_Rect    *newFrame;
-    CS_HitBox   *newHitBox;
-    CS_HitBox   *newHitBox2;
-    CS_HitBox   *newAttack;
-    CS_HitBox   *newAttack2;
 
     i = 0;
     SDL_QueryTexture (textureL, NULL, NULL, &width, &height);
@@ -51,10 +47,6 @@ void        CS_Animation::cutFrame(int nb_frame, int nb_columnframe, int nb_line
     nbColumnFrame = nb_columnframe;
     nbLineFrame = nb_lineframe;
     frame.resize(nb_frame);
-    hitboxesR.resize(nb_frame);
-    hitboxesL.resize(nb_frame);
-    attackR.resize(nb_frame);
-    attackL.resize(nb_frame);
     while (i < nb_frame)
     {
         newFrame = new (SDL_Rect);
@@ -64,33 +56,6 @@ void        CS_Animation::cutFrame(int nb_frame, int nb_columnframe, int nb_line
         newFrame->y = frameHeight * (i / nb_columnframe);
         frame[i] = newFrame;
 
-        newHitBox = new (CS_HitBox);
-        newHitBox->setWPixel(w);
-        newHitBox->setHPixel(h);
-        newHitBox->setXPixel(0);
-        newHitBox->setYPixel(0);
-        hitboxesR[i] = newHitBox;
-
-        newHitBox2 = new (CS_HitBox);
-        newHitBox2->setWPixel(w);
-        newHitBox2->setHPixel(h);
-        newHitBox2->setXPixel(0);
-        newHitBox2->setYPixel(0);
-        hitboxesL[i] = newHitBox2;
-
-        newAttack = new (CS_HitBox);
-        newAttack->setWPixel(w);
-        newAttack->setHPixel(h);
-        newAttack->setXPixel(0);
-        newAttack->setYPixel(0);
-        attackR[i] = newAttack;
-
-        newAttack2 = new (CS_HitBox);
-        newAttack2->setWPixel(w);
-        newAttack2->setHPixel(h);
-        newAttack2->setXPixel(0);
-        newAttack2->setYPixel(0);
-        attackL[i] = newAttack2;
         i++;
     }
 }
@@ -107,6 +72,16 @@ void            CS_Animation::setSize(float wSource, float hSource)
 {
     w = Tools->transformWidth(wSource);
     h = Tools->transformHeight(hSource);
+
+    hitboxesR = new (CS_HitBox);
+    hitboxesL = new (CS_HitBox);
+    attackL = new (CS_HitBox);
+    attackR = new (CS_HitBox);
+
+    hitboxesR->setHitBoxPixel(w, h, 0, 0);
+    hitboxesL->setHitBoxPixel(w, h, 0, 0);
+    attackR->setHitBoxPixel(w, h, 0, 0);
+    attackL->setHitBoxPixel(w, h, 0, 0);
 }
 
 void            CS_Animation::setAnimationTime(int animationTimeSource, int indexStartSource)

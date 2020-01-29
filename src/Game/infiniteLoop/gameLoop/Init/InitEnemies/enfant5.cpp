@@ -13,17 +13,8 @@ CS_Animation        *walkEnfant5(SDL_Renderer *render)
     animation->setSpeed(0.03, 0);
     animation->setAnimationTime(500);
 
-    animation->setHitBox(0, true, 0.104167, 0.469444, 0.473958, 0.280556);
-    animation->setHitBox(1, true, 0.140625, 0.438889, 0.456597, 0.280556);
-    animation->setHitBox(2, true, 0.104167, 0.469444, 0.456597, 0.311111);
-    animation->setHitBox(3, true, 0.121528, 0.436111, 0.439236, 0.344444);
-    animation->setHitBox(4, true, 0.121528, 0.469444, 0.439236, 0.311111);
-
-    animation->setHitBox(0, false, 0.104167, 0.469444, 0.421875, 0.280556);
-    animation->setHitBox(1, false, 0.140625, 0.438889, 0.402778, 0.280556);
-    animation->setHitBox(2, false, 0.104167, 0.469444, 0.439236, 0.311111);
-    animation->setHitBox(3, false, 0.121528, 0.436111, 0.439236, 0.344444);
-    animation->setHitBox(4, false, 0.104167, 0.469444, 0.439236, 0.311111);
+    animation->setHitBox(true, 0.106771, 0.5, 0.436632, 0.215278);
+    animation->setHitBox(false, 0.105903, 0.5, 0.454861, 0.218056);
 
     return (animation);
 }

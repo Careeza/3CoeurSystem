@@ -2,7 +2,18 @@
 
 void    CS_PersonalPhysic::updateSpeed(int deltaT)
 {
-    speed.updateSpeed(WorldPhysics->QueryGravity(), deltaT);
+    CS_Force    force;
+    float       ax;
+    float       ay;
+
+    force = WorldPhysics->QueryGravity();
+    ax = force.QueryAX();
+    ay = force.QueryAY();
+
+    ax *= gravity;
+    ay *= gravity;
+
+    speed.updateSpeed(ax, ay, deltaT);
 }
 
 void    CS_PersonalPhysic::updatePosition(CS_GameScene *scene, int deltaT)
@@ -10,7 +21,7 @@ void    CS_PersonalPhysic::updatePosition(CS_GameScene *scene, int deltaT)
     if (position.updatePosition(scene, hitbox, speed, deltaT))
     {
         onGround = true;
-        setSpeedY(0);
+        setSpeedY(0); //HOTFIX don't know if work
     }
     else
         onGround = false;

@@ -78,15 +78,8 @@ CS_Animation        *staticMoine(SDL_Renderer *render)
     animation->setSpeed(0, 0);
     animation->setAnimationTime(500);
 
-    animation->setHitBox(0, true, 0.138889, 0.594444, 0.421875, 0.125);
-    animation->setHitBox(1, true, 0.138889, 0.563889, 0.421875, 0.155556);
-    animation->setHitBox(2, true, 0.138889, 0.533333, 0.421875, 0.186111);
-    animation->setHitBox(3, true, 0.138889, 0.563889, 0.421875, 0.155556);
-
-    animation->setHitBox(0, false, 0.138889, 0.594444, 0.439236, 0.125);
-    animation->setHitBox(1, false, 0.138889, 0.563889, 0.439236, 0.155556);
-    animation->setHitBox(2, false, 0.138889, 0.533333, 0.439236, 0.186111);
-    animation->setHitBox(3, false, 0.138889, 0.563889, 0.439236, 0.155556);
+    animation->setHitBox(true, 0.106771, 0.5, 0.436632, 0.215278);
+    animation->setHitBox(false, 0.105903, 0.5, 0.454861, 0.218056);
 
     return (animation);
 }
@@ -104,17 +97,8 @@ CS_Animation        *walkMoine(SDL_Renderer *render)
     animation->setSpeed(30, 0);
     animation->setAnimationTime(400);
 
-    animation->setHitBox(0, true, 0.138889, 0.655556, 0.4375, 0.0930556);
-    animation->setHitBox(1, true, 0.15625, 0.655556, 0.421875, 0.0930556);
-    animation->setHitBox(2, true, 0.15625, 0.655556, 0.421875, 0.0930556);
-    animation->setHitBox(3, true, 0.229167, 0.655556, 0.385417, 0.0930556);
-    animation->setHitBox(4, true, 0.138889, 0.655556, 0.4375, 0.0930556);
-
-    animation->setHitBox(0, false, 0.138889, 0.655556, 0.4375, 0.0930556);
-    animation->setHitBox(1, false, 0.15625, 0.655556, 0.421875, 0.0930556);
-    animation->setHitBox(2, false, 0.15625, 0.655556, 0.421875, 0.0930556);
-    animation->setHitBox(3, false, 0.229167, 0.655556, 0.385417, 0.0930556);
-    animation->setHitBox(4, false, 0.138889, 0.655556, 0.4375, 0.0930556);
+    animation->setHitBox(true, 0.106771, 0.5, 0.436632, 0.215278);
+    animation->setHitBox(false, 0.105903, 0.5, 0.454861, 0.218056);
 
     return (animation);
 }
@@ -130,9 +114,10 @@ CS_Animation        *attackMoine(SDL_Renderer *render)
     animation->setSize(40, 40);
     animation->cutFrame(3, 3, 1);
     animation->setSpeed(0, 0);
-    animation->setHitBox(0, true, 0.228299, 0.593056, 0.421007, 0.125);
-    animation->setHitBox(1, true, 0.140625, 0.5625, 0.421007, 0.155556);
-    animation->setHitBox(2, true, 0.140625, 0.593056, 0.421007, 0.125);
+    
+    animation->setHitBox(true, 0.106771, 0.5, 0.436632, 0.215278);
+    animation->setHitBox(false, 0.105903, 0.5, 0.454861, 0.218056);
+
     animation->setAnimationTime(300);
 
     return (animation);

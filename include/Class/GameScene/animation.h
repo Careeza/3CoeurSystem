@@ -22,6 +22,7 @@ typedef enum	e_aniamtion {
     ATTACK,
     FALL,
     JUMP,
+    DEAD,
 }				t_animation;
  
 class   CS_Animation
@@ -38,8 +39,8 @@ class   CS_Animation
         void            setAnimationTime(int animationTimeSource, int indexStartSource = 0);
         void            setInterrupt(bool interruptSource);
 
-        void            setHitBox(int indexSource, bool right, float wSource, float hSource, float xSource, float ySource);
-        void            setAttack(int indexSource, bool right, float wSource, float hSource, float xSource, float ySource);
+        void            setHitBox(bool right, float wSource, float hSource, float xSource, float ySource);
+        void            setAttack(bool right, float wSource, float hSource, float xSource, float ySource);
 
         void            restartAnimation();
 
@@ -63,8 +64,11 @@ class   CS_Animation
         int             QueryAnimationTime();
         int             QueryIndex();
         int             QueryMaxIndex();
+        int             QueryNbColumnFrame();
+        int             QueryNbLineFrame();
+        int             QueryAnimationInterrupt();
 
-        
+        void            CopyAnimation(CS_Animation *animationSource);
 
     private:
 
@@ -74,10 +78,10 @@ class   CS_Animation
         SDL_Texture                 *textureR;
         SDL_Texture                 *textureL;
         std::vector<SDL_Rect *>     frame;
-        std::vector<CS_HitBox *>    hitboxesR;
-        std::vector<CS_HitBox *>    hitboxesL;
-        std::vector<CS_HitBox *>    attackR;
-        std::vector<CS_HitBox *>    attackL;
+        CS_HitBox                   *hitboxesR;
+        CS_HitBox                   *hitboxesL;
+        CS_HitBox                   *attackR;
+        CS_HitBox                   *attackL;
 
         float                       speedX;
         float                       speedY;
@@ -88,9 +92,6 @@ class   CS_Animation
         int                         nbFrame;
         int                         nbColumnFrame;
         int                         nbLineFrame;
-
-        float                       pas;
-        float                       indexPas;
 
         bool                        animationEnd;
 
@@ -109,6 +110,11 @@ class CS_BankAnimation
         ~CS_BankAnimation();
         CS_Animation    *QueryAnimationByname(t_animation name);
         void            addAnimation(SDL_Renderer *render, CS_Animation *(*f)(SDL_Renderer *render));
+
+        int             QueryNbAnimation();
+        CS_Animation    *QueryAnimation(int index);
+
+        void            CopyAnimationBank(CS_BankAnimation *animationBankSource);
 
     private:
         std::vector<CS_Animation*>   animations;

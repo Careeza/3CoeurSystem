@@ -83,6 +83,9 @@ class   CS_Force
 
         void    usePhysic(float& vXDest, float& vYDest, int deltaT);
 
+        float   QueryAX();
+        float   QueryAY();
+
     private:
         float aX;
         float aY;
@@ -170,13 +173,16 @@ class   CS_PersonalPhysic
 
         void        setOnGround(bool onGroundSource);
         void        setBounciness(bool bouncinessSource);
-        void        setGravity(bool gravitySource);
+        void        setGravity(float gravitySource);
         void        setHitBox(CS_HitBox *hitboxSource);
         void        setAttack(CS_HitBox *attackSource);
 
+        void        setHP(int hpSource);
+        void        increaseHP(int hpSource);
+
         bool        verifyOnGround();
         bool        verifyBounciness();
-        bool        verifyGravity();
+        float       QueryGravity();
 
         void        setSpeedX(float speedX);
         void        setSpeedY(float speedY);
@@ -195,6 +201,7 @@ class   CS_PersonalPhysic
         float       QuerySpeedX();
         float       QuerySpeedY();
 
+        int         QueryHP();
         void        QueryPostion(int& xDest, int& yDest);
         void        QueryHitBox(int& wDest, int& hDest, int& xDest, int& yDest);
         CS_HitBox   *QueryRawHitbox();
@@ -207,9 +214,10 @@ class   CS_PersonalPhysic
         CS_Position     position;
         CS_HitBox       *hitbox;
         CS_HitBox       *attack;
+        int             hp;
         bool            onGround;
         bool            bounciness;
-        bool            gravity;
+        float           gravity;
 };
 
 #endif

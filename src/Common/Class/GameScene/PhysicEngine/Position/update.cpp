@@ -134,11 +134,6 @@ bool    CS_Position::updatePosition(CS_GameScene *scene, CS_HitBox *hitbox, floa
 
     hitbox->QuerySizePos(w, h, xDecale, yDecale);
 
-    if (CheckCollision(w, h, x + xDecale, y + yDecale, scene))
-    {
-        std::cout << "weird" << std::endl;
-//        exit (0);
-    }
 
     newY = y + vYSource * deltaT;
     adjustment = adjustmentY(w, h, x + xDecale, newY + yDecale, vYSource > 0, scene);

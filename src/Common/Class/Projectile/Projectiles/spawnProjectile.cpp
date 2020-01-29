@@ -10,6 +10,8 @@ CS_PersonalPhysic   *initPhysicProjectile(CS_Animation *animation, bool right, i
     physic->setPosXPixel(x);
     physic->setPosYPixel(y);
     physic->setSpeedX(animation->QueryMovementX(right));
+    physic->setHitBox(animation->QueryHitbox(right));
+    physic->setAttack(animation->QueryAttack(right));
 
     return (physic);
 }

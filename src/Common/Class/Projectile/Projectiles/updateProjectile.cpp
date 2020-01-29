@@ -1,6 +1,6 @@
 #include "projectile.h"
 
-void        CS_Projectiles::updateProjectiles(int deltaT)
+void        CS_Projectiles::updateProjectiles(CS_GameScene *scene, int deltaT)
 {
     unsigned long i;
 
@@ -8,7 +8,7 @@ void        CS_Projectiles::updateProjectiles(int deltaT)
     while (i < projectile.size())
     {
         projectile[i]->updateFrame(deltaT);
-        projectile[i]->moveProjectile(deltaT);
+        projectile[i]->moveProjectile(scene, deltaT);
         projectile[i]->getFrame();
         if (projectile[i]->projectileEnd())
                 deleteProjectile(i);

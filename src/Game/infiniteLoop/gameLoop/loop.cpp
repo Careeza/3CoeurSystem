@@ -1,35 +1,5 @@
 #include "game.h"
 
-void    gameGetEvenement(CS_Scene *scene, t_actionValue *value, t_actionTable *actionTable)
-{
-    CS_KeyControl   event;
-
-
-    while (event.loadEvenement(scene))
-    {
-        event.fillActionTable(actionTable, value);
-    }
-}
-
-void    gameEventProcessing(t_actionTable *actionTable, t_action *action)
-{
-    CS_KeyControl::transformActionTable(actionTable);
-    CS_KeyControl::resetAction(action);
-    action->escape = actionTable->escape;
-    action->att = actionTable->att;
-    if ((actionTable->right & KeyHoldPress) && (actionTable->left & KeyReleaseNoPress))
-        action->right = actionTable->right;
-    if ((actionTable->left & KeyHoldPress) && (actionTable->right & KeyReleaseNoPress))
-        action->left = actionTable->left;
-    action->dodge = actionTable->dodge;
-    action->jump = actionTable->jump;
-}
-
-void    moveCamera(CS_Camera *camera)
-{
-    camera->moveCamera(Tools->QueryWindowWidth(), 0);
-}
-
 t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable) // => need le render et les settings et la texture screen
 {
     CS_GameScene                *scene;
@@ -49,9 +19,22 @@ t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actio
     CS_Timer                    time;
     int                         ticks = 0;
     int                         wait;
+
+    int                         stage = 1;
     
     time.start();
+
     while (pos == game)
+    {
+        if (stage == 1)
+            stage = startLevel01(render, value, actionTable, scene);
+//        if (stage == 1)
+//            stage = startLevel1(render, value, actionTable, scene);
+       if (stage == -1)
+            pos = home;
+    }
+
+/*    while (pos == game)
     {
         ticks++;
         deltaTMS = timer.get_ticks();
@@ -67,8 +50,8 @@ t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actio
         MC->moveCharacter(deltaTMS, scene);
         MC->getFrame();
 
-        scene->QueryEnemies()->updateEnemies(MC, deltaTMS);
-        scene->QueryProjectile()->updateProjectiles(deltaTMS);
+        scene->QueryEnemies()->updateEnemies(MC, scene, deltaTMS);
+        scene->QueryProjectile()->updateProjectiles(scene, deltaTMS);
 
         scene->QueryCamera()->moveCamera3(MC);
 
@@ -80,9 +63,10 @@ t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actio
         render->dispScreen();
 
         wait = fmax(0, (1000 / (float)60 - timer.get_ticks()));
+        std::cout << "wait = " << wait << std::endl;
         SDL_Delay(wait);
     }
-//    std::cout << "fps = " << ticks / (time.get_ticks() / 1000.0) << std::endl; 
+//    std::cout << "fps = " << ticks / (time.get_ticks() / 1000.0) << std::endl; */
 
     delete scene;
     return (pos);

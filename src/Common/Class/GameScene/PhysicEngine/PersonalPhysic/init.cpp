@@ -4,7 +4,8 @@ CS_PersonalPhysic::CS_PersonalPhysic()
 {
     onGround = false;
     bounciness = false;
-    gravity = true;
+    gravity = 1;
+    hp = 2;
     setSpeedX(0);
     setSpeedY(0);
     setPosXPixel(0);

@@ -18,7 +18,15 @@ void        CS_Character::loadAnimation(t_animation name)
         animation = newAnimation;
         animation->restartAnimation();
     }
-    physic->setSpeedX(animation->QueryMovementX(right));
+
+    physic->setHitBox(animation->QueryHitbox(right));
+    physic->setAttack(animation->QueryAttack(right));
+
+    float     speedX;
+
+    speedX = animation->QueryMovementX(right);
+    physic->setSpeedX(speedX);
+
     if (animation == NULL)
     {
         std::cout << "Error can't load the animation" << std::endl;

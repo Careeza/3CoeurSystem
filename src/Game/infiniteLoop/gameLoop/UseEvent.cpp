@@ -1,25 +1,29 @@
 #include "game.h"
 
-t_pos   gameUseEvent(t_action action, CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable, CS_Timer *timer)
+void    gameGetEvenement(CS_Scene *scene, t_actionValue *value, t_actionTable *actionTable)
 {
-    if (action.escape == KeyPress)
+    CS_KeyControl   event;
+
+
+    while (event.loadEvenement(scene))
     {
-        timer->pause();
-        render->saveScreen();
-        if (loopMenu(render, value, actionTable))
-        {
-            timer->unpause();
-            return (home);
-        }
-        else
-        {
-            timer->unpause();
-            return (game);
-        }
+        event.fillActionTable(actionTable, value);
     }
-    return (game);
 }
 
+void    gameEventProcessing(t_actionTable *actionTable, t_action *action)
+{
+    CS_KeyControl::transformActionTable(actionTable);
+    CS_KeyControl::resetAction(action);
+    action->escape = actionTable->escape;
+    action->att = actionTable->att;
+    if ((actionTable->right & KeyHoldPress) && (actionTable->left & KeyReleaseNoPress))
+        action->right = actionTable->right;
+    if ((actionTable->left & KeyHoldPress) && (actionTable->right & KeyReleaseNoPress))
+        action->left = actionTable->left;
+    action->dodge = actionTable->dodge;
+    action->jump = actionTable->jump;
+}
 
 void    walkMC(CS_Character *MC)
 {
@@ -29,14 +33,7 @@ void    walkMC(CS_Character *MC)
     }
     else
     {
-        if (MC->QueryPhysic()->QuerySpeedY() < 0)
-        {
-            MC->loadAnimation(WALK); //HOTFIX
-        }
-        else
-        {
-            MC->loadAnimation(WALK); //HOTFIX JUMP
-        }
+        MC->loadAnimation(JUMP);
     }
 }
 

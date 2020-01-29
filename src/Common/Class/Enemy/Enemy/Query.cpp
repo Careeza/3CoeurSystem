@@ -21,6 +21,12 @@ t_enemy             CS_Enemy::QueryName()
     return (name);
 }
 
+int                 CS_Enemy::QueryHP()
+{
+    return (physic->QueryHP());
+}
+
+
 int                 CS_Enemy::QueryID()
 {
     return (id);

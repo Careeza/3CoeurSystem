@@ -6,6 +6,7 @@ void                CS_Enemy::setActionToUse(CS_Character *MC)
     t_enemyAction action;
     
     action = algo(MC, physic);
+    
     if (action == WalkR)
     {
         right = true;
@@ -26,6 +27,14 @@ void                CS_Enemy::setActionToUse(CS_Character *MC)
         right = false;
         loadAnimation(ATTACK);
     }
+    else if (action == Dead)
+    {
+        loadAnimation(DEAD);
+        QueryPhysic()->setGravity(0);
+        QueryPhysic()->setSpeedY(0);
+        if (animation->verifyAnimationEnd())
+            physic->increaseHP(-1);
+    }
 }
 
 void                CS_Enemy::updateFrame(int deltaT)
@@ -33,16 +42,14 @@ void                CS_Enemy::updateFrame(int deltaT)
     animation->nextFrame2(deltaT);
 }
 
-void                CS_Enemy::moveCharacter(int deltaT)
+void                CS_Enemy::moveCharacter(CS_GameScene *scene, int deltaT)
 {
     physic->updateSpeed(deltaT);
-//    physic->updatePosition(deltaT);
+    physic->updatePosition(scene, deltaT);
 }
 
 void                CS_Enemy::getFrame()
 {
     texture = animation->QueryTexture(right);
     frame = animation->QueryFrame();
-    physic->setHitBox(animation->QueryHitbox(right));
-    physic->setAttack(animation->QueryAttack(right));
 }

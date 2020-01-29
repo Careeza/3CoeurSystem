@@ -8,7 +8,7 @@ CS_Animation        *initAnimationProjectile3(SDL_Renderer *render)
 
     animation->newAnimation(STATIC, true);
     animation->loadTexture(render, "resources/source/Projectiles/FlameL.png", "resources/source/Projectiles/FlameR.png");
-    animation->setSize(3, 3);
+    animation->setSize(3, 2);
     animation->cutFrame(3, 3, 1);
     animation->setSpeed(0.03, 0);
     animation->setAnimationTime(300);

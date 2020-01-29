@@ -16,14 +16,10 @@ void        CS_Character::getFrame()
 {
     texture = animation->QueryTexture(right);
     frame = animation->QueryFrame();
-    physic->setHitBox(animation->QueryHitbox(right));
-    physic->setAttack(animation->QueryAttack(right));
 }
 
 void        CS_Character::moveCharacter(int deltaT, CS_GameScene *scene)
 {
-    physic->setHitBox(animation->QueryHitbox(right));
-    physic->setAttack(animation->QueryAttack(right));
     physic->updateSpeed(deltaT);
     physic->updatePosition(scene, deltaT);
 }
@@ -32,7 +28,7 @@ void        CS_Character::useJump()
 {
     if (jump > 0)
     {
-        QueryPhysic()->setSpeedY(-1);
+        QueryPhysic()->setSpeedY(-2);
         jump--;
     }
 }

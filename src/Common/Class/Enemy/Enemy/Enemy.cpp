@@ -3,7 +3,7 @@
 CS_Enemy::CS_Enemy()
 {
     right = true;
-}
+ }
 
 CS_Enemy::~CS_Enemy()
 {

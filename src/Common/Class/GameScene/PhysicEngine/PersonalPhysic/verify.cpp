@@ -10,7 +10,7 @@ bool    CS_PersonalPhysic::verifyBounciness()
     return (bounciness);
 }
 
-bool    CS_PersonalPhysic::verifyGravity()
+float       CS_PersonalPhysic::QueryGravity()
 {
     return (gravity);
 }

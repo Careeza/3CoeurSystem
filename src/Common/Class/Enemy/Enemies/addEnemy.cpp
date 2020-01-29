@@ -26,11 +26,14 @@ CS_PersonalPhysic   *initPhysicEnemyPixel(int x, int y)
 
 CS_Enemy        *copyEnemy(CS_Enemy *enemySource)
 {
-    CS_Enemy *newEnemy;
+    CS_Enemy            *newEnemy;
+    CS_BankAnimation    *newBank;
 
     newEnemy = new (CS_Enemy);
+    newBank = new (CS_BankAnimation);
 
-    newEnemy->initEnemyAnimationBank(enemySource->QueryAnimationBank());
+    newBank->CopyAnimationBank(enemySource->QueryAnimationBank());
+    newEnemy->initEnemyAnimationBank(newBank);
     newEnemy->initAlgo(enemySource->QueryAlgo());
 
     return (newEnemy);

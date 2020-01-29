@@ -21,9 +21,21 @@ void        CS_Enemy::loadAnimation(t_animation name)
         animation->restartAnimation();
     }
     physic->setSpeedX(animation->QueryMovementX(right));
+    physic->setHitBox(animation->QueryHitbox(right));
+    physic->setAttack(animation->QueryAttack(right));
 }
 
 void        CS_Enemy::setName(t_enemy nameSource)
 {
     name = nameSource;
+}
+
+void        CS_Enemy::setHP(int hpSource)
+{
+    physic->setHP(hpSource);
+}
+
+void        CS_Enemy::increaseHP(int hpSource)
+{
+    physic->increaseHP(hpSource);
 }

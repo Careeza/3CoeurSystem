@@ -10,7 +10,7 @@ void    CS_PersonalPhysic::setBounciness(bool bouncinessSource)
     bounciness = bouncinessSource;
 }
 
-void    CS_PersonalPhysic::setGravity(bool gravitySource)
+void    CS_PersonalPhysic::setGravity(float gravitySource)
 {
     gravity = gravitySource;
 }
@@ -54,3 +54,12 @@ void        CS_PersonalPhysic::setAttack(CS_HitBox *attackSource)
     attack = attackSource;
 }
 
+void        CS_PersonalPhysic::setHP(int hpSource)
+{
+    hp = hpSource;
+}
+
+void        CS_PersonalPhysic::increaseHP(int hpSource)
+{
+    hp += hpSource;
+}

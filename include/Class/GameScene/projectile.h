@@ -32,7 +32,7 @@ class   CS_Projectile
         void                initAnimation(CS_Animation *animationSource);
 
         void                updateFrame(int deltaT);
-        void                moveProjectile(int deltaT);
+        void                moveProjectile(CS_GameScene *scene, int deltaT);
         void                getFrame();
         bool                projectileEnd();
         
@@ -88,7 +88,7 @@ class   CS_Projectiles
         void        spawnProjectile(t_projectile name, int x, int y, bool right);
         void        loadProjectileBank(CS_ProjectileBank *projectileBankSource);
         void        deleteProjectile(int index);
-        void        updateProjectiles(int deltaT);
+        void        updateProjectiles(CS_GameScene *scene, int deltaT);
         void        updateID();
 
         CS_Projectile   *QueryProjectile(int index);

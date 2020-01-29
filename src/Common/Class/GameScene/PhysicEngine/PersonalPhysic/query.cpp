@@ -75,3 +75,8 @@ CS_HitBox   *CS_PersonalPhysic::QueryRawAttack()
 {
     return (attack);
 }
+
+int         CS_PersonalPhysic::QueryHP()
+{
+    return (hp);
+}

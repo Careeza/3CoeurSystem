@@ -5,7 +5,7 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value)
     t_pos           pos;
     t_actionTable   actionTable;
 
-    pos = game;
+    pos = home;
     CS_KeyControl::initActionTable(&actionTable);
     logoCinematics(&render, value, &actionTable);
     homeCinematics(&render, value, &actionTable);
@@ -52,6 +52,9 @@ int     main(int argc, char **argv)
     init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
     initGame(render);
     CS_KeyControl::fillActionValue(&value);
+
+    WorldPhysics->setGravity(0, 0.0005);
+    WorldPhysics->setWind(0, 0);
 
     infiniteLoop(render, &value);
 

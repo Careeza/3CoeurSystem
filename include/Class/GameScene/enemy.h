@@ -38,6 +38,7 @@ typedef enum    e_enemyAction {
     AttL,
     StaticR,
     StaticL,
+    Dead,
 }               t_enemyAction;
 
 class   CS_Enemy
@@ -48,6 +49,8 @@ class   CS_Enemy
 
 
         void                setName(t_enemy nameSource);
+        void                setHP(int hpSource);
+        void                increaseHP(int hpSource);
         void                initEnemyAnimationBank(CS_BankAnimation *animationBankSource);
         void                initEnemyPhysic(CS_PersonalPhysic *physicSource);
         void                initAlgo(t_enemyAction (*algoSource)(CS_Character *MC, CS_PersonalPhysic *physic));
@@ -55,7 +58,7 @@ class   CS_Enemy
         void                setActionToUse(CS_Character *MC);
         void                loadAnimation(t_animation name);
         void                updateFrame(int deltaT);
-        void                moveCharacter(int deltaT);
+        void                moveCharacter(CS_GameScene *scene, int deltaT);
         void                getFrame();
         
         void                setID(int idSource);
@@ -67,6 +70,7 @@ class   CS_Enemy
 
         t_enemy             QueryName();
         int                 QueryID();
+        int                 QueryHP();
         CS_BankAnimation    *QueryAnimationBank();
         CS_Animation        *QueryAnimation();
         CS_PersonalPhysic   *QueryPhysic();
@@ -85,7 +89,6 @@ class   CS_Enemy
         CS_Animation        *animation;
         int                 id;
         bool                right;
-
 };
 
 class   CS_EnemyBank
@@ -109,7 +112,7 @@ class   CS_Enemies
         void        loadEnemyBank(CS_EnemyBank *enemyBankSource);
         void        addAnEnemy(float x, float y, t_enemy name);
         void        addAnEnemyPixel(int x, int y, t_enemy name);
-        void        updateEnemies(CS_Character *MC, int deltaT);
+        void        updateEnemies(CS_Character *MC, CS_GameScene *scene, int deltaT);
 
         void        deleteEnemy(int index);
         void        updateID();

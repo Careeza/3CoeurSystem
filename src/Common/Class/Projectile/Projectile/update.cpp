@@ -6,9 +6,9 @@ void                CS_Projectile::updateFrame(int deltaT)
     range -= deltaT;
 }
 
-void                CS_Projectile::moveProjectile(int deltaT)
+void                CS_Projectile::moveProjectile(CS_GameScene *scene, int deltaT)
 {
-//    physic->updatePosition(deltaT);
+    physic->updatePosition(scene, deltaT);
 }
 
 void                CS_Projectile::getFrame()

@@ -49,12 +49,16 @@ bool            loopMenu(CS_Renderer *render, t_actionValue *value, t_actionTabl
 CS_Scene        *initMenu(SDL_Renderer *render);
 int             MenuUseEvent(t_action action, std::shared_ptr<CS_Element> button);
 
+int             startLevel01(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable, CS_GameScene *scene);
+
 t_pos           loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable);
 CS_Camera       *initCamera();
 CS_Enemies      *initEnemies(SDL_Renderer *render);
 CS_GameScene    *initGameScene(SDL_Renderer *render);
 CS_Character    *initMC(SDL_Renderer *render);
 CS_Parallax     *initParallax(SDL_Renderer *render);
+void            gameGetEvenement(CS_Scene *scene, t_actionValue *value, t_actionTable *actionTable);
+void            gameEventProcessing(t_actionTable *actionTable, t_action *action);
 t_pos           gameUseEvent(t_action action, CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable, CS_Timer *timer);
 void            useAction(t_action *table, CS_GameScene *scene);
 void            parallaxManagement(CS_Parallax *parallax, CS_Camera *camera);
@@ -62,7 +66,7 @@ CS_Assets       *initAssets(SDL_Renderer *render);
 
 CS_Projectiles  *initProjectiles(SDL_Renderer *render);
 
-void            resolveAllAction(CS_GameScene *scene);
+void            resolveAllAction(CS_GameScene *scene, int bornMin, int bornMax);
 CS_Enemy        *initEnfant1(SDL_Renderer *render);
 CS_Enemy        *initEnfant2(SDL_Renderer *render);
 CS_Enemy        *initEnfant3(SDL_Renderer *render);
