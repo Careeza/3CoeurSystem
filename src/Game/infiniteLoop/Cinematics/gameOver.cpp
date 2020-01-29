@@ -39,14 +39,14 @@ static CS_Scene    *initGameOver(SDL_Renderer *render)
 
     scene->createElementToScene("filtre", 100, 100, 0, 0, 0);
 
-    scene->createElementToScene("GameOver", 20, 10, 60, 30, 0);
+    scene->createElementToScene("GameOver", 60, 30, 20, 10, 0);
     scene->writeTexteScaleW(-1, "Game Over");
 
-    scene->createButtonToScene("Retry", 30, 50, 40, 10, 0, &closeGame);
-    scene->writeTexteScaleW(-1, "Retry !");
+    scene->createButtonToScene("Retry", 40, 10, 30, 50, 0, &useButton1);
+    scene->writeTexte(-1, "Retry !");
 
-    scene->createButtonToScene("Exit", 30, 50, 40, 10, 0, &useButton1);
-    scene->writeTexteScaleW(-1, "Exit");
+    scene->createButtonToScene("Exit", 40, 10, 30, 60, 0, &closeGame);
+    scene->writeTexte(-1, "Exit");
 
     return (scene);
 }

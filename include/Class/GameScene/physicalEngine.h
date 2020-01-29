@@ -179,6 +179,9 @@ class   CS_PersonalPhysic
 
         void        setHP(int hpSource);
         void        increaseHP(int hpSource);
+        void        hitHP(int hpSource);
+        void        healHP(int hpSource);
+
 
         bool        verifyOnGround();
         bool        verifyBounciness();
@@ -194,6 +197,7 @@ class   CS_PersonalPhysic
 
         void        updateSpeed(int deltaT);
         void        updatePosition(CS_GameScene *scene, int deltaT);
+        void        updateImmunity(int deltaT);
 
         int         QueryPostionX();
         int         QueryPostionY();
@@ -218,6 +222,7 @@ class   CS_PersonalPhysic
         bool            onGround;
         bool            bounciness;
         float           gravity;
+        int             immunity;
 };
 
 #endif

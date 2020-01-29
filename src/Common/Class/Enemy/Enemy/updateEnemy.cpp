@@ -46,6 +46,7 @@ void                CS_Enemy::moveCharacter(CS_GameScene *scene, int deltaT)
 {
     physic->updateSpeed(deltaT);
     physic->updatePosition(scene, deltaT);
+    physic->updateImmunity(deltaT);
 }
 
 void                CS_Enemy::getFrame()

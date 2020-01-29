@@ -63,3 +63,18 @@ void        CS_PersonalPhysic::increaseHP(int hpSource)
 {
     hp += hpSource;
 }
+
+void        CS_PersonalPhysic::hitHP(int hpSource)
+{
+    if (immunity <= 0)
+    {
+        increaseHP(-hpSource);
+        immunity = 250;
+        std::cout << "here !!! ---------------------------------------- here !!!!!!!!!!!!!" << std::endl;
+    }
+}
+
+void        CS_PersonalPhysic::healHP(int hpSource)
+{
+    increaseHP(hpSource);
+}

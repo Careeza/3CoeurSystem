@@ -41,11 +41,11 @@ void    CS_Renderer::renderGameScene(CS_GameScene *gameScene)
 
     if (gameScene->haveMC())
     {
-        renderProjectiles(gameScene->QueryProjectile(), cameraX, cameraY);
         renderMC(gameScene->QueryMC(), cameraX, cameraY);
     }
     if (gameScene->haveEnemies())
     {
+        renderProjectiles(gameScene->QueryProjectile(), cameraX, cameraY);
         renderEnemy(gameScene->QueryEnemies(), cameraX, cameraY);
     }
 }

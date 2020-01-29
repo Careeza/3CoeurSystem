@@ -118,6 +118,9 @@ CS_Animation        *attackMoine(SDL_Renderer *render)
     animation->setHitBox(true, 0.106771, 0.5, 0.436632, 0.215278);
     animation->setHitBox(false, 0.105903, 0.5, 0.454861, 0.218056);
 
+    animation->setAttack(false, 0.119792, 0.5, 0.336806, 0.218056);
+    animation->setAttack(true, 0.111111, 0.5, 0.545139, 0.215278);
+
     animation->setAnimationTime(300);
 
     return (animation);
@@ -152,8 +155,8 @@ CS_Character        *initMC(SDL_Renderer *render)
     MC->addAnimation(render, fallMoine);
     MC->addAnimation(render, jumpMoine);
 
-    MC->loadAnimation(STATIC);
     MC->loadPhysic(initPhysic());
+    MC->loadAnimation(STATIC);
     
     return (MC);
 }

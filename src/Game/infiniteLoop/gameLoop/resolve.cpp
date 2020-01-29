@@ -58,7 +58,7 @@ void    resolveAttMC(CS_Character *MC, CS_Enemies *enemies)
         enemy = enemies->QueryEnemy(i);
         enemy->QueryPhysic()->QueryHitBox(wEnemy, hEnemy, xEnemy, yEnemy);
         if ((xMC <= xEnemy + wEnemy && xMC + wMC >= xEnemy && yMC <= yEnemy + hEnemy && hMC + yMC >= yEnemy))
-            enemies->deleteEnemy(i);
+            enemy->QueryPhysic()->hitHP(2);
         i++;
     }
 }
@@ -95,7 +95,7 @@ void    resolveAllyProjectile(CS_Projectiles *projectileSource, CS_Enemies *enem
                 enemy->QueryPhysic()->QueryHitBox(wEnemy, hEnemy, xEnemy, yEnemy);
                 if ((xMC <= xEnemy + wEnemy && xMC + wMC >= xEnemy && yMC <= yEnemy + hEnemy && hMC + yMC >= yEnemy))
                 {
-                    enemy->increaseHP(-1);
+                    enemy->QueryPhysic()->hitHP(1);
                     projectileSource->deleteProjectile(i);
                     break;
                 }
@@ -121,6 +121,6 @@ void    resolveAllAction(CS_GameScene *scene, int bornMin, int bornMax)
 
     scene->QueryOnScreen()->updateOnScreen(MC, scene->QueryAssets());
 
-//    resolveAttMC(scene->QueryMC(), scene->QueryEnemies());
+    resolveAttMC(scene->QueryMC(), scene->QueryEnemies());
     resolveAllyProjectile(scene->QueryProjectile(), scene->QueryEnemies());
 }

@@ -2,6 +2,7 @@
 
 CS_PersonalPhysic::CS_PersonalPhysic()
 {
+    immunity = 0;
     onGround = false;
     bounciness = false;
     gravity = 1;

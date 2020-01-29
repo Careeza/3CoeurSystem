@@ -34,6 +34,7 @@ bool            callDialogueBox(CS_Renderer *render, t_actionValue *value, t_act
 
 void            logoCinematics(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable);
 void            homeCinematics(CS_Renderer *render,  t_actionValue *value, t_actionTable *actionTable);
+int             gameOver(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable, int level);
 
 
 t_pos           loopHome(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable); // => need le render et les settings et la texture screen

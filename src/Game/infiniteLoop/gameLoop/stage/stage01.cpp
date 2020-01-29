@@ -104,12 +104,12 @@ int     startLevel01(CS_Renderer *render, t_actionValue *value, t_actionTable *a
         render->dispScreen();
 
         wait = fmax(0, (1000 / (float)60 - timer.get_ticks()));
-        std::cout << "wait = " << wait << std::endl;
+//        std::cout << "wait = " << wait << std::endl;
         SDL_Delay(wait);
     }
 
     if (victory == -1)
         return (-1);
     if (monsterKill >= 2)
-        return (1);
+        return (-2);
 }

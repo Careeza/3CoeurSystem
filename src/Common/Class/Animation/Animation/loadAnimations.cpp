@@ -80,8 +80,8 @@ void            CS_Animation::setSize(float wSource, float hSource)
 
     hitboxesR->setHitBoxPixel(w, h, 0, 0);
     hitboxesL->setHitBoxPixel(w, h, 0, 0);
-    attackR->setHitBoxPixel(w, h, 0, 0);
-    attackL->setHitBoxPixel(w, h, 0, 0);
+    attackR->setHitBoxPixel(0, 0, 0, 0);
+    attackL->setHitBoxPixel(0, 0, 0, 0);
 }
 
 void            CS_Animation::setAnimationTime(int animationTimeSource, int indexStartSource)

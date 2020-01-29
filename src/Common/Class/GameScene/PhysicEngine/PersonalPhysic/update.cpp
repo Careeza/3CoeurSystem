@@ -26,3 +26,9 @@ void    CS_PersonalPhysic::updatePosition(CS_GameScene *scene, int deltaT)
     else
         onGround = false;
 }
+
+void    CS_PersonalPhysic::updateImmunity(int deltaT)
+{
+//    std::cout << "imune = " << immunity << std::endl;
+    immunity -= deltaT;
+}

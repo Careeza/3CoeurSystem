@@ -29,5 +29,5 @@ void    CS_Renderer::renderMC(CS_Character *MC, int cameraX, int cameraY)
     size.y -= cameraY;
 
     SDL_RenderCopy(render, texture, frame, &size);
-//    drawHitBox(MC->QueryPhysic(), cameraX, cameraY, render);
+    drawHitBox(MC->QueryPhysic(), cameraX, cameraY, render);
 }
