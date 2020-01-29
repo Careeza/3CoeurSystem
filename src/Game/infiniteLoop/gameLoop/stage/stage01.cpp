@@ -69,7 +69,7 @@ int     startLevel01(CS_Renderer *render, t_actionValue *value, t_actionTable *a
     int     borderMax;
 
     borderMin = 0;
-    borderMax = Tools->transformWidth(278.0);
+    borderMax = Tools->transformWidth(1278.0);
 
     int monsterKill = 0;
 
