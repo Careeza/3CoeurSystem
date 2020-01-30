@@ -22,13 +22,14 @@ void        CS_Character::moveCharacter(int deltaT, CS_GameScene *scene)
 {
     physic->updateSpeed(deltaT);
     physic->updatePosition(scene, deltaT);
+    physic->updateImmunity(deltaT);
 }
 
 void        CS_Character::useJump()
 {
     if (jump > 0)
     {
-        QueryPhysic()->setSpeedY(-2);
+        QueryPhysic()->setSpeedY(-2.2);
         jump--;
     }
 }

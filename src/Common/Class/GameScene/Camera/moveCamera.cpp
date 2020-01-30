@@ -25,3 +25,8 @@ void    CS_Camera::moveCamera3(CS_Character *MC)
     x = xMC - (Tools->QueryWindowWidth() / 2) + (wMC / 2);
     y = 0;
 }
+
+void    CS_Camera::moveCamera4(int deltaMS, bool right)
+{
+    x += vX * deltaMS;
+}

@@ -115,6 +115,7 @@ class   CS_Enemies
         void        updateEnemies(CS_Character *MC, CS_GameScene *scene, int deltaT);
 
         void        deleteEnemy(int index);
+        void        deleteAllEnemy();
         void        updateID();
 
         CS_Enemy    *QueryEnemy(int index);

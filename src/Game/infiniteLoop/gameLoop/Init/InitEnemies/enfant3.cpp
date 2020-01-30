@@ -26,6 +26,7 @@ static CS_BankAnimation    *initBankAnimation3(SDL_Renderer *render)
     bank = new (CS_BankAnimation);
 
     bank->addAnimation(render, walkEnfant3);
+    bank->addAnimation(render, deadEnfant);
 
     return (bank);
 }
@@ -41,6 +42,9 @@ t_enemyAction   initAlgoEnfant3(CS_Character *MC, CS_PersonalPhysic *physic)
     int yEnemy;
 
     physic->QueryPostion(xEnemy, yEnemy);
+
+    if (physic->QueryHP() <= 0)
+        return (Dead);
 
     if (xMC > xEnemy)
         return (WalkR);

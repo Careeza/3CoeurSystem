@@ -69,8 +69,7 @@ void        CS_PersonalPhysic::hitHP(int hpSource)
     if (immunity <= 0)
     {
         increaseHP(-hpSource);
-        immunity = 250;
-        std::cout << "here !!! ---------------------------------------- here !!!!!!!!!!!!!" << std::endl;
+        immunity = 150;
     }
 }
 

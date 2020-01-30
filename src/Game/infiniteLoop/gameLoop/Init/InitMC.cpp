@@ -161,9 +161,6 @@ CS_PersonalPhysic   *initPhysic()
     CS_PersonalPhysic *physic;
 
     physic = new (CS_PersonalPhysic);
-
-    physic->setPosX(20);
-    physic->setPosY(10);
     
     return (physic);
 }

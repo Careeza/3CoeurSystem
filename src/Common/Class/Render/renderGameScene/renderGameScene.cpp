@@ -34,7 +34,7 @@ void    CS_Renderer::renderGameScene(CS_GameScene *gameScene)
     if (gameScene->haveAssets())
     {
         renderAssets(gameScene->QueryAssets(), cameraX, cameraY);
-    //    renderOnScreen(gameScene->QueryOnScreen(), render, cameraX, cameraY);
+        renderOnScreen(gameScene->QueryOnScreen(), render, cameraX, cameraY);
     }
 
 //    render(gameScene, render);

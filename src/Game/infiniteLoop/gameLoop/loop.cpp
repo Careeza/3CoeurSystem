@@ -10,17 +10,28 @@ t_pos   loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actio
 
     t_pos                       pos = game;
     int                         stage = 1;
+    bool                        restart = true;
     
+    srand(time(NULL));
     while (pos == game)
     {
         if (stage == 1)
-            stage = startLevel01(render, value, actionTable, scene);
-//        if (stage == 1)
-//            stage = startLevel1(render, value, actionTable, scene);
+        {
+            stage = startLevel01(render, value, actionTable, scene, restart);
+            restart = false;
+        }
+        if (stage == 2)
+        {
+            stage = startLevel02(render, value, actionTable, scene, restart);
+            restart = false;
+        }
         if (stage == -1)
             pos = home;
         if (stage < -1)
+        {
             stage = gameOver(render, value, actionTable, stage);
+            restart = true;
+        }
     }
 
     delete scene;

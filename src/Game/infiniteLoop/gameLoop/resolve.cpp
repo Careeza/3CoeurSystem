@@ -36,6 +36,35 @@ void    checkBorderCamera(CS_Camera *camera, int bornMin, int bornMax)
         camera->moveCamera(bornMin, 0);
 }
 
+void    resolveEnemyAtt(CS_Character *MC, CS_Enemies *enemies)
+{
+    int         i;
+    CS_Enemy    *enemy;
+
+    int         wMC;
+    int         hMC;
+    int         xMC;
+    int         yMC;
+
+    i = 0;
+    MC->QueryPhysic()->QueryHitBox(wMC, hMC, xMC, yMC);
+
+    int         wEnemy;
+    int         hEnemy;
+    int         xEnemy;
+    int         yEnemy;
+    while (i < enemies->QueryNbEnemies())
+    {
+        enemy = enemies->QueryEnemy(i);
+        enemy->QueryPhysic()->QueryHitBox(wEnemy, hEnemy, xEnemy, yEnemy);
+        if ((xMC <= xEnemy + wEnemy && xMC + wMC >= xEnemy && yMC <= yEnemy + hEnemy && hMC + yMC >= yEnemy))
+        {
+            MC->QueryPhysic()->hitHP(1);
+        }
+        i++;
+    }    
+}
+
 void    resolveAttMC(CS_Character *MC, CS_Enemies *enemies)
 {
     int         i;
@@ -111,16 +140,23 @@ void    resolveAllAction(CS_GameScene *scene, int bornMin, int bornMax)
     CS_Character *MC;
 
     MC = scene->QueryMC();
-
-    checkBorder(MC->QueryPhysic(), bornMin, bornMax);
+    
+    int x;
+    int y;
 
     MC->setOnGround(MC->QueryPhysic()->verifyOnGround());
     MC->updateJump();
 
     checkBorderCamera(scene->QueryCamera(), bornMin, bornMax);
 
+    scene->QueryCamera()->QueryCameraPosition(x, y);
+
+    checkBorder(MC->QueryPhysic(), x, x + Tools->QueryWindowWidth());
+
     scene->QueryOnScreen()->updateOnScreen(MC, scene->QueryAssets());
 
     resolveAttMC(scene->QueryMC(), scene->QueryEnemies());
     resolveAllyProjectile(scene->QueryProjectile(), scene->QueryEnemies());
+
+    resolveEnemyAtt(scene->QueryMC(), scene->QueryEnemies());
 }

@@ -109,12 +109,7 @@ CS_Projectiles      *initProjectiles(SDL_Renderer *render)
 
     projectiles = new (CS_Projectiles);
 
-    std::cout << "here" << std::endl;
     projectiles->loadProjectileBank(initProjectileBank(render));
-    std::cout << "here1" << std::endl;
-    projectiles->spawnProjectile(projectile1, true, 100, 500);
-    projectiles->spawnProjectile(projectile2, true, 100, 800);
-    std::cout << "here2" << std::endl;
 
     return (projectiles);
 }

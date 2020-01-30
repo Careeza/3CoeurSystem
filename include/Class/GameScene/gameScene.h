@@ -22,14 +22,16 @@ class   CS_Camera
         void    moveCamera(int xSource, int ySource);
         void    moveCamera2(int xSource, int ySource);
         void    moveCamera3(CS_Character *MC);
+        void    moveCamera4(int deltaMS, bool right);
 
         void    QueryCameraPosition(int& xDest, int& yDest);
         int     QueryCameraPositionX();
         int     QueryCameraPositionY();
 
     private:
-        float     x;
-        float     y;
+        float       x;
+        float       y;
+        float       vX;
 };
 
 class   CS_OnScreen

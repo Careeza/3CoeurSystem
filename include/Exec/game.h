@@ -13,6 +13,7 @@
 # include <vector>
 # include <stdarg.h>
 # include <math.h>
+# include <time.h>
 
 # include "tools.h"
 # include "common.h"
@@ -50,7 +51,11 @@ bool            loopMenu(CS_Renderer *render, t_actionValue *value, t_actionTabl
 CS_Scene        *initMenu(SDL_Renderer *render);
 int             MenuUseEvent(t_action action, std::shared_ptr<CS_Element> button);
 
-int             startLevel01(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable, CS_GameScene *scene);
+int             gameUseEventStage(t_action action, CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable, CS_Timer *timer);
+int             KillMonster(CS_Enemies *enemies, CS_Camera *camera);
+
+int             startLevel01(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable, CS_GameScene *scene, bool restart);
+int             startLevel02(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable, CS_GameScene *scene, bool restart);
 
 t_pos           loopGame(CS_Renderer *render, t_actionValue *value, t_actionTable *actionTable);
 CS_Camera       *initCamera();
@@ -68,6 +73,7 @@ CS_Assets       *initAssets(SDL_Renderer *render);
 CS_Projectiles  *initProjectiles(SDL_Renderer *render);
 
 void            resolveAllAction(CS_GameScene *scene, int bornMin, int bornMax);
+CS_Animation    *deadEnfant(SDL_Renderer *render);
 CS_Enemy        *initEnfant1(SDL_Renderer *render);
 CS_Enemy        *initEnfant2(SDL_Renderer *render);
 CS_Enemy        *initEnfant3(SDL_Renderer *render);
