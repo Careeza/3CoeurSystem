@@ -144,9 +144,6 @@ void    resolveAllAction(CS_GameScene *scene, int bornMin, int bornMax)
     int x;
     int y;
 
-    MC->setOnGround(MC->QueryPhysic()->verifyOnGround());
-    MC->updateJump();
-
     checkBorderCamera(scene->QueryCamera(), bornMin, bornMax);
 
     scene->QueryCamera()->QueryCameraPosition(x, y);

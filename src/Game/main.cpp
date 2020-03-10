@@ -20,6 +20,8 @@ void    infiniteLoop(CS_Renderer render, t_actionValue *value)
     }
 }
 
+SDL_Renderer *g_render = NULL;
+
 void    initGame(CS_Renderer& rend)
 {
     SDL_Window      *window;
@@ -37,8 +39,11 @@ void    initGame(CS_Renderer& rend)
     TTF_Init();
     initFont.initPolice("resources/alterebro-pixel-font.ttf");
 
+
     render = init_renderer(window);
     rend.loadRenderer(render);
+
+    g_render = render;
 }
 
 int     main(int argc, char **argv)

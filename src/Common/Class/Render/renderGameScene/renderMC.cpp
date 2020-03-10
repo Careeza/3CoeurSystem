@@ -16,6 +16,12 @@ void    drawHitBox(CS_PersonalPhysic *physic, int cameraX, int cameraY, SDL_Rend
     SDL_RenderDrawRect(render, &rect);
 }
 
+void    drawMCPos(SDL_Rect *rect, SDL_Renderer *render)
+{
+    SDL_SetRenderDrawColor(render, 0x00, 0xFF, 0x00, 0xFF);
+    SDL_RenderDrawRect(render, rect);
+}
+
 void    CS_Renderer::renderMC(CS_Character *MC, int cameraX, int cameraY)
 {
     SDL_Texture     *texture;
@@ -29,5 +35,6 @@ void    CS_Renderer::renderMC(CS_Character *MC, int cameraX, int cameraY)
     size.y -= cameraY;
 
     SDL_RenderCopy(render, texture, frame, &size);
+    drawMCPos(&size, render);
     drawHitBox(MC->QueryPhysic(), cameraX, cameraY, render);
 }

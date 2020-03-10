@@ -10,12 +10,12 @@ CS_AssetsBank::~CS_AssetsBank()
     //TODO delete bank
 }
 
-void        CS_AssetsBank::createAsset(SDL_Renderer *render, std::string source, t_assetName name, float w, float h, float wProp, float hProp, float xProp, float yProp)
+void        CS_AssetsBank::createAsset(SDL_Renderer *render, std::string source, t_assetName name, float w, float h)
 {
     CS_Asset    *asset;
 
     asset = new (CS_Asset);
-    asset->createAsset(render, source, name, w, h, wProp, hProp, xProp, yProp);
+    asset->createAsset(render, source, name, w, h);
     assets.push_back(asset);
 }
 

@@ -6,6 +6,7 @@
 # include <SDL2/SDL_timer.h>
 # include <SDL2/SDL_image.h>
 # include <SDL2/SDL_ttf.h>
+# include <SDL2/SDL_mixer.h>
 
 # include <fstream>
 # include <iostream>
@@ -17,6 +18,7 @@
 
 # include "tools.h"
 # include "common.h"
+# include "initMC.h"
 
 typedef enum	e_pos {
 	home,
@@ -24,7 +26,6 @@ typedef enum	e_pos {
     game,
     close,
 }				t_pos;
-
 
 void            homeGetEvenement(CS_Scene *scene, std::shared_ptr<CS_Element>& button, t_actionValue *value, t_actionTable *actionTable);
 void            basicGetEvenement(CS_Scene *scene, t_actionValue *value, t_actionTable *actionTable);
@@ -83,6 +84,6 @@ CS_Enemy        *initEnfant6(SDL_Renderer *render);
 
 CS_EnemyBank    *initBankEnemies(SDL_Renderer *render);
 
-
+extern SDL_Renderer *g_render;
 
 #endif

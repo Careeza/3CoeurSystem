@@ -118,10 +118,9 @@ int     adjustmentX(int w, int h, int x, int y, bool right, CS_GameScene *scene)
     return (adjustment);
 }
 
-bool    CS_Position::updatePosition(CS_GameScene *scene, CS_HitBox *hitbox, float vXSource, float vYSource, int deltaT)
+bool    CS_Position::updateXAxis(CS_GameScene *scene, CS_HitBox *hitbox, float vXSource, int deltaT)
 {
-    int     newX;
-    int     newY;
+    int newX;
 
     int     w;
     int     h;
@@ -129,23 +128,46 @@ bool    CS_Position::updatePosition(CS_GameScene *scene, CS_HitBox *hitbox, floa
     int     yDecale;
 
     int     adjustment;
-
-    bool    onGround = false;
-
+    
     hitbox->QuerySizePos(w, h, xDecale, yDecale);
+    newX = x + vXSource * deltaT;
+    adjustment = adjustmentX(w, h, newX + xDecale, y + yDecale, vXSource > 0, scene);
+    newX += adjustment;
+    x = newX;
+    if (adjustment != 0)
+        return (true);
+    return (false);
+}
 
+bool    CS_Position::updateYAxis(CS_GameScene *scene, CS_HitBox *hitbox, float vYSource, int deltaT)
+{
+    int newY;
 
+    int     w;
+    int     h;
+    int     xDecale;
+    int     yDecale;
+
+    int     adjustment;
+    
+    hitbox->QuerySizePos(w, h, xDecale, yDecale);
     newY = y + vYSource * deltaT;
     adjustment = adjustmentY(w, h, x + xDecale, newY + yDecale, vYSource > 0, scene);
+    newY += adjustment;
+    y = newY;
     if (adjustment < 0)
         onGround = true;
-    newY += adjustment;
+    else
+        onGround = false;
+    if (adjustment != 0)
+        return (true);
+    return (false);
+}
 
-    newX = x + vXSource * deltaT;
-    adjustment = adjustmentX(w, h, newX + xDecale, newY + yDecale, vXSource > 0, scene);
-    newX += adjustment;
 
-    x = newX;
-    y = newY;
-    return (onGround);
+bool    CS_Position::updatePosition(CS_GameScene *scene, CS_HitBox *hitbox, float vXSource, float vYSource, int deltaT)
+{
+    if (updateYAxis(scene, hitbox, vYSource, deltaT))
+        onGround = true;
+    updateXAxis(scene, hitbox, vXSource, deltaT);
 }

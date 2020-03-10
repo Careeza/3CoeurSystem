@@ -8,9 +8,5 @@ CS_Enemies      *initEnemies(SDL_Renderer *render)
 
     enemies->loadEnemyBank(initBankEnemies(render));
     
-
-
-    std::cout << "here" << std::endl;
-
     return (enemies);
 }

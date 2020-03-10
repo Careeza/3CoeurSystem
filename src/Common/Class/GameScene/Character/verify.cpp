@@ -17,5 +17,5 @@ bool    CS_Character::MCIsMoine()
 
 bool    CS_Character::verifyOnGround()
 {
-    return (onGround);
+    return (physic->verifyOnGround());
 }

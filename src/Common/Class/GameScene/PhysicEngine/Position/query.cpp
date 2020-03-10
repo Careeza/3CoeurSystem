@@ -15,3 +15,8 @@ int     CS_Position::QueryPostionY()
 {
     return (y);
 }
+
+bool    CS_Position::verifyOnGround()
+{
+    return (onGround);
+}

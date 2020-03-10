@@ -35,7 +35,7 @@ int     KillMonster(CS_Enemies *enemies, CS_Camera *camera)
     {
         enemy = enemies->QueryEnemy(i);
         hp = enemy->QueryHP();
-        if (hp == -3)
+        if (hp == -1)
         {
             enemies->deleteEnemy(i);
             monsterKill++;
@@ -92,7 +92,7 @@ int     startLevel01(CS_Renderer *render, t_actionValue *value, t_actionTable *a
     if (restart)
     {
         MC->QueryPhysic()->setPosX(10);
-        MC->QueryPhysic()->setPosY(74);
+        MC->QueryPhysic()->setPosY(20);
         MC->QueryPhysic()->setHP(5);
 
         enemies->deleteAllEnemy();
@@ -118,8 +118,6 @@ int     startLevel01(CS_Renderer *render, t_actionValue *value, t_actionTable *a
     borderMax = Tools->transformWidth(278.0);
 
     int monsterKill = 0;
-
-    std::cout << "here = " << MC->QueryPhysic()->QueryHP() << std::endl;
 
     while (victory == 0 && monsterKill < 10 && MC->QueryPhysic()->QueryHP() > 0)
     {

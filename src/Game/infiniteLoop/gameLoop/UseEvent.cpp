@@ -23,6 +23,7 @@ void    gameEventProcessing(t_actionTable *actionTable, t_action *action)
         action->left = actionTable->left;
     action->dodge = actionTable->dodge;
     action->jump = actionTable->jump;
+    action->spell_2 = actionTable->spell_2;
 }
 
 void    walkMC(CS_Character *MC)
@@ -33,7 +34,10 @@ void    walkMC(CS_Character *MC)
     }
     else
     {
-        MC->loadAnimation(JUMP);
+        if (MC->QueryPhysic()->QuerySpeedY() < 0)
+            MC->loadAnimation(JUMP);
+        else
+            MC->loadAnimation(FALL);
     }
 }
 
@@ -71,6 +75,10 @@ void    useAction(t_action *table, CS_GameScene *scene)
         else if (table->att & KeyPress)
         {
             useAttack(scene);
+        }
+        else if (table->spell_2 & KeyPress)
+        {
+            MC->loadAnimation(DASH);
         }
         else if (table->dodge & KeyPress)
             MC->swapMC();

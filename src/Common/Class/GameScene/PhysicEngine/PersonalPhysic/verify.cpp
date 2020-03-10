@@ -2,7 +2,8 @@
 
 bool    CS_PersonalPhysic::verifyOnGround()
 {
-    return (onGround);
+//    return (onGround);
+    return (position.verifyOnGround());
 }
 
 bool    CS_PersonalPhysic::verifyBounciness()

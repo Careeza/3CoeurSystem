@@ -2,7 +2,6 @@
 
 CS_Asset::CS_Asset()
 {
-    prop = new (t_prop);
     w = 0;
     h = 0;
     x = 0;
@@ -11,11 +10,10 @@ CS_Asset::CS_Asset()
 
 CS_Asset::~CS_Asset()
 {
-    delete prop;
     SDL_DestroyTexture(texture);
 }
 
-void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, t_assetName nameSource, float wSource, float hSource, float wProp, float hProp, float xProp, float yProp)
+void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, t_assetName nameSource, float wSource, float hSource)
 {
     SDL_Surface *surfaceAsset;
 
@@ -30,11 +28,6 @@ void            CS_Asset::createAsset(SDL_Renderer *render, std::string source, 
 
     w = Tools->transformWidth(wSource);
     h = Tools->transformHeight(hSource);
-
-    prop->w = wProp;
-    prop->h = hProp;
-    prop->x = xProp;
-    prop->y = yProp;
 
     name = nameSource;
 }
@@ -122,11 +115,6 @@ int             CS_Asset::QueryZIndex()
 CS_HitBox       *CS_Asset::QueryHitBox()
 {
     return (hitBox);
-}
-
-t_prop          *CS_Asset::QueryProportion()
-{
-    return (prop);
 }
 
 

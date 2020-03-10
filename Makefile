@@ -1,6 +1,7 @@
 CC = g++
-CFLAGS = -Wall -Wextra -Iinclude/Exec -Iinclude/Tools -Iinclude/Class -Iinclude/Class/GameScene -Iinclude/Class/Scene -std=c++11 -g -fsanitize=address
-LDFLAGS = `sdl2-config --libs --cflags` -lSDL2_image -lSDL2_ttf -lm
+INCLUDE = -Iinclude/Tools -Iinclude/Class -Iinclude/Class/GameScene -Iinclude/Class/Scene -Iinclude/Exec -Iinclude/Exec/Game
+CFLAGS = -Wall -Wextra $(INCLUDE) -std=c++11 -g -fsanitize=address
+LDFLAGS = `sdl2-config --libs --cflags` -lSDL2_image -lSDL2_mixer -lSDL2_ttf -g -fsanitize=address -lm
 
 BUILD_DIR = build
 OBJS_DIR = $(BUILD_DIR)/objs

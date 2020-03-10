@@ -52,16 +52,19 @@ static CS_BankAnimation    *initBankAnimation1(SDL_Renderer *render)
 
 t_enemyAction   initAlgoEnfant1(CS_Character *MC, CS_PersonalPhysic *physic)
 {
-    int xMC;
-    int YMC;
+    if (physic->QueryHP() <= 0)
+        return (Dead);
 
-    MC->QueryPos(xMC, YMC);
+    int xMC;
+    int yMC;
+    int wMC;
+    int hMC;
+
+    MC->QuerySizePos(wMC, hMC, xMC, yMC);
+
 
     int xEnemy;
     int yEnemy;
-
-    if (physic->QueryHP() <= 0)
-        return (Dead);
 
     physic->QueryPostion(xEnemy, yEnemy);
 

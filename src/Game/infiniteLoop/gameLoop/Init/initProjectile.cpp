@@ -7,10 +7,10 @@ CS_Animation        *initAnimationProjectile3(SDL_Renderer *render)
     animation = new (CS_Animation);
 
     animation->newAnimation(STATIC, true);
-    animation->loadTexture(render, "resources/source/Projectiles/FlameL.png", "resources/source/Projectiles/FlameR.png");
+    animation->loadTexture(render, "resources/source/Projectiles/MC2attackProjectileL.png", "resources/source/Projectiles/MC2attackProjectileR.png");
     animation->setSize(3, 2);
-    animation->cutFrame(3, 3, 1);
-    animation->setSpeed(0.03, 0);
+    animation->cutFrame(1, 1, 1);
+    animation->setSpeed(0.06, 0);
     animation->setAnimationTime(300);
 
     return (animation);

@@ -18,13 +18,10 @@ void    CS_PersonalPhysic::updateSpeed(int deltaT)
 
 void    CS_PersonalPhysic::updatePosition(CS_GameScene *scene, int deltaT)
 {
-    if (position.updatePosition(scene, hitbox, speed, deltaT))
-    {
-        onGround = true;
-        setSpeedY(0); //HOTFIX don't know if work
-    }
-    else
-        onGround = false;
+    if (position.updateYAxis(scene, hitbox, speed.QuerySpeedY(), deltaT))
+        setSpeedY(0);
+    if (position.updateXAxis(scene, hitbox, speed.QuerySpeedX(), deltaT))
+        setSpeedX(0);
 }
 
 void    CS_PersonalPhysic::updateImmunity(int deltaT)

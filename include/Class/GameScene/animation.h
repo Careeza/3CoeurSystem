@@ -6,6 +6,7 @@
 # include <SDL2/SDL_timer.h>
 # include <SDL2/SDL_image.h>
 # include <SDL2/SDL_ttf.h>
+# include <SDL2/SDL_mixer.h>
 
 # include <fstream>
 # include <iostream>
@@ -21,6 +22,7 @@ typedef enum	e_aniamtion {
     SPRINT,
     ATTACK,
     FALL,
+    DASH,
     JUMP,
     DEAD,
 }				t_animation;

@@ -6,6 +6,7 @@
 # include <SDL2/SDL_timer.h>
 # include <SDL2/SDL_image.h>
 # include <SDL2/SDL_ttf.h>
+# include <SDL2/SDL_mixer.h>
 
 # include <fstream>
 # include <iostream>
@@ -52,7 +53,7 @@ class   CS_Asset
         CS_Asset();
         ~CS_Asset();
 
-        void            createAsset(SDL_Renderer *render, std::string source, t_assetName nameSource, float wSource, float hSource, float wProp, float hProp, float xProp, float yProp);
+        void            createAsset(SDL_Renderer *render, std::string source, t_assetName nameSource, float wSource, float hSource);
         void            addAsset(int zIndexSource, float xSource, float ySource);
         void            addAssetPixel(int zIndexSource, int xSource, int ySource);
 
@@ -74,7 +75,6 @@ class   CS_Asset
         t_assetName     QueryName();
         int             QueryZIndex();
         CS_HitBox       *QueryHitBox();
-        t_prop          *QueryProportion();
 
     private:
         SDL_Texture     *texture;
@@ -89,7 +89,6 @@ class   CS_Asset
         t_assetName     name;
 
         CS_HitBox       *hitBox;
-        t_prop          *prop;
 
         bool            collision;
 };
@@ -100,7 +99,7 @@ class   CS_AssetsBank
         CS_AssetsBank();
         ~CS_AssetsBank();
 
-        void        createAsset(SDL_Renderer *render, std::string source, t_assetName name, float w, float h, float wProp, float hProp, float xProp, float yProp);
+        void        createAsset(SDL_Renderer *render, std::string source, t_assetName name, float w, float h);
 
         CS_Asset    *QueryAsset(t_assetName name);
 

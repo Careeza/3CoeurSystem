@@ -1,10 +1,5 @@
 # include "gameScene.h"
 
-void    CS_PersonalPhysic::setOnGround(bool onGroundSource)
-{
-    onGround = onGroundSource;
-}
-
 void    CS_PersonalPhysic::setBounciness(bool bouncinessSource)
 {
     bounciness = bouncinessSource;

@@ -18,7 +18,7 @@ void    CS_Renderer::renderAssets(CS_Assets *assets, int cameraX, int cameraY)
         size.y -= cameraY;
         SDL_RenderCopy(render, texture, NULL, &size);
         SDL_SetRenderDrawColor(render, 255, 0, 0, 255);
-        SDL_RenderDrawRect(render, &size);
+//        SDL_RenderDrawRect(render, &size);
 //        renderHitBox(asset->QueryHitBox(), render, &size, cameraX, cameraY);
         i++;
     }

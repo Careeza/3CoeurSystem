@@ -6,6 +6,7 @@
 # include <SDL2/SDL_timer.h>
 # include <SDL2/SDL_image.h>
 # include <SDL2/SDL_ttf.h>
+# include <SDL2/SDL_mixer.h>
 
 # include <fstream>
 # include <iostream>
@@ -62,14 +63,6 @@ class   CS_HitBox
         int                 y;
 };
 
-typedef struct  e_prop {
-    float w;
-    float h;
-    float x;
-    float y;
-}               t_prop;
-
-
 class   CS_Force
 {
     public:
@@ -109,7 +102,6 @@ class   CS_WorldPhysics
     private:
         CS_Force    gravity;
         CS_Force    wind;
-
 };
 
 extern CS_WorldPhysics  *WorldPhysics;
@@ -156,13 +148,20 @@ class   CS_Position
         bool    updatePosition(CS_GameScene *scene, CS_HitBox *hitbox, CS_Speed speed, int deltaT);
         bool    updatePosition(CS_GameScene *scene, CS_HitBox *hitbox, float vXSource, float vYSource, int deltaT);
 
+        bool    updateXAxis(CS_GameScene *scene, CS_HitBox *hitbox, float vXSource, int deltaT);
+        bool    updateYAxis(CS_GameScene *scene, CS_HitBox *hitbox, float vYSource, int deltaT);
+
+        bool    verifyOnGround();
+
         void    QueryPostion(int& xDest, int& yDest);
         int     QueryPostionX();
         int     QueryPostionY();
 
     private:
-        float x;
-        float y;
+        float   x;
+        float   y;
+        bool    onGround;
+        bool    onWall;
 };
 
 class   CS_PersonalPhysic
@@ -171,7 +170,6 @@ class   CS_PersonalPhysic
         CS_PersonalPhysic();
         ~CS_PersonalPhysic();
 
-        void        setOnGround(bool onGroundSource);
         void        setBounciness(bool bouncinessSource);
         void        setGravity(float gravitySource);
         void        setHitBox(CS_HitBox *hitboxSource);
@@ -216,12 +214,14 @@ class   CS_PersonalPhysic
     private:
         CS_Speed        speed;
         CS_Position     position;
+
         CS_HitBox       *hitbox;
         CS_HitBox       *attack;
-        int             hp;
-        bool            onGround;
+        
         bool            bounciness;
         float           gravity;
+        
+        int             hp;
         int             immunity;
 };
 

@@ -6,6 +6,7 @@
 # include <SDL2/SDL_timer.h>
 # include <SDL2/SDL_image.h>
 # include <SDL2/SDL_ttf.h>
+# include <SDL2/SDL_mixer.h>
 
 # include <fstream>
 # include <iostream>
@@ -28,16 +29,10 @@ class   CS_Character
         void        loadAnimation(t_animation name);
         void        loadPhysic(CS_PersonalPhysic *physicSource);
 
-        void        nextFrame();
-        void        previousFrame();
-
         void        updateFrame(int deltaT);
-        void        updateJump();
 
         void        getFrame();
-
-        void        setAnimationTime(int animationTimeSource);
-
+        
         void        moveCharacter(int deltaT, CS_GameScene *scene);
         void        setRight(bool rightSource);
 
@@ -88,5 +83,50 @@ class   CS_Character
         int                 jump;
         int                 maxJump;
 };
+
+
+/*class   CS_Action
+{
+    public:
+        void    loadAnimation(CS_Animation *animationSource);
+
+
+    private:
+        int             id;
+        CS_Animation    *animation;
+        int             cooldown;
+        int             priority;
+}
+
+class   CS_Character
+{
+    public:
+        CS_Character();
+        ~CS_Character();
+
+        void        loadActions(std::vector<CS_Action*> actionsSource);
+        void        loadPhysic(CS_PersonalPhysic *physicSource);
+
+        void        updateFrame(int deltaT);
+        void        moveCharacter(int deltaT, CS_GameScene *scene);
+        void        setRight(bool rightSource);
+
+        void        QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);
+        void        QuerySize(int& wDest, int& hDest);
+        void        QueryPos(int& xDest, int& yDest);
+
+        void        setJump(int jumpSource);
+        void        setMaxJump(int maxJumpSource);
+        int         QueryJump();
+
+        CS_PersonalPhysic   *QueryPhysic();
+        SDL_Texture         *QueryTexture();
+        SDL_Rect            *QueryFrame();
+
+    private:
+
+        CS_PersonalPhysic       *physic;
+        std::vector<CS_Action*> actions
+};*/
 
 #endif
