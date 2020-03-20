@@ -30,8 +30,8 @@ void    checkBorderCamera(CS_Camera *camera, int bornMin, int bornMax)
     int yCamera;
 
     camera->QueryCameraPosition(xCamera, yCamera);
-    if (xCamera + Tools->QueryWindowWidth() >= bornMax)
-        camera->moveCamera(bornMax - Tools->QueryWindowWidth(), 0);
+    if (xCamera + 1920 >= bornMax)
+        camera->moveCamera(bornMax - 1920, 0);
     else if (xCamera < bornMin)
         camera->moveCamera(bornMin, 0);
 }
@@ -148,7 +148,7 @@ void    resolveAllAction(CS_GameScene *scene, int bornMin, int bornMax)
 
     scene->QueryCamera()->QueryCameraPosition(x, y);
 
-    checkBorder(MC->QueryPhysic(), x, x + Tools->QueryWindowWidth());
+    checkBorder(MC->QueryPhysic(), x, x + 1920);
 
     scene->QueryOnScreen()->updateOnScreen(MC, scene->QueryAssets());
 

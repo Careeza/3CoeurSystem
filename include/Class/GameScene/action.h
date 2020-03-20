@@ -8,8 +8,8 @@ class   CS_Force
         CS_Force();
         ~CS_Force();
 
-        void    setAccelerationX(float aXsource);
-        void    setAccelerationY(float aYsource);
+        void    setAccelerationX(float aX);
+        void    setAccelerationY(float aY);
 
         float   QueryAX();
         float   QueryAY();
@@ -19,17 +19,30 @@ class   CS_Force
         float aY; 
 };
 
+class   CS_GamePhysics
+{
+    public:
+        CS_WorldPhysics();
+        ~CS_WorldPhysics();
+
+        void        setGravity(float aX, float aY);
+        CS_Force    QueryGravity();
+
+    private:
+        CS_Force    gravity;
+};
+
 class   CS_Speed
 {
     public:
         CS_Speed();
         ~CS_Speed();
 
-        void    setSpeedX(float vXSource);
-        void    setSpeedY(float vYSource);
-        void    setSpeed(float vXSource, float vYSource);
+        void    setSpeedX(float vX);
+        void    setSpeedY(float vY);
+        void    setSpeed(float vX, float vY);
 
-        void    updateSpeed(float aXSource, float aYSource, int deltaT);
+        void    updateSpeed(float aX, float aY, int deltaT);
 
         float   QuerySpeedX();
         float   QuerySpeedY();
@@ -45,12 +58,12 @@ class   CS_Position
         CS_Position();
         ~CS_Position();
 
-        void    setPositionX(float xSource);
-        void    setPositionY(float ySource);
+        void    setPositionX(float x);
+        void    setPositionY(float y);
 
         //VERIFICATION AVEC LES OBSTACLES
-        bool    updateXAxis(CS_GameScene *scene, CS_HitBox *hitbox, float vXSource, int deltaT);
-        bool    updateYAxis(CS_GameScene *scene, CS_HitBox *hitbox, float vYSource, int deltaT);
+        bool    updateXAxis(CS_GameScene *scene, CS_HitBox *hitbox, float vX, int deltaT);
+        bool    updateYAxis(CS_GameScene *scene, CS_HitBox *hitbox, float vY, int deltaT);
 
         bool    verifyOnGround();
         void    QueryPostion(int& xDest, int& yDest);
@@ -65,34 +78,38 @@ class   CS_Position
 };
 
 
-typedef enum        e_orientation
+
+typedef struct      s_orientation
 {
-    up,
-    down,
-    right,
-    left,
-    upRight,
-    upLeft,
-    downRight,
-    downLeft,
+    bool    up;
+    bool    down;
+    bool    right;
+    bool    left;
 }                   t_orientation;
+
+void                resetOrientation(t_orientation&  orientation); // ??
+/*{
+    up = false;
+    down = false;
+    right = right;
+    left = left;
+}*/
 
 class   CS_PersonalPhysic
 {
     public:
         CS_PersonalPhysic();
         ~CS_PersonalPhysic();
-
-
+ 
 
         //GRAVITY
-        void        setGravity(float gravitySource);
+        void        setGravity(float gravity);
         float       QueryGravity();
 
 
         //STAT
-        void        setHP(int hpSource);
-        void        increaseHP(int hpSource);
+        void        setHP(int hp);
+        void        increaseHP(int hp);
         int         QueryHP();
         void        setImmunity(int deltaT);
         void        updateImmunity(int deltaT);
@@ -121,8 +138,8 @@ class   CS_PersonalPhysic
     
 
         // HITBOX
-        void        setHitBox(CS_HitBox *hitboxSource);
-        void        setAttack(CS_HitBox *attackSource);
+        void        setHitBox(CS_HitBox *hitbox);
+        void        setAttack(CS_HitBox *attack);
         void        QueryHitBox(int& wDest, int& hDest, int& xDest, int& yDest);
         CS_HitBox   *QueryRawHitbox();
         void        QueryAttack(int& wDest, int& hDest, int& xDest, int& yDest);
@@ -130,9 +147,9 @@ class   CS_PersonalPhysic
 
 
     private:
-        CS_Speed        speed;
-        CS_Position     position;
-        SDL_Rect        size;
+        CS_Speed        *speed;
+        CS_Position     *position;
+        SDL_Rect        *size;
 
         CS_HitBox       *hitbox;
         CS_HitBox       *attack;
@@ -152,6 +169,8 @@ class   CS_SpriteSheet
         CS_SpriteSheet();
         ~CS_SpriteSheet();
 
+        bool            loadSpriteSheet(SDL_Renderer *render, std::string route, int nC, int nL);
+
         bool            loadTexture(std::string route, SDL_Renderer *render);
         bool            cutFrame(int nbrColumn, int nbrLine);
 
@@ -161,18 +180,32 @@ class   CS_SpriteSheet
     private:
         std::vector<SDL_Rect *>         frame;
         SDL_Texture                     *spriteSheet;
+
+        int                             nC;
+        int                             nL;
+        int                             nT;
 }
 
-class   CS_newAnimation
+
+
+
+class   CS_CoreAnimation
 {
     public:
-        CS_newAnimation();
-        ~CS_newAnimation();
+        CS_CoreAnimation();
+        ~CS_CoreAnimation();
 
-        bool    animationStart(int indexStartSource, int indexEndSource, int animationTimeSource);
+        bool    animationStart(int spriteSheet, int indexStart, int indexEnd, int animationTime);
+
         int     animationNext(int deltaT);
 
+        bool    animationEnd();
+
+        int     queryIndex();
+        int     querySpriteSheet();
+
     private:
+        int     spriteSheet;
 
         int     animationTime;
         float   frameTime;
@@ -183,15 +216,45 @@ class   CS_newAnimation
         int     indexEnd;
 }
 
+class   CS_Animation
+{
+    public:
+        CS_Animation();
+        ~CS_Animation();
+
+        bool        initSpriteSheet(CS_SpriteSheet *spriteSheet);
+        bool        initCoreAnimation(int spriteSheet, int indexStart, int indexEnd, int animationTime);
+
+        void        updateAnimation(int deltaT);
+
+        SDL_Rect    *QueryFrame();
+        SDL_Rect    *QueryTexture();
+
+    private:
+        CS_CoreAnimation    *coreAnimation;
+        CS_SpriteSheet      *spriteSheet;
+}
+
 class   CS_Particule
 {
     public:
         CS_Particule();
         ~CS_Particule();
 
+        bool            initParticule(CS_Animation *animation, CS_PersonalPhysic *physic);
+
+        bool            updateParticule(int deltaT);
+
+        SDL_Rect        *QueryFrame();
+        SDL_Rect        *QuerySizePos();
+        SDL_Texture     *QueryTexture();
+
     private:
-        CS_SpriteSheet  *spriteSheet;
+        CS_Animation        *animation;
+        CS_PersonalPhysic   *physic;
 }
+
+typedef 
 
 class   CS_Projectile
 {
@@ -199,63 +262,38 @@ class   CS_Projectile
         CS_Projectile();
         ~CS_Projectile();
 
+        void            initProjectile(CS_Animation *animation, CS_PersonalPhysic *physic, void *summoner);
+
+        bool            updateProjectile(int deltaT);
+
+        SDL_Rect        *QueryFrame();
+        SDL_Rect        *QuerySizePos();
+        SDL_Texture     *QueryTexture();
+
     private:
-        int             id;
+        int                 id;
 
-        CS_Timer        time;
-        int             lifeTime;
+        CS_Timer            time;
+        int                 lifeTime;
 
-        CS_SpriteSheet  *spriteSheet;
-        void            *summoner;
-        bool            (*colision)(void *dataUser);
+        CS_Animation        *animation;
+        CS_PersonalPhysic   *physic;
+
+        void                *summoner;
+        bool                (*colision)(void *dataUser);
+
 }
 
-/*class   CS_Projectile
+typedef struct      s_ActionCore
 {
-    public:
-        CS_Projectile();
-        ~CS_Projectile();
+    bool        (*start)(void *dataUser);
+    bool        (*next)(void *dataUser);
+    bool        (*isFinish)(void *dataUser);
+    bool        (*end)(void *dataUser); 
 
-
-        void                initPhysicProjectile(CS_PersonalPhysic *physicSource);
-        void                initAnimation(CS_Animation *animationSource);
-
-        void                updateFrame(int deltaT);
-        void                moveProjectile(CS_GameScene *scene, int deltaT);
-        void                getFrame();
-        bool                projectileEnd();
-        
-        void                setName(t_projectile nameSource);
-        void                setID(int idSource);
-        void                setRight(int rightSource);
-        void                setRange(int rangeSource);
-        void                setAlly(bool allySource);
-
-        void                QuerySizePos(int& wDest, int& hDest, int& xDest, int& yDest);
-        void                QuerySize(int& wDest, int& hDest);
-        void                QueryPos(int& xDest, int& yDest);
-
-        int                 QueryID();
-        int                 QueryRange();
-        bool                QueryAlly();
-        t_projectile        QueryName();
-        CS_Animation        *QueryAnimation();
-        CS_PersonalPhysic   *QueryPhysic();
-        SDL_Texture         *QueryTexture();
-        SDL_Rect            *QueryFrame();
-
-    private:
-        t_projectile        name;
-        SDL_Texture         *texture;
-        SDL_Rect            *frame;
-        CS_PersonalPhysic   *physic;
-        CS_Animation        *animation;
-        int                 range;
-        int                 id;
-        bool                right;
-        bool                ally;
-};
-*/
+    int         coolDownTime;
+    int         comboTime;
+}                   t_ActionCore;
 
 class   CS_Action
 {
@@ -277,7 +315,7 @@ class   CS_Action
         bool        (*start)(void *dataUser);
         bool        (*next)(void *dataUser);
         bool        (*isFinish)(void *dataUser);
-        bool        (*end)(void *dataUser);
+        bool        (*end)(void *dataUser); 
 
         CS_Timer    coolDown;
         int         coolDownTime;
@@ -287,25 +325,44 @@ class   CS_Action
         int         comboIndex;
 }
 
+typedef struct      s_CharacterCore
+{
+    std::vector<CS_SpriteSheet *>   spriteSheets;
+    std::vector<CS_Action *>        actions;
+    std::vector<CS_Projectile *>    projectiles;
+    std::vector<CS_Particule *>     particules; 
+}                   t_CharacterCore;
 
 class   CS_Character
 {
     public:
         CS_Character();
-        CS_Character(std::string route, int nC, int nL);
+        ~CS_Character();
+
+        bool    initCharacter(CS_SpriteSheet *spriteSheet, int nC, int nL);
+        bool    addSpriteSheet(CS_SpriteSheet *spriteSheet);
+        bool    addAction(CS_Action *action);
+
+        bool    updateActions(); // IL A BESOINS DE QUOI LE CON ?
+
 
         bool    updateProjectile(int deltaT);
         bool    updateParticules(int deltaT);
 
-        ~CS_Character();
+        bool    spawnParticule(CS_Particule *particule);
+        bool    spawnProjectile(CS_Projectile *projectile);
 
     private:
-        std::vector<CS_SpriteSheet *>   spriteSheet;
-        std::vector<CS_Action *>        action;
-        std::vector<CS_Projectile *>    projectiles;
-        std::vector<CS_Particule *>     particules;
+        CS_Animation                    *animation;
+        CS_Action                       *action;
 
+        std::vector<CS_SpriteSheet *>   spriteSheets; // 1 ANIMATION 2 PROJECTILE 3 PARTICULE 
+        std::vector<CS_Action *>        actions;
+        
+        std::vector<CS_Projectile *>    projectiles; // TOUT LES PROJECTILES LANCER PAR LE PERSONNAGE
+        std::vector<CS_Particule *>     particules; // TOUTES LES PARTICULES DU PERSONNAGE
 }
+
 
 class   CS_Enemy
 {
@@ -319,27 +376,90 @@ class   CS_Enemy
         void                QuerySize(int& wDest, int& hDest);
         void                QueryPos(int& xDest, int& yDest);
 
-        CS_BankAnimation    *QueryAnimationBank();
         SDL_Texture         *QueryTexture();
         SDL_Rect            *QueryFrame();
 
-
     private:
         CS_Character        *character;
+        std::string         name;
         int                 id;
 };
 
-
-/* DANS LE FICHIER DU JEU */
-/*class   CS_MC
+class   CS_EnemyBank
 {
     public:
 
+
     private:
-        t_action        *action;
-        CS_Character    *moine;
-        CS_Character    *kitsune;
-}*/
+}
+
+
+//TODO DEFINIR DANS LE .H DU JEU
+/*
+# define MUSIC_AMBIANCE0
+# define MUSIC_AMBIANCE1
+
+# define SON_MC0
+# define SON_MC1
+
+# define SON_ENEMY0
+# define SON_ENEMY1
+# define SON_ENEMY2
+# define SON_ENEMY3
+*/
+
+
+class   CS_Sound
+{
+    public:
+        CS_Sound();
+        ~CS_Sound();
+
+        void        createSound(std::string route, int canal = 0, std::string nameSoure);
+
+        void        playSound(int n = 0);
+        void        pauseMusic();
+        void        resumeMusic();
+        void        stopMusic();
+
+        std::string QueryName();
+
+    private:
+        std::string     name;
+        int             canal;
+        Mix_Chunk       *sound;        
+}
+
+
+
+class   CS_BankOfSound
+{
+    public:
+        void    createSound(std::string route, int canal = 0, std::string nameSoure);
+        void    playSound(std::string name, int n = 0);
+        void    pauseMusic(std::string name);
+        void    resumeMusic(std::string name);
+        void    stopMusic(std::string name);
+
+    private:
+        std::vector<CS_Sound *>     bankOfSound;
+}
+
+
+
+class   CS_GameSound
+{
+    public:
+        CS_GameSound();
+        ~CS_GameSound();
+
+        void    initGameSound(int nbrCanal);
+        void    setVolumeCanal(int canal, int volume);
+
+    private:
+        int                 nbrCanal;
+        std::vector<int>    volumeCanal;
+} // TODO GAME_H
 
 class   CS_Layer
 {
@@ -347,20 +467,28 @@ class   CS_Layer
         CS_Layer();
         ~CS_Layer();
 
-        void    createLayer(std::string route, SDL_Renderer *render, float speedSource, int zIndexSource, SDL_Rect scope);
+        void    createLayer(SDL_Renderer *render, std::string route, int w, int h, int x, int y, int zIndex, float speed)
         
+        void    QuerySizePos(int& w, int& h, int& x, int& y);
+        void    QuerySize(int& w, int& h);
+        void    QueryPos(int& x, int& y);
+
+        float   QuerySpeed();
+
         int     QueryZindex();
 
 
     private:
         SDL_Texture *texture;
-        SDL_Rect    *scope;
-        //Taille = full anyway !
+
+        int         w;
+        int         h;
+        int         x;
+        int         y;
 
         float       speed;
         int         zIndex;
 };
-
 
 class   CS_Parallax
 {
@@ -368,7 +496,7 @@ class   CS_Parallax
         CS_Parallax();
         ~CS_Parallax();
 
-        void        createLayer(SDL_Renderer *render, std::string source, float SpeedSource, int zIndex, SDL_Rect scope);
+        void        createLayer(SDL_Renderer *render, std::string route, int w, int h, int x, int y, int zIndex, float speed);
 
         int         QueryNbLayers();
         CS_Layer    *QueryLayer(int index);
@@ -380,13 +508,14 @@ class   CS_Parallax
 class   CS_Map
 {
     public:
-        void            setBorneX(int xMinSource, int xMaxSource);
-        void            setBorneY(int yMinSource, int yMaxSource);
+        CS_Map();
+        ~CS_Map();
 
-        void            loadOnScreen();
+        void            setBorneX(int xMin, int xMax);
+        void            setBorneY(int yMin, int yMax);
 
-        void            loadParallax(CS_Parallax *parallaxSource);
-        void            loadAssets(CS_Assets *assetsSource);
+        void            loadParallax(CS_Parallax *parallax);
+        void            loadAssets(CS_Assets *assets);
 
     private:
         int             xMax;
@@ -395,10 +524,28 @@ class   CS_Map
         int             yMin;
         int             yMax;
 
-        CS_OnScreen     *onScreen;
         CS_Parallax     *parallax;
-        CS_Assets       *assets;        
+        CS_Assets       *assets;
 }
+
+class   CS_Camera
+{
+    public:
+        CS_Camera();
+        ~CS_Camera();
+
+        void    setCameraPosition(int x, int y);
+
+        void    moveCamera(int x, int y, bool flag = false, int deltaT = 0, int speed = 0);
+
+        void    QueryCameraPosition(int& x, int& y);
+        int     QueryCameraPositionX();
+        int     QueryCameraPositionY();
+
+    private:
+        float       x;
+        float       y;
+};
 
 class   CS_GameScene : public CS_Scene
 {
@@ -406,11 +553,11 @@ class   CS_GameScene : public CS_Scene
         CS_GameScene();
         ~CS_GameScene();
 
-        void            loadCamera(CS_Camera *cameraSource);
-        void            loadMap(CS_Map *mapSource);
+        void            loadCamera(CS_Camera *camera);
+        void            loadMap(CS_Map *map);
 
-        CS_Map          *QueryMap();
         CS_Camera       *QueryCamera();
+        CS_Map          *QueryMap();
 
     private:
         CS_Camera                   *camera;
@@ -418,4 +565,86 @@ class   CS_GameScene : public CS_Scene
 
         std::vector<CS_Character *> characters;
 };
+
+typedef struct      s_RenderElement
+{
+    SDL_Texture     *texture;
+    SDL_Rect        *size;
+    SDL_Rect        *frame;
+}                   t_RenderElement;
+
+class   CS_Renderer
+{
+    
+    public:
+        CS_Renderer();
+        ~CS_Renderer();
+
+        void    loadRenderer(SDL_Renderer *renderSource);
+
+        void    renderScene(CS_Scene *scene);
+        void    renderElement(std::shared_ptr<CS_Element> element);
+        void    renderText(CS_Police *text);
+        void    renderBorder(CS_Border *border);
+        void    renderBrightness(CS_Brightness *brightness);
+
+        void    renderGameScene(CS_GameScene *gameScene);
+        void    renderParallax(CS_Parallax *parallax);
+        void    renderAssets(CS_Assets *assets, int cameraX, int cameraY);
+        void    renderMC(CS_Character *MC, int cameraX, int cameraY);
+        void    renderEnemy(CS_Enemies *enemies, int cameraX, int cameraY);
+        void    renderProjectiles(CS_Projectiles *projectiles, int cameraX, int cameraY);
+
+        void    renderTexture(SDL_Texture *texture, SDL_Rect *frame, SDL_Rect *size);
+        void    renderScreenSave();
+
+        void    dispScreen();
+        void    saveScreen();
+
+        SDL_Texture     *QueryScreen();
+        SDL_Texture     *QueryScreenSave();
+        SDL_Renderer    *QueryRender();
+
+    private:
+        std::vector<t_RenderElement>    renderList;
+
+        SDL_Renderer                    *render;
+        SDL_Texture                     *screen;
+        SDL_Texture                     *screenSave;
+};
+
+class   CS_Game
+{
+    public:
+        CS_Game();
+        ~CS_Game();
+
+        bool            start();
+
+        t_actionValue   &QueryValue();
+        t_actionTable   &QueryAction();
+        CS_Render       &QueryRender();
+        CS_GamePhysics  &QueryGamePhysics();
+        SDL_Window      *QueryWindow();
+        
+    private:
+        t_actionValue   value;
+        t_actionTable   action;
+
+        CS_Render       render;
+        SDL_Window      *window;
+        CS_GamePhysics  gamePhysic;
+}
+
+extern  CS_Game game;
+/* DANS LE FICHIER DU JEU */
+/*class   CS_MC
+{
+    public:
+
+    private:
+        t_action        *action;
+        CS_Character    *moine;
+        CS_Character    *kitsune;
+}*/
 #endif

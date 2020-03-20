@@ -231,9 +231,9 @@ void        CS_Assets::printAsset()
 
 
         assets[i]->QuerySize(w, h, x, y);
-        std::cout << x / (float)Tools->QueryWindowWidth() * 100;
+        std::cout << x / (float)1920 * 100;
         std::cout << ", ";
-        std::cout << y / (float)Tools->QueryWindowHeight() * 100;
+        std::cout << y / (float)1080 * 100;
         std::cout << ");" << std::endl;
 
         i++;

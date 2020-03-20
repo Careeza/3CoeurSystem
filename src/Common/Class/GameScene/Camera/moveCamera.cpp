@@ -22,7 +22,7 @@ void    CS_Camera::moveCamera3(CS_Character *MC)
     int yMC;
 
     MC->QuerySizePos(wMC, hMC, xMC, yMC);
-    x = xMC - (Tools->QueryWindowWidth() / 2) + (wMC / 2);
+    x = xMC - (1920 / 2) + (wMC / 2);
     y = 0;
 }
 

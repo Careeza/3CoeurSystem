@@ -32,7 +32,7 @@ void    initGame(CS_Renderer& rend)
 
     window = create_window(SDL_WINDOW_FULLSCREEN_DESKTOP | SDL_WINDOW_ALLOW_HIGHDPI);
 //    window = create_window(SDL_WINDOW_ALLOW_HIGHDPI, "Game", 0, 0, 1920, 1080);
-    SDL_GL_GetDrawableSize(window, &w, &h);
+    SDL_GetWindowSize(window, &w, &h);
 
     Tools->getWindowSize(w, h);
 

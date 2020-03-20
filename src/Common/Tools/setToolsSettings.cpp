@@ -17,6 +17,8 @@ void    CS_Tools::getWindowSize(int w, int h)
 {
     windowWidth = w;
     windowHeight = h;
+    wRatio = 1920 / (float)w;
+    hRatio = 1080 / (float)h;
     std::cout << "size = " << windowWidth << " " << windowHeight << std::endl;
     resolution = windowWidth / (float)windowHeight;
 }

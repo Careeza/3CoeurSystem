@@ -29,7 +29,7 @@ std::shared_ptr<CS_Element>     CS_KeyControl::getButtonScene()
     int                         y;
 
     SDL_GetMouseState(&x, &y);
-    button = getButtonSplit(scene, len, x * 2, y * 2);
+    button = getButtonSplit(scene, len, x * Tools->QueryWRatio(), y * Tools->QueryHRatio());
     return (button);
 }
 

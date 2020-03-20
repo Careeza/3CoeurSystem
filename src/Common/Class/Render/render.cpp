@@ -17,8 +17,8 @@ void    CS_Renderer::loadRenderer(SDL_Renderer *renderSource)
 
     render = renderSource;
 
-    w = Tools->QueryWindowWidth();
-    h = Tools->QueryWindowHeight();
+    w = 1920;
+    h = 1080;
     screen = SDL_CreateTexture(render, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, w, h);
     screenSave = SDL_CreateTexture(render, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, w, h);
     

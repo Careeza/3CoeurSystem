@@ -51,6 +51,9 @@ class   CS_Tools
         int     QueryWindowHeight();
         float   QueryWindowResolution();
 
+        float   QueryWRatio();
+        float   QueryHRatio();
+
         void    verbose(t_debug debugSource, std::string element, ...);
 
         void    getWindowSize(int w, int h);
@@ -64,6 +67,9 @@ class   CS_Tools
         int     windowWidth;
         int     windowHeight;
         float   resolution;
+
+        float   wRatio;
+        float   hRatio;
         t_debug debug;
 };
 

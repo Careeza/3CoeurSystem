@@ -2,10 +2,10 @@
 
 void    CS_Tools::setSize(SDL_Rect *size, float w, float h, float x, float y)
 {
-    size->w = (w * windowWidth) / 100.0;
-    size->h = (h * windowHeight) / 100.0;
-    size->x = (x * windowWidth) / 100.0;
-    size->y = (y * windowHeight) / 100.0;
+    size->w = (w * 1920) / 100.0;
+    size->h = (h * 1080) / 100.0;
+    size->x = (x * 1920) / 100.0;
+    size->y = (y * 1080) / 100.0;
 }
 
 void    CS_Tools::setSize(SDL_Rect *size, SDL_Rect *container, float w, float h, float x, float y)

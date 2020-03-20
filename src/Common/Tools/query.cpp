@@ -14,3 +14,13 @@ float   CS_Tools::QueryWindowResolution()
 {
     return (resolution);
 }
+
+float   CS_Tools::QueryWRatio()
+{
+    return(wRatio);
+}
+
+float   CS_Tools::QueryHRatio()
+{
+    return (hRatio);
+}

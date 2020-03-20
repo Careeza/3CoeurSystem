@@ -41,7 +41,7 @@ int     KillMonster(CS_Enemies *enemies, CS_Camera *camera)
             monsterKill++;
         }
         enemy->QueryPos(x, y);
-        if (y > Tools->QueryWindowHeight())
+        if (y > 1080)
         {
             enemies->deleteEnemy(i);
         }
@@ -52,7 +52,7 @@ int     KillMonster(CS_Enemies *enemies, CS_Camera *camera)
 
     camera->QueryCameraPosition(x, y);
     y = Tools->transformHeight(74);
-    x += Tools->QueryWindowWidth();
+    x += 1920;
     nb_alea = rand() % 6;
     if (enemies->QueryNbEnemies() < 6)
     {

@@ -10,8 +10,8 @@ void    CS_Layer::moveLayer(int xSource)
     scopeX = xSource * speed;
     x = Tools->modulo(scopeX, textureW);
 
-    windowW = Tools->QueryWindowWidth();
-    windowH = Tools->QueryWindowHeight();
+    windowW = 1920;
+    windowH = 1080;
 
     if (x + scopeWidth > textureW)
     {

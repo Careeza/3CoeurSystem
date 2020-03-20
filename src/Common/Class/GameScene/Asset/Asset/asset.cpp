@@ -157,8 +157,8 @@ void            CS_Asset::printSize()
 {
     CS_HitBox   *hitBox;
 
-    std::cout << "size w = " << w / (float)Tools->QueryWindowWidth() * 100 << " size h = " << h / (float)Tools->QueryWindowHeight() * 100 << std::endl;
-    std::cout << "size x = " << x / (float)Tools->QueryWindowWidth() * 100 << " size y = " << y / (float)Tools->QueryWindowHeight() * 100 << std::endl;
+    std::cout << "size w = " << w / (float)1920 * 100 << " size h = " << h / (float)1080 * 100 << std::endl;
+    std::cout << "size x = " << x / (float)1920 * 100 << " size y = " << y / (float)1080 * 100 << std::endl;
 
     hitBox = QueryHitBox();
 

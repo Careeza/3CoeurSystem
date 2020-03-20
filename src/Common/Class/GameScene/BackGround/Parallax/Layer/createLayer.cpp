@@ -18,8 +18,8 @@ void    CS_Layer::createLayer(SDL_Renderer *render, std::string source, float sp
     int WindowWidth;
     int WindowHeight;
 
-    WindowWidth = Tools->QueryWindowWidth();
-    WindowHeight = Tools->QueryWindowHeight();
+    WindowWidth = 1920;
+    WindowHeight = 1080;
 
     float a;
     float b;

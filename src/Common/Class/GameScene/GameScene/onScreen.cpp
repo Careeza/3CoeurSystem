@@ -10,8 +10,8 @@ void    CS_OnScreen::initOnScreen(CS_Character *MC, CS_Assets *assets)
     int x;
     int y;
 
-    screenW = Tools->QueryWindowWidth();
-    screenH = Tools->QueryWindowHeight();
+    screenW = 1920;
+    screenH = 1080;
 
     MC->QuerySizePos(w, h, x, y);
     bornMax = x + (w / 2) + screenW;
@@ -49,8 +49,8 @@ void    CS_OnScreen::updateOnScreen(CS_Character *MC, CS_Assets *ground)
     int x;
     int y;
 
-    screenW = Tools->QueryWindowWidth();
-    screenH = Tools->QueryWindowHeight();
+    screenW = 1920;
+    screenH = 1080;
 
     MC->QuerySizePos(w, h, x, y);
     bornMax = x + (w / 2) + screenW;

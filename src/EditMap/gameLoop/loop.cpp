@@ -39,8 +39,8 @@ void    getAsset(CS_KeyControl event, CS_Camera *camera, CS_Asset* &assetSelecte
     int         yMouse;
 
     event.getMousePos(xMouse, yMouse);
-    xMouse *= 2; //MAC ONLY
-    yMouse *= 2;
+    xMouse *= Tools->QueryWRatio(); //MAC ONLY
+    yMouse *= Tools->QueryHRatio();
 
     int         xCamera;
     int         yCamera;
@@ -188,8 +188,8 @@ void    moveAssetSelected(bool haveAnAsset, CS_Asset *assetSelected, CS_Camera *
     if (haveAnAsset)
     {
         event.getMousePos(xMouse, yMouse);
-        xMouse *= 2; //MAC ONLY
-        yMouse *= 2;
+        xMouse *= Tools->QueryWRatio(); //MAC ONLY
+        yMouse *= Tools->QueryHRatio();
         camera->QueryCameraPosition(xCamera, yCamera);
         assetSelected->QuerySize(w, h, x, y);
         assetSelected->moveAsset((xMouse + xCamera) - w / 2, (yMouse + yCamera) - h / 2, true);

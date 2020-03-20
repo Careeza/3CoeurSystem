@@ -3,7 +3,7 @@
 float   CS_Tools::transformWidth(float w)
 {
     float res;
-    res = (w * windowWidth) / 100.0;
+    res = (w * 1920) / 100.0;
     return (res);
 }
 
@@ -17,7 +17,7 @@ float   CS_Tools::transformWidth(SDL_Rect *container, float w)
 float   CS_Tools::transformHeight(float h)
 {
     float res;
-    res = (h * windowHeight) / 100.0;
+    res = (h * 1080) / 100.0;
     return (res);
 }
 
@@ -31,7 +31,7 @@ float   CS_Tools::transformHeight(SDL_Rect *container, float h)
 float   CS_Tools::transformX(float x)
 {
     float res;
-    res = (x * windowWidth) / 100.0;
+    res = (x * 1920) / 100.0;
     return (res);
 }
 
@@ -45,7 +45,7 @@ float   CS_Tools::transformX(SDL_Rect *container, float x)
 float   CS_Tools::transformY(float y)
 {
     float res;
-    res = (y * windowHeight) / 100.0;
+    res = (y * 1080) / 100.0;
     return (res);
 }
 

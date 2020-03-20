@@ -10,7 +10,7 @@ static CS_Scene    *initHomeCinematics(SDL_Renderer *render)
     scene->setSceneColor(0x00, 0x00, 0x00, 255);
     scene->createElementToScene("filtre", 100, 100, 0, 0, 0);
 
-    scene->createElementToSceneFromPng("Background", "resources/source/HomeJeu.png", 100, 90, 0, 5, 0);
+    scene->createElementToSceneFromPng("Background", "resources/source/HomeJeu.png", 100, 100, 0, 0, 0);
     return (scene);
 }
 

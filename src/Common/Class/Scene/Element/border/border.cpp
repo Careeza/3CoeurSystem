@@ -7,8 +7,8 @@ CS_Border::CS_Border()
     rectRight = new (SDL_Rect);
     rectLeft = new (SDL_Rect);
 
-    borderSize_w = 10;
-    borderSize_h = 10;
+    borderSize_w = 3;
+    borderSize_h = 3;
 }
 
 CS_Border::~CS_Border()
