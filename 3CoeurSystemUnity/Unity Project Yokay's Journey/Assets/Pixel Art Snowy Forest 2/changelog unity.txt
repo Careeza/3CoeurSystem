@@ -1,0 +1,21 @@
+Changelog:
+
+ v2.0
+ Added contact.txt
+ Added a tileset preview.
+
+ v2.1
+ Added readme.txt
+ Added changelog.txt (This file!)
+ Added lisense.txt
+
+ v2.2
+ Added Trees 02.png to replace semtítulo.png since this was a typo.
+ Added Tiles configuration, tiles is a special feature in Unity
+ Added Tiles folder that contains all the tiles packages
+ Modified the demo scene in Unity, now is made all using the tiles feature
+ Added an extra scene mode.
+
+
+ 
+
